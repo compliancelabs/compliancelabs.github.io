@@ -11,9 +11,12 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background-color: #e0e0e0; /* light grey background */
+      background-color: #e0e0e0;
       color: #333;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -47,13 +50,14 @@
       max-width: 1000px;
       margin: auto;
       padding: 2rem 1rem;
+      flex: 1; /* allow container to expand */
     }
 
     section {
       margin: 2rem 0;
     }
 
-    .services, .pricing, .benefits, .form-section {
+    .services, .pricing, .benefits {
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -67,6 +71,10 @@
       color: #fff;
       padding: 3rem 1rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      text-align: center;
+      margin: 2rem auto 0 auto;
+      max-width: 600px;
     }
 
     h2 {
@@ -165,7 +173,6 @@
       background: #1a1a1a;
       color: #fff;
       font-size: 0.9rem;
-      margin-top: 2rem;
     }
 
     @media (max-width: 768px) {
@@ -229,30 +236,31 @@
       </div>
     </section>
 
-    <section class="form-section">
-      <h2>Book Your Free 10-Minute Call</h2>
-      <p>Fill out the form below and we’ll reach out to discuss how we can save your business time and get you paid faster.</p>
-      <form action="https://formspree.io/f/mwpngqvo" method="POST">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="company">Company Name</label>
-        <input type="text" id="company" name="company">
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone">
-
-        <label for="message">What's your biggest admin headache right now?</label>
-        <textarea id="message" name="message" rows="4"></textarea>
-
-        <button type="submit"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
-      </form>
-    </section>
-
   </div>
+
+  <!-- Form at the bottom -->
+  <section class="form-section">
+    <h2>Book Your Free 10-Minute Call</h2>
+    <p>Fill out the form below and we’ll reach out to discuss how we can save your business time and get you paid faster.</p>
+    <form action="https://formspree.io/f/mwpngqvo" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="company">Company Name</label>
+      <input type="text" id="company" name="company">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone">
+
+      <label for="message">What's your biggest admin headache right now?</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <button type="submit"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
+    </form>
+  </section>
 
   <footer>
     <p>© 2025 Compliance & Debt Chasing Services | We respect your privacy (GDPR Compliant)</p>
