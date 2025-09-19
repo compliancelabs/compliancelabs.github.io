@@ -11,9 +11,9 @@
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background-color: #f9f9f9;
+      background-color: #e0e0e0; /* light grey background */
       color: #333;
-      text-align: center; /* center all text by default */
+      text-align: center;
     }
 
     header {
@@ -27,7 +27,7 @@
     }
 
     header img.hero {
-      max-width: 200px;
+      max-width: 150px;
       margin-bottom: 2rem;
     }
 
@@ -43,30 +43,30 @@
       max-width: 700px;
     }
 
-    section {
-      padding: 2rem 1rem;
+    .container {
       max-width: 1000px;
-      margin: 2rem auto;
-      text-align: center;
+      margin: auto;
+      padding: 2rem 1rem;
     }
 
-    .services, .pricing, .benefits {
+    section {
+      margin: 2rem 0;
+    }
+
+    .services, .pricing, .benefits, .form-section {
       background: #fff;
-      padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin: auto;
+      text-align: center;
     }
 
     .form-section {
       background: #1a1a1a;
       color: #fff;
-      margin: 2rem 0;
       padding: 3rem 1rem;
-      border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     h2 {
@@ -75,9 +75,9 @@
     }
 
     ul {
-      margin: 1rem 0;
-      padding-left: 0;
       list-style: none;
+      padding-left: 0;
+      margin: 1rem 0;
     }
 
     .services ul li::before, .benefits ul li::before {
@@ -120,8 +120,8 @@
       flex-direction: column;
       width: 100%;
       max-width: 500px;
-      text-align: left;
       margin: auto;
+      text-align: left;
     }
 
     form label {
@@ -184,71 +184,75 @@
     <p class="tagline">Save time, reduce risk, and get paid faster — we handle the paperwork so you can focus on building.</p>
   </header>
 
-  <section class="benefits">
-    <h2>Why Choose Us?</h2>
-    <ul>
-      <li>Stop wasting hours managing subcontractor documents.</li>
-      <li>Ensure all compliance requirements are met for insurance, CSCS, CIS, and right-to-work.</li>
-      <li>Never miss a document expiry or tender deadline.</li>
-      <li>Professional debt chasing that keeps client relationships intact.</li>
-      <li>Monthly reports on compliance status and cashflow improvements.</li>
-    </ul>
-  </section>
+  <div class="container">
 
-  <section class="services">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Subcontractor document collection, verification, and storage.</li>
-      <li>Expiry tracking & automated reminders.</li>
-      <li>Compliance packs ready for tenders.</li>
-      <li>Overdue invoice management & reminders.</li>
-      <li>Monthly compliance & cashflow reports delivered to you.</li>
-    </ul>
-  </section>
+    <section class="benefits">
+      <h2>Why Choose Us?</h2>
+      <ul>
+        <li>Stop wasting hours managing subcontractor documents.</li>
+        <li>Ensure all compliance requirements are met for insurance, CSCS, CIS, and right-to-work.</li>
+        <li>Never miss a document expiry or tender deadline.</li>
+        <li>Professional debt chasing that keeps client relationships intact.</li>
+        <li>Monthly reports on compliance status and cashflow improvements.</li>
+      </ul>
+    </section>
 
-  <section class="pricing">
-    <h2>Pricing Packages</h2>
-    <div class="pricing-table">
-      <div class="plan">
-        <h3>Small</h3>
-        <p>Up to 10 subcontractors</p>
-        <p class="price">£500 / month</p>
+    <section class="services">
+      <h2>Our Services</h2>
+      <ul>
+        <li>Subcontractor document collection, verification, and storage.</li>
+        <li>Expiry tracking & automated reminders.</li>
+        <li>Compliance packs ready for tenders.</li>
+        <li>Overdue invoice management & reminders.</li>
+        <li>Monthly compliance & cashflow reports delivered to you.</li>
+      </ul>
+    </section>
+
+    <section class="pricing">
+      <h2>Pricing Packages</h2>
+      <div class="pricing-table">
+        <div class="plan">
+          <h3>Small</h3>
+          <p>Up to 10 subcontractors</p>
+          <p class="price">£500 / month</p>
+        </div>
+        <div class="plan">
+          <h3>Medium</h3>
+          <p>10–30 subcontractors</p>
+          <p class="price">£1,200 / month</p>
+        </div>
+        <div class="plan">
+          <h3>Large</h3>
+          <p>30+ subcontractors</p>
+          <p class="price">£2,000–£3,000 / month</p>
+        </div>
       </div>
-      <div class="plan">
-        <h3>Medium</h3>
-        <p>10–30 subcontractors</p>
-        <p class="price">£1,200 / month</p>
-      </div>
-      <div class="plan">
-        <h3>Large</h3>
-        <p>30+ subcontractors</p>
-        <p class="price">£2,000–£3,000 / month</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="form-section">
-    <h2>Book Your Free 10-Minute Call</h2>
-    <p>Fill out the form below and we’ll reach out to discuss how we can save your business time and get you paid faster.</p>
-    <form action="https://formspree.io/f/mwpngqvo" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+    <section class="form-section">
+      <h2>Book Your Free 10-Minute Call</h2>
+      <p>Fill out the form below and we’ll reach out to discuss how we can save your business time and get you paid faster.</p>
+      <form action="https://formspree.io/f/mwpngqvo" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
 
-      <label for="company">Company Name</label>
-      <input type="text" id="company" name="company">
+        <label for="company">Company Name</label>
+        <input type="text" id="company" name="company">
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
 
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" name="phone">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
 
-      <label for="message">What's your biggest admin headache right now?</label>
-      <textarea id="message" name="message" rows="4"></textarea>
+        <label for="message">What's your biggest admin headache right now?</label>
+        <textarea id="message" name="message" rows="4"></textarea>
 
-      <button type="submit"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
-    </form>
-  </section>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
+      </form>
+    </section>
+
+  </div>
 
   <footer>
     <p>© 2025 Compliance & Debt Chasing Services | We respect your privacy (GDPR Compliant)</p>
