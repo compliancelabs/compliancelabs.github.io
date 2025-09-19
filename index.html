@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Compliance & Debt Chasing for Construction SMEs</title>
+  <title>Subcontractor Compliance & Debt Chasing</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -17,29 +17,30 @@
     header {
       background: #1a1a1a;
       color: #fff;
-      padding: 2rem;
+      padding: 3rem 1rem 2rem 1rem;
       text-align: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    header p.tagline {
+      font-size: 1.3rem;
+      margin-top: 0.8rem;
+      font-weight: 300;
     }
 
     section {
-      padding: 2rem;
-      max-width: 900px;
+      padding: 2rem 1rem;
+      max-width: 1000px;
       margin: auto;
     }
 
-    .services, .pricing, .form-section {
+    .services, .pricing, .form-section, .benefits {
       background: #fff;
-      margin: 1.5rem 0;
+      margin: 2rem 0;
       padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -59,10 +60,12 @@
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .plan {
       flex: 1;
+      min-width: 200px;
       background: #f0f0f0;
       padding: 1.5rem;
       border-radius: 6px;
@@ -79,9 +82,19 @@
       margin: 0.5rem 0;
     }
 
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     form {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      max-width: 500px;
+      text-align: left;
     }
 
     form label {
@@ -95,6 +108,7 @@
       border-radius: 4px;
       margin-top: 0.3rem;
       font-size: 1rem;
+      width: 100%;
     }
 
     form button {
@@ -120,28 +134,43 @@
       font-size: 0.9rem;
       margin-top: 2rem;
     }
+
+    .benefits ul li {
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Subcontractor Compliance & Debt Chasing</h1>
-    <p>Stop chasing paperwork. Stay compliant. Get paid faster.</p>
+    <p class="tagline">Save time, reduce risk, and get paid faster — we handle the paperwork so you can focus on building.</p>
   </header>
 
-  <section class="services">
-    <h2>What We Do</h2>
+  <section class="benefits">
+    <h2>Why Choose Us?</h2>
     <ul>
-      <li>Collect, check & store subcontractor documents (insurance, CSCS, CIS, right-to-work)</li>
-      <li>Track expiries & send reminders automatically</li>
-      <li>Provide compliance packs for tenders</li>
-      <li>Professionally chase overdue invoices</li>
-      <li>Monthly compliance & cashflow reports</li>
+      <li>Stop wasting hours managing subcontractor documents.</li>
+      <li>Ensure all compliance requirements are met for insurance, CSCS, CIS, and right-to-work.</li>
+      <li>Never miss a document expiry or tender deadline.</li>
+      <li>Professional debt chasing that keeps client relationships intact.</li>
+      <li>Monthly reports on compliance status and cashflow improvements.</li>
+    </ul>
+  </section>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Subcontractor document collection, verification, and storage.</li>
+      <li>Expiry tracking & automated reminders.</li>
+      <li>Compliance packs ready for tenders.</li>
+      <li>Overdue invoice management & reminders.</li>
+      <li>Monthly compliance & cashflow reports delivered to you.</li>
     </ul>
   </section>
 
   <section class="pricing">
-    <h2>Packages</h2>
+    <h2>Pricing Packages</h2>
     <div class="pricing-table">
       <div class="plan">
         <h3>Small</h3>
@@ -162,27 +191,27 @@
   </section>
 
   <section class="form-section">
-  <h2>Book a Free 10-Minute Call</h2>
-  <form action="https://formspree.io/f/mwpngqvo" method="POST">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
+    <h2>Book Your Free 10-Minute Call</h2>
+    <p>Fill out the form below and we’ll reach out to discuss how we can save your business time and get you paid faster.</p>
+    <form action="https://formspree.io/f/mwpngqvo" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
 
-    <label for="company">Company Name</label>
-    <input type="text" id="company" name="company">
+      <label for="company">Company Name</label>
+      <input type="text" id="company" name="company">
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
 
-    <label for="phone">Phone</label>
-    <input type="tel" id="phone" name="phone">
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone">
 
-    <label for="message">What's your biggest admin headache right now?</label>
-    <textarea id="message" name="message" rows="4"></textarea>
+      <label for="message">What's your biggest admin headache right now?</label>
+      <textarea id="message" name="message" rows="4"></textarea>
 
-    <button type="submit">Send Enquiry</button>
-  </form>
-</section>
-
+      <button type="submit">Send Enquiry</button>
+    </form>
+  </section>
 
   <footer>
     <p>© 2025 Compliance & Debt Chasing Services | We respect your privacy (GDPR Compliant)</p>
