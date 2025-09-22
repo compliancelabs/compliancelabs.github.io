@@ -1,270 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Subcontractor Compliance & Debt Chasing</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliance Labs</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f0f0f0 url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
       margin: 0;
       padding: 0;
-      line-height: 1.6;
-      background-color: #e0e0e0;
-      color: #333;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 4rem 1rem 3rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      color: #333;
+      text-align: center;
     }
 
-    header img.hero {
-      max-width: 150px;
-      margin-bottom: 2rem;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    header p.tagline {
-      font-size: 1.3rem;
-      margin-top: 0.8rem;
-      font-weight: 300;
+    .overlay {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
       max-width: 700px;
+      width: 90%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin: 40px auto;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 2rem 1rem;
-      flex: 1; /* allow container to expand */
+    .logo img {
+      max-width: 120px;
+      margin-bottom: 20px;
     }
 
-    section {
-      margin: 2rem 0;
-    }
-
-    .services, .pricing, .benefits {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 2rem;
-      margin: auto;
-      text-align: center;
-    }
-
-    .form-section {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 3rem 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      border-radius: 8px;
-      text-align: center;
-      margin: 2rem auto 0 auto;
-      max-width: 600px;
-    }
-
-    h2 {
-      margin-top: 0;
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
       color: #222;
     }
 
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
     ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 1rem 0;
-    }
-
-    .services ul li::before, .benefits ul li::before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      margin-right: 8px;
-      color: #1a1a1a;
-    }
-
-    .pricing-table {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .plan {
-      flex: 1;
-      min-width: 220px;
-      background: #f0f0f0;
-      padding: 1.5rem;
-      border-radius: 6px;
-      text-align: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    }
-
-    .plan h3 {
-      margin-top: 0;
-    }
-
-    .plan p.price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0.5rem 0;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 500px;
-      margin: auto;
       text-align: left;
+      max-width: 500px;
+      margin: 20px auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+      list-style: none;
+      padding: 0;
     }
 
-    form label {
-      margin-top: 1rem;
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    ul li::before {
+      content: "✔ ";
+      color: #0073e6;
       font-weight: bold;
+    }
+
+    .form-section {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      margin: 30px auto 60px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     form input, form textarea {
-      padding: 0.8rem;
-      border: none;
-      border-radius: 4px;
-      margin-top: 0.3rem;
-      font-size: 1rem;
-      width: 100%;
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
     }
 
     form button {
-      margin-top: 1.5rem;
-      padding: 1rem;
-      background: #ff9900;
-      color: #1a1a1a;
+      background-color: #0073e6;
+      color: white;
       border: none;
-      font-size: 1.1rem;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 6px;
       cursor: pointer;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: background 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      margin-top: 10px;
     }
 
     form button:hover {
-      background: #e68a00;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #1a1a1a;
-      color: #fff;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .pricing-table {
-        flex-direction: column;
-        align-items: center;
-      }
+      background-color: #005bb5;
     }
   </style>
 </head>
 <body>
+  <div class="overlay">
+    <div class="logo">
+      <!-- Replace logo.png with your actual logo -->
+      <img src="logo.png" alt="Compliance Labs Logo">
+    </div>
+    <h1>Compliance Labs</h1>
+    <p><strong>Helping construction companies stay compliant, get paid faster, and reduce admin stress.</strong></p>
 
-  <header>
-    <img src="https://via.placeholder.com/150?text=🏗️" alt="Compliance Icon" class="hero">
-    <h1>Subcontractor Compliance & Debt Chasing</h1>
-    <p class="tagline">Save time, reduce risk, and get paid faster — we handle the paperwork so you can focus on building.</p>
-  </header>
-
-  <div class="container">
-
-    <section class="benefits">
-      <h2>Why Choose Us?</h2>
-      <ul>
-        <li>Stop wasting hours managing subcontractor documents.</li>
-        <li>Ensure all compliance requirements are met for insurance, CSCS, CIS, and right-to-work.</li>
-        <li>Never miss a document expiry or tender deadline.</li>
-        <li>Professional debt chasing that keeps client relationships intact.</li>
-        <li>Monthly reports on compliance status and cashflow improvements.</li>
-      </ul>
-    </section>
-
-    <section class="services">
-      <h2>Our Services</h2>
-      <ul>
-        <li>Subcontractor document collection, verification, and storage.</li>
-        <li>Expiry tracking & automated reminders.</li>
-        <li>Compliance packs ready for tenders.</li>
-        <li>Overdue invoice management & reminders.</li>
-        <li>Monthly compliance & cashflow reports delivered to you.</li>
-      </ul>
-    </section>
-
-    <section class="pricing">
-      <h2>Pricing Packages</h2>
-      <div class="pricing-table">
-        <div class="plan">
-          <h3>Small</h3>
-          <p>Up to 10 subcontractors</p>
-          <p class="price">£500 / month</p>
-        </div>
-        <div class="plan">
-          <h3>Medium</h3>
-          <p>10–30 subcontractors</p>
-          <p class="price">£1,200 / month</p>
-        </div>
-        <div class="plan">
-          <h3>Large</h3>
-          <p>30+ subcontractors</p>
-          <p class="price">£2,000–£3,000 / month</p>
-        </div>
-      </div>
-    </section>
-
+    <h2>Our Services</h2>
+    <p>We handle the boring but critical tasks, so you can focus on building:</p>
+    <ul>
+      <li>Subcontractor compliance checks — documents, insurance, health & safety.</li>
+      <li>Invoicing & debt chasing — keep your cashflow moving without the headache.</li>
+      <li>Back-office support — payroll, admin, and record keeping handled for you.</li>
+    </ul>
+    <p><em>Free your time, reduce risk, and get paid faster — without the stress.</em></p>
   </div>
 
-  <!-- Form at the bottom -->
-  <section class="form-section">
-    <h2>Book Your Free 10-Minute Call</h2>
-    <p>Fill out the form below and we’ll reach out to discuss how we can save your business time and get you paid faster.</p>
+  <div class="form-section">
+    <h2>Get in Touch</h2>
     <form action="https://formspree.io/f/mwpngqvo" method="POST">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="company">Company Name</label>
-      <input type="text" id="company" name="company">
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" name="phone">
-
-      <label for="message">What's your biggest admin headache right now?</label>
-      <textarea id="message" name="message" rows="4"></textarea>
-
-      <button type="submit"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="email" placeholder="Your Email" required><br>
+      <textarea name="message" placeholder="Your Message" rows="4"></textarea><br>
+      <button type="submit">Send</button>
     </form>
-  </section>
-
-  <footer>
-    <p>© 2025 Compliance & Debt Chasing Services | We respect your privacy (GDPR Compliant)</p>
-  </footer>
-
+  </div>
 </body>
 </html>
