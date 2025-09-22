@@ -1,2 +1,2 @@
-# compliance-landing-
-compliance-landing
+# compliancelabs
+compliancelabs
