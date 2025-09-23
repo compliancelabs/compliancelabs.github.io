@@ -1,214 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compliance Labs</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compliance Labs — Subcontractor Compliance & Debt Recovery</title>
+
+  <!-- Replace with your own favicon if you have one:
+  <link rel="icon" href="favicon.ico" />
+  -->
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-      margin: 0;
-      padding: 0;
-      color: #222;
-      line-height: 1.6;
+    /* Minimal, serious B/W/Grey corporate style */
+    :root{
+      --bg:#f4f4f4;
+      --dark:#111;
+      --muted:#777;
+      --card:#fff;
+      --accent:#000;
+      --radius:10px;
+      --maxw:1100px;
+      --container-pad:28px;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
+    html,body{height:100%; margin:0; background:var(--bg); color:var(--accent);}
+    a{color:var(--dark); text-decoration:none}
+    .page {
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      align-items:center;
+      justify-content:flex-start;
     }
 
-    header h1 {
-      font-size: 2.8em;
-      margin: 0;
+    /* HERO */
+    .hero {
+      width:100%;
+      background:linear-gradient(rgba(17,17,17,0.6), rgba(17,17,17,0.6)), url('hero.jpg') center/cover no-repeat;
+      color:#fff;
+      padding:56px 20px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
     }
+    .hero .inner{max-width:var(--maxw); margin: 0 auto; display:flex; align-items:center; gap:28px; flex-wrap:wrap; justify-content:center;}
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .logo img{width:84px; height:auto; object-fit:contain; border-radius:8px; background:#fff; padding:6px;}
+    .hero-content{max-width:760px; text-align:center;}
+    .eyebrow{color:#ddd; font-size:14px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px;}
+    .title{font-size:30px; margin:0 0 10px; font-weight:700;}
+    .subtitle{font-size:16px; color:#e6e6e6; margin:0 0 18px; line-height:1.45;}
 
-    header p {
-      font-size: 1.2em;
-      margin-top: 10px;
-      color: #bbb;
+    /* MAIN */
+    .container{max-width:var(--maxw); width:100%; padding:var(--container-pad); box-sizing:border-box;}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:20px;
+      align-items:stretch;
     }
+    @media (max-width:920px){ .grid{grid-template-columns:1fr} .hero .inner{padding:0 8px} }
 
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+      border:1px solid #e6e6e6;
     }
+    .card h3{margin:0 0 8px; font-size:18px;}
+    .card p{margin:0; color:var(--muted); line-height:1.5; font-size:15px;}
 
-    .section {
-      margin: 60px 0;
-    }
+    /* Pricing row */
+    .pricing-row{display:flex; gap:18px; margin-top:18px; justify-content:center;}
+    @media (max-width:920px){ .pricing-row{flex-direction:column; align-items:stretch} }
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2em;
-      color: #111;
-    }
+    .price-card{flex:1; padding:22px; border-radius:10px; background:#fff; border:1px solid #e6e6e6; text-align:center;}
+    .price-card .price{font-size:22px; font-weight:700; margin:12px 0; color:var(--dark);}
+    .price-card ul{list-style:none; padding:0; margin:10px 0 0; text-align:left; color:var(--muted);}
+    .price-card ul li{padding:6px 0; border-bottom:1px dashed #f0f0f0; font-size:14px;}
 
-    .services, .pricing {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+    /* Why us */
+    .why{background:#fff; padding:20px; margin-top:28px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.04); border:1px solid #e6e6e6; text-align:left;}
+    .why h4{margin:0 0 8px;}
+    .why ul{margin:0; padding-left:18px; color:var(--muted)}
+    .why ul li{margin:8px 0;}
 
-    .card {
-      flex: 1 1 300px;
-      background: #fff;
-      padding: 25px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    /* Form (bottom, centered) */
+    .form-wrap{width:100%; display:flex; justify-content:center; padding:36px 20px 60px;}
+    .form-card{width:100%; max-width:680px; background:#fff; border-radius:10px; padding:28px; border:1px solid #e6e6e6; box-shadow:0 8px 30px rgba(0,0,0,0.05);}
+    .form-card h3{margin:0 0 12px; text-align:center;}
+    .form-row{display:flex; gap:12px; margin-bottom:12px;}
+    .form-row .col{flex:1;}
+    input[type="text"], input[type="email"], textarea{
+      width:100%; padding:12px 14px; border:1px solid #d7d7d7; border-radius:6px; font-size:15px; box-sizing:border-box;
     }
+    textarea{min-height:120px; resize:vertical;}
+    .submit {
+      display:block; width:100%; padding:12px 14px; background:var(--dark); color:#fff; border:none; border-radius:6px; font-weight:700; cursor:pointer; font-size:15px;
+    }
+    .submit:hover{background:#333}
 
-    .card h3 {
-      margin-top: 0;
-      color: #111;
-    }
-
-    .pricing .card {
-      text-align: center;
-    }
-
-    .price {
-      font-size: 1.8em;
-      margin: 15px 0;
-      color: #111;
-    }
-
-    .why-us {
-      background: #eee;
-      padding: 40px 20px;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .form-section {
-      background: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      max-width: 600px;
-      margin: 0 auto 60px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    .form-section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1em;
-    }
-
-    form button {
-      background-color: #111;
-      color: #fff;
-      border: none;
-      padding: 14px 28px;
-      font-size: 1em;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 10px;
-      display: block;
-      width: 100%;
-    }
-
-    form button:hover {
-      background-color: #333;
-    }
-
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-    }
+    /* Footer */
+    footer{width:100%; background:#111; color:#bdbdbd; padding:18px 12px; text-align:center; margin-top:auto;}
+    footer a{color:#ddd}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Compliance Labs</h1>
-    <p>Subcontractor Compliance • Debt Recovery • Back-Office Admin</p>
-  </header>
+  <div class="page">
 
-  <div class="container">
-    <!-- Services -->
-    <div class="section">
-      <h2>Our Services</h2>
-      <div class="services">
-        <div class="card">
-          <h3>Compliance Management</h3>
-          <p>We handle subcontractor checks, insurance, and health & safety paperwork so you stay audit-ready and reduce risk.</p>
+    <!-- HERO: replace hero.jpg and logo.png with your images in the repo root -->
+    <section class="hero" role="banner">
+      <div class="inner">
+        <div class="logo" aria-hidden="true">
+          <!-- Place your logo file at /logo.png in the repo, or replace the img src -->
+          <img src="logo.png" alt="Compliance Labs logo">
         </div>
-        <div class="card">
-          <h3>Debt Recovery & Invoicing</h3>
-          <p>We manage invoicing, chase unpaid bills, and improve cash flow without straining your client relationships.</p>
+
+        <div class="hero-content" role="heading">
+          <div class="eyebrow">Compliance Labs</div>
+          <h1 class="title">Outsource compliance & invoice recovery — keep projects moving</h1>
+          <p class="subtitle">We manage subcontractor documents, expiry tracking and professional invoice chasing so you reduce risk and improve cash flow — on a single monthly plan.</p>
+          <!-- CTA anchor for quick scroll to form -->
+          <p><a href="#contact" style="background:#fff;color:#111;padding:10px 16px;border-radius:8px;font-weight:700;">Book a free 10-min call</a></p>
         </div>
-        <div class="card">
-          <h3>Back-Office Support</h3>
-          <p>From payroll to record keeping, we take care of time-consuming admin so you can focus on running your projects.</p>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="container" role="main">
+
+      <!-- SERVICES -->
+      <section class="section">
+        <h2 style="text-align:center; margin-top:0;">What we do</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Subcontractor Compliance</h3>
+            <p>Collect and validate certificates (insurance, CSCS, right-to-work, CIS) and maintain audit-ready compliance packs for every project.</p>
+          </div>
+          <div class="card">
+            <h3>Invoice Management & Debt Chasing</h3>
+            <p>Automated invoice monitoring plus staged professional reminders and escalation — get paid faster without harming client relationships.</p>
+          </div>
+          <div class="card">
+            <h3>Back-Office & Payroll Support</h3>
+            <p>Payroll administration, record-keeping and document retention processes that keep your business tidy and tender-ready.</p>
+          </div>
         </div>
+      </section>
+
+      <!-- PRICING -->
+      <section class="section">
+        <h2 style="text-align:center; margin-top:0;">Pricing (monthly retainers)</h2>
+        <div class="pricing-row" style="display:flex; gap:18px; justify-content:center; flex-wrap:wrap;">
+          <div class="price-card">
+            <h4>Starter</h4>
+            <div class="price">£750</div>
+            <ul>
+              <li>Compliance checks (up to 10 subs)</li>
+              <li>Basic invoice monitoring</li>
+              <li>Email support</li>
+            </ul>
+            <p style="margin-top:12px; color:var(--muted); font-size:14px;">Ideal for smaller builders & contractors.</p>
+          </div>
+
+          <div class="price-card">
+            <h4>Growth</h4>
+            <div class="price">£1,500</div>
+            <ul>
+              <li>Compliance (up to 25 subs)</li>
+              <li>Invoice chasing & monthly reporting</li>
+              <li>Payroll support (up to 20 staff)</li>
+            </ul>
+            <p style="margin-top:12px; color:var(--muted); font-size:14px;">Most popular for growing SMEs.</p>
+          </div>
+
+          <div class="price-card">
+            <h4>Enterprise</h4>
+            <div class="price">£3,000+</div>
+            <ul>
+              <li>Unlimited compliance</li>
+              <li>Full debt recovery & HR admin</li>
+              <li>Priority support & bespoke workflows</li>
+            </ul>
+            <p style="margin-top:12px; color:var(--muted); font-size:14px;">Custom for larger contractors & multi-site firms.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY US -->
+      <section class="section">
+        <div class="why">
+          <h4>Why Compliance Labs</h4>
+          <ul>
+            <li>Trusted, reliable admin that reduces risk and frees project time.</li>
+            <li>Transparent monthly pricing — predictable costs, no surprise fees.</li>
+            <li>Local knowledge of subcontractor paperwork and tender requirements.</li>
+            <li>We use secure storage, audit logs and data protection best practices (GDPR aware).</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- CONTACT FORM (anchored) -->
+    <div class="form-wrap" id="contact" aria-labelledby="contact-heading">
+      <div class="form-card" role="form">
+        <h3 id="contact-heading">Request a free 10-minute call</h3>
+        <form action="https://formspree.io/f/mwpngqvo" method="POST">
+          <div class="form-row">
+            <div class="col"><input type="text" name="name" placeholder="Your name" required></div>
+            <div class="col"><input type="text" name="company" placeholder="Company name"></div>
+          </div>
+          <div class="form-row">
+            <div class="col"><input type="email" name="email" placeholder="Email" required></div>
+            <div class="col"><input type="text" name="phone" placeholder="Phone (optional)"></div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <textarea name="message" placeholder="Briefly: your main admin headache or what you want us to help with"></textarea>
+          </div>
+          <button class="submit" type="submit">Request call</button>
+        </form>
+        <p style="margin-top:12px; color:var(--muted); font-size:13px; text-align:center;">We will reply within 48 hours. We respect your privacy — GDPR compliant.</p>
       </div>
     </div>
 
-    <!-- Pricing -->
-    <div class="section">
-      <h2>Pricing Plans</h2>
-      <div class="pricing">
-        <div class="card">
-          <h3>Starter</h3>
-          <p class="price">£750 / month</p>
-          <p>✔ Compliance checks (10 subcontractors)<br>✔ Basic invoicing support<br>✔ Email support</p>
-        </div>
-        <div class="card">
-          <h3>Growth</h3>
-          <p class="price">£1,500 / month</p>
-          <p>✔ Compliance (25 subcontractors)<br>✔ Invoicing & debt chasing<br>✔ Payroll support (20 staff)<br>✔ Monthly reporting</p>
-        </div>
-        <div class="card">
-          <h3>Enterprise</h3>
-          <p class="price">£3,000+ / month</p>
-          <p>✔ Unlimited compliance<br>✔ Full debt recovery<br>✔ Payroll + HR admin<br>✔ Priority support<br>✔ Custom processes</p>
+    <!-- FOOTER -->
+    <footer>
+      <div style="max-width:var(--maxw); margin:0 auto; padding:0 12px;">
+        <div style="margin-bottom:8px;">© 2025 Compliance Labs</div>
+        <div style="font-size:13px;">
+          <a href="mailto:info@compliancelabs.example">info@compliancelabs.example</a> &nbsp;•&nbsp;
+          <a href="https://www.linkedin.com/company/compliancelabs" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-    </div>
+    </footer>
 
-    <!-- Why Choose Us -->
-    <div class="section">
-      <div class="why-us">
-        <h2>Why Choose Compliance Labs?</h2>
-        <p>✔ Trusted by contractors and SMEs who want efficiency without the overhead of in-house admin staff.</p>
-        <p>✔ Simple monthly pricing with no hidden costs.</p>
-        <p>✔ Professional support designed to free up your time and keep your business moving.</p>
-      </div>
-    </div>
   </div>
-
-  <!-- Contact Form -->
-  <div class="form-section">
-    <h2>Get in Touch</h2>
-    <form action="https://formspree.io/f/mwpngqvo" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" rows="4"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 Compliance Labs. All rights reserved.</p>
-  </footer>
 </body>
 </html>
