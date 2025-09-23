@@ -8,21 +8,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    /* Professional, Corporate Styling */
+    /* Minimalist Black/White/Grey Corporate Styling */
     :root {
-      --bg: #f4f4f4;
-      --text: #333333;
-      --dark: #1a1a1a;
-      --accent: #0057b7; /* Professional Blue */
-      --white: #ffffff;
-      --card-bg: #fff;
+      --bg-light: #f4f4f4;
+      --bg-dark: #222222;
+      --text-main: #333333;
+      --text-white: #ffffff;
+      --card-bg: #ffffff;
+      --accent: #1a1a1a;
       --max-w: 1100px;
     }
 
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      background-color: var(--bg-light);
+      color: var(--text-main);
       line-height: 1.6;
       margin: 0;
       padding: 0;
@@ -30,8 +30,8 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero.jpg') center/cover no-repeat;
-      color: var(--white);
+      background-color: var(--bg-dark);
+      color: var(--text-white);
       padding: 100px 20px;
       text-align: center;
     }
@@ -41,32 +41,41 @@
       margin: 0 auto;
     }
 
-    .hero-content h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-      color: var(--white);
+    .logo-text {
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text-white);
     }
 
-    .hero-content p {
+    .hero-content h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-white);
+    }
+
+    .hero-content p.tagline {
       font-size: 1.2em;
       margin-top: 0;
-      color: #e0e0e0;
+      color: #b0b0b0;
     }
 
     .hero .cta-button {
       display: inline-block;
       background: var(--accent);
-      color: var(--white);
+      color: var(--text-white);
       padding: 15px 30px;
       font-size: 1.1em;
       text-decoration: none;
       border-radius: 5px;
       margin-top: 20px;
       transition: background-color 0.3s;
+      border: 2px solid var(--text-white);
     }
 
     .hero .cta-button:hover {
-      background-color: #004a9d;
+      background-color: #000;
     }
 
     /* General Layout & Sections */
@@ -84,7 +93,7 @@
       text-align: center;
       font-size: 2em;
       margin-bottom: 40px;
-      color: var(--dark);
+      color: var(--text-main);
     }
 
     .grid-3 {
@@ -113,14 +122,16 @@
     .card h3 {
       font-size: 1.3em;
       margin-top: 0;
-      color: var(--dark);
+      color: var(--text-main);
     }
 
     /* Why Choose Us Section */
     .why-us {
-      background-color: #e6e6e6;
+      background-color: var(--card-bg);
       padding: 60px;
       border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--accent);
     }
 
     .why-us h2 {
@@ -159,6 +170,7 @@
       padding: 40px;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--accent);
     }
 
     .contact-form form {
@@ -182,7 +194,7 @@
 
     .contact-form button {
       background-color: var(--accent);
-      color: var(--white);
+      color: var(--text-white);
       border: none;
       padding: 15px;
       font-size: 1.1em;
@@ -192,12 +204,12 @@
     }
 
     .contact-form button:hover {
-      background-color: #004a9d;
+      background-color: #000;
     }
 
     /* Footer */
     footer {
-      background-color: var(--dark);
+      background-color: var(--bg-dark);
       color: #a0a0a0;
       text-align: center;
       padding: 20px;
@@ -211,7 +223,7 @@
     }
 
     footer a:hover {
-      color: #ffffff;
+      color: var(--text-white);
       text-decoration: underline;
     }
     
@@ -227,8 +239,9 @@
 
   <header class="hero" id="home">
     <div class="hero-content">
-      <h1>Compliance Labs</h1>
-      <p>Simplifying Subcontractor Compliance & Payments for UK Contractors</p>
+      <div class="logo-text">Compliance Labs</div>
+      <h1>Simplifying Subcontractor Compliance & Payments for UK Contractors</h1>
+      <p class="tagline">Manage paperwork, reduce risk, and get paid faster. </p>
       <a href="#contact" class="cta-button">Book a Free Consultation</a>
     </div>
   </header>
@@ -239,7 +252,7 @@
       <div class="card">
         <div class="icon"><i class="fas fa-file-contract"></i></div>
         <h3>Compliance Tracking</h3>
-        <p>We manage all subcontractor documentation, from CIS to insurance and certifications, ensuring you're always audit-ready.</p>
+        <p>We manage subcontractor documentation, from CIS to insurance and certifications, ensuring you're always audit-ready.</p>
       </div>
       <div class="card">
         <div class="icon"><i class="fas fa-pound-sign"></i></div>
@@ -292,14 +305,16 @@
     </div>
   </section>
 
-  <section class="section container why-us">
-    <h2>Why Choose Compliance Labs?</h2>
-    <ul>
-      <li>Save 10+ hours per week on admin and paperwork.</li>
-      <li>Reduce payment delays by up to 40% and improve cash flow.</li>
-      <li>Ensure you are always audit-ready and compliant with regulations.</li>
-      <li>Get professional support without the overhead of an in-house team.</li>
-    </ul>
+  <section class="section container">
+    <div class="why-us">
+      <h2>Why Choose Compliance Labs?</h2>
+      <ul>
+        <li>Save 10+ hours per week on admin and paperwork.</li>
+        <li>Reduce payment delays by up to 40% and improve cash flow.</li>
+        <li>Ensure you are always audit-ready and compliant with regulations.</li>
+        <li>Get professional support without the overhead of an in-house team.</li>
+      </ul>
+    </div>
   </section>
 
   <section class="section container" id="contact">
