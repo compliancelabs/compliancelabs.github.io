@@ -11,6 +11,7 @@
       margin: 0;
       padding: 0;
       color: #222;
+      line-height: 1.6;
     }
 
     header {
@@ -21,7 +22,7 @@
     }
 
     header h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       margin: 0;
     }
 
@@ -32,40 +33,58 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
-      text-align: center;
     }
 
-    .services {
+    .section {
+      margin: 60px 0;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #111;
+    }
+
+    .services, .pricing {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      margin: 40px 0;
     }
 
-    .service {
-      flex: 1 1 250px;
+    .card {
+      flex: 1 1 300px;
       background: #fff;
       padding: 25px;
       border: 1px solid #ddd;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      text-align: left;
     }
 
-    .service h3 {
+    .card h3 {
       margin-top: 0;
+      color: #111;
+    }
+
+    .pricing .card {
+      text-align: center;
+    }
+
+    .price {
+      font-size: 1.8em;
+      margin: 15px 0;
       color: #111;
     }
 
     .why-us {
       background: #eee;
       padding: 40px 20px;
-      margin: 40px 0;
       border-radius: 8px;
+      text-align: center;
     }
 
     .form-section {
@@ -76,7 +95,6 @@
       max-width: 600px;
       margin: 0 auto 60px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      text-align: left;
     }
 
     .form-section h2 {
@@ -126,30 +144,59 @@
   </header>
 
   <div class="container">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Compliance Management</h3>
-        <p>We handle subcontractor checks, insurance, and health & safety paperwork so you stay audit-ready and reduce risk.</p>
-      </div>
-      <div class="service">
-        <h3>Debt Recovery & Invoicing</h3>
-        <p>We manage invoicing, chase unpaid bills, and improve cash flow without straining your client relationships.</p>
-      </div>
-      <div class="service">
-        <h3>Back-Office Support</h3>
-        <p>From payroll to record keeping, we take care of time-consuming admin so you can focus on running your projects.</p>
+    <!-- Services -->
+    <div class="section">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="card">
+          <h3>Compliance Management</h3>
+          <p>We handle subcontractor checks, insurance, and health & safety paperwork so you stay audit-ready and reduce risk.</p>
+        </div>
+        <div class="card">
+          <h3>Debt Recovery & Invoicing</h3>
+          <p>We manage invoicing, chase unpaid bills, and improve cash flow without straining your client relationships.</p>
+        </div>
+        <div class="card">
+          <h3>Back-Office Support</h3>
+          <p>From payroll to record keeping, we take care of time-consuming admin so you can focus on running your projects.</p>
+        </div>
       </div>
     </div>
 
-    <div class="why-us">
-      <h2>Why Choose Us</h2>
-      <p>✔ Trusted by contractors and SMEs who want efficiency without the overhead of in-house admin staff.</p>
-      <p>✔ Simple monthly pricing with no hidden costs.</p>
-      <p>✔ Professional support designed to free up your time and keep your business moving.</p>
+    <!-- Pricing -->
+    <div class="section">
+      <h2>Pricing Plans</h2>
+      <div class="pricing">
+        <div class="card">
+          <h3>Starter</h3>
+          <p class="price">£750 / month</p>
+          <p>✔ Compliance checks (10 subcontractors)<br>✔ Basic invoicing support<br>✔ Email support</p>
+        </div>
+        <div class="card">
+          <h3>Growth</h3>
+          <p class="price">£1,500 / month</p>
+          <p>✔ Compliance (25 subcontractors)<br>✔ Invoicing & debt chasing<br>✔ Payroll support (20 staff)<br>✔ Monthly reporting</p>
+        </div>
+        <div class="card">
+          <h3>Enterprise</h3>
+          <p class="price">£3,000+ / month</p>
+          <p>✔ Unlimited compliance<br>✔ Full debt recovery<br>✔ Payroll + HR admin<br>✔ Priority support<br>✔ Custom processes</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="section">
+      <div class="why-us">
+        <h2>Why Choose Compliance Labs?</h2>
+        <p>✔ Trusted by contractors and SMEs who want efficiency without the overhead of in-house admin staff.</p>
+        <p>✔ Simple monthly pricing with no hidden costs.</p>
+        <p>✔ Professional support designed to free up your time and keep your business moving.</p>
+      </div>
     </div>
   </div>
 
+  <!-- Contact Form -->
   <div class="form-section">
     <h2>Get in Touch</h2>
     <form action="https://formspree.io/f/mwpngqvo" method="POST">
