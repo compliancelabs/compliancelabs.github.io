@@ -96,7 +96,7 @@
       color: var(--text-main);
     }
 
-    .grid-3 {
+    .grid-4 {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
@@ -108,7 +108,7 @@
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      flex: 1 1 300px;
+      flex: 1 1 250px;
       text-align: center;
       border-top: 4px solid var(--accent);
     }
@@ -232,6 +232,7 @@
       .hero-content p { font-size: 1em; }
       .why-us ul { padding-left: 20px; }
       .card { margin-bottom: 20px; }
+      .grid-4 { flex-direction: column; }
     }
   </style>
 </head>
@@ -241,14 +242,14 @@
     <div class="hero-content">
       <div class="logo-text">Compliance Labs</div>
       <h1>Simplifying Subcontractor Compliance & Payments for UK Contractors</h1>
-      <p class="tagline">Manage paperwork, reduce risk, and get paid faster. </p>
+      <p class="tagline">Manage paperwork, reduce risk, and get paid faster.</p>
       <a href="#contact" class="cta-button">Book a Free Consultation</a>
     </div>
   </header>
 
   <section class="section container">
     <h2>Our Services</h2>
-    <div class="grid-3">
+    <div class="grid-4">
       <div class="card">
         <div class="icon"><i class="fas fa-file-contract"></i></div>
         <h3>Compliance Tracking</h3>
@@ -264,12 +265,17 @@
         <h3>Reporting & Documentation</h3>
         <p>Receive clear, concise reports on compliance status and cash flow, so you have complete visibility and control.</p>
       </div>
+      <div class="card">
+        <div class="icon"><i class="fas fa-user-tie"></i></div>
+        <h3>Back-Office & Admin</h3>
+        <p>We handle payroll, record keeping, and general administration so you can focus on the business of building.</p>
+      </div>
     </div>
   </section>
 
   <section class="section container">
     <h2>Pricing</h2>
-    <div class="grid-3">
+    <div class="grid-4">
       <div class="card">
         <h3>Starter</h3>
         <p><strong>£500 / month</strong></p>
@@ -277,18 +283,29 @@
         <ul>
           <li><i class="fas fa-check"></i> Up to 10 subcontractors</li>
           <li><i class="fas fa-check"></i> Compliance tracking & reminders</li>
-          <li><i class="fas fa-check"></i> Basic invoice support</li>
+          <li><i class="fas fa-check"></i> Basic invoice support (up to 3 debts)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Pro</h3>
+        <p><strong>£1,000 / month</strong></p>
+        <p>Our most popular package for growing SMEs with up to 20 staff.</p>
+        <ul>
+          <li><i class="fas fa-check"></i> Up to 20 subcontractors</li>
+          <li><i class="fas fa-check"></i> Full compliance management</li>
+          <li><i class="fas fa-check"></i> Invoicing & debt chasing (up to 5 debts)</li>
+          <li><i class="fas fas fa-check"></i> Monthly reporting</li>
         </ul>
       </div>
       <div class="card">
         <h3>Growth</h3>
         <p><strong>£1,500 / month</strong></p>
-        <p>Our most popular package for growing SMEs.</p>
+        <p>For established businesses requiring full-service support.</p>
         <ul>
           <li><i class="fas fa-check"></i> Up to 30 subcontractors</li>
           <li><i class="fas fa-check"></i> Full compliance management</li>
-          <li><i class="fas fa-check"></i> Invoicing & debt chasing</li>
-          <li><i class="fas fa-check"></i> Monthly reporting</li>
+          <li><i class="fas fa-check"></i> Unlimited invoicing & debt chasing</li>
+          <li><i class="fas fa-check"></i> Payroll support for up to 20 staff</li>
         </ul>
       </div>
       <div class="card">
@@ -296,10 +313,9 @@
         <p><strong>Custom Quote</strong></p>
         <p>A bespoke solution for larger, more complex businesses.</p>
         <ul>
-          <li><i class="fas fa-check"></i> Unlimited subcontractors</li>
-          <li><i class="fas fa-check"></i> Full back-office support</li>
-          <li><i class="fas fa-check"></i> Dedicated account manager</li>
-          <li><i class="fas fa-check"></i> Custom-built workflows</li>
+          <li><i class="fas fa-check"></i> Unlimited compliance & admin</li>
+          <li><i class="fas fa-check"></i> Full debt recovery & HR admin</li>
+          <li><i class="fas fa-check"></i> Priority support & custom workflows</li>
         </ul>
       </div>
     </div>
