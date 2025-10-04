@@ -1,4 +1,3 @@
-
 // NAV TOGGLE
 const toggler=document.querySelector('.toggler');
 const navLinks=document.querySelector('.nav-links');
@@ -40,4 +39,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const tgt=document.querySelector(this.getAttribute('href'));
     tgt&&tgt.scrollIntoView({behavior:'smooth',block:'start'});
   });
+});
+
+// ANNUAL / MONTHLY TOGGLE
+const toggle = document.getElementById('annualToggle');
+const grid   = document.getElementById('pricingGrid');
+toggle.addEventListener('change', () => {
+  grid.classList.toggle('annual', toggle.checked);
 });
