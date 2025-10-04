@@ -1,363 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compliance Labs - Simplify Your Back Office</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    /* Minimalist Black/White/Grey Corporate Styling */
-    :root {
-      --bg-light: #e0e0e0; 
-      --bg-dark: #222222;
-      --text-main: #333333;
-      --text-white: #ffffff;
-      --card-bg: #ffffff;
-      --accent: #1a1a1a;
-      --max-w: 1100px;
-    }
-
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-main);
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Hero Section */
-    .hero {
-      background-color: var(--bg-dark);
-      color: var(--text-white);
-      padding: 100px 20px;
-      text-align: center;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .logo-text {
-      font-size: 3em;
-      font-weight: 700;
-      margin-bottom: 5px;
-      color: var(--text-white);
-    }
-
-    .hero-content h1 {
-      font-size: 2.5em;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text-white);
-    }
-
-    .hero-content p.tagline {
-      font-size: 1.2em;
-      margin-top: 0;
-      color: #b0b0b0;
-    }
-
-    .hero .cta-button {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--text-white);
-      padding: 15px 30px;
-      font-size: 1.1em;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 20px;
-      transition: background-color 0.3s;
-      border: 2px solid var(--text-white);
-    }
-
-    .hero .cta-button:hover {
-      background-color: #000;
-    }
-
-    /* General Layout & Sections */
-    .container {
-      max-width: var(--max-w);
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .section {
-      margin-bottom: 60px;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 40px;
-      color: var(--text-main);
-    }
-
-    .grid-4 {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .card {
-      background-color: var(--card-bg);
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      flex: 1 1 250px;
-      text-align: center;
-    }
-
-    .card .icon {
-      font-size: 2.5em;
-      color: var(--accent);
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      font-size: 1.3em;
-      margin-top: 0;
-      color: var(--text-main);
-    }
-
-    /* Why Choose Us Section */
-    .why-us {
-      background-color: var(--card-bg);
-      padding: 60px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .why-us h2 {
-      margin-bottom: 20px;
-    }
-
-    .why-us ul {
-      list-style: none;
-      padding: 0;
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    
-    .why-us ul li {
-      font-size: 1.1em;
-      margin-bottom: 15px;
-      position: relative;
-      padding-left: 30px;
-    }
-
-    .why-us ul li::before {
-      content: '\f058'; /* Check circle icon */
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      color: var(--accent);
-      position: absolute;
-      left: 0;
-    }
-
-    /* Contact Form Section */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .contact-form form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1em;
-    }
-
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .contact-form button {
-      background-color: var(--accent);
-      color: var(--text-white);
-      border: none;
-      padding: 15px;
-      font-size: 1.1em;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .contact-form button:hover {
-      background-color: #000;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--bg-dark);
-      color: #a0a0a0;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      margin-top: auto;
-    }
-
-    footer a {
-      color: #a0a0a0;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--text-white);
-      text-decoration: underline;
-    }
-    
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 2em; }
-      .hero-content p { font-size: 1em; }
-      .why-us ul { padding-left: 20px; }
-      .card { margin-bottom: 20px; }
-      .grid-4 { flex-direction: column; }
-    }
-    
-    .price-list {
-        text-align: center;
-        margin-top: 15px;
-        font-size: 1em;
-        line-height: 1.8;
-        color: #555;
-        list-style: none; /* remove bullet points */
-        padding: 0;
-    }
-  </style>
+  <meta charset="utf-8">
+  <title>Subcontractor Compliance & Debt Chasing UK | ComplianceLabs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Done-for-you CIS, insurance, certification tracking and late-payment chasing for UK contractors. Packages from £750/mo. Book a free gap call.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 </head>
 <body>
-
-  <header class="hero" id="home">
-    <div class="hero-content">
-      <div class="logo-text">Compliance Labs</div>
-      <h1>Simplifying Subcontractor Compliance & Payments for UK Contractors</h1>
-      <p class="tagline">Manage paperwork, reduce risk, and get paid faster.</p>
-      <a href="#contact" class="cta-button">Book a Free Consultation</a>
-    </div>
-  </header>
-
-  <section class="section container">
-    <h2>Our Services</h2>
-    <div class="grid-4">
-      <div class="card">
-        <div class="icon"><i class="fas fa-file-contract"></i></div>
-        <h3>Compliance Tracking</h3>
-        <p>We manage subcontractor documentation, from CIS to insurance and certifications, ensuring you're always audit-ready.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-pound-sign"></i></div>
-        <h3>Invoicing & Debt Chasing</h3>
-        <p>Professional invoice management and payment chasing to improve your cash flow without damaging client relationships.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Reporting & Documentation</h3>
-        <p>Receive clear, concise reports on compliance status and cash flow, so you have complete visibility and control.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><i class="fas fa-user-tie"></i></div>
-        <h3>Back-Office & Admin</h3>
-        <p>We handle payroll, record keeping, and general administration so you can focus on the business of building.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section container">
-    <h2>Pricing</h2>
-    <div class="grid-4">
-      <div class="card">
-        <h3>Starter</h3>
-        <p><strong>£750 / month</strong></p>
-        <p>For small operations that need reliable compliance support.</p>
-        <ul class="price-list">
-          <li>Up to 10 subcontractors</li>
-          <li>Up to **5** debts per month</li>
-          <li>Value cap: **£10,000** per debt</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Pro</h3>
-        <p><strong>£1,250 / month</strong></p>
-        <p>Our most popular package for growing SMEs with up to 20 staff.</p>
-        <ul class="price-list">
-          <li>Up to 20 subcontractors</li>
-          <li>Up to **10** debts per month</li>
-          <li>Value cap: **£10,000** per debt</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Growth</h3>
-        <p><strong>£2,000 / month</strong></p>
-        <p>For established businesses requiring full-service support.</p>
-        <ul class="price-list">
-          <li>Up to 30 subcontractors</li>
-          <li>Up to **20** debts per month</li>
-          <li>Value cap: **£10,000** per debt</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Enterprise</h3>
-        <p><strong>Custom Quote</strong></p>
-        <p>A bespoke solution for larger, more complex businesses.</p>
-        <ul class="price-list">
-          <li>Unlimited compliance & admin</li>
-          <li>Full debt recovery & HR admin</li>
-          <li>Priority support & custom workflows</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section container">
-    <div class="why-us">
-      <h2>Why Choose Compliance Labs?</h2>
-      <ul>
-        <li>Save 20+ hours per week on admin and paperwork.</li>
-        <li>Reduce payment delays by up to 47% and improve cash flow.</li>
-        <li>Ensure you are always audit-ready and compliant with regulations.</li>
-        <li>Get professional support without the overhead of an in-house team.</li>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">ComplianceLabs</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-primary text-white px-3" href="#healthcheck">Health-Check</a></li>
       </ul>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <section class="section container" id="contact">
-    <div class="contact-form">
-      <h2>Book a Free Consultation</h2>
-      <p style="text-align:center;">Fill out the form below and we'll be in touch to discuss your needs.</p>
-      <form action="https://formspree.io/f/mwpngqvo" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="text" name="company" placeholder="Company Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <input type="tel" name="phone" placeholder="Phone Number (optional)">
-        <textarea name="message" placeholder="What's your biggest admin headache right now?" rows="4"></textarea>
-        <button type="submit">Send Enquiry</button>
-      </form>
+<!-- HERO -->
+<section class="hero py-5">
+  <div class="container text-center text-white">
+    <h1 class="display-5 fw-bold">Stop chasing missing CIS certs & unpaid invoices</h1>
+    <p class="lead my-3">We handle the paperwork so you get paid faster—guaranteed.</p>
+    <a class="btn btn-lg btn-orange mb-4" href="https://calendly.com/compliancelabs/15min" target="_blank">Book Free Gap Call</a>
+    <div class="row small text-white-50">
+      <div class="col-4"><strong>£3.2 m</strong> debt recovered</div>
+      <div class="col-4"><strong>12 k+</strong> certs tracked</div>
+      <div class="col-4"><strong>127</strong> happy contractors</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Compliance Labs. All rights reserved.</p>
-    <p>
-    </p>
-  </footer>
+<!-- TESTIMONIALS -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">What contractors say</h2>
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="p-4 text-center">“ComplianceLabs cleared £18k of aged debt in 6 weeks and cut our admin time by 7 hrs a week.”<br><strong>— Sarah Jones, ABC Contractors</strong></div>
+        </div>
+        <div class="carousel-item">
+          <div class="p-4 text-center">“We were on stop for 3 months—within 2 weeks they had every ticket closed.”<br><strong>— Mike Patel, MJS Brickwork</strong></div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" data-bs-target="#carousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+      <button class="carousel-control-next" data-bs-target="#carousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+    </div>
+  </div>
+</section>
 
+<!-- SERVICES -->
+<section id="services" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">How we remove your admin blockages</h2>
+    <div class="row g-4">
+      <div class="col-md-4"><h5>Compliance Tracking</h5><p>CIS, insurance, certifications, contracts—kept live and on stop-free status.</p></div>
+      <div class="col-md-4"><h5>Invoice & Debt Chasing</h5><p>Reminder cycles, calls, dispute handling until cash hits your bank.</p></div>
+      <div class="col-md-4"><h5>Reporting & Dashboards</h5><p>Weekly KPI email: cash collected, certs expiring, subcontractor status.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Fixed-price packages</h2>
+    <div class="row g-3">
+      <div class="col-md-3">
+        <div class="card h-100"><div class="card-body"><h5>Starter</h5><h6>£750/mo</h6><ul><li>Up to 10 subcontractors</li><li>5 active debt cases</li><li>Weekly report</li></ul><small class="text-muted">Excludes HR, legal, bookkeeping</small></div></div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100 border-primary"><div class="card-body"><h5>Pro</h5><h6>£1,250/mo</h6><ul><li>Up to 25 subcontractors</li><li>15 active debt cases</li><li>Phone chasing</li></ul><small class="text-muted">Most popular</small></div></div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100"><div class="card-body"><h5>Growth</h5><h6>£2,000/mo</h6><ul><li>Up to 60 subcontractors</li><li>Unlimited debt cases</li><li>Client portal</li></ul></div></div>
+      </div>
+      <div class="col-md-3">
+        <div class="card h-100"><div class="card-body"><h5>Enterprise</h5><h6>Custom</h6><ul><li>60+ subbies</li><li>White-label portal</li><li>SLA & on-site training</li></ul></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH-CHECK CTA -->
+<section id="healthcheck" class="py-5 text-center bg-orange text-white">
+  <div class="container">
+    <h2 class="fw-bold">Get a 27-point Compliance Health-Check for £149</h2>
+    <p class="lead">We’ll send you a Loom video + action plan. Fee refunded if you upgrade to any monthly plan within 30 days.</p>
+    <a class="btn btn-lg btn-light text-orange fw-bold" href="https://buy.stripe.com/xxxxxxxxxx" target="_blank">Buy Health-Check</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-4 bg-dark text-white-50 text-center">
+  <div class="container">
+    <small>© 2025 ComplianceLabs Ltd. <a class="text-white-50" href="privacy.html">Privacy</a> · <a class="text-white-50" href="terms.html">Terms</a></small>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripts.js"></script>
+<!-- MailerLite universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', 'XXXXXX');
+</script>
 </body>
 </html>
