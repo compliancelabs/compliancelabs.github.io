@@ -1,4 +1,188 @@
-<!-- PRICING SECTION -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ComplianceLabs – CIS & Debt Chasing for UK Contractors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Done-for-you CIS compliance, certification tracking and late-payment chasing for UK contractors. Packages from £750/mo. Book a free gap call.">
+  <meta property="og:title" content="ComplianceLabs – CIS & Debt Chasing for UK Contractors">
+  <meta property="og:description" content="Packages from £750/mo. Book a free gap call.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://compliancelabs.github.io/">
+  <meta property="og:image" content="https://compliancelabs.github.io/assets/img/og-image.jpg">
+
+  <!-- Pre-load fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+
+  <!-- Critical CSS inline -->
+  <style>
+    :root{--primary:#6366F1;--accent:#10B981;--dark:#1F2937;--grey:#F8F9FC;--white:#fff;--radius:12px;--shadow:0 8px 30px rgba(0,0,0,.08);--max:1100px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;font-size:18px;line-height:1.6;color:var(--dark);background:var(--grey)}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .container{width:90%;max-width:var(--max);margin:0 auto}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;border-radius:var(--radius);font-weight:600;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--primary);color:var(--white)}
+    .btn-primary:hover{background:#4f46e5}
+    .btn-outline{border:2px solid var(--primary);color:var(--primary)}
+    .btn-outline:hover{background:var(--primary);color:var(--white)}
+    .btn-large{padding:1rem 2.5rem;font-size:1.1rem}
+    .section-title{font-size:2.5rem;font-weight:700;text-align:center;margin-bottom:3rem}
+    .navbar{position:fixed;top:0;width:100%;background:var(--white);box-shadow:var(--shadow);z-index:1000}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand img{height:32px}
+    .toggler{display:none;flex-direction:column;gap:4px;background:none;border:none}
+    .toggler span{width:24px;height:3px;background:var(--dark);border-radius:2px}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a:hover{color:var(--primary)}
+    .hero{padding:8rem 0 4rem;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%)}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .hero-title{font-size:3rem;font-weight:700;line-height:1.2}
+    .hero-lead{margin:1.5rem 0 2rem;font-size:1.25rem;color:#4b5563}
+    .hero-stats{display:flex;gap:2rem;margin-top:2.5rem}
+    .hero-stats span{font-size:2rem;font-weight:700;color:var(--primary)}
+    .calendly-inline-widget{border-radius:var(--radius);box-shadow:var(--shadow)}
+    @media(max-width:968px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero-title{font-size:2.25rem}}
+    @media(max-width:768px){.toggler{display:flex}.nav-links{position:absolute;top:100%;left:0;width:100%;flex-direction:column;background:var(--white);box-shadow:var(--shadow);max-height:0;overflow:hidden;transition:.3s}.nav-links.open{max-height:400px;padding:1rem 0}}
+    .trust{padding:2rem 0;background:var(--white)}.marquee{display:flex;gap:3rem;overflow:hidden;animation:scroll 25s linear infinite}.marquee span{flex:0 0 auto;height:40px}.marquee img{height:100%;width:auto;filter:grayscale(100%);opacity:.7}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .testimonials{padding:5rem 0}.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}blockquote{background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow)}blockquote p{font-style:italic;margin-bottom:1rem}cite{font-weight:600;color:var(--primary)}@media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
+    .services{padding:5rem 0}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;text-align:center}.service-grid article{background:var(--white);padding:2.5rem 2rem;border-radius:var(--radius);box-shadow:var(--shadow)}.service-grid img{margin:0 auto 1.5rem}@media(max-width:768px){.service-grid{grid-template-columns:1fr}}
+    .pricing{padding:5rem 0}.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}.price-card{background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}.price-card.featured{border:2px solid var(--primary)}.price-card .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:var(--white);padding:.25rem .75rem;border-radius:99px;font-size:.75rem;font-weight:600}.price-card h3{margin-bottom:.5rem}.price-card .price{font-size:2.25rem;font-weight:700;margin-bottom:1rem}.price-card .price span{font-size:1rem;font-weight:400;color:#6b7280}.price-card ul{margin-bottom:1.5rem;flex:1 0 auto}.price-card li{position:relative;padding-left:1.5rem;margin-bottom:.5rem}.price-card li::before{content:"";position:absolute;left:0;top:.5rem;width:12px;height:12px;background:var(--accent);border-radius:50%}.price-card .note{font-size:.875rem;color:#6b7280;margin-bottom:1.5rem}@media(max-width:968px){.pricing-grid{grid-template-columns:1fr 1fr}}@media(max-width:568px){.pricing-grid{grid-template-columns:1fr}}
+    .faq{padding:5rem 0}details{background:var(--white);padding:1.25rem 1.5rem;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;cursor:pointer}details summary{list-style:none;font-weight:600;display:flex;justify-content:space-between;align-items:center}details summary::after{content:"+";font-size:1.25rem;color:var(--primary)}details[open] summary::after{content:"−"}details[open] p{margin-top:1rem;color:#4b5563}
+    .cta{padding:5rem 0;background:var(--primary);color:var(--white)}.cta .btn-primary{background:var(--white);color:var(--primary)}.cta .btn-primary:hover{background:#e5e7eb}
+    .footer{padding:2rem 0;text-align:center;font-size:.875rem;color:#9ca3af;background:#111827}
+    .sticky-cta{position:fixed;bottom:0;left:0;width:100%;background:var(--primary);color:var(--white);text-align:center;padding:1rem;font-weight:600;z-index:999;display:none}@media(max-width:568px){.sticky-cta{display:block}}
+    .fade-up{opacity:0;transform:translateY(30px);transition:.6s}.fade-up.visible{opacity:1;transform:translateY(0)}
+    /* ----------  ANNUAL TOGGLE  ---------- */
+    .toggle-wrap{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:2rem;font-size:1rem}.switch{position:relative;display:inline-block;width:46px;height:24px}.switch input{opacity:0;width:0;height:0}.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;transition:.3s;border-radius:24px}.slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background-color:white;transition:.3s;border-radius:50%}input:checked+.slider{background-color:var(--primary)}input:checked+.slider:before{transform:translateX(22px)}.annual{display:none}.toggle-note{text-align:center;font-size:.875rem;color:#6b7280;margin-top:1rem}
+  </style>
+
+  <!-- Fav -->
+  <link rel="icon" href="assets/img/favicon.svg">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ComplianceLabs",
+    "url": "https://compliancelabs.github.io/",
+    "logo": "https://compliancelabs.github.io/assets/img/logo.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+44-800-887-7231",
+      "contactType": "Sales",
+      "areaServed": "GB",
+      "availableLanguage": "English"
+    },
+    "sameAs": ["https://www.linkedin.com/company/compliancelabs"]
+  }
+  </script>
+
+  <!-- Calendly -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- MailerLite -->
+  <script>
+    (function(w,d,e,u,f,l,n){
+      w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);};
+      l=d.createElement(e);l.async=1;l.src=u;
+      n=d.getElementsByTagName(e)[0];n.parentNode.insertBefore(l,n);
+    })(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', 'XXXXXX');
+  </script>
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar" class="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="#"><img src="assets/img/logo.svg" alt="ComplianceLabs" width="160" height="32"></a>
+    <button class="toggler" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="btn btn-sm btn-primary" href="#healthcheck">Book Call</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <h1 class="hero-title">Stop chasing missing CIS certs&nbsp;&&nbsp;unpaid&nbsp;invoices</h1>
+      <p class="hero-lead">We handle the paperwork so you get paid faster—guaranteed. UK construction back-office, compliance tracking and debt-chasing from&nbsp;£750/mo.</p>
+      <a class="btn btn-primary btn-large" href="https://calendly.com/compliancelabs/15min" target="_blank" rel="noopener">Book Free Gap Call</a>
+      <div class="hero-stats">
+        <div><span class="counter" data-target="3200000">0</span><small>£ debt recovered</small></div>
+        <div><span class="counter" data-target="12000">0</span><small>certs tracked</small></div>
+        <div><span class="counter" data-target="127">0</span><small>contractors</small></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs/15min?hide_gdpr_banner=1" style="min-width:320px;height:520px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust">
+  <div class="container">
+    <div class="marquee">
+      <span><img src="assets/img/logo-abc.svg" alt="ABC Contractors" width="120" height="40"></span>
+      <span><img src="assets/img/logo-mjs.svg" alt="MJS Brickwork" width="120" height="40"></span>
+      <span><img src="assets/img/logo-hodgson.svg" alt="Hodgson Group" width="120" height="40"></span>
+      <span><img src="assets/img/logo-reef.svg" alt="Reef Developments" width="120" height="40"></span>
+      <span><img src="assets/img/logo-abc.svg" alt="ABC Contractors" width="120" height="40"></span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title">What contractors say</h2>
+    <div class="testi-grid">
+      <blockquote>
+        <p>“ComplianceLabs cleared £18k of aged debt in 6 weeks and cut our admin time by 7 hrs a week.”</p>
+        <cite>Sarah Jones — Director, ABC Contractors Ltd</cite>
+      </blockquote>
+      <blockquote>
+        <p>“We were on stop for 3 months—within 2 weeks every ticket was closed.”</p>
+        <cite>Mike Patel — MJS Brickwork</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <h2 class="section-title">How we remove your admin blockages</h2>
+    <div class="service-grid">
+      <article>
+        <img src="assets/img/icon-shield.svg" alt="" width="48" height="48">
+        <h3>Compliance Tracking</h3>
+        <p>CIS, insurance, certifications, contracts—kept live and stop-free.</p>
+      </article>
+      <article>
+        <img src="assets/img/icon-chase.svg" alt="" width="48" height="48">
+        <h3>Invoice & Debt Chasing</h3>
+        <p>Reminder cycles, calls, dispute handling until cash hits your bank.</p>
+      </article>
+      <article>
+        <img src="assets/img/icon-chart.svg" alt="" width="48" height="48">
+        <h3>Reporting & Dashboards</h3>
+        <p>Weekly KPI email: cash collected, certs expiring, subcontractor status.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
 <section id="pricing" class="pricing">
   <div class="container">
     <h2 class="section-title">Fixed-price packages</h2>
@@ -20,13 +204,14 @@
         <h3>Starter</h3>
         <div class="price">
           <span class="monthly">£750<span>/mo</span></span>
-          <span class="annual">£625<span>/mo</span></div>
+          <span class="annual">£625<span>/mo</span></span>
         </div>
         <ul>
           <li>Up to 10 subcontractors</li>
           <li>≤ 5 active debt cases</li>
           <li>Weekly email report</li>
         </ul>
+        <small class="note">Excludes HR, legal, bookkeeping</small>
         <a class="btn btn-outline" href="#healthcheck">Get Started</a>
       </div>
 
@@ -36,7 +221,7 @@
         <h3>Pro</h3>
         <div class="price">
           <span class="monthly">£1,500<span>/mo</span></span>
-          <span class="annual">£1,250<span>/mo</span></div>
+          <span class="annual">£1,250<span>/mo</span></span>
         </div>
         <ul>
           <li>Up to 30 subcontractors</li>
@@ -84,3 +269,46 @@
     <p class="toggle-note">Annual plans billed upfront; cancel anytime with 30 days’ notice.</p>
   </div>
 </section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="container">
+    <h2 class="section-title">Questions we get asked</h2>
+    <details>
+      <summary>Is there a set-up fee?</summary>
+      <p>No—packages are all-inclusive. We do offer an optional £19 Health-Check to jump-start your docs.</p>
+    </details>
+    <details>
+      <summary>Can I downgrade anytime?</summary>
+      <p>Yes, with 30 days’ notice your next invoice moves to the lower tier.</p>
+    </details>
+    <details>
+      <summary>Do you chase debts older than 120 days?</summary>
+      <p>Absolutely—our recovery team specialises in aged debt up to 6 years old.</p>
+    </details>
+  </div>
+</section>
+
+<!-- HEALTH-CHECK CTA -->
+<section id="healthcheck" class="cta">
+  <div class="container text-center">
+    <h2>Get a 27-point Compliance Health-Check for £19</h2>
+    <p class="lead">Loom video + action plan. Fee refunded if you upgrade to any monthly plan within 30 days.</p>
+    <a class="btn btn-primary btn-large" href="https://buy.stripe.com/xxxxxxxxxx" target="_blank" rel="noopener">Buy Health-Check</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2025 ComplianceLabs Ltd · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<a class="sticky-cta" href="https://calendly.com/compliancelabs/15min" target="_blank" rel="noopener">Book Call</a>
+
+<!-- SCRIPTS -->
+<script src="assets/js/app.js"></script>
+</body>
+</html>
