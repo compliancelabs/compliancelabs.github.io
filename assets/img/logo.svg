@@ -1,0 +1,8 @@
+<svg width="180" height="36" viewBox="0 0 180 36" xmlns="http://www.w3.org/2000/svg">
+  <!-- shield -->
+  <path d="M18 2a16 16 0 0 0-16 16v8l8 8 8-8v-8A16 16 0 0 0 18 2z" fill="#6366F1"/>
+  <!-- tick -->
+  <path d="M13 18l3 3 7-7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- word-mark -->
+  <text x="40" y="24" font-family="Inter,Segoe UI,sans-serif" font-size="20" font-weight="700" fill="#1F2937">ComplianceLabs</text>
+</svg>
