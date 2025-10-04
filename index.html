@@ -5,118 +5,189 @@
   <title>Subcontractor Compliance & Debt Chasing UK | ComplianceLabs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Done-for-you CIS, insurance, certification tracking and late-payment chasing for UK contractors. Packages from £750/mo. Book a free gap call.">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="assets/img/favicon.svg">
+  <script src="https://embed.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">ComplianceLabs</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-        <li class="nav-item"><a class="nav-link btn btn-primary text-white px-3" href="#healthcheck">Health-Check</a></li>
-      </ul>
-    </div>
+<!-- NAV -->
+<nav id="navbar" class="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="#"><img src="assets/img/logo.svg" alt="ComplianceLabs" height="32"></a>
+    <button class="toggler" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="btn btn-sm btn-primary" href="#healthcheck">Book Call</a></li>
+    </ul>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero py-5">
-  <div class="container text-center text-white">
-    <h1 class="display-5 fw-bold">Stop chasing missing CIS certs & unpaid invoices</h1>
-    <p class="lead my-3">We handle the paperwork so you get paid faster—guaranteed.</p>
-    <a class="btn btn-lg btn-orange mb-4" href="https://calendly.com/compliancelabs/15min" target="_blank">Book Free Gap Call</a>
-    <div class="row small text-white-50">
-      <div class="col-4"><strong>£3.2 m</strong> debt recovered</div>
-      <div class="col-4"><strong>12 k+</strong> certs tracked</div>
-      <div class="col-4"><strong>127</strong> happy contractors</div>
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <h1 class="hero-title">Stop chasing missing CIS certs&nbsp;&&nbsp;unpaid&nbsp;invoices</h1>
+      <p class="hero-lead">We handle the paperwork so you get paid faster—guaranteed. UK construction back-office, compliance tracking and debt-chasing from&nbsp;£750/mo.</p>
+      <a class="btn btn-primary btn-large" href="https://calendly.com/compliancelabs/15min" target="_blank">Book Free Gap Call</a>
+      <div class="hero-stats">
+        <div><span class="counter" data-target="3200000">0</span><small>£ debt recovered</small></div>
+        <div><span class="counter" data-target="12000">0</span><small>certs tracked</small></div>
+        <div><span class="counter" data-target="127">0</span><small>contractors</small></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs/15min?hide_gdpr_banner=1" style="min-width:320px;height:520px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust">
+  <div class="container">
+    <div class="marquee">
+      <span><img src="assets/img/logo-abc.svg" alt="ABC Contractors"></span>
+      <span><img src="assets/img/logo-mjs.svg" alt="MJS Brickwork"></span>
+      <span><img src="assets/img/logo-hodgson.svg" alt="Hodgson Group"></span>
+      <span><img src="assets/img/logo-reef.svg" alt="Reef Developments"></span>
+      <span><img src="assets/img/logo-abc.svg" alt="ABC Contractors"></span>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="py-5 bg-light">
+<section class="testimonials">
   <div class="container">
-    <h2 class="text-center mb-4">What contractors say</h2>
-    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="p-4 text-center">“ComplianceLabs cleared £18k of aged debt in 6 weeks and cut our admin time by 7 hrs a week.”<br><strong>— Sarah Jones, ABC Contractors</strong></div>
-        </div>
-        <div class="carousel-item">
-          <div class="p-4 text-center">“We were on stop for 3 months—within 2 weeks they had every ticket closed.”<br><strong>— Mike Patel, MJS Brickwork</strong></div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" data-bs-target="#carousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-      <button class="carousel-control-next" data-bs-target="#carousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+    <h2 class="section-title">What contractors say</h2>
+    <div class="testi-grid">
+      <blockquote>
+        <p>“ComplianceLabs cleared £18k of aged debt in 6 weeks and cut our admin time by 7 hrs a week.”</p>
+        <cite>Sarah Jones — Director, ABC Contractors Ltd</cite>
+      </blockquote>
+      <blockquote>
+        <p>“We were on stop for 3 months—within 2 weeks every ticket was closed.”</p>
+        <cite>Mike Patel — MJS Brickwork</cite>
+      </blockquote>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="py-5">
+<section id="services" class="services">
   <div class="container">
-    <h2 class="text-center mb-4">How we remove your admin blockages</h2>
-    <div class="row g-4">
-      <div class="col-md-4"><h5>Compliance Tracking</h5><p>CIS, insurance, certifications, contracts—kept live and on stop-free status.</p></div>
-      <div class="col-md-4"><h5>Invoice & Debt Chasing</h5><p>Reminder cycles, calls, dispute handling until cash hits your bank.</p></div>
-      <div class="col-md-4"><h5>Reporting & Dashboards</h5><p>Weekly KPI email: cash collected, certs expiring, subcontractor status.</p></div>
+    <h2 class="section-title">How we remove your admin blockages</h2>
+    <div class="service-grid">
+      <article>
+        <img src="assets/img/icon-shield.svg" alt="" width="48" height="48">
+        <h3>Compliance Tracking</h3>
+        <p>CIS, insurance, certifications, contracts—kept live and stop-free.</p>
+      </article>
+      <article>
+        <img src="assets/img/icon-chase.svg" alt="" width="48" height="48">
+        <h3>Invoice & Debt Chasing</h3>
+        <p>Reminder cycles, calls, dispute handling until cash hits your bank.</p>
+      </article>
+      <article>
+        <img src="assets/img/icon-chart.svg" alt="" width="48" height="48">
+        <h3>Reporting & Dashboards</h3>
+        <p>Weekly KPI email: cash collected, certs expiring, subcontractor status.</p>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="py-5 bg-light">
+<section id="pricing" class="pricing">
   <div class="container">
-    <h2 class="text-center mb-4">Fixed-price packages</h2>
-    <div class="row g-3">
-      <div class="col-md-3">
-        <div class="card h-100"><div class="card-body"><h5>Starter</h5><h6>£750/mo</h6><ul><li>Up to 10 subcontractors</li><li>5 active debt cases</li><li>Weekly report</li></ul><small class="text-muted">Excludes HR, legal, bookkeeping</small></div></div>
+    <h2 class="section-title">Fixed-price packages</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price">£750<span>/mo</span></div>
+        <ul>
+          <li>Up to 10 subcontractors</li>
+          <li>5 active debt cases</li>
+          <li>Weekly report</li>
+        </ul>
+        <small class="note">Excludes HR, legal, bookkeeping</small>
+        <a class="btn btn-outline" href="#healthcheck">Get Started</a>
       </div>
-      <div class="col-md-3">
-        <div class="card h-100 border-primary"><div class="card-body"><h5>Pro</h5><h6>£1,250/mo</h6><ul><li>Up to 25 subcontractors</li><li>15 active debt cases</li><li>Phone chasing</li></ul><small class="text-muted">Most popular</small></div></div>
+      <div class="price-card featured">
+        <div class="badge">Most Popular</div>
+        <h3>Pro</h3>
+        <div class="price">£1,250<span>/mo</span></div>
+        <ul>
+          <li>Up to 25 subcontractors</li>
+          <li>15 active debt cases</li>
+          <li>Phone chasing</li>
+        </ul>
+        <a class="btn btn-primary" href="#healthcheck">Get Started</a>
       </div>
-      <div class="col-md-3">
-        <div class="card h-100"><div class="card-body"><h5>Growth</h5><h6>£2,000/mo</h6><ul><li>Up to 60 subcontractors</li><li>Unlimited debt cases</li><li>Client portal</li></ul></div></div>
+      <div class="price-card">
+        <h3>Growth</h3>
+        <div class="price">£2,000<span>/mo</span></div>
+        <ul>
+          <li>Up to 60 subcontractors</li>
+          <li>Unlimited debt cases</li>
+          <li>Client portal</li>
+        </ul>
+        <a class="btn btn-outline" href="#healthcheck">Get Started</a>
       </div>
-      <div class="col-md-3">
-        <div class="card h-100"><div class="card-body"><h5>Enterprise</h5><h6>Custom</h6><ul><li>60+ subbies</li><li>White-label portal</li><li>SLA & on-site training</li></ul></div></div>
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <ul>
+          <li>60+ subbies</li>
+          <li>White-label portal</li>
+          <li>SLA & on-site training</li>
+        </ul>
+        <a class="btn btn-outline" href="#healthcheck">Contact Us</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HEALTH-CHECK CTA -->
-<section id="healthcheck" class="py-5 text-center bg-orange text-white">
+<!-- FAQ -->
+<section id="faq" class="faq">
   <div class="container">
-    <h2 class="fw-bold">Get a 27-point Compliance Health-Check for £149</h2>
-    <p class="lead">We’ll send you a Loom video + action plan. Fee refunded if you upgrade to any monthly plan within 30 days.</p>
-    <a class="btn btn-lg btn-light text-orange fw-bold" href="https://buy.stripe.com/xxxxxxxxxx" target="_blank">Buy Health-Check</a>
+    <h2 class="section-title">Questions we get asked</h2>
+    <details>
+      <summary>Is there a set-up fee?</summary>
+      <p>No—packages are all-inclusive. We do offer an optional £149 Health-Check to jump-start your docs.</p>
+    </details>
+    <details>
+      <summary>Can I downgrade anytime?</summary>
+      <p>Yes, with 30 days’ notice your next invoice moves to the lower tier.</p>
+    </details>
+    <details>
+      <summary>Do you chase debts older than 120 days?</summary>
+      <p>Absolutely—our recovery team specialises in aged debt up to 6 years old.</p>
+    </details>
+  </div>
+</section>
+
+<!-- HEALTH-CHECK CTA -->
+<section id="healthcheck" class="cta">
+  <div class="container text-center">
+    <h2>Get a 27-point Compliance Health-Check for £149</h2>
+    <p class="lead">Loom video + action plan. Fee refunded if you upgrade to any monthly plan within 30 days.</p>
+    <a class="btn btn-primary btn-large" href="https://buy.stripe.com/xxxxxxxxxx" target="_blank">Buy Health-Check</a>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="py-4 bg-dark text-white-50 text-center">
+<footer class="footer">
   <div class="container">
-    <small>© 2025 ComplianceLabs Ltd. <a class="text-white-50" href="privacy.html">Privacy</a> · <a class="text-white-50" href="terms.html">Terms</a></small>
+    <p>© 2025 ComplianceLabs Ltd · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
   </div>
 </footer>
 
+<!-- STICKY MOBILE CTA -->
+<a class="sticky-cta" href="https://calendly.com/compliancelabs/15min" target="_blank">Book Call</a>
+
 <!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="scripts.js"></script>
-<!-- MailerLite universal -->
-<script>
-(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-ml('account', 'XXXXXX');
-</script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
