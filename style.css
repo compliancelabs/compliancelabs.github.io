@@ -1,0 +1,14 @@
+:root{
+  --navy:#002b59;
+  --orange:#ff6b00;
+}
+body{font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; color:#212529;}
+a{text-decoration:none;}
+.hero{background:linear-gradient(rgba(0,43,89,.85),rgba(0,43,89,.85)), url('hero-bg.webp') center/cover no-repeat;}
+.bg-orange{background-color: var(--orange);}
+.text-orange{color: var(--orange);}
+.btn-orange{background-color: var(--orange); border-color: var(--orange); color:#fff;}
+.btn-orange:hover{background-color: #e05a00; border-color: #e05a00;}
+.navbar-brand{color:var(--navy)!important;}
+.card{border:1px solid #dee2e6;}
+.carousel-control-prev-icon,.carousel-control-next-icon{background-color: var(--orange); border-radius:50%;}
