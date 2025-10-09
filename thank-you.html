@@ -1,39 +1,69 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Payment Successful – ComplianceLabs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body{font-family:Inter,Segoe UI,sans-serif;text-align:center;padding:2rem 1rem;background:#f8f9fc;color:#1f2937}
-    h1{color:#10b981;margin-bottom:1rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;border-radius:12px;background:#6366f1;color:#fff;font-weight:600;margin:1rem .5rem;text-decoration:none}
-    .btn:hover{background:#4f46e5}
-    .calendly-inline-widget{min-width:320px;height:630px;margin-top:1.5rem;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
-    @media(max-width:600px){.calendly-inline-widget{height:580px}}
-  </style>
-  <!-- GA4 on page load only -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R272PPXYLQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-R272PPXYLQ');
-    // Page-load conversion (no booking trigger)
-    gtag('event', 'page_view', {event_category: 'thank-you', value: 1});
-  </script>
+  <meta charset="utf-8">
+  <title>Payment Successful – ComplianceLabs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:Inter,Segoe UI,sans-serif;text-align:center;padding:2rem 1rem;background:#f8f9fc;color:#1f2937}
+    h1{color:#10b981;margin-bottom:1rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;border-radius:12px;background:#6366f1;color:#fff;font-weight:600;margin:1rem .5rem;text-decoration:none}
+    .btn:hover{background:#4f46e5}
+    .calendly-inline-widget{min-width:320px;height:630px;margin-top:1.5rem;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+    @media(max-width:600px){.calendly-inline-widget{height:580px}}
+  </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R272PPXYLQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R272PPXYLQ');
+
+    // Initial page-load conversion (base tracking)
+    gtag('event', 'purchase', {
+      event_category: 'thank-you-page', 
+      value: 19.00, // Assuming a £19 Health-Check value
+      currency: 'GBP'
+    });
+
+    // Function to track PDF download click
+    function trackDownload() {
+        gtag('event', 'download', {
+            event_category: 'Checklist',
+            event_label: 'Checklist_Download_Click'
+        });
+        // The download attribute on the link handles the file save
+    }
+
+    // --- CALENDLY EVENT LISTENER & REDIRECT ---
+    window.addEventListener('message', function(e) {
+        // Check for the specific Calendly invitee_created event
+        if (e.origin === 'https://calendly.com' && e.data.event && e.data.event === 'calendly.event.data.invitee_created') {
+            
+            // 1. Fire a definitive conversion event for the booking
+            gtag('event', 'appointment_booked', {
+                event_category: 'Conversion',
+                event_label: 'Audit_Call_Complete'
+            });
+
+            // 2. Redirect after a small delay (1.5 seconds)
+            setTimeout(function() {
+                // Change this to your desired final URL
+                window.location.href = '/thank-you-complete.html'; 
+            }, 1500); 
+        }
+    });
+  </script>
 </head>
 <body>
-  <h1>✅ Payment received – your checklist is ready!</h1>
-  <p>Download the PDF below, then book your free 15-min audit call – we’ll fix any red boxes live.</p>
+  <h1>✅ Payment received – your checklist is ready!</h1>
+  <p>Download the PDF below, then book your free 15-min audit call – we’ll fix any red boxes live.</p>
 
-  <!-- PDF DOWNLOAD – MUST EXIST IN REPO -->
-  <a class="btn" href="assets/checklist/27-point-compliance-checklist.pdf" download>Download Checklist PDF</a>
+    <a class="btn" href="assets/checklist/27-point-compliance-checklist.pdf" onclick="trackDownload()" download>Download Checklist PDF</a>
 
-  <!-- Calendly embed – no redirect -->
-  <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-width:320px;height:630px;"></div>
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/15min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=6366f1&text_color=1f2937" style="min-width:320px;height:630px;"></div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-  <p><small>Book below – no redirect, no rush.</small></p>
+  <p><small>Book below – no redirect until booking is confirmed.</small></p>
 </body>
 </html>
