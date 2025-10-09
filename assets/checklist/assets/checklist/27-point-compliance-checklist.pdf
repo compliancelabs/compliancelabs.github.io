@@ -1,49 +1,41 @@
-%PDF-1.4
-1 0 obj
-<<
-/Type /Catalog
-/Pages 2 0 R
->>
-endobj
-2 0 obj
-<<
-/Type /Pages
-/Kids [3 0 R]
-/Count 1
->>
-endobj
-3 0 obj
-<<
-/Type /Page
-/Parent 2 0 R
-/MediaBox [0 0 612 792]
-/Contents 4 0 R
->>
-endobj
-4 0 obj
-<<
-/Length 44
->>
-stream
-BT
-/F1 12 Tf
-100 700 Td
-(27-Point CIS Checklist Placeholder) Tj
-ET
-endstream
-endobj
-xref
-0 5
-0000000000 65535 f
-0000000010 00000 n
-0000000053 00000 n
-0000000104 00000 n
-0000000181 00000 n
-trailer
-<<
-/Size 5
-/Root 1 0 R
->>
-startxref
-275
-%%EOF
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Payment Successful – ComplianceLabs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:Inter,Segoe UI,sans-serif;text-align:center;padding:2rem 1rem;background:#f8f9fc;color:#1f2937}
+    h1{color:#10b981;margin-bottom:1rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;border-radius:12px;background:#6366f1;color:#fff;font-weight:600;margin:1rem .5rem;text-decoration:none}
+    .btn:hover{background:#4f46e5}
+    .calendly-inline-widget{min-width:320px;height:630px;margin-top:1.5rem;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+    @media(max-width:600px){.calendly-inline-widget{height:580px}}
+  </style>
+  <!-- GA4 with your real ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R272PPXYLQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R272PPXYLQ');
+    // Fire booking conversion on page load
+    gtag('event', 'booking', {event_category: 'engagement', value: 1});
+  </script>
+</head>
+<body>
+  <h1>✅ Payment received – your checklist is ready!</h1>
+  <p>Download the PDF below, then book your free 15-min audit call – we’ll fix any red boxes live.</p>
+
+  <!-- PDF DOWNLOAD – MUST EXIST IN REPO -->
+  <a class="btn" href="assets/checklist/27-point-compliance-checklist.pdf" download>Download Checklist PDF</a>
+
+  <!-- Calendly embed – YOUR live event -->
+  <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-width:320px;height:630px;"></div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <p><small>Redirecting in 8 seconds…</small></p>
+  <!-- Optional auto-redirect back to site -->
+  <meta http-equiv="refresh" content="8;url=/?success=true&booking=1">
+</body>
+</html>
