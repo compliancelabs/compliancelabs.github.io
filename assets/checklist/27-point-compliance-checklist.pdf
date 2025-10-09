@@ -1,9 +1,3 @@
-
-
---------------------------------------------------
-4. FINAL THANK-YOU PAGE  (copy entire file)
---------------------------------------------------
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,10 +27,10 @@
   <h1>✅ Payment received – your checklist is ready!</h1>
   <p>Download the PDF below, then book your free 15-min audit call – we’ll fix any red boxes live.</p>
 
-  <!-- PDF DOWNLOAD -->
+  <!-- PDF DOWNLOAD – MUST EXIST -->
   <a class="btn" href="assets/checklist/27-point-compliance-checklist.pdf" download>Download Checklist PDF</a>
 
-  <!-- Calendly embed – YOUR live event -->
+  <!-- Calendly embed – MUST BE LIVE EVENT -->
   <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs/15min" style="min-width:320px;height:630px;"></div>
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
