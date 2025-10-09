@@ -19,12 +19,8 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-R272PPXYLQ');
-
-    // Fire booking conversion on page load (thank-you = post-payment + Calendly shown)
-    gtag('event', 'booking', {
-      event_category: 'engagement',
-      value: 1
-    });
+    // Fire booking conversion on page load
+    gtag('event', 'booking', {event_category: 'engagement', value: 1});
   </script>
 </head>
 <body>
@@ -34,9 +30,9 @@
   <!-- PDF DOWNLOAD -->
   <a class="btn" href="assets/checklist/27-point-compliance-checklist.pdf" download>Download Checklist PDF</a>
 
-  <!-- CALENDLY EMBED -->
-  <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs/15min?hide_gdbr_banner=1"></div>
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Calendly embed – YOUR event -->
+  <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs/15min?hide_gdbr_banner=1" style="min-width:320px;height:630px;"></div>
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
   <p><small>Redirecting in 8 seconds…</small></p>
   <!-- Optional auto-redirect back to site -->
