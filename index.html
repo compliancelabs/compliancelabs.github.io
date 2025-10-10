@@ -85,47 +85,69 @@
 <section id="pricing" class="pricing">
   <div class="container">
     <h2 class="section-title">Fixed-price packages</h2>
-    <div class="pricing-grid">
-      <div class="price-card">
+    <div class="toggle-wrap">
+      <span class="toggle-label">Monthly</span>
+      <label class="switch">
+        <input type="checkbox" id="annualToggle">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">Annual <small>(2 months free)</small></span>
+    </div>
+    <div class="pricing-grid" id="pricingGrid">
+      <div class="price-card" data-tier="starter">
         <h3>Starter</h3>
-        <div class="price">£750<span>/mo</span></div>
+        <div class="price">
+          <span class="monthly">£750<span>/mo</span></span>
+          <span class="annual">£625<span>/mo</span></span>
+        </div>
         <ul>
           <li>Up to 10 subcontractors</li>
-          <li>5 active debt cases</li>
-          <li>Weekly report</li>
+          <li>≤ 5 active debt cases</li>
+          <li>Weekly email report</li>
         </ul>
         <small class="note">Excludes HR, legal, bookkeeping</small>
         <a class="btn btn-outline" href="#healthcheck">Get Started</a>
       </div>
-      <div class="price-card featured">
+      <div class="price-card featured" data-tier="pro">
         <div class="badge">Most Popular</div>
         <h3>Pro</h3>
-        <div class="price">£1,250<span>/mo</span></div>
+        <div class="price">
+          <span class="monthly">£1,500<span>/mo</span></span>
+          <span class="annual">£1,250<span>/mo</span></span>
+        </div>
         <ul>
-          <li>Up to 25 subcontractors</li>
-          <li>15 active debt cases</li>
+          <li>Up to 30 subcontractors</li>
+          <li>≤ 20 active debt cases</li>
           <li>Phone chasing included</li>
           <li>Client portal access</li>
         </ul>
         <a class="btn btn-primary" href="#healthcheck">Get Started</a>
       </div>
-      <div class="price-card">
-        <h3>Growth</h3>
-        <div class="price">£2,000<span>/mo</span></div>
+      <div class="price-card" data-tier="scale">
+        <h3>Scale</h3>
+        <div class="price">
+          <span class="monthly">£3,500<span>/mo</span> + 1 % collected</span>
+          <span class="annual">£2,917<span>/mo</span> + 1 % collected</span>
+        </div>
         <ul>
-          <li>Up to 60 subcontractors</li>
+          <li>Unlimited subcontractors</li>
           <li>Unlimited debt cases</li>
-          <li>Client portal</li>
+          <li>Dedicated agent</li>
+          <li>Monthly QBR + portal</li>
         </ul>
-        <a class="btn btn-outline" href="#healthcheck">Get Started</a>
+        <a class="btn btn-outline" href="#healthcheck">Book Call</a>
       </div>
-      <div class="price-card">
+      <div class="price-card enterprise" data-tier="enterprise">
         <h3>Enterprise</h3>
-        <div class="price">Custom</div>
+        <div class="price">
+          <span class="monthly">£7,500<span>/mo</span> + 0.75 % collected</span>
+          <span class="annual">£6,250<span>/mo</span> + 0.75 % collected</span>
+        </div>
         <ul>
-          <li>60+ subbies</li>
           <li>White-label portal</li>
-          <li>SLA & on-site training</li>
+          <li>2-hour SLA</li>
+          <li>On-site quarterly reviews</li>
+          <li>Joint-venture option</li>
         </ul>
         <a class="btn btn-outline" href="#healthcheck">Contact Us</a>
       </div>
