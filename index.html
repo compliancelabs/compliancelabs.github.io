@@ -18,6 +18,8 @@
       text-align: center;
       padding: 0.5rem;
       font-size: 0.875rem;
+      position: relative;
+      z-index: 0; /* sits below fixed navbar */
     }
     .star-row {
       display: flex;
@@ -45,8 +47,15 @@
       color: var(--primary);
     }
 
-    /* ---- PRICING – same row, smaller cards ---- */
-    .pricing-row      { display: flex; gap: 1rem; overflow-x: auto; padding-block-end: 1rem; scroll-snap-type: x mandatory; }
+    /* ---- PRICING – SAME ROW (no wrap) + smaller cards ---- */
+    .pricing-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-block-end: 1rem;
+      scroll-snap-type: x mandatory;
+      flex-wrap: nowrap; /* force same row */
+    }
     .pricing-row .price-card {
       flex: 1 1 0;
       min-width: 240px;
@@ -57,6 +66,11 @@
     .pricing-row .price-card .price { font-size: 1.75rem; margin-block: 0.5rem 0.25rem; }
     .pricing-row .price-card ul     { margin-block: 1rem 1.25rem; }
     .pricing-row .price-card li     { margin-block-end: 0.35rem; }
+    .overage-note {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-block-start: 0.5rem;
+    }
 
     /* ---- TESTIMONIALS – horizontal scroll ---- */
     .testi-scroll {
@@ -83,21 +97,21 @@
       background: var(--grey);
     }
     .demo-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: var(--radius);
-      max-width: 850px;
-      margin-inline: auto;
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        overflow: hidden;
+        border-radius: var(--radius);
+        max-width: 850px;
+        margin-inline: auto;
     }
     .demo-wrapper video,
     .demo-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 
     /* ---- BIGGER CALENDLY ---- */
@@ -187,12 +201,7 @@
 </head>
 
 <body>
-  <!-- PROOF BAR -->
-  <div class="proof-bar">
-    <p><strong>£4.2 m</strong> recovered • <strong>1,847</strong> subbies verified • <strong>0</strong> HMRC fines for clients • Next slot today at 3:00 pm – only 3 left this week</p>
-  </div>
-
-  <!-- NAVBAR -->
+  <!-- NAVBAR (fixed) -->
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
       <a class="brand" href="/" aria-label="Compliance Labs home">
@@ -209,6 +218,11 @@
       </nav>
     </div>
   </header>
+
+  <!-- PROOF BAR – pushed below fixed nav (no overlap) -->
+  <div class="proof-bar">
+    <p><strong>£4.2 m</strong> recovered • <strong>1,847</strong> subbies verified • <strong>0</strong> HMRC fines for clients • Next slot today at 3:00 pm – only 3 left this week</p>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -262,7 +276,7 @@
         <article>
           <img src="assets/img/icon-chase.svg" alt="" width="48" height="48">
           <h3>Payment Chase</h3>
-          <p>Our 4-step letter, call & solicitor escalations recover retentions and overdue invoices—no win, no fee after 30 days, cash-flow unlocked.</p>
+          <p>Our 5-step letter, call & solicitor escalations recover retentions and overdue invoices—no win, no fee after 30 days, cash-flow unlocked.</p>
         </article>
         <article>
           <img src="assets/img/icon-chart.svg" alt="" width="48" height="48">
@@ -276,26 +290,26 @@
   <!-- TESTIMONIALS – horizontal scroll -->
   <section class="testimonials">
     <div class="container">
-      <h2 class="section-title">What builders say about us</h2>
+      <h2 class="section-title">What Businesses say about us</h2>
       <div class="testi-scroll">
         <blockquote>
-          <p>“Compliance Labs spotted £22k of unverified subbies in one week—saved us from a HMRC penalty.”</p>
-          <cite>— Matt Johnson, MJS Contractors – £4.8m turnover</cite>
+          <p>“Compliance Labs spotted £9k of unverified subbies in one week—saved us from a HMRC penalty.”</p>
+          <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
         </blockquote>
 
         <blockquote>
-          <p>“They collected £48k of 90-day retentions within 14 days. Unreal ROI.”</p>
+          <p>“They collected £48k of 90-day retentions within 40 days. Unreal ROI.”</p>
           <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
         </blockquote>
 
         <blockquote>
           <p>“We reclaimed £127k of retentions in Q1 alone—cash-flow stress gone overnight.”</p>
-          <cite>— David Reef, Reef Developments – £25m turnover</cite>
+          <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
         </blockquote>
 
         <blockquote>
           <p>“On-site audit passed with zero findings for the first time in 8 years. The board is delighted.”</p>
-          <cite>— Lisa Ahmed, ABC Construction – £35m turnover</cite>
+          <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
         </blockquote>
       </div>
     </div>
@@ -305,21 +319,15 @@
   <section id="demo" class="container" style="padding-block:4rem 2rem;">
     <h2 class="section-title">See it in action (60 seconds)</h2>
     <div class="demo-wrapper">
-      <!-- Option 1: self-hosted MP4 -->
-      <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
-        <source src="assets/video/60sec-demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <!-- Option 2: Loom embed (replace src) -->
-      <!--
-      <iframe src="https://www.loom.com/embed/1234567890?hide_owner=true&hide_share=true&hide_title=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      -->
+        <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
+            <source src="assets/video/60sec-demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
     <p style="text-align:center;margin-top:1rem;">No time to watch? <a href="#health-check">Book the £19 Health-Check</a></p>
   </section>
 
-  <!-- PRICING – single row, NO "/mo" text, 11-month annual -->
+  <!-- PRICING – SAME ROW (no wrap) + UPLIFT + overage notes -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
@@ -331,73 +339,65 @@
       </label>
 
       <div id="pricingGrid" class="pricing-row">
-        <!-- Starter -->
+        <!-- Starter £750 – NO CHANGE -->
         <article class="price-card" data-monthly="750" data-annual="8250">
           <h3>Starter</h3>
-          <p class="price">
-            <span class="currency">£</span>
-            <span class="price-value">750</span>
-          </p>
+          <p class="price"><span class="currency">£</span><span class="price-value">750</span></p>
           <p class="note">Perfect for sub-£1m turnover</p>
           <ul>
-            <li>Up to 15 subbies verified /mo</li>
+            <li>Up to 10 subbies verified /mo</li>
             <li>Max £10k per debt chased</li>
             <li>Monthly compliance report</li>
             <li>Email support</li>
           </ul>
           <p class="note"><strong>Does NOT include:</strong> bookkeeping, VAT returns, payroll, legal advice.</p>
+          <p class="overage-note">Extra verifications £5 each • extra £10k debt chased £150</p>
           <a class="btn btn-outline" href="#health-check">Get started</a>
         </article>
 
-        <!-- Pro -->
-        <article class="price-card" data-monthly="1250" data-annual="13750">
+        <!-- Pro £1,495 (was £1,250) -->
+        <article class="price-card" data-monthly="1495" data-annual="16445">
           <span class="badge">Most popular</span>
           <h3>Pro</h3>
-          <p class="price">
-            <span class="currency">£</span>
-            <span class="price-value">1250</span>
-          </p>
+          <p class="price"><span class="currency">£</span><span class="price-value">1,495</span></p>
           <p class="note">For £1-5m turnover</p>
           <ul>
-            <li>Up to 35 subbies verified /mo</li>
-            <li>Max £10k per debt chased (5 concurrent)</li>
+            <li>Up to 60 subbies verified /mo</li>
+            <li>Max £25k per debt chased (5 concurrent)</li>
             <li>Weekly reports + phone support</li>
             <li>Portal access</li>
           </ul>
+          <p class="overage-note">Extra verifications £5 each • extra £10k debt chased £150</p>
           <a class="btn btn-primary" href="#health-check">Get started</a>
         </article>
 
-        <!-- Growth -->
-        <article class="price-card" data-monthly="2000" data-annual="22000">
+        <!-- Growth £2,750 (was £2,000) -->
+        <article class="price-card" data-monthly="2750" data-annual="30250">
           <h3>Growth</h3>
-          <p class="price">
-            <span class="currency">£</span>
-            <span class="price-value">2000</span>
-          </p>
+          <p class="price"><span class="currency">£</span><span class="price-value">2,750</span></p>
           <p class="note">Full finance-back-office</p>
           <ul>
             <li>Unlimited subbies</li>
-            <li>Max £25k per debt chased</li>
+            <li>Max £100k per debt chased</li>
             <li>Same-day reports + dedicated Slack</li>
             <li>Quarterly on-site visit</li>
           </ul>
+          <p class="overage-note">Extra £10k debt chased £150 • CFO call add-on £350</p>
           <a class="btn btn-outline" href="#health-check">Get started</a>
         </article>
 
-        <!-- Enterprise -->
-        <article class="price-card" data-monthly="3500" data-annual="38500">
+        <!-- Enterprise £4,750 (was £3,500) -->
+        <article class="price-card" data-monthly="4750" data-annual="52250">
           <h3>Enterprise</h3>
-          <p class="price">
-            <span class="currency">£</span>
-            <span class="price-value">3500</span>
-          </p>
+          <p class="price"><span class="currency">£</span><span class="price-value">4,750</span></p>
           <p class="note">For £20m+ turnover or main-contractors</p>
           <ul>
             <li>Unlimited sub-contractor verifications</li>
-            <li>£50k debt limit per case</li>
-            <li>4h SLA phone & Slack</li>
+            <li>£250k debt limit per case</li>
+            <li>2h SLA phone & Slack</li>
             <li>Quarterly strategy call + risk forecast</li>
           </ul>
+          <p class="overage-note">Extra £50k debt block £500 • white-label portal £500 set-up</p>
           <a class="btn btn-outline" href="#health-check">Get started</a>
         </article>
       </div>
