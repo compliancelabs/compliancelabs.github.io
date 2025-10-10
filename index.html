@@ -84,10 +84,6 @@
     input:checked + .switch::after {
       transform: translateX(1.5rem);
     }
-
-    /* ---- ANNUAL PRICING HIDDEN BY DEFAULT ---- */
-    .pricing-row.annual .monthly { display: none; }
-    .pricing-row:not(.annual) .annual { display: none; }
   </style>
   <script defer type="module" src="assets/js/app.js"></script>
 </head>
@@ -195,7 +191,7 @@
     </div>
   </section>
 
-  <!-- PRICING – single row, working toggle -->
+  <!-- PRICING – single row, working 11-month annual -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
@@ -208,12 +204,11 @@
 
       <div id="pricingGrid" class="pricing-row">
         <!-- Starter -->
-        <article class="price-card">
+        <article class="price-card" data-monthly="750" data-annual="8250">
           <h3>Starter</h3>
           <p class="price">
             <span class="currency">£</span>
-            <span class="amount monthly" data-monthly="750">750</span>
-            <span class="amount annual"  data-annual="7500">625</span>
+            <span class="price-value">750</span>
             <span>/mo</span>
           </p>
           <p class="note">Perfect for sub-£1m turnover</p>
@@ -228,13 +223,12 @@
         </article>
 
         <!-- Pro -->
-        <article class="price-card featured">
+        <article class="price-card" data-monthly="1250" data-annual="13750">
           <span class="badge">Most popular</span>
           <h3>Pro</h3>
           <p class="price">
             <span class="currency">£</span>
-            <span class="amount monthly" data-monthly="1250">1250</span>
-            <span class="amount annual"  data-annual="12500">1042</span>
+            <span class="price-value">1250</span>
             <span>/mo</span>
           </p>
           <p class="note">For £1-5m turnover</p>
@@ -248,12 +242,11 @@
         </article>
 
         <!-- Growth -->
-        <article class="price-card">
+        <article class="price-card" data-monthly="2000" data-annual="22000">
           <h3>Growth</h3>
           <p class="price">
             <span class="currency">£</span>
-            <span class="amount monthly" data-monthly="2000">2000</span>
-            <span class="amount annual"  data-annual="20000">1667</span>
+            <span class="price-value">2000</span>
             <span>/mo</span>
           </p>
           <p class="note">Full finance-back-office</p>
@@ -267,12 +260,11 @@
         </article>
 
         <!-- Enterprise -->
-        <article class="price-card">
+        <article class="price-card" data-monthly="3500" data-annual="38500">
           <h3>Enterprise</h3>
           <p class="price">
             <span class="currency">£</span>
-            <span class="amount monthly" data-monthly="3500">3500</span>
-            <span class="amount annual"  data-annual="35000">2917</span>
+            <span class="price-value">3500</span>
             <span>/mo</span>
           </p>
           <p class="note">For £20m+ turnover or main-contractors</p>
@@ -334,8 +326,9 @@
   <!-- sticky mobile CTA -->
   <a class="sticky-cta" href="#health-check">Book £19 Health-Check</a>
 
-  <!-- Calendly lazy-load -->
+  <!-- Calendly lazy-load + Annual Pricing Toggle (11 months) -->
   <script>
+    /* ---- Calendly ---- */
     const widget = document.querySelector('.calendly-inline-widget');
     if (widget && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries, ob) => {
@@ -352,12 +345,20 @@
       io.observe(widget);
     }
 
-    /* ---- MONTHLY / ANNUAL TOGGLE ---- */
-    const toggle  = document.getElementById('annualToggle');
-    const grid    = document.getElementById('pricingGrid');
-    toggle?.addEventListener('change', () => {
-      grid.classList.toggle('annual', toggle.checked);
-    });
+    /* ---- MONTHLY / ANNUAL TOGGLE – 11 MONTHS TOTAL ---- */
+    const toggle = document.getElementById('annualToggle');
+    const grid   = document.getElementById('pricingGrid');
+
+    function setPricing(annual) {
+      grid.querySelectorAll('.price-card').forEach(card => {
+        const monthly = Number(card.dataset.monthly);
+        const annualTotal = monthly * 11; // 2 months free
+        const display = annual ? annualTotal : monthly;
+        card.querySelector('.price-value').textContent = display.toLocaleString();
+      });
+    }
+    toggle.addEventListener('change', () => setPricing(toggle.checked));
+    setPricing(false); // init monthly
   </script>
 </body>
 </html>
