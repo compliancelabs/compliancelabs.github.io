@@ -77,6 +77,29 @@
       .testi-scroll blockquote { flex: 1 0 260px; }
     }
 
+    /* ---- 60-SEC DEMO SECTION ---- */
+    #demo {
+      padding-block: 4rem 2rem;
+      background: var(--grey);
+    }
+    .demo-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      max-width: 850px;
+      margin-inline: auto;
+    }
+    .demo-wrapper video,
+    .demo-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     /* ---- BIGGER CALENDLY ---- */
     .calendly-inline-widget { min-height: 680px; }
 
@@ -278,6 +301,24 @@
     </div>
   </section>
 
+  <!-- 60-SEC DEMO SECTION -->
+  <section id="demo" class="container" style="padding-block:4rem 2rem;">
+    <h2 class="section-title">See it in action (60 seconds)</h2>
+    <div class="demo-wrapper">
+      <!-- Option 1: self-hosted MP4 -->
+      <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
+        <source src="assets/video/60sec-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Option 2: Loom embed (replace src) -->
+      <!--
+      <iframe src="https://www.loom.com/embed/1234567890?hide_owner=true&hide_share=true&hide_title=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      -->
+    </div>
+    <p style="text-align:center;margin-top:1rem;">No time to watch? <a href="#health-check">Book the £19 Health-Check</a></p>
+  </section>
+
   <!-- PRICING – single row, NO "/mo" text, 11-month annual -->
   <section id="pricing" class="pricing">
     <div class="container">
@@ -399,7 +440,7 @@
     </div>
   </section>
 
-  <!-- FOOTER – socials + resources (no legal column) -->
+  <!-- FOOTER – socials + resources (legal column removed) -->
   <footer>
     <div class="container footer-grid">
       <div>
@@ -442,7 +483,7 @@
   <svg style="display:none;">
     <symbol id="star" viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></symbol>
     <symbol id="icon-li" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></symbol>
-    <symbol id="icon-tw" viewBox="0 0 24 24"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.83.5-1.75.85-2.72 1.05a4.92 4.92 0 00-8.384 4.482C7.69 8.095 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></symbol>
+    <symbol id="icon-tw" viewBox="0 0 24 24"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.83.5-1.75.85-2.72 1.05a4.92 4.92 0 00-8.384 4.482C7.69 8.095 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></symbol>
     <symbol id="icon-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
   </svg>
 
