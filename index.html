@@ -119,7 +119,7 @@
       transform: translateX(1.5rem);
     }
 
-    /* ---- FOOTER ---- */
+    /* ---- FOOTER – multi-column with socials ---- */
     footer {
       background: #111827;
       color: #9ca3af;
@@ -152,14 +152,6 @@
     }
     .socials a:hover svg {
       fill: var(--white);
-    }
-    .payment-icons {
-      display: flex;
-      gap: 0.5rem;
-      margin-block-start: 0.5rem;
-    }
-    .payment-icons img {
-      height: 24px;
     }
     @media (max-width: 768px) {
       footer .container {
@@ -296,7 +288,6 @@
         <span class="switch"></span>
         <span>Annual <small>(2 months free)</small></span>
       </label>
-      <p class="risk-line"><small>Cancel any time. 14-day money-back guarantee.</small></p>
 
       <div id="pricingGrid" class="pricing-row">
         <!-- Starter -->
@@ -305,8 +296,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">750</span>
-            <span class="period monthly">/ mo</span>
-            <span class="period annual">/ yr</span>
           </p>
           <p class="note">Perfect for sub-£1m turnover</p>
           <ul>
@@ -326,8 +315,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">1250</span>
-            <span class="period monthly">/ mo</span>
-            <span class="period annual">/ yr</span>
           </p>
           <p class="note">For £1-5m turnover</p>
           <ul>
@@ -345,8 +332,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">2000</span>
-            <span class="period monthly">/ mo</span>
-            <span class="period annual">/ yr</span>
           </p>
           <p class="note">Full finance-back-office</p>
           <ul>
@@ -364,8 +349,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">3500</span>
-            <span class="period monthly">/ mo</span>
-            <span class="period annual">/ yr</span>
           </p>
           <p class="note">For £20m+ turnover or main-contractors</p>
           <ul>
@@ -416,117 +399,16 @@
     </div>
   </section>
 
-  <!-- FOOTER – social, links, payment icons, legal -->
+  <!-- FOOTER – socials + resources (no legal column) -->
   <footer>
-    <div class="container">
-      <div>
-        <img src="assets/img/logo.svg" alt="Compliance Labs" width="140" height="32">
-        <p>Fixed-fee compliance & debt chasing for UK construction SMEs.</p>
-        <div class="socials">
-          <a href="https://twitter.com/compliancelabs" aria-label="Twitter"><svg><use href="#tw"/></svg></a>
-          <a href="https://linkedin.com/company/compliancelabs" aria-label="LinkedIn"><svg><use href="#in"/></svg></a>
-          <a href="https://facebook.com/compliancelabs" aria-label="Facebook"><svg><use href="#fb"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#health-check">Health-Check</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/cookies">Cookie Policy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li>Compliance Labs Ltd</li>
-          <li>Co. Reg. 12345678</li>
-          <li>VAT GB 123 4567 89</li>
-          <li>&copy; <span id="year"></span> All rights reserved</li>
-        </ul>
-        <div class="payment-icons">
-          <img loading="lazy" src="assets/img/visa.svg" alt="Visa">
-          <img loading="lazy" src="assets/img/mastercard.svg" alt="Mastercard">
-          <img loading="lazy" src="assets/img/amex.svg" alt="Amex">
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SVG SPRITE (icons) -->
-  <svg style="display:none;">
-    <symbol id="star" viewBox="0 0 16 16"><path d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></symbol>
-    <symbol id="tw" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></symbol>
-    <symbol id="in" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
-    <symbol id="fb" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
-  </svg>
-
-  <!-- sticky mobile CTA -->
-  <a class="sticky-cta" href="#health-check">Book £19 Health-Check</a>
-
-  <!-- Calendly + Annual Toggle + Footer Year -->
-  <script>
-    /* ---- Calendly ---- */
-    const widget = document.querySelector('.calendly-inline-widget');
-    if (widget && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries, ob) => {
-        entries.forEach(en => {
-          if (en.isIntersecting) {
-            const s = document.createElement('script');
-            s.src = 'https://assets.calendly.com/assets/external/widget.js';
-            s.async = 1;
-            widget.appendChild(s);
-            ob.disconnect();
-          }
-        });
-      });
-      io.observe(widget);
-    }
-
-    /* ---- MONTHLY / ANNU      <details>
-        <summary>Are you FCA-regulated?</summary>
-        <p>No—our service is administrative. We do not offer credit or insurance products.</p>
-      </details>
-      <details>
-        <summary>Can we upgrade or downgrade mid-contract?</summary>
-        <p>Yes. Change tier any time from your dashboard; adjustments are pro-rated to the day.</p>
-      </details>
-      <details>
-        <summary>Is there a setup fee?</summary>
-        <p>Zero. We even import your existing subbie list during onboarding at no cost.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="health-check" class="cta">
-    <div class="container">
-      <h2 class="section-title">Ready to remove compliance & cash-flow stress?</h2>
-      <p>Book your £19 CIS & Compliance Health-Check. We’ll audit your last 3 months and give you a fixed-price quote—no obligation.</p>
-      <a class="btn btn-large btn-primary" href="https://calendly.com/compliancelabs0/30min" target="_blank" rel="noopener">Pick a time in Calendly →</a>
-    </div>
-  </section>
-
-  <!-- FOOTER – multi-column with socials -->
-  <footer class="footer">
     <div class="container footer-grid">
       <div>
         <img src="assets/img/logo.svg" alt="Compliance Labs" width="140" height="32">
         <p>Keeping UK construction SMEs HMRC-safe and cash-flow positive.</p>
         <div class="socials">
-          <a href="https://www.linkedin.com/company/compliancelabs" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20"><use href="#icon-li"/></svg></a>
-          <a href="https://twitter.com/compliancelabs" target="_blank" rel="noopener" aria-label="Twitter"><svg width="20" height="20"><use href="#icon-tw"/></svg></a>
-          <a href="mailto:hello@compliancelabs.co.uk" aria-label="Email"><svg width="20" height="20"><use href="#icon-mail"/></svg></a>
+          <a href="https://www.linkedin.com/company/compliancelabs" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#icon-li"/></svg></a>
+          <a href="https://twitter.com/compliancelabs" target="_blank" rel="noopener" aria-label="Twitter"><svg><use href="#icon-tw"/></svg></a>
+          <a href="mailto:hello@compliancelabs.co.uk" aria-label="Email"><svg><use href="#icon-mail"/></svg></a>
         </div>
       </div>
       <div>
@@ -534,36 +416,38 @@
         <ul>
           <li><a href="#services">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#health-check">Health-Check</a></li>
-          <li><a href="/27-point-compliance-checklist.pdf" target="_blank">Checklist PDF</a></li>
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
+        <h4>Resources</h4>
         <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/privacy">Privacy</a></li>
-          <li><a href="/terms">Terms</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/27-point-compliance-checklist.pdf" target="_blank">Checklist PDF</a></li>
+          <li><a href="/calculator">CIS Calculator</a></li>
+          <li><a href="/webinar">Free Webinar</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
-        <p>Compliance Labs Ltd<br>71-75 Shelton Street<br>London WC2H 9JQ<br>Company no. 12345678</p>
-        <p><a href="tel:+442039887654">+44 20 3988 7654</a><br><a href="mailto:hello@compliancelabs.co.uk">hello@compliancelabs.co.uk</a></p>
+        <p>London, UK<br><a href="mailto:hello@compliancelabs.co.uk">hello@compliancelabs.co.uk</a></p>
+        <p><a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p>
+        <p>&copy; <span id="year"></span> Compliance Labs Ltd.</p>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="year"></span> Compliance Labs Ltd. All rights reserved. | <a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p>
     </div>
   </footer>
 
-  <!-- SVG ICON SPRITE -->
+  <!-- SVG SPRITE -->
   <svg style="display:none;">
+    <symbol id="star" viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></symbol>
     <symbol id="icon-li" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></symbol>
-    <symbol id="icon-tw" viewBox="0 0 24 24"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 14.498-7.496 14.498-14.498 0-.22 0-.44-.015-.66A10.359 10.359 0 0024 4.59a9.948 9.948 0 01-2.828.775 4.92 4.92 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184z"/></symbol>
+    <symbol id="icon-tw" viewBox="0 0 24 24"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.83.5-1.75.85-2.72 1.05a4.92 4.92 0 00-8.384 4.482C7.69 8.095 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></symbol>
     <symbol id="icon-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
   </svg>
+
+  <!-- sticky mobile CTA -->
+  <a class="sticky-cta" href="#health-check">Book £19 Health-Check</a>
 
   <!-- Calendly lazy-load + Annual Pricing Toggle (11 months) -->
   <script>
@@ -594,9 +478,6 @@
         const annualTotal = monthly * 11; // 2 months free
         const display = annual ? annualTotal : monthly;
         card.querySelector('.price-value').textContent = display.toLocaleString();
-        // swap period text
-        card.querySelectorAll('.period').forEach(p => p.style.display = annual ? 'none' : 'inline');
-        card.querySelector(annual ? '.annual' : '.monthly').style.display = 'inline';
       });
     }
     toggle.addEventListener('change', () => setPricing(toggle.checked));
