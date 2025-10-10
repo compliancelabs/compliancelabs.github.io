@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Compliance Labs – Sub-contractor Compliance & Debt Chasing for UK Construction SMEs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="We keep UK construction SMEs HMRC-safe and cash-flow positive by handling CIS, VAT, reverse-charge paperwork and chasing retentions or late invoices.">
+  <meta name="description" content="Fixed-fee compliance & retentions chasing for UK construction SMEs. Plans from £750/mo. Book a £19 Health-Check today.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-text">
-        <h1 class="hero-title">Stay HMRC-safe <br>and get paid faster</h1>
+        <h1 class="hero-title">Stay HMRC-safe<br>and get paid faster</h1>
         <p class="hero-lead">We handle sub-contractor compliance, CIS & VAT reverse-charge paperwork and chase late payments—so UK construction SMEs avoid fines and free up cash.</p>
         <div class="hero-stats">
           <div><span class="counter" data-target="2500000">0</span><small>£ retained/chased</small></div>
@@ -44,8 +44,9 @@
         </div>
         <a href="#health-check" class="btn btn-large btn-primary">Book your £19 Health-Check</a>
       </div>
+      <!-- Calendly widget inline -->
       <div class="hero-calendly">
-        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min"></div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-height:640px;"></div>
       </div>
     </div>
   </section>
@@ -106,7 +107,7 @@
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- PRICING (4 tiers) -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
@@ -160,6 +161,20 @@
           </ul>
           <a class="btn btn-outline" href="#health-check">Get started</a>
         </article>
+
+        <!-- Enterprise (NEW) -->
+        <article class="price-card">
+          <h3>Enterprise</h3>
+          <p class="price"><span class="currency">£</span><span class="amount" data-monthly="3500" data-annual="35000">3500</span><span>/mo</span></p>
+          <p class="note">For £20m+ turnover or main-contractors</p>
+          <ul>
+            <li>White-label portal for your supply-chain</li>
+            <li>£50k debt limit per case</li>
+            <li>24h SLA phone & Slack</li>
+            <li>Monthly exec briefing + on-site team training</li>
+          </ul>
+          <a class="btn btn-outline" href="#health-check">Get started</a>
+        </article>
       </div>
     </div>
   </section>
@@ -202,7 +217,7 @@
   <!-- sticky mobile CTA -->
   <a class="sticky-cta" href="#health-check">Book £19 Health-Check</a>
 
-  <!-- Calendly widget script (lazy) -->
+  <!-- Calendly widget script (lazy-loaded) -->
   <script>
     const widget = document.querySelector('.calendly-inline-widget');
     if (widget && 'IntersectionObserver' in window) {
