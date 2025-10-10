@@ -20,7 +20,7 @@
       padding: 1.5rem 1.25rem;
       font-size: 0.9375rem;
     }
-    .pricing-row .price-card .price { font-size: 1.75rem; }
+    .pricing-row .price-card .price { font-size: 1.75rem; margin-block: 0.5rem 0.25rem; }
     .pricing-row .price-card ul     { margin-block: 1rem 1.25rem; }
     .pricing-row .price-card li     { margin-block-end: 0.35rem; }
 
@@ -84,6 +84,10 @@
     input:checked + .switch::after {
       transform: translateX(1.5rem);
     }
+
+    /* ---- ANNUAL PRICING HIDDEN BY DEFAULT ---- */
+    .pricing-row.annual .monthly { display: none; }
+    .pricing-row:not(.annual) .annual { display: none; }
   </style>
   <script defer type="module" src="assets/js/app.js"></script>
 </head>
@@ -191,7 +195,7 @@
     </div>
   </section>
 
-  <!-- PRICING – single row, working 11-month annual -->
+  <!-- PRICING – single row, NO "/mo" text, 11-month annual -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
@@ -209,7 +213,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">750</span>
-            <span>/mo</span>
           </p>
           <p class="note">Perfect for sub-£1m turnover</p>
           <ul>
@@ -229,7 +232,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">1250</span>
-            <span>/mo</span>
           </p>
           <p class="note">For £1-5m turnover</p>
           <ul>
@@ -247,7 +249,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">2000</span>
-            <span>/mo</span>
           </p>
           <p class="note">Full finance-back-office</p>
           <ul>
@@ -265,7 +266,6 @@
           <p class="price">
             <span class="currency">£</span>
             <span class="price-value">3500</span>
-            <span>/mo</span>
           </p>
           <p class="note">For £20m+ turnover or main-contractors</p>
           <ul>
