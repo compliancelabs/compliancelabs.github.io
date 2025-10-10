@@ -15,12 +15,12 @@
     .pricing-row      { display: flex; gap: 1rem; overflow-x: auto; padding-block-end: 1rem; scroll-snap-type: x mandatory; }
     .pricing-row .price-card {
       flex: 1 1 0;
-      min-width: 240px;               /* tighter */
+      min-width: 240px;
       scroll-snap-align: start;
-      padding: 1.5rem 1.25rem;        /* less padding */
-      font-size: 0.9375rem;           /* 15px */
+      padding: 1.5rem 1.25rem;
+      font-size: 0.9375rem;
     }
-    .pricing-row .price-card .price { font-size: 1.75rem; } /* smaller price */
+    .pricing-row .price-card .price { font-size: 1.75rem; }
     .pricing-row .price-card ul     { margin-block: 1rem 1.25rem; }
     .pricing-row .price-card li     { margin-block-end: 0.35rem; }
 
@@ -33,7 +33,7 @@
       padding-block-end: 1rem;
     }
     .testi-scroll blockquote {
-      flex: 1 0 320px;                /* fixed width for smooth scroll */
+      flex: 1 0 320px;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
@@ -42,6 +42,9 @@
     @media (max-width: 480px) {
       .testi-scroll blockquote { flex: 1 0 260px; }
     }
+
+    /* ---- BIGGER CALENDLY ---- */
+    .calendly-inline-widget { min-height: 680px; }
   </style>
   <script defer type="module" src="assets/js/app.js"></script>
 </head>
@@ -78,7 +81,7 @@
         <a href="#health-check" class="btn btn-large btn-primary">Book your £19 Health-Check</a>
       </div>
       <div class="hero-calendly">
-        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-height:640px;"></div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min"></div>
       </div>
     </div>
   </section>
@@ -97,7 +100,7 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- SERVICES – sharper copy -->
   <section id="services" class="services">
     <div class="container">
       <h2 class="section-title">How we remove your biggest headaches</h2>
@@ -105,17 +108,17 @@
         <article>
           <img src="assets/img/icon-shield.svg" alt="" width="48" height="48">
           <h3>Compliance Shield</h3>
-          <p>CIS & VAT reverse-charge registration, monthly verifications and HMRC-ready reports—avoid £3 000+ fines.</p>
+          <p>We verify every subbie, file CIS & VAT reverse-charge returns, and keep your HMRC inbox at zero—so you avoid £3k+ fines and sleep at night.</p>
         </article>
         <article>
           <img src="assets/img/icon-chase.svg" alt="" width="48" height="48">
           <h3>Payment Chase</h3>
-          <p>Systematic 4-step letter & call cycle to recover retentions or overdue invoices—no win, no fee after 30 days.</p>
+          <p>Our 4-step letter, call & solicitor escalations recover retentions and overdue invoices—no win, no fee after 30 days, cash-flow unlocked.</p>
         </article>
         <article>
           <img src="assets/img/icon-chart.svg" alt="" width="48" height="48">
-          <h3>Monthly Dashboard</h3>
-          <p>Live list of compliant vs. non-compliant subbies and aged-debt report—see your risk and cash position at a glance.</p>
+          <h3>Live Dashboard</h3>
+          <p>One login shows who’s compliant, who owes what, and what’s coming in—so you can plan purchases, payroll and projects with confidence.</p>
         </article>
       </div>
     </div>
@@ -172,6 +175,7 @@
             <li>Monthly compliance report</li>
             <li>Email support</li>
           </ul>
+          <p class="note"><strong>Does NOT include:</strong> bookkeeping, VAT returns, payroll, legal advice.</p>
           <a class="btn btn-outline" href="#health-check">Get started</a>
         </article>
 
@@ -210,10 +214,10 @@
           <p class="price"><span class="currency">£</span><span class="amount" data-monthly="3500" data-annual="35000">3500</span><span>/mo</span></p>
           <p class="note">For £20m+ turnover or main-contractors</p>
           <ul>
-            <li>White-label portal for your supply-chain</li>
+            <li>Unlimited sub-contractor verifications</li>
             <li>£50k debt limit per case</li>
-            <li>24h SLA phone & Slack</li>
-            <li>Monthly exec briefing + on-site team training</li>
+            <li>4h SLA phone & Slack</li>
+            <li>Quarterly strategy call + risk forecast</li>
           </ul>
           <a class="btn btn-outline" href="#health-check">Get started</a>
         </article>
