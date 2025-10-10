@@ -45,6 +45,49 @@
 
     /* ---- BIGGER CALENDLY ---- */
     .calendly-inline-widget { min-height: 680px; }
+
+    /* ---- TOGGLE SWITCH ---- */
+    .toggle-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      margin-block-end: 2rem;
+    }
+    .toggle-label input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .switch {
+      position: relative;
+      width: 3rem;
+      height: 1.5rem;
+      background: #ccc;
+      border-radius: 99px;
+      transition: background 0.2s;
+    }
+    .switch::after {
+      content: "";
+      position: absolute;
+      inset: 0.1875rem;
+      width: 1.125rem;
+      height: 1.125rem;
+      background: var(--white);
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    input:checked + .switch {
+      background: var(--primary);
+    }
+    input:checked + .switch::after {
+      transform: translateX(1.5rem);
+    }
+
+    /* ---- ANNUAL PRICING HIDDEN BY DEFAULT ---- */
+    .pricing-row.annual .monthly { display: none; }
+    .pricing-row:not(.annual) .annual { display: none; }
   </style>
   <script defer type="module" src="assets/js/app.js"></script>
 </head>
@@ -100,7 +143,7 @@
     </div>
   </section>
 
-  <!-- SERVICES – sharper copy -->
+  <!-- SERVICES -->
   <section id="services" class="services">
     <div class="container">
       <h2 class="section-title">How we remove your biggest headaches</h2>
@@ -152,7 +195,7 @@
     </div>
   </section>
 
-  <!-- PRICING – single row, smaller cards -->
+  <!-- PRICING – single row, working toggle -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
@@ -167,7 +210,12 @@
         <!-- Starter -->
         <article class="price-card">
           <h3>Starter</h3>
-          <p class="price"><span class="currency">£</span><span class="amount" data-monthly="750" data-annual="7500">750</span><span>/mo</span></p>
+          <p class="price">
+            <span class="currency">£</span>
+            <span class="amount monthly" data-monthly="750">750</span>
+            <span class="amount annual"  data-annual="7500">625</span>
+            <span>/mo</span>
+          </p>
           <p class="note">Perfect for sub-£1m turnover</p>
           <ul>
             <li>Up to 15 subbies verified /mo</li>
@@ -183,7 +231,12 @@
         <article class="price-card featured">
           <span class="badge">Most popular</span>
           <h3>Pro</h3>
-          <p class="price"><span class="currency">£</span><span class="amount" data-monthly="1250" data-annual="12500">1250</span><span>/mo</span></p>
+          <p class="price">
+            <span class="currency">£</span>
+            <span class="amount monthly" data-monthly="1250">1250</span>
+            <span class="amount annual"  data-annual="12500">1042</span>
+            <span>/mo</span>
+          </p>
           <p class="note">For £1-5m turnover</p>
           <ul>
             <li>Up to 35 subbies verified /mo</li>
@@ -197,7 +250,12 @@
         <!-- Growth -->
         <article class="price-card">
           <h3>Growth</h3>
-          <p class="price"><span class="currency">£</span><span class="amount" data-monthly="2000" data-annual="20000">2000</span><span>/mo</span></p>
+          <p class="price">
+            <span class="currency">£</span>
+            <span class="amount monthly" data-monthly="2000">2000</span>
+            <span class="amount annual"  data-annual="20000">1667</span>
+            <span>/mo</span>
+          </p>
           <p class="note">Full finance-back-office</p>
           <ul>
             <li>Unlimited subbies</li>
@@ -211,7 +269,12 @@
         <!-- Enterprise -->
         <article class="price-card">
           <h3>Enterprise</h3>
-          <p class="price"><span class="currency">£</span><span class="amount" data-monthly="3500" data-annual="35000">3500</span><span>/mo</span></p>
+          <p class="price">
+            <span class="currency">£</span>
+            <span class="amount monthly" data-monthly="3500">3500</span>
+            <span class="amount annual"  data-annual="35000">2917</span>
+            <span>/mo</span>
+          </p>
           <p class="note">For £20m+ turnover or main-contractors</p>
           <ul>
             <li>Unlimited sub-contractor verifications</li>
@@ -225,7 +288,7 @@
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- FAQ – 5 items -->
   <section id="faq" class="faq">
     <div class="container">
       <h2 class="section-title">Questions we get asked</h2>
@@ -240,6 +303,14 @@
       <details>
         <summary>Are you FCA-regulated?</summary>
         <p>No—our service is administrative. We do not offer credit or insurance products.</p>
+      </details>
+      <details>
+        <summary>Can we upgrade or downgrade mid-contract?</summary>
+        <p>Yes. Change tier any time from your dashboard; adjustments are pro-rated to the day.</p>
+      </details>
+      <details>
+        <summary>Is there a setup fee?</summary>
+        <p>Zero. We even import your existing subbie list during onboarding at no cost.</p>
       </details>
     </div>
   </section>
@@ -280,6 +351,13 @@
       });
       io.observe(widget);
     }
+
+    /* ---- MONTHLY / ANNUAL TOGGLE ---- */
+    const toggle  = document.getElementById('annualToggle');
+    const grid    = document.getElementById('pricingGrid');
+    toggle?.addEventListener('change', () => {
+      grid.classList.toggle('annual', toggle.checked);
+    });
   </script>
 </body>
 </html>
