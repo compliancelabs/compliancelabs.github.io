@@ -10,6 +10,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ---- PRICING ROW ---- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 60rem) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 36rem) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---- TESTIMONIAL GRID ---- */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    @media (max-width: 48rem) {
+      .testi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
   <script defer type="module" src="assets/js/app.js"></script>
 </head>
 
@@ -58,7 +88,6 @@
         <span><img src="assets/img/logo-hodgson.svg" alt="Hodgson Builders"></span>
         <span><img src="assets/img/logo-mjs.svg" alt="MJS Contractors"></span>
         <span><img src="assets/img/logo-reef.svg" alt="Reef Developments"></span>
-        <!-- duplicate set for seamless loop -->
         <span aria-hidden="true"><img src="assets/img/logo-abc.svg" alt=""></span>
         <span aria-hidden="true"><img src="assets/img/logo-hodgson.svg" alt=""></span>
       </div>
@@ -89,7 +118,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS – 4 pure-text cards -->
+  <!-- TESTIMONIALS – 4 text only -->
   <section class="testimonials">
     <div class="container">
       <h2 class="section-title">What builders say about us</h2>
@@ -105,7 +134,7 @@
         </blockquote>
 
         <blockquote>
-          <p>“We reclaimed £127k of retentions in Q1 alone—cash-flow stress gone overnight. Wish we’d signed up sooner.”</p>
+          <p>“We reclaimed £127k of retentions in Q1 alone—cash-flow stress gone overnight.”</p>
           <cite>— David Reef, Reef Developments – £25m turnover</cite>
         </blockquote>
 
@@ -117,7 +146,7 @@
     </div>
   </section>
 
-  <!-- PRICING (4 tiers) -->
+  <!-- PRICING – 4 cards same row -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
