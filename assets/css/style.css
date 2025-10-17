@@ -118,7 +118,7 @@ body { padding-top: 80px; }
 .demo-wrapper video, .demo-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .silent-hook { text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; }
 
-/* ---------- PRICING – BADGE ABOVE CARD ---------- */
+/* ---------- PRICING – BADGE ABOVE CARD & ALIGNMENT FIX ---------- */
 .pricing-row {
   display: flex;
   gap: 1rem;
@@ -128,18 +128,24 @@ body { padding-top: 80px; }
   flex-wrap: nowrap;
 }
 .pricing-row .price-card {
+  display: flex; /* ENABLE FLEX LAYOUT */
+  flex-direction: column; /* STACK ITEMS VERTICALLY */
+  justify-content: space-between; /* PUSHES BUTTON TO THE BOTTOM */
   flex: 1 1 0;
   min-width: 260px;
   scroll-snap-align: start;
   position: relative;
-  padding: 2.6rem 1.5rem 1.5rem; /* 4 % taller */
+  padding: 2.6rem 1.5rem 1.5rem; 
   font-size: 0.9375rem;
   border-radius: 12px;
   background: #fff;
   border: 1px solid #e5e7eb;
 }
 .pricing-row .price-card .price { font-size: 1.75rem; margin-block: 0.5rem 0.25rem; }
-.pricing-row .price-card ul { margin-block: 1rem 1.25rem; }
+.pricing-row .price-card ul { 
+    margin-block: 1rem 1.25rem; 
+    flex-grow: 1; /* PUSHES CONTENT AWAY FROM THE BUTTON */
+}
 .pricing-row .price-card li { margin-block-end: 0.35rem; }
 /* badge sits -2.2 rem above the card top */
 .badge {
