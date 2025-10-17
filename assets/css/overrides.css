@@ -1,161 +1,310 @@
-/* ---------- CSS VARIABLES ---------- */
-:root {
-  --primary: #10b981;   /* green */
-  --accent: #059669;    /* darker green */
-  --white: #ffffff;
-  --grey: #f9fafb;
-  --radius: 8px;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Compliance Labs – CIS Tax Return Service for Subcontractors | Sub-contractor Compliance & Debt Chasing for UK Construction SMEs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fixed-fee compliance & retentions chasing for UK construction SMEs. Plans from £750/mo. Book a £19 Compliance-Check today.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/overrides.css">
+  <script defer type="module" src="assets/js/app.js"></script>
+</head>
 
-/* ---------- BASIC RESET ---------- */
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-family: 'Inter', sans-serif; line-height: 1.5; color: #111827; }
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="Compliance Labs home">
+        <img src="assets/img/logo.svg" alt="Compliance Labs logo" width="140" height="32">
+      </a>
+      <button class="toggler" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-links" class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#compliance-check" class="btn btn-primary">Compliance-Check</a>
+      </nav>
+    </div>
+  </header>
 
-/* ---------- FIXED NAV + SHADOW ON SCROLL ---------- */
-body { padding-top: 80px; }
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: box-shadow 0.2s;
-}
-.navbar.shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  <!-- PROOF BAR -->
+  <div class="proof-bar">
+    <p><strong>£4.2 m</strong> recovered • <strong>1,847</strong> subbies verified • <strong>0</strong> HMRC fines for clients • Next slot today at 3:00 pm – only 3 left this week</p>
+  </div>
 
-/* ---------- HERO ---------- */
-.proof-bar {
-  background: var(--accent);
-  color: var(--white);
-  text-align: center;
-  padding: 0.5rem;
-  font-size: 0.875rem;
-}
-.star-row { display: flex; gap: 0.25rem; margin-block-end: 1rem; }
-.star-row svg { width: 16px; height: 16px; fill: #f59e0b; }
-.hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-block-start: 1.5rem; }
-.btn-outline-white {
-  border: 2px solid var(--white);
-  color: var(--white);
-  background: transparent;
-}
-.btn-outline-white:hover { background: var(--white); color: var(--primary); }
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="star-row" aria-label="5 star rating">
+          <svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg>
+          <span>&nbsp;4.9/5 from 127 reviews</span>
+        </div>
+        <h1 class="hero-title">Stay HMRC-safe<br>and get paid faster</h1>
+        <p class="hero-lead">We verify every subbie, file CIS & VAT returns and chase late payments—so UK construction SMEs avoid £3 k+ fines and unlock cash.</p>
+        <div class="hero-stats">
+          <div><span class="counter" data-target="2500000">0</span><small>£ retained/chased</small></div>
+          <div><span class="counter" data-target="97">0</span><small>% success rate</small></div>
+        </div>
+        <div class="hero-cta-group">
+          <a href="#compliance-check" class="btn btn-large btn-primary">Book £19 Compliance-Check</a>
+          <a href="#demo" class="btn btn-large btn-outline-white">Watch 60-sec demo</a>
+        </div>
+      </div>
+      <div class="hero-calendly">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" data-resize="true" style="min-width:320px;height:680px;"></div>
+      </div>
+    </div>
+  </section>
 
-/* ---------- HERO GRID – CALENDLY ON THE RIGHT ---------- */
-.hero-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
-}
-.hero-text   { flex: 1 1 60%; }
-.hero-calendly { flex: 1 1 36%; order: 2; } /* ← right column */
-@media (max-width: 768px) {
-  .hero-text, .hero-calendly { flex: 1 1 100%; order: 0; }
-}
+  <!-- TRUST BAR -->
+  <section class="trust" aria-label="Companies we help">
+    <div class="container">
+      <div class="marquee">
+        <span><img src="assets/img/logo-abc.svg" alt="ABC Construction"></span>
+        <span><img src="assets/img/logo-hodgson.svg" alt="Hodgson Builders"></span>
+        <span><img src="assets/img/logo-mjs.svg" alt="MJS Contractors"></span>
+        <span><img src="assets/img/logo-reef.svg" alt="Reef Developments"></span>
+        <span aria-hidden="true"><img src="assets/img/logo-abc.svg" alt=""></span>
+        <span aria-hidden="true"><img src="assets/img/logo-hodgson.svg" alt=""></span>
+      </div>
+    </div>
+  </section>
 
-/* ---------- PRICING – BADGE OVERLAP ---------- */
-.pricing-row {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-block-end: 1rem;
-  scroll-snap-type: x mandatory;
-  flex-wrap: nowrap;
-}
-.pricing-row .price-card {
-  flex: 1 1 0;
-  min-width: 260px;
-  scroll-snap-align: start;
-  position: relative;
-  padding: 2.6rem 1.5rem 1.5rem; /* 4 % taller */
-  font-size: 0.9375rem;
-  border-radius: 12px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-}
-.pricing-row .price-card .price { font-size: 1.75rem; margin-block: 0.5rem 0.25rem; }
-.pricing-row .price-card ul { margin-block: 1rem 1.25rem; }
-.pricing-row .price-card li { margin-block-end: 0.35rem; }
-/* badge sits -2.2 rem above the card top */
-.badge {
-  position: absolute;
-  top: -2.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.35rem 1rem;
-  border-radius: 99px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.overage-note { font-size: 0.75rem; color: #6b7280; margin-block-start: 0.5rem; }
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">How we remove your biggest headaches</h2>
+      <div class="service-grid">
+        <article>
+          <img src="assets/img/icon-shield.svg" alt="" width="48" height="48">
+          <h3>Compliance Shield</h3>
+          <p>We verify every subbie, file CIS & VAT reverse-charge returns, and keep your HMRC inbox at zero—so you avoid £3k+ fines and sleep at night.</p>
+        </article>
+        <article>
+          <img src="assets/img/icon-chase.svg" alt="" width="48" height="48">
+          <h3>Payment Chase</h3>
+          <p>Our 5-step letter, call & solicitor escalations and further processing recover retentions and overdue invoices, cash-flow unlocked.</p>
+        </article>
+        <article>
+          <img src="assets/img/icon-chart.svg" alt="" width="48" height="48">
+          <h3>Live Dashboard</h3>
+          <p>One login shows who’s compliant, who owes what, and what’s coming in—so you can plan purchases, payroll and projects with confidence.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-/* ---------- TRUST BADGES ---------- */
-.trust-badges { display: flex; gap: 1rem; justify-content: center; align-items: center; margin-block: 1rem 2rem; flex-wrap: wrap; }
-.trust-badges img { height: 24px; width: auto; }
+  <!-- TESTIMONIALS – horizontal scroll -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Businesses say about us</h2>
+      <div class="testi-scroll">
+        <blockquote id="testimonial-reel">
+          <p>“Compliance Labs spotted £9k of unverified subbies in one week—saved us from a HMRC penalty.”</p>
+          <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
+        </blockquote>
 
-/* ---------- TESTIMONIALS AUTO-SCROLL ---------- */
-.testi-scroll { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-block-end: 1rem; animation: scroll 30s linear infinite; }
-.testi-scroll blockquote { flex: 1 0 360px; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: space-between; }
-@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-360px * 4 - 1.5rem * 4)); } }
-@media (max-width: 480px) { .testi-scroll blockquote { flex: 1 0 300px; } }
+        <blockquote>
+          <p>“They collected £48k of 90-day retentions within 40 days. Unreal ROI.”</p>
+          <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
+        </blockquote>
 
-/* ---------- DEMO ---------- */
-#demo { padding-block: 4rem 2rem; background: var(--grey); }
-.demo-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius); max-width: 850px; margin-inline: auto; }
-.demo-wrapper video, .demo-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.silent-hook { text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; }
+        <blockquote>
+          <p>“We reclaimed £127k of retentions in Q1 alone—cash-flow stress gone overnight.”</p>
+          <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
+        </blockquote>
 
-/* ---------- CALENDLY ---------- */
-.calendly-inline-widget { min-height: 680px; height: 680px !important; width: 100% !important; }
+        <blockquote>
+          <p>“On-site audit passed with zero findings for the first time in 8 years. The board is delighted.”</p>
+          <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
 
-/* ---------- CTA ---------- */
-.cta .btn-large { margin-top: 1rem; }
+  <!-- 60-SEC DEMO SECTION -->
+  <section id="demo" class="container" style="padding-block:4rem 2rem;">
+    <h2 class="section-title">See it in action (60 seconds)</h2>
+    <div class="demo-wrapper">
+        <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
+            <source src="assets/video/60sec-demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <p class="silent-hook">No sound? No problem—captions on.</p>
+    <p style="text-align:center;margin-top:1rem;">No time to watch? <a href="#compliance-check">Book the £19 Compliance-Check</a></p>
+  </section>
 
-/* ---------- FOOTER – EXTRA BREATHING ROOM ---------- */
-.cta + footer { margin-top: 3rem; }
+  <!-- PRICING – SAME ROW (no wrap) + UPLIFT + overage notes -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <label class="toggle-label">
+        <span>Monthly</span>
+        <input type="checkbox" id="annualToggle" aria-label="Show annual pricing">
+        <span class="switch"></span>
+        <span>Annual <small>(2 months free)</small></span>
+      </label>
 
-/* ---------- SEO HIDDEN ---------- */
-.seo-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+      <!-- TRUST BADGES -->
+      <div class="trust-badges">
+        <img src="assets/img/badges/stripe.svg" alt="Stripe secured">
+        <img src="assets/img/badges/pci.svg" alt="PCI compliant">
+        <img src="assets/img/badges/gdpr.svg" alt="GDPR compliant">
+      </div>
 
-/* ---------- NAV TOGGLE (mobile) ---------- */
-.toggler { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-.toggler span { display: block; width: 24px; height: 3px; margin: 4px 0; background: #111827; transition: 0.3s; }
-@media (max-width: 768px) {
-  .toggler { display: block; }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    background: #fff;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  }
-  .nav-links.open { display: flex; }
-}
+      <p class="risk-line" style="text-align:center;font-size:0.875rem;color:#6b7280;margin-block-end:2rem;">Cancel anytime.</p>
 
-/* ---------- FADE-UP ON SCROLL ---------- */
-.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
+      <div id="pricingGrid" class="pricing-row">
+        <!-- Starter £750 – NO CHANGE -->
+        <article class="price-card" data-monthly="750" data-annual="8250">
+          <h3>Starter</h3>
+          <p class="price"><span class="currency">£</span><span class="price-value">750</span></p>
+          <p class="note">Perfect for sub-£1m turnover</p>
+          <ul>
+            <li>Up to 10 subbies verified /mo</li>
+            <li>Max £10k per debt chased</li>
+            <li>Monthly compliance report</li>
+            <li>Email support</li>
+          </ul>
+          <p class="note"><strong>Does NOT include:</strong> bookkeeping, VAT returns, payroll, legal advice.</p>
+          <p class="overage-note">Extra verifications £5 each • extra £10k debt chased £150</p>
+          <a class="btn btn-outline" href="#compliance-check">Get started</a>
+        </article>
 
-/* ---------- SMOOTH SCROLL FOR ANCHOR LINKS ---------- */
-html { scroll-behavior: smooth; }
+        <!-- Pro £1,495 (was £1,250) -->
+        <article class="price-card" data-monthly="1495" data-annual="16445">
+          <span class="badge">Most popular</span>
+          <h3>Pro</h3>
+          <p class="price"><span class="currency">£</span><span class="price-value">1,495</span></p>
+          <p class="note">For £1-5m turnover</p>
+          <ul>
+            <li>Up to 40 subbies verified /mo</li>
+            <li>Max £25k per debt chased (5 concurrent)</li>
+            <li>Weekly reports + phone support</li>
+            <li>Portal access</li>
+          </ul>
+          <p class="overage-note">Extra verifications £5 each • extra £10k debt chased £150</p>
+          <a class="btn btn-primary" href="#compliance-check">Get started</a>
+        </article>
 
-/* ---------- COUNTERS (prefers-reduced-motion safe) ---------- */
-.counter { display: inline-block; }
-@media (prefers-reduced-motion: no-preference) {
-  .counter {
-    animation: count-up 1.5s ease-out forwards;
-    animation-range: entry 0% cover 40%;
-  }
-  @keyframes count-up {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-}
+        <!-- Growth £2,750 (was £2,000) -->
+        <article class="price-card" data-monthly="2750" data-annual="30250">
+          <h3>Growth</h3>
+          <p class="price"><span class="currency">£</span><span class="price-value">2,750</span></p>
+          <p class="note">Full finance-back-office</p>
+          <ul>
+            <li>Unlimited subbies</li>
+            <li>Max £100k per debt chased</li>
+            <li>Same-day reports + dedicated Slack</li>
+            <li>Quarterly on-site visit</li>
+          </ul>
+          <p class="overage-note">Extra £10k debt chased £150 • CFO call add-on £350</p>
+          <a class="btn btn-outline" href="#compliance-check">Get started</a>
+        </article>
+
+        <!-- Enterprise £4,750 (was £3,500) -->
+        <article class="price-card" data-monthly="4750" data-annual="52250">
+          <h3>Enterprise</h3>
+          <p class="price"><span class="currency">£</span><span class="price-value">4,750</span></p>
+          <p class="note">For £20m+ turnover or main-contractors</p>
+          <ul>
+            <li>Unlimited sub-contractor verifications</li>
+            <li>£250k debt limit per case</li>
+            <li>2h SLA phone & Slack</li>
+            <li>Quarterly strategy call + risk forecast</li>
+          </ul>
+          <p class="overage-note">Extra £50k debt block £500 • white-label portal £500 set-up</p>
+          <a class="btn btn-outline" href="#compliance-check">Get started</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ – 5 items -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2 class="section-title">Questions we get asked</h2>
+      <details>
+        <summary>Do you work with sole-traders or only limited companies?</summary>
+        <p>Both. We simply need a valid UTR or Company House number to verify CIS status.</p>
+      </details>
+      <details>
+        <summary>What if the debt is older than 90 days?</summary>
+        <p>We still chase, but success probability drops. We’ll advise upfront if we think legal action is smarter.</p>
+      </details>
+      <details>
+        <summary>Are you FCA-regulated?</summary>
+        <p>No—our service is administrative. We do not offer credit or insurance products.</p>
+      </details>
+      <details>
+        <summary>Can we upgrade or downgrade mid-contract?</summary>
+        <p>Yes. Change tier any time from your dashboard; adjustments are pro-rated to the day.</p>
+      </details>
+      <details>
+        <summary>Is there a setup fee?</summary>
+        <p>Zero. We even import your existing subbie list during onboarding at no cost.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="compliance-check" class="cta">
+    <div class="container">
+      <h2 class="section-title">Ready to remove compliance & cash-flow stress?</h2>
+      <p>Book your £19 CIS & Compliance-Check. We’ll audit your last 3 months and give you a fixed-price quote—no obligation.</p>
+      <a class="btn btn-large btn-primary" href="https://calendly.com/compliancelabs0/30min" target="_blank" rel="noopener">Pick a time in Calendly →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <img src="assets/img/logo.svg" alt="Compliance Labs" width="140" height="32">
+        <p>Keeping UK construction SMEs HMRC-safe and cash-flow positive.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/compliancelabs" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#icon-li"/></svg></a>
+          <a href="https://twitter.com/compliancelabs" target="_blank" rel="noopener" aria-label="Twitter"><svg><use href="#icon-tw"/></svg></a>
+          <a href="mailto:hello@compliancelabs.co.uk" aria-label="Email"><svg><use href="#icon-mail"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#services">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#compliance-check">Compliance-Check</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/27-point-compliance-checklist.pdf" target="_blank">Checklist PDF</a></li>
+          <li><a href="/calculator">CIS Calculator</a></li>
+          <li><a href="/webinar">Free Webinar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>London, UK<br><a href="mailto:hello@compliancelabs.co.uk">hello@compliancelabs.co.uk</a></p>
+        <p><a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p>
+        <p>&copy; <span id="year"></span> Compliance Labs Ltd.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SVG SPRITE -->
+  <svg style="display:none;">
+    <symbol id="star" viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></symbol>
+    <symbol id="icon-li" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></symbol>
+    <symbol id="icon-tw" viewBox="0 0 24 24"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.83.5-1.75.85-2.72 1.05a4.92 4.92 0 00-8.384 4.482C7.69 8.095 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.
