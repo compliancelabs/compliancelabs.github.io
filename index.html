@@ -14,9 +14,136 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
   
-  <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+    /* ---- ROOT VARIABLES ---- */
+    :root{--primary:#6366F1;--accent:#10B981;--dark:#1F2937;--grey:#F8F9FC;--white:#fff;--radius:12px;--shadow:0 8px 30px rgba(0,0,0,.08);--max-width:1100px}
 
-    <link rel="icon" href="assets/img/favicon.svg">
+    /* ---- BASE & LAYOUT ---- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;font-size:18px;line-height:1.6;color:var(--dark);background:var(--grey);padding-top:80px;}
+    a{color:inherit;text-decoration:none}img{max-width:100%;display:block}ul{list-style:none}
+    .container{width:90%;max-width:var(--max-width);margin:0 auto}
+    .section-title{font-size:2.5rem;font-weight:700;text-align:center;margin-bottom:3rem}
+
+    /* ---- NAVBAR ---- */
+    .navbar{position:fixed;top:0;width:100%;background:var(--white);box-shadow:var(--shadow);z-index:1000}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand img{height:32px}
+    .toggler{display:none;flex-direction:column;gap:4px;background:none;border:none}
+    .toggler span{width:24px;height:3px;background:var(--dark);border-radius:2px}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a:hover{color:var(--primary)}
+    @media(max-width:768px){
+        .toggler{display:flex}
+        .nav-links{position:absolute;top:100%;left:0;width:100%;flex-direction:column;background:var(--white);box-shadow:var(--shadow);max-height:0;overflow:hidden;transition:.3s}
+        .nav-links.open{max-height:400px;padding:1rem 0}
+    }
+
+    /* ---- BUTTONS ---- */
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;border-radius:var(--radius);font-weight:600;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--primary);color:var(--white)}
+    .btn-primary:hover{background:#4f46e5}
+    .btn-outline{border:2px solid var(--primary);color:var(--primary);background:transparent}
+    .btn-outline:hover{background:var(--primary);color:var(--white)}
+    .btn-large{padding:1rem 2.5rem;font-size:1.1rem}
+    .btn-outline-white{border:2px solid var(--white);color:var(--white);background: transparent;}
+    .btn-outline-white:hover {background: var(--white);color: var(--primary);}
+
+    /* ---- HERO ---- */
+    .hero{padding:4rem 0;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%)}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .hero-title{font-size:3rem;font-weight:700;line-height:1.2}
+    .hero-lead{margin:1.5rem 0 2rem;font-size:1.25rem;color:#4b5563}
+    .hero-stats{display:flex;gap:2rem;margin-top:2.5rem}
+    .hero-stats div{display:flex;flex-direction:column}
+    .hero-stats span{font-size:2rem;font-weight:700;color:var(--primary)}
+    .proof-bar {background: var(--accent);color: var(--white);text-align: center;padding: 0.5rem;font-size: 0.875rem;}
+    .star-row {display: flex;gap: 0.25rem;margin-block-end: 1rem;}
+    .star-row svg {width: 16px;height: 16px;fill: #f59e0b;}
+    .hero-cta-group {display: flex;gap: 1rem;flex-wrap: wrap;margin-block-start: 1.5rem;}
+    .hero-calendly { flex: 1 1 36%; order: 2; }
+    @media(max-width:968px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero-title{font-size:2.25rem} .hero-calendly { flex: 1 1 100%; order: 0; } }
+    @media(max-width:768px){.hero-text, .hero-calendly { flex: 1 1 100%; order: 0; } }
+
+    /* ---- CALENDLY FIX (Fill Container) ---- */
+    .calendly-inline-widget{
+        border-radius:var(--radius);
+        box-shadow:0 8px 30px rgba(0,0,0,.08);
+        margin:2rem auto;
+        max-width:520px;
+        width:100%;
+        min-height:680px;
+        height: 680px; 
+        position: relative;
+        overflow: hidden;
+    }
+    .calendly-inline-widget iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; 
+    }
+
+    /* ---- TRUST BAR ---- */
+    .trust{padding:2rem 0;background:var(--white)}.marquee{display:flex;gap:3rem;overflow:hidden;animation:scroll 25s linear infinite}.marquee span{flex:0 0 auto;height:40px}.marquee img{height:100%;width:auto;filter:grayscale(100%);opacity:.7}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ---- TESTIMONIALS ---- */
+    .testimonials{padding:5rem 0}.testi-scroll{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-block-end:1rem}.testi-scroll blockquote{flex:1 0 320px;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between}blockquote{background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow)}blockquote p{font-style:italic;margin-bottom:1rem}cite{font-weight:600;color:var(--primary)}
+
+    /* ---- SERVICES ---- */
+    .services{padding:5rem 0}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;text-align:center}.service-grid article{background:var(--white);padding:2.5rem 2rem;border-radius:var(--radius);box-shadow:var(--shadow)}.service-grid img{margin:0 auto 1.5rem}@media(max-width:768px){.service-grid{grid-template-columns:1fr}}
+
+    /* ---- PRICING FIXES (Includes Button Alignment Fix) ---- */
+    .pricing{padding:5rem 0}.pricing-row{display:flex;gap:1rem;overflow-x:auto;padding-block-end:1rem;scroll-snap-type:x mandatory;flex-wrap:nowrap}.pricing-row .price-card{
+        display: flex; /* Key to column layout */
+        flex-direction: column; /* Key to column layout */
+        justify-content: space-between; /* Pushes button to the bottom */
+        flex:1 1 0;min-width:260px;scroll-snap-align:start;position:relative;padding:2.6rem 1.5rem 1.5rem;font-size:0.9375rem;border-radius:12px;background:#fff;border:1px solid #e5e7eb}.price-card.featured{border:2px solid var(--primary)}.price-card .badge{position:absolute;top:-2.2rem;left:50%;transform:translateX(-50%);background:var(--primary);color:var(--white);padding:.35rem 1rem;border-radius:99px;font-size:.75rem;font-weight:600;white-space:nowrap}.price-card h3{margin-bottom:.5rem}.price-card .price{font-size:1.75rem;font-weight:700;margin-block:0.5rem 0.25rem}.price-card .price span{font-size:1rem;font-weight:400;color:#6b7280}.price-card ul{margin-block:1rem 1.25rem;flex-grow: 1; /* Allows list to take up available space */}.price-card li{position:relative;padding-left:1.5rem;margin-bottom:.5rem}.price-card li::before{content:"";position:absolute;left:0;top:.5rem;width:12px;height:12px;background:var(--accent);border-radius:50%}.price-card .note{font-size:.875rem;color:#6b7280;margin-bottom:1.5rem}.overage-note{font-size:0.75rem;color:#6b7280;margin-block-start:0.5rem}.trust-badges{display:flex;gap:1rem;justify-content:center;align-items:center;margin-block:1rem 2rem;flex-wrap:wrap}.trust-badges img{height:24px;width:auto}.toggle-wrap{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:2rem;font-size:1rem}.switch{position:relative;display:inline-block;width:3rem;height:1.5rem;background:#ccc;border-radius:99px;transition:.2s}.switch::after{content:"";position:absolute;inset:0.1875rem;width:1.125rem;height:1.125rem;background:var(--white);border-radius:50%;transition:.2s}input:checked+.slider{background:var(--primary)}input:checked+.slider:before{transform:translateX(1.5rem)}.annual{display:none}.toggle-label{display:inline-flex;align-items:center;justify-content:center;gap:0.75rem;cursor:pointer;margin-block-end:1rem}
+
+        /* ---- FAQ ---- */
+    .faq{padding:5rem 0}details{background:var(--white);padding:1.25rem 1.5rem;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1rem;cursor:pointer}details summary{list-style:none;font-weight:600;display:flex;justify-content:space-between;align-items:center}details summary::after{content:"+";font-size:1.25rem;color:var(--primary)}details[open] summary::after{content:"−"}details[open] p{margin-top:1rem;color:#4b5563}
+
+        /* ---- CTA ---- */
+    .cta{padding:5rem 0;background:var(--primary);color:var(--white)}.cta .btn-primary{background:var(--white);color:var(--primary)}.cta .btn-primary:hover{background:#e5e7eb}.cta .btn-large {margin-top: 1rem;}
+
+        /* ---- DEMO ---- */
+        #demo {padding-block: 4rem 2rem;background: var(--grey);}
+        .demo-wrapper {position: relative;padding-bottom: 56.25%;height: 0;overflow: hidden;border-radius: var(--radius);max-width: 850px;margin-inline: auto;}
+        .demo-wrapper video, .demo-wrapper iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+        .silent-hook {text-align: center;font-size: 0.75rem;color: #6b7280;margin-top: 0.5rem;}
+
+        /* ---- FOOTER ---- */
+    .footer{padding:2rem 0;text-align:center;font-size:.875rem;color:#9ca3af;background:#111827}footer .container{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}footer h4{color:var(--white);margin-block-end:0.75rem;font-size:1rem}footer a:hover{color:var(--white)}.socials{display:flex;gap:0.75rem;margin-block-start:1rem}.socials svg{width:20px;height:20px;fill:#9ca3af;transition:.2s}.socials a:hover svg{fill:var(--white)}@media(max-width:768px){footer .container{grid-template-columns:1fr;text-align:center}}
+        .cta + footer {margin-top: 3rem;}
+
+        /* ---- UTILITIES ---- */
+    .sticky-cta{position:fixed;bottom:0;left:0;width:100%;background:var(--primary);color:var(--white);text-align:center;padding:1rem;font-weight:600;z-index:999;display:none}@media(max-width:568px){.sticky-cta{display:block}}
+    .seo-only {position: absolute;left: -10000px;top: auto;width: 1px;height: 1px;overflow: hidden;}
+
+    /* ---- MEDIA QUERIES ---- */
+    @media(max-width:968px){
+        .hero-grid{grid-template-columns:1fr;text-align:center}
+        .hero-title{font-size:2.25rem}
+        .pricing-grid{grid-template-columns:1fr 1fr}
+        .hero-text, .hero-calendly { flex: 1 1 100%; order: 0; }
+    }
+    @media(max-width:768px){
+        .toggler{display:flex}
+        .nav-links{position:absolute;top:100%;left:0;width:100%;flex-direction:column;background:var(--white);box-shadow:var(--shadow);max-height:0;overflow:hidden;transition:.3s}
+        .nav-links.open{max-height:400px;padding:1rem 0}
+        .hero-grid{grid-template-columns:1fr;text-align:center}
+        .pricing-grid{grid-template-columns:1fr 1fr}
+        .hero-text, .hero-calendly { flex: 1 1 100%; order: 0; }
+    }
+    @media(max-width:568px){
+        .pricing-grid{grid-template-columns:1fr}
+    }
+
+    /* ---- CSS for Pricing Toggle (Added here to ensure display) ---- */
+    .annual { display: none; } /* Ensures annual prices are hidden by default */
+  </style>
+      <link rel="icon" href="assets/img/favicon.svg">
 
     <script type="application/ld+json">
   {
@@ -322,7 +449,7 @@
   </svg>
 
   <script>
-    /* ---- Calendly Lazy-Load (Functionality provided by Calendly's script) ---- */
+    /* ---- Calendly Lazy-Load ---- */
     const widget = document.querySelector('.calendly-inline-widget');
     if (widget && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries, ob) => {
@@ -346,14 +473,14 @@
     function setPricing(annual) {
       grid.querySelectorAll('.price-card').forEach(card => {
         const monthly = Number(card.dataset.monthly);
-        // Annual is 12 months, but charged for 10 (2 months free)
+        // Annual total is 10 months of payment (2 months free)
         const annualPrice = (monthly * 10) / 12; 
         
         const priceValueSpan = card.querySelector('.price-value');
         const priceNoteSpan = card.querySelector('.price-note-annual');
         
         if (annual) {
-          // Display the actual monthly average cost
+          // Display the annual calculation
           priceValueSpan.textContent = annualPrice.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           priceNoteSpan.textContent = '/mo (billed annually)';
           
@@ -365,14 +492,14 @@
       });
     }
     
-    // Initialize pricing toggle logic
+    // Initialize pricing toggle and counters
     document.addEventListener('DOMContentLoaded', () => {
-        // Find all price cards and adjust their internal HTML structure for the new logic
+        // Initial Price Card setup
         grid.querySelectorAll('.price-card').forEach(card => {
             const priceDiv = card.querySelector('.price');
             const monthlyPrice = card.dataset.monthly;
             
-            // Reconstruct the HTML of the price div to be compatible with the JS logic
+            // Reconstruct the HTML of the price div for JS compatibility
             priceDiv.innerHTML = `
                 <span class="currency">£</span>
                 <span class="price-value">${Number(monthlyPrice).toLocaleString()}</span>
@@ -380,6 +507,7 @@
             `;
         });
         
+        // Toggle Listener
         const toggle = document.getElementById('annualToggle');
         toggle.addEventListener('change', () => setPricing(toggle.checked));
         setPricing(false); // Init to Monthly
@@ -387,17 +515,19 @@
         // Navigation toggle for mobile
         const navLinks = document.getElementById('nav-links');
         const navToggle = document.querySelector('.toggler');
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
-        });
+        if (navToggle) {
+          navToggle.addEventListener('click', () => {
+              navLinks.classList.toggle('open');
+              navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+          });
+        }
         
-        // Counter animation (assuming app.js might be missing, adding basic counter logic here)
+        // Counter animation
         document.querySelectorAll('.counter').forEach(counter => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText.replace(/,/g, ''); // Remove commas for calculation
-                const speed = 200; // Adjust speed as needed
+                const count = +counter.innerText.replace(/,/g, '');
+                const speed = 200;
                 const inc = target / speed;
                 
                 if (count < target) {
@@ -409,11 +539,10 @@
             };
             updateCount();
         });
+        
+        // Year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     });
-    
-
-    /* ---- YEAR IN FOOTER ---- */
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
