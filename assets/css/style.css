@@ -88,28 +88,29 @@ body { padding-top: 80px; }
   gap: 2rem;
 }
 
-/* ---------- TESTIMONIALS – HORIZONTAL SCROLL ---------- */
+/* ---------- TESTIMONIALS FIX (STATIC GRID) ---------- */
+.testimonials .container {
+    max-width: 1300px; /* Wider container for testimonials */
+}
 .testi-scroll {
-  display: flex;
+  /* Removed horizontal scroll properties */
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
   padding-block-end: 1rem;
-  animation: scroll 30s linear infinite;
+  overflow: visible; /* Prevents scrollbar */
+  animation: none; /* Stops the animation */
 }
 .testi-scroll blockquote {
-  flex: 1 0 360px;
-  scroll-snap-align: start;
+  /* Removed scroll-snap and fixed widths */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-@keyframes scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(calc(-360px * 4 - 1.5rem * 4)); }
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Added subtle shadow */
+  border: 1px solid #E5E7EB; /* Subtle border */
 }
 @media (max-width: 480px) {
-  .testi-scroll blockquote { flex: 1 0 300px; }
+  .testi-scroll blockquote { flex: 1 0 100%; }
 }
 
 /* ---------- DEMO ---------- */
@@ -118,7 +119,12 @@ body { padding-top: 80px; }
 .demo-wrapper video, .demo-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .silent-hook { text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; }
 
-/* ---------- PRICING – BADGE ABOVE CARD & ALIGNMENT FIX ---------- */
+/* ---------- PRICING – ISOLATION & ALIGNMENT FIX ---------- */
+.pricing { 
+    padding: 5rem 0; 
+    background: #F4F4F4; /* Light background to visually isolate the section */
+    border-top: 1px solid #E5E7EB;
+}
 .pricing-row {
   display: flex;
   gap: 1rem;
@@ -128,25 +134,30 @@ body { padding-top: 80px; }
   flex-wrap: nowrap;
 }
 .pricing-row .price-card {
-  display: flex; /* ENABLE FLEX LAYOUT */
-  flex-direction: column; /* STACK ITEMS VERTICALLY */
-  justify-content: space-between; /* PUSHES BUTTON TO THE BOTTOM */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; /* ALIGN BUTTONS TO BOTTOM */
+  
   flex: 1 1 0;
   min-width: 260px;
   scroll-snap-align: start;
   position: relative;
+  
+  /* CONTRAST & BORDER STYLING */
   padding: 2.6rem 1.5rem 1.5rem; 
   font-size: 0.9375rem;
   border-radius: 12px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--white); /* White background for contrast */
+  border: 1px solid #E5E7EB; /* Subtle light grey border */
 }
+
 .pricing-row .price-card .price { font-size: 1.75rem; margin-block: 0.5rem 0.25rem; }
 .pricing-row .price-card ul { 
     margin-block: 1rem 1.25rem; 
-    flex-grow: 1; /* PUSHES CONTENT AWAY FROM THE BUTTON */
+    flex-grow: 1; /* PUSHES BUTTON DOWN */
 }
 .pricing-row .price-card li { margin-block-end: 0.35rem; }
+
 /* badge sits -2.2 rem above the card top */
 .badge {
   position: absolute;
