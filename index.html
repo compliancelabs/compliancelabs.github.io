@@ -9,112 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- 1.  load the original stylesheet first  -->
+  <!-- 1.  original stylesheet (optional safety)  -->
   <link rel="stylesheet" href="assets/css/style.css">
-  <!-- 2.  our overrides come AFTER so they win  -->
-  <style>
-    /* ---------- CSS VARIABLES (add if missing) ---------- */
-    :root {
-      --primary: #10b981;   /* green */
-      --accent: #059669;    /* darker green */
-      --white: #ffffff;
-      --grey: #f9fafb;
-      --radius: 8px;
-    }
-
-    /* ---------- BASIC RESET (keeps things sane) ---------- */
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', sans-serif; line-height: 1.5; color: #111827; }
-
-    /* ---------- PUSH PAGE DOWN (fixed nav) ---------- */
-    body { padding-top: 80px; }
-    .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; }
-
-    /* ---------- HERO ---------- */
-    .proof-bar {
-      background: var(--accent);
-      color: var(--white);
-      text-align: center;
-      padding: 0.5rem;
-      font-size: 0.875rem;
-    }
-    .star-row { display: flex; gap: 0.25rem; margin-block-end: 1rem; }
-    .star-row svg { width: 16px; height: 16px; fill: #f59e0b; }
-    .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-block-start: 1.5rem; }
-    .btn-outline-white {
-      border: 2px solid var(--white);
-      color: var(--white);
-      background: transparent;
-    }
-    .btn-outline-white:hover { background: var(--white); color: var(--primary); }
-
-    /* ---------- PRICING – BADGE OVERLAP ---------- */
-    .pricing-row {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding-block-end: 1rem;
-      scroll-snap-type: x mandatory;
-      flex-wrap: nowrap;
-    }
-    .pricing-row .price-card {
-      flex: 1 1 0;
-      min-width: 260px;
-      scroll-snap-align: start;
-      position: relative;
-      padding: 2.6rem 1.5rem 1.5rem; /* 4 % taller */
-      font-size: 0.9375rem;
-      border-radius: 12px;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-    }
-    .pricing-row .price-card .price { font-size: 1.75rem; margin-block: 0.5rem 0.25rem; }
-    .pricing-row .price-card ul { margin-block: 1rem 1.25rem; }
-    .pricing-row .price-card li { margin-block-end: 0.35rem; }
-    /* badge sits -2.2 rem above the card top */
-    .badge {
-      position: absolute;
-      top: -2.2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: var(--white);
-      padding: 0.35rem 1rem;
-      border-radius: 99px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .overage-note { font-size: 0.75rem; color: #6b7280; margin-block-start: 0.5rem; }
-
-    /* ---------- TRUST BADGES ---------- */
-    .trust-badges { display: flex; gap: 1rem; justify-content: center; align-items: center; margin-block: 1rem 2rem; flex-wrap: wrap; }
-    .trust-badges img { height: 24px; width: auto; }
-
-    /* ---------- TESTIMONIALS AUTO-SCROLL ---------- */
-    .testi-scroll { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-block-end: 1rem; animation: scroll 30s linear infinite; }
-    .testi-scroll blockquote { flex: 1 0 360px; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: space-between; }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-360px * 4 - 1.5rem * 4)); } }
-    @media (max-width: 480px) { .testi-scroll blockquote { flex: 1 0 300px; } }
-
-    /* ---------- DEMO ---------- */
-    #demo { padding-block: 4rem 2rem; background: var(--grey); }
-    .demo-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius); max-width: 850px; margin-inline: auto; }
-    .demo-wrapper video, .demo-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-    .silent-hook { text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; }
-
-    /* ---------- CALENDLY ---------- */
-    .calendly-inline-widget { min-height: 680px; height: 680px !important; width: 100% !important; }
-
-    /* ---------- CTA ---------- */
-    .cta .btn-large { margin-top: 1rem; }
-
-    /* ---------- FOOTER – EXTRA BREATHING ROOM ---------- */
-    .cta + footer { margin-top: 3rem; }
-
-    /* ---------- SEO HIDDEN ---------- */
-    .seo-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
-  </style>
+  <!-- 2.  our overrides (contains every custom rule)  -->
+  <link rel="stylesheet" href="assets/css/overrides.css">
   <script defer type="module" src="assets/js/app.js"></script>
 </head>
 
@@ -247,7 +145,7 @@
     <p style="text-align:center;margin-top:1rem;">No time to watch? <a href="#compliance-check">Book the £19 Compliance-Check</a></p>
   </section>
 
-  <!-- PRICING – taller cards -->
+  <!-- PRICING – badge overlap + 4 % taller -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
@@ -360,7 +258,7 @@
     </div>
   </section>
 
-  <!-- CTA – EXTRA SPACE ABOVE BUTTON -->
+  <!-- CTA – extra space above button -->
   <section id="compliance-check" class="cta">
     <div class="container">
       <h2 class="section-title">Ready to remove compliance & cash-flow stress?</h2>
@@ -371,117 +269,6 @@
 
   <!-- FOOTER – extra bottom padding -->
   <footer style="padding-block: 4rem 3rem;">
-    <div class="container footer-grid">
-      <div>
-        <img src="assets/img/logo.svg" alt="Compliance Labs" width="140" height="32">
-        <p>Keeping UK construction SMEs HMRC-safe and cash-flow positive.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/company/compliancelabs" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#icon-li"/></svg></a>
-          <a href="https://twitter.com/compliancelabs" target="_blank" rel="noopener" aria-label="Twitter"><svg><use href="#icon-tw"/></svg></a>
-          <a href="mailto:hello@compliancelabs.co.uk" aria-label="Email"><svg><use href="#icon-mail"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#services">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#compliance-check">Compliance-Check</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/27-point-compliance-checklist.pdf" target="_blank">Checklist PDF</a></li>
-          <li><a href="/calculator">CIS Calculator</a></li>
-          <li><a href="/webinar">Free Webinar</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>London, UK<br><a href="mailto:hello@compliancelabs.co.uk">hello@compliancelabs.co.uk</a></p>
-        <p><a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p>
-        <p>&copy; <span id="year"></span> Compliance Labs Ltd.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SVG SPRITE -->
-  <svg style="display:none;">
-    <symbol id="star" viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></symbol>
-    <symbol id="icon-li" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></symbol>
-    <symbol id="icon-tw" viewBox="0 0 24 24"><path fill="currentColor" d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.83.5-1.75.85-2.72 1.05a4.92 4.92 0 00-8.384 4.482C7.69 8.095 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56-monthly="2750" data-annual="30250">
-          <h3>Growth</h3>
-          <p class="price"><span class="currency">£</span><span class="price-value">2,750</span></p>
-          <p class="note">Full finance-back-office</p>
-          <ul>
-            <li>Unlimited subbies</li>
-            <li>Max £100k per debt chased</li>
-            <li>Same-day reports + dedicated Slack</li>
-            <li>Quarterly on-site visit</li>
-          </ul>
-          <p class="overage-note">Extra £10k debt chased £150 • CFO call add-on £350</p>
-          <a class="btn btn-outline" href="#compliance-check">Get started</a>
-        </article>
-
-        <!-- Enterprise £4,750 (was £3,500) -->
-        <article class="price-card" data-monthly="4750" data-annual="52250">
-          <h3>Enterprise</h3>
-          <p class="price"><span class="currency">£</span><span class="price-value">4,750</span></p>
-          <p class="note">For £20m+ turnover or main-contractors</p>
-          <ul>
-            <li>Unlimited sub-contractor verifications</li>
-            <li>£250k debt limit per case</li>
-            <li>2h SLA phone & Slack</li>
-            <li>Quarterly strategy call + risk forecast</li>
-          </ul>
-          <p class="overage-note">Extra £50k debt block £500 • white-label portal £500 set-up</p>
-          <a class="btn btn-outline" href="#compliance-check">Get started</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ – 5 items -->
-  <section id="faq" class="faq">
-    <div class="container">
-      <h2 class="section-title">Questions we get asked</h2>
-      <details>
-        <summary>Do you work with sole-traders or only limited companies?</summary>
-        <p>Both. We simply need a valid UTR or Company House number to verify CIS status.</p>
-      </details>
-      <details>
-        <summary>What if the debt is older than 90 days?</summary>
-        <p>We still chase, but success probability drops. We’ll advise upfront if we think legal action is smarter.</p>
-      </details>
-      <details>
-        <summary>Are you FCA-regulated?</summary>
-        <p>No—our service is administrative. We do not offer credit or insurance products.</p>
-      </details>
-      <details>
-        <summary>Can we upgrade or downgrade mid-contract?</summary>
-        <p>Yes. Change tier any time from your dashboard; adjustments are pro-rated to the day.</p>
-      </details>
-      <details>
-        <summary>Is there a setup fee?</summary>
-        <p>Zero. We even import your existing subbie list during onboarding at no cost.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- CTA – extra space above button -->
-  <section id="compliance-check" class="cta">
-    <div class="container">
-      <h2 class="section-title">Ready to remove compliance & cash-flow stress?</h2>
-      <p>Book your £19 CIS & Compliance-Check. We’ll audit your last 3 months and give you a fixed-price quote—no obligation.</p>
-      <a class="btn btn-large btn-primary" href="https://calendly.com/compliancelabs0/30min" target="_blank" rel="noopener">Pick a time in Calendly →</a>
-    </div>
-  </section>
-
-  <!-- FOOTER – socials + resources -->
-  <footer>
     <div class="container footer-grid">
       <div>
         <img src="assets/img/logo.svg" alt="Compliance Labs" width="140" height="32">
