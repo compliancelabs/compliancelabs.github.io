@@ -1,4 +1,10 @@
-/* ---------- CSS VARIABLES (New Professional Palette) ---------- */
+/*
+ * Style.css
+ * Professional Styles for Compliance Labs
+ * Theme: Authority, Trust, and High Readability
+ */
+
+/* ---------- CSS VARIABLES (Professional Palette) ---------- */
 :root {
   /* Authority and Trust (Navy Blue) */
   --primary: #0f172a;   
@@ -7,47 +13,74 @@
   --white: #ffffff;
   /* Very light grey for a subtle background texture */
   --grey: #f7f9fc;
-  --radius: 6px; /* Slightly tighter radius for structure */
+  --radius: 6px; 
   --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
 }
 
-/* ---------- BASIC RESET (Standard) ---------- */
+/* ---------- BASIC RESET & TYPOGRAPHY ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-/* Use a darker body color for high-contrast, professional readability */
 body { 
   margin: 0; 
   font-family: 'Inter', sans-serif; 
   line-height: 1.6; 
-  color: #1e293b; 
+  color: #1e293b; /* Darker body text for better contrast */
+}
+/* Ensure headers are high contrast and professional */
+h1, h2, h3 { 
+  color: var(--primary); 
+  font-weight: 700; 
+  line-height: 1.2;
+}
+
+/* ---------- GLOBAL LAYOUT & PADDING FIX (The Container) ---------- */
+
+/* The max-width centers the content on large screens. */
+/* padding-inline adds padding on the left/right, preventing content from touching the screen edges. */
+.container {
+  max-width: 1280px; 
+  margin-inline: auto;
+  padding-inline: 1.5rem; /* 24px of padding on the sides */
+}
+
+/* Add vertical padding to all main sections */
+section {
+  padding-block: 4rem; /* Adds 64px of space above and below every <section> tag */
 }
 
 /* ---------- FIXED NAV (Professional & Underline-Free) ---------- */
-body { padding-top: 72px; } /* Slightly less padding for a tighter header */
+body { padding-top: 72px; } 
 .navbar { 
   position: fixed; 
   top: 0; 
   width: 100%; 
   z-index: 1000; 
-  /* Solid white background for the fixed nav */
   background: var(--white);
-  /* Subtle drop shadow for depth */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
-/* This assumes your main style.css or your HTML has a nav element with links. */
-/* You need to ensure the anchor tags in your navbar are not underlined in the base CSS. */
-/* If they are, you must add: */
+/* This class ensures the navbar content is centered and padded like the rest of the site */
+.navbar .content-wrapper { 
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+  height: 72px; 
+}
 .navbar a { 
   text-decoration: none !important; /* Forces removal of underlines */
-  font-weight: 500; /* Medium weight for professionalism */
-  color: #334155; /* Dark grey for links */
+  font-weight: 500; 
+  color: #334155; 
+  transition: color 0.2s;
 }
 .navbar a:hover {
-  color: var(--accent); /* Hover state uses the deep teal accent */
+  color: var(--accent); 
 }
 
-/* ---------- HERO (High-Contrast for Authority) ---------- */
+/* ---------- HERO ---------- */
 .proof-bar {
-  background: var(--primary); /* Use Navy Blue for authority */
+  background: var(--primary); /* Navy Blue for authority */
   color: var(--white);
   text-align: center;
   padding: 0.5rem;
@@ -55,26 +88,25 @@ body { padding-top: 72px; } /* Slightly less padding for a tighter header */
   font-weight: 500;
 }
 .star-row { display: flex; gap: 0.25rem; margin-block-end: 1rem; }
-.star-row svg { width: 18px; height: 18px; fill: #f59e0b; } /* Slightly larger stars */
+.star-row svg { width: 18px; height: 18px; fill: #f59e0b; } 
 .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-block-start: 1.5rem; }
-/* Primary CTA button (assumed to be a solid button in base CSS) */
-/* Re-style for the outline button to align with the new palette */
 .btn-outline-white {
   border: 2px solid var(--white);
   color: var(--white);
   background: transparent;
-  padding: 0.65rem 1.5rem; /* Better padding */
+  padding: 0.65rem 1.5rem; 
   border-radius: var(--radius);
+  text-decoration: none; /* Ensure no underline on outline buttons */
 }
 .btn-outline-white:hover { 
   background: var(--white); 
-  color: var(--primary); /* Hover shows Navy Blue text */
+  color: var(--primary); 
 }
 
 /* ---------- PRICING – BADGE OVERLAP (Premium Card Look) ---------- */
 .pricing-row {
   display: flex;
-  gap: 1.5rem; /* Increased gap for separation */
+  gap: 1.5rem; 
   overflow-x: auto;
   padding-block-end: 1rem;
   scroll-snap-type: x mandatory;
@@ -82,48 +114,63 @@ body { padding-top: 72px; } /* Slightly less padding for a tighter header */
 }
 .pricing-row .price-card {
   flex: 1 1 0;
-  min-width: 280px; /* Slightly wider cards for more content */
+  min-width: 280px; 
   scroll-snap-align: start;
   position: relative;
-  padding: 3rem 2rem 2rem; /* More padding/space */
+  padding: 3rem 2rem 2rem; 
   font-size: 0.9375rem;
-  border-radius: 10px; /* Softer radius */
-  background: #fff;
-  /* Replaced simple border with a subtle shadow for a premium feel */
-  border: 1px solid #e0e7ff55; /* Very light, almost transparent blue border */
+  border-radius: 10px; 
+  background: var(--white);
+  border: 1px solid #e0e7ff55; 
   box-shadow: var(--shadow-subtle); 
   transition: all 0.3s ease;
 }
 .pricing-row .price-card:hover {
-  transform: translateY(-4px); /* Subtle lift on hover */
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px); 
+  box-shadow: var(--shadow-hover);
 }
 .pricing-row .price-card .price { 
-  font-size: 2rem; /* Larger price font */
+  font-size: 2rem; 
   font-weight: 700;
-  color: var(--primary); /* Navy blue price */
+  color: var(--primary); 
   margin-block: 0.5rem 0.25rem; 
 }
-.pricing-row .price-card ul { margin-block: 1.25rem 1.5rem; }
-.pricing-row .price-card li { margin-block-end: 0.5rem; }
-/* badge sits -2.2 rem above the card top */
+.pricing-row .price-card ul { 
+  margin-block: 1.25rem 1.5rem; 
+  list-style: none; /* Clean up lists */
+  padding-left: 0;
+}
+.pricing-row .price-card li { 
+  margin-block-end: 0.5rem; 
+  /* Add a subtle checkmark/bullet to list items for professionalism (if base CSS doesn't have it) */
+  position: relative;
+  padding-left: 1.5em;
+}
+.pricing-row .price-card li::before {
+  content: '✓'; 
+  color: var(--accent); 
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+}
+
 .badge {
   position: absolute;
-  top: -2rem; /* Adjusting position slightly */
+  top: -2rem; 
   left: 50%;
   transform: translateX(-50%);
-  background: var(--accent); /* Deep Teal for the badge */
+  background: var(--accent); 
   color: var(--white);
   padding: 0.4rem 1.25rem;
   border-radius: 99px;
-  font-size: 0.8125rem; /* Slightly larger badge text */
+  font-size: 0.8125rem; 
   font-weight: 600;
   white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(15, 118, 110, 0.4); /* Shadow for badge pop */
+  box-shadow: 0 2px 4px rgba(15, 118, 110, 0.4); 
 }
 .overage-note { font-size: 0.75rem; color: #6b7280; margin-block-start: 0.5rem; }
 
-/* ---------- TRUST BADGES (Standard, but ensure high-quality SVGs are used) ---------- */
+/* ---------- TRUST BADGES ---------- */
 .trust-badges { 
   display: flex; 
   gap: 1.5rem; 
@@ -133,17 +180,16 @@ body { padding-top: 72px; } /* Slightly less padding for a tighter header */
   flex-wrap: wrap; 
 }
 .trust-badges img { 
-  height: 28px; /* Slightly larger badges for visibility */
+  height: 28px; 
   width: auto; 
-  opacity: 0.8; /* Subtle opacity for integration */
+  opacity: 0.8; 
 }
 
-/* ---------- TESTIMONIALS AUTO-SCROLL (Standard) ---------- */
-/* Background change for contrast */
-#testimonials { background: var(--grey); padding-block: 4rem; }
+/* ---------- TESTIMONIALS AUTO-SCROLL ---------- */
+#testimonials { background: var(--grey); } /* Using the subtle light grey background */
 .testi-scroll { display: flex; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-block-end: 1rem; animation: scroll 30s linear infinite; }
 .testi-scroll blockquote { 
-  flex: 1 0 380px; /* Slightly wider cards */
+  flex: 1 0 380px; 
   scroll-snap-align: start; 
   display: flex; 
   flex-direction: column; 
@@ -156,8 +202,8 @@ body { padding-top: 72px; } /* Slightly less padding for a tighter header */
 @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-380px * 4 - 2rem * 4)); } }
 @media (max-width: 480px) { .testi-scroll blockquote { flex: 1 0 320px; } }
 
-/* ---------- DEMO (Section background contrast) ---------- */
-#demo { padding-block: 4rem 2rem; background: #fff; } /* White background for demo */
+/* ---------- DEMO ---------- */
+#demo { background: var(--white); } 
 .demo-wrapper { 
   position: relative; 
   padding-bottom: 56.25%; 
@@ -166,21 +212,18 @@ body { padding-top: 72px; } /* Slightly less padding for a tighter header */
   border-radius: var(--radius); 
   max-width: 850px; 
   margin-inline: auto; 
-  /* Subtle border/shadow for video player */
   box-shadow: 0 8px 15px -5px rgba(0, 0, 0, 0.1); 
   border: 1px solid #e2e8f0;
 }
 .demo-wrapper video, .demo-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .silent-hook { text-align: center; font-size: 0.8125rem; color: #475569; margin-top: 0.75rem; }
 
-/* ---------- CALENDLY (Standard - ensure parent container is styled correctly in HTML) ---------- */
+/* ---------- CALENDLY ---------- */
 .calendly-inline-widget { min-height: 680px; height: 680px !important; width: 100% !important; }
 
-/* ---------- CTA (Standard) ---------- */
+/* ---------- CTA ---------- */
 .cta .btn-large { margin-top: 1.5rem; }
-
-/* ---------- FOOTER – EXTRA BREATHING ROOM (Standard) ---------- */
 .cta + footer { margin-top: 4rem; }
 
-/* ---------- SEO HIDDEN (Standard) ---------- */
+/* ---------- SEO HIDDEN ---------- */
 .seo-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
