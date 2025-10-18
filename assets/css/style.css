@@ -1,18 +1,9 @@
-/*
- * Style.css
- * Professional Styles for Compliance Labs
- * Theme: Authority, Trust, and High Readability
- */
-
 /* ---------- CSS VARIABLES (Professional Palette) ---------- */
 :root {
-  /* Authority and Trust (Navy Blue) */
-  --primary: #0f172a;   
-  /* Muted Accent for CTAs and Highlights (Deep Teal) */
-  --accent: #0f766e;    
+  --primary: #0f172a;   /* Navy Blue for Authority */
+  --accent: #0f766e;    /* Deep Teal for CTAs */
   --white: #ffffff;
-  /* Very light grey for a subtle background texture */
-  --grey: #f7f9fc;
+  --grey: #f7f9fc;    /* Very light grey for background */
   --radius: 6px; 
   --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
   --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
@@ -24,7 +15,9 @@ body {
   margin: 0; 
   font-family: 'Inter', sans-serif; 
   line-height: 1.6; 
-  color: #1e293b; /* Darker body text for better contrast */
+  color: #1e293b; 
+  background: var(--grey);
+  overflow-x: hidden; /* FIX: Prevents horizontal scrollbar overflow */
 }
 /* Ensure headers are high contrast and professional */
 h1, h2, h3 { 
@@ -34,18 +27,15 @@ h1, h2, h3 {
 }
 
 /* ---------- GLOBAL LAYOUT & PADDING FIX (The Container) ---------- */
-
-/* The max-width centers the content on large screens. */
-/* padding-inline adds padding on the left/right, preventing content from touching the screen edges. */
 .container {
   max-width: 1280px; 
   margin-inline: auto;
-  padding-inline: 1.5rem; /* 24px of padding on the sides */
+  padding-inline: 1.5rem; 
 }
 
 /* Add vertical padding to all main sections */
 section {
-  padding-block: 4rem; /* Adds 64px of space above and below every <section> tag */
+  padding-block: 4rem; 
 }
 
 /* ---------- FIXED NAV (Professional & Underline-Free) ---------- */
@@ -58,7 +48,6 @@ body { padding-top: 72px; }
   background: var(--white);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
-/* This class ensures the navbar content is centered and padded like the rest of the site */
 .navbar .content-wrapper { 
   max-width: 1280px;
   margin-inline: auto;
@@ -69,7 +58,7 @@ body { padding-top: 72px; }
   height: 72px; 
 }
 .navbar a { 
-  text-decoration: none !important; /* Forces removal of underlines */
+  text-decoration: none !important; 
   font-weight: 500; 
   color: #334155; 
   transition: color 0.2s;
@@ -80,7 +69,7 @@ body { padding-top: 72px; }
 
 /* ---------- HERO ---------- */
 .proof-bar {
-  background: var(--primary); /* Navy Blue for authority */
+  background: var(--primary); 
   color: var(--white);
   text-align: center;
   padding: 0.5rem;
@@ -96,14 +85,14 @@ body { padding-top: 72px; }
   background: transparent;
   padding: 0.65rem 1.5rem; 
   border-radius: var(--radius);
-  text-decoration: none; /* Ensure no underline on outline buttons */
+  text-decoration: none; 
 }
 .btn-outline-white:hover { 
   background: var(--white); 
   color: var(--primary); 
 }
 
-/* ---------- PRICING – BADGE OVERLAP (Premium Card Look) ---------- */
+/* ---------- PRICING – ALIGNMENT & WIDTH ADJUSTMENT ---------- */
 .pricing-row {
   display: flex;
   gap: 1.5rem; 
@@ -113,8 +102,15 @@ body { padding-top: 72px; }
   flex-wrap: nowrap;
 }
 .pricing-row .price-card {
+  /* ALIGNMENT FIX */
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between; 
+  
+  /* WIDTH ADJUSTMENT */
   flex: 1 1 0;
-  min-width: 280px; 
+  min-width: 250px; /* Adjusted from 280px to be slightly slimmer */
+  
   scroll-snap-align: start;
   position: relative;
   padding: 3rem 2rem 2rem; 
@@ -137,12 +133,12 @@ body { padding-top: 72px; }
 }
 .pricing-row .price-card ul { 
   margin-block: 1.25rem 1.5rem; 
-  list-style: none; /* Clean up lists */
+  list-style: none;
   padding-left: 0;
+  flex-grow: 1; /* Pushes button to bottom */
 }
 .pricing-row .price-card li { 
   margin-block-end: 0.5rem; 
-  /* Add a subtle checkmark/bullet to list items for professionalism (if base CSS doesn't have it) */
   position: relative;
   padding-left: 1.5em;
 }
@@ -186,8 +182,15 @@ body { padding-top: 72px; }
 }
 
 /* ---------- TESTIMONIALS AUTO-SCROLL ---------- */
-#testimonials { background: var(--grey); } /* Using the subtle light grey background */
-.testi-scroll { display: flex; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-block-end: 1rem; animation: scroll 30s linear infinite; }
+#testimonials { background: var(--grey); } 
+.testi-scroll { 
+  display: flex; 
+  gap: 2rem; 
+  overflow-x: auto; 
+  scroll-snap-type: x mandatory; 
+  padding-block-end: 1rem; 
+  animation: scroll 30s linear infinite; 
+}
 .testi-scroll blockquote { 
   flex: 1 0 380px; 
   scroll-snap-align: start; 
@@ -225,5 +228,46 @@ body { padding-top: 72px; }
 .cta .btn-large { margin-top: 1.5rem; }
 .cta + footer { margin-top: 4rem; }
 
-/* ---------- SEO HIDDEN ---------- */
+/* ---------- FOOTER ---------- */
+footer {
+  background: #111827;
+  color: #9ca3af;
+  padding-block: 3rem 2rem;
+  font-size: 0.875rem;
+}
+footer .container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+footer h4 {
+  color: var(--white);
+  margin-block-end: 0.75rem;
+  font-size: 1rem;
+}
+footer a:hover {
+  color: var(--white);
+}
+.socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-block-start: 1rem;
+}
+.socials svg {
+  width: 20px;
+  height: 20px;
+  fill: #9ca3af;
+  transition: fill 0.2s;
+}
+.socials a:hover svg {
+  fill: var(--white);
+}
+@media (max-width: 768px) {
+  footer .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* ---------- UTILITIES ---------- */
 .seo-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
