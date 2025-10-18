@@ -91,3 +91,76 @@ section{padding-block:4rem}
 #annualToggle:checked + .switch{background:var(--accent)}
 #annualToggle:checked + .switch::after{transform:translateX(20px)}
 .trust-badges{display:flex;gap:1rem
+/* ----------  NEW / FIXED  ---------- */
+
+/* ---- 1.  SEO h2 hidden & centred ---- */
+.seo-only{
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* ---- 2.  pricing row – professional equal-height cards ---- */
+.pricing-row{
+  display:flex;
+  gap:1.5rem;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-block-end:1rem;
+}
+.price-card{
+  flex:1 1 0;               /* equal widths */
+  display:flex;
+  flex-direction:column;
+  padding:3rem 2rem 2rem;
+  background:var(--white);
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  box-shadow:var(--shadow-subtle);
+  transition:transform .3s,box-shadow .3s;
+  position:relative;
+}
+.price-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+}
+.price-card ul{
+  margin-block:1.25rem 1.5rem;
+  padding-left:0;
+  list-style:none;
+  flex-grow:1;              /* pushes button to bottom */
+}
+.price-card .btn{
+  margin-top:auto;          /* stick to bottom */
+}
+
+/* ---- 3.  badge moved down ---- */
+.price-card .badge{
+  position:absolute;
+  top:1rem;                 /* was -1.25rem */
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--accent);
+  color:var(--white);
+  padding:.4rem 1.25rem;
+  border-radius:99px;
+  font-size:.8125rem;
+  font-weight:600;
+  white-space:nowrap;
+  box-shadow:0 2px 4px rgba(15,118,110,.4);
+}
+
+/* ---- 4.  final CTA centred ---- */
+.cta .text-center{
+  text-align:center;
+}
+.cta .btn-large{
+  margin-top:1.5rem;
+}
+
+/* ---- 5.  footer links – no underline ---- */
+footer a{text-decoration:none!important}
