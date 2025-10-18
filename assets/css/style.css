@@ -17,7 +17,7 @@ body {
   line-height: 1.6; 
   color: #1e293b; 
   background: var(--grey);
-  overflow-x: hidden; /* FIX: Prevents horizontal scrollbar overflow */
+  overflow-x: hidden; /* FIX: Prevents main body scrollbar from testimonial overflow */
 }
 /* Ensure headers are high contrast and professional */
 h1, h2, h3 { 
@@ -48,6 +48,7 @@ body { padding-top: 72px; }
   background: var(--white);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
+/* This class ensures the navbar content is centered and padded like the rest of the site */
 .navbar .content-wrapper { 
   max-width: 1280px;
   margin-inline: auto;
@@ -67,7 +68,7 @@ body { padding-top: 72px; }
   color: var(--accent); 
 }
 
-/* ---------- HERO ---------- */
+/* ---------- PROOF BAR ---------- */
 .proof-bar {
   background: var(--primary); 
   color: var(--white);
@@ -75,6 +76,19 @@ body { padding-top: 72px; }
   padding: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;
+}
+
+/* ---------- HERO GRID – CALENDLY ON THE RIGHT ---------- */
+.hero-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+.hero-text   { flex: 1 1 60%; }
+.hero-calendly { flex: 1 1 36%; order: 2; } /* right column */
+@media (max-width: 768px) {
+  .hero-text, .hero-calendly { flex: 1 1 100%; order: 0; }
 }
 .star-row { display: flex; gap: 0.25rem; margin-block-end: 1rem; }
 .star-row svg { width: 18px; height: 18px; fill: #f59e0b; } 
@@ -92,106 +106,26 @@ body { padding-top: 72px; }
   color: var(--primary); 
 }
 
-/* ---------- PRICING – ALIGNMENT & WIDTH ADJUSTMENT ---------- */
-.pricing-row {
+/* ---------- TRUST BAR ---------- */
+.trust{padding:2rem 0;background:var(--white)}.marquee{display:flex;gap:2rem;overflow:hidden;animation:scroll 25s linear infinite}.marquee span{flex:0 0 auto;height:40px}.marquee img{height:100%;width:auto;filter:grayscale(100%);opacity:.7}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ---------- SERVICES GRID ---------- */
+.services .service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* ---------- TESTIMONIALS – HORIZONTAL SCROLL FIX ---------- */
+#testimonials { background: var(--grey); }
+.testi-scroll {
   display: flex;
-  gap: 1.5rem; 
-  overflow-x: auto;
+  gap: 2rem;
+  overflow-x: hidden; /* FIX: Hides the automatic browser scrollbar */
   padding-block-end: 1rem;
-  scroll-snap-type: x mandatory;
-  flex-wrap: nowrap;
+  animation: scroll 30s linear infinite;
 }
-.pricing-row .price-card {
-  /* ALIGNMENT FIX */
-  display: flex; 
-  flex-direction: column;
-  justify-content: space-between; 
-  
-  /* WIDTH ADJUSTMENT */
-  flex: 1 1 0;
-  min-width: 250px; /* Adjusted from 280px to be slightly slimmer */
-  
-  scroll-snap-align: start;
-  position: relative;
-  padding: 3rem 2rem 2rem; 
-  font-size: 0.9375rem;
-  border-radius: 10px; 
-  background: var(--white);
-  border: 1px solid #e0e7ff55; 
-  box-shadow: var(--shadow-subtle); 
-  transition: all 0.3s ease;
-}
-.pricing-row .price-card:hover {
-  transform: translateY(-4px); 
-  box-shadow: var(--shadow-hover);
-}
-.pricing-row .price-card .price { 
-  font-size: 2rem; 
-  font-weight: 700;
-  color: var(--primary); 
-  margin-block: 0.5rem 0.25rem; 
-}
-.pricing-row .price-card ul { 
-  margin-block: 1.25rem 1.5rem; 
-  list-style: none;
-  padding-left: 0;
-  flex-grow: 1; /* Pushes button to bottom */
-}
-.pricing-row .price-card li { 
-  margin-block-end: 0.5rem; 
-  position: relative;
-  padding-left: 1.5em;
-}
-.pricing-row .price-card li::before {
-  content: '✓'; 
-  color: var(--accent); 
-  font-weight: 700;
-  position: absolute;
-  left: 0;
-}
-
-.badge {
-  position: absolute;
-  top: -2rem; 
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent); 
-  color: var(--white);
-  padding: 0.4rem 1.25rem;
-  border-radius: 99px;
-  font-size: 0.8125rem; 
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(15, 118, 110, 0.4); 
-}
-.overage-note { font-size: 0.75rem; color: #6b7280; margin-block-start: 0.5rem; }
-
-/* ---------- TRUST BADGES ---------- */
-.trust-badges { 
-  display: flex; 
-  gap: 1.5rem; 
-  justify-content: center; 
-  align-items: center; 
-  margin-block: 1rem 2.5rem; 
-  flex-wrap: wrap; 
-}
-.trust-badges img { 
-  height: 28px; 
-  width: auto; 
-  opacity: 0.8; 
-}
-
-/* ---------- TESTIMONIALS AUTO-SCROLL ---------- */
-#testimonials { background: var(--grey); } 
-.testi-scroll { 
-  display: flex; 
-  gap: 2rem; 
-  overflow-x: auto; 
-  scroll-snap-type: x mandatory; 
-  padding-block-end: 1rem; 
-  animation: scroll 30s linear infinite; 
-}
-.testi-scroll blockquote { 
+.testi-scroll blockquote {
   flex: 1 0 380px; 
   scroll-snap-align: start; 
   display: flex; 
@@ -220,6 +154,70 @@ body { padding-top: 72px; }
 }
 .demo-wrapper video, .demo-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .silent-hook { text-align: center; font-size: 0.8125rem; color: #475569; margin-top: 0.75rem; }
+
+/* ---------- PRICING – ALIGNMENT & BADGE FIX ---------- */
+.pricing-row {
+  display: flex;
+  gap: 1.5rem; 
+  overflow-x: auto;
+  padding-block-end: 1rem;
+  scroll-snap-type: x mandatory;
+  flex-wrap: nowrap;
+}
+.pricing-row .price-card {
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between; /* ALIGN BUTTONS TO BOTTOM */
+  
+  flex: 1 1 0;
+  min-width: 250px; /* Slimmer card width */
+  
+  scroll-snap-align: start;
+  position: relative;
+  padding: 3rem 2rem 2rem; /* Increased top padding for badge visibility */
+  font-size: 0.9375rem;
+  border-radius: 10px; 
+  background: var(--white);
+  border: 1px solid #e0e7ff55; 
+  box-shadow: var(--shadow-subtle); 
+  transition: all 0.3s ease;
+}
+.pricing-row .price-card ul { 
+  margin-block: 1.25rem 1.5rem; 
+  list-style: none;
+  padding-left: 0;
+  flex-grow: 1; /* Pushes button to bottom */
+}
+.badge {
+  position: absolute;
+  top: -1.25rem; /* Adjusted position upwards to be fully visible */
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent); 
+  color: var(--white);
+  padding: 0.4rem 1.25rem;
+  border-radius: 99px;
+  font-size: 0.8125rem; 
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(15, 118, 110, 0.4); 
+}
+.overage-note { font-size: 0.75rem; color: #6b7280; margin-block-start: 0.5rem; }
+
+/* ---------- TRUST BADGES ---------- */
+.trust-badges { 
+  display: flex; 
+  gap: 1.5rem; 
+  justify-content: center; 
+  align-items: center; 
+  margin-block: 1rem 2.5rem; 
+  flex-wrap: wrap; 
+}
+.trust-badges img { 
+  height: 28px; 
+  width: auto; 
+  opacity: 0.8; 
+}
 
 /* ---------- CALENDLY ---------- */
 .calendly-inline-widget { min-height: 680px; height: 680px !important; width: 100% !important; }
@@ -271,3 +269,16 @@ footer a:hover {
 
 /* ---------- UTILITIES ---------- */
 .seo-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---------- COUNTERS (prefers-reduced-motion safe) ---------- */
+.counter { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .counter {
+    animation: count-up 1.5s ease-out forwards;
+    animation-range: entry 0% cover 40%;
+  }
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
