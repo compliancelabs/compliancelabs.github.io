@@ -151,3 +151,60 @@ The block is already in your HTML – the CSS above simply **centres and styles*
     <a class="btn btn-large btn-primary" href="https://calendly.com/compliancelabs0/30min" target="_blank" rel="noopener">Pick a time in Calendly →</a>
   </div>
 </section>
+
+
+
+
+--------------
+
+/* ----------  FINAL TWEAKS  ---------- */
+
+/* 1.  Demo-button centred under text */
+.demo-cta {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.demo-cta .btn-large {
+  margin-top: 0.75rem;
+}
+
+/* 2.  Pricing-cards – more premium feel */
+.price-card {
+  border: 1px solid #d1d5db;           /* slightly softer grey */
+  border-radius: 10px;
+  padding: 2.25rem 1.75rem 2rem;       /* extra breathing room */
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.04);
+  transition: transform .25s, box-shadow .25s;
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,.08);
+}
+.price-card h3 {
+  font-size: 1.5rem;
+  letter-spacing: -.3px;
+}
+.price {
+  font-size: 2rem;                      /* bigger price */
+  font-weight: 800;
+  margin: .25rem 0 .125rem;
+}
+.price .currency {
+  font-size: 1.125rem;
+  vertical-align: top;
+}
+.badge {
+  background: var(--accent);
+  color: var(--white);
+  padding: .35rem .9rem;
+  border-radius: 99px;
+  font-size: .75rem;
+  font-weight: 600;
+  margin-block-end: .75rem;
+  box-shadow: 0 2px 4px rgba(15,118,110,.3);
+}
+
+/* 3.  Slimmer top border (already 1 px) – just add a hair more page air */
+body { padding-top: 76px; }   /* was 80 px – gives 4 px back to content */
+.navbar { box-shadow: 0 1px 2px rgba(0,0,0,.06); } /* even thinner feel */
