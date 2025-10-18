@@ -141,3 +141,38 @@ Drop this **entire block** into `assets/css/style.css`, hard-refresh, and you’
 - Footer **underlines removed**  
 - Top border **thinned** + more breathing space  
 - All **original colours / shadows / fonts preserved**.
+/* 1.  Centre the CTA button under the text */
+.cta .container {
+  text-align: center;
+}
+.cta .btn-large {
+  margin-top: 1rem;
+}
+
+/* 2.  Remove the sticky “Book £19” button */
+.sticky-cta {
+  display: none !important;
+}
+
+/* 3.  Pricing-card number alignment – force same line-height & vertical-align */
+.price-card .price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .25rem;
+  line-height: 1;
+}
+.price-card .currency {
+  font-size: 1.125rem;
+  vertical-align: baseline;
+}
+.price-card .price-value {
+  font-size: 2rem;
+  font-weight: 800;
+  vertical-align: baseline;
+}
+.price-card .price-note {
+  font-size: .875rem;
+  vertical-align: baseline;
+  margin-left: .25rem;
+}
