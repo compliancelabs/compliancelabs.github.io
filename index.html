@@ -26,7 +26,7 @@
   <h2 class="seo-only">CIS Compliance and Debt Chasing Services for UK Construction Companies</h2>
 
   <header class="navbar" id="navbar">
-    <div class="container nav-inner">
+    <div class="container nav-inner"> 
       <a class="brand" href="/" aria-label="Compliance Labs home">
         <img src="assets/img/logo.svg" alt="Compliance Labs logo" width="140" height="32">
       </a>
@@ -141,6 +141,7 @@
         <div class="demo-wrapper">
             <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
                 <source src="assets/video/60sec-demo.mp4" type="video/mp4">
+                <track kind="captions" label="English Captions" src="assets/video/60sec-demo.vtt" srclang="en" default>
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -308,10 +309,102 @@
     <symbol id="icon-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
   </svg>
 
-  <script type="text/javascript">
-    /*
-      The <script> block contains all inline JS and is provided in the third file.
-    */
+  <a class="sticky-cta" href="#compliance-check">Book £19 Compliance-Check</a> 
+
+  <script>
+    /* ---- Calendly Lazy-Load ---- */
+    const widget = document.querySelector('.calendly-inline-widget');
+    if (widget && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries, ob) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            const s = document.createElement('script');
+            s.src = 'https://assets.calendly.com/assets/external/widget.js ';
+            s.async = 1;
+            widget.appendChild(s);
+            ob.disconnect();
+          }
+        });
+      }, { rootMargin: '100px 0px' });
+      io.observe(widget);
+    }
+
+    /* ---- MONTHLY / ANNUAL TOGGLE FIX (Calculations Maintained) ---- */
+    const toggle = document.getElementById('annualToggle');
+    const grid   = document.getElementById('pricingGrid');
+
+    function setPricing(annual) {
+      grid.querySelectorAll('.price-card').forEach(card => {
+        const monthly = Number(card.dataset.monthly);
+        // Total annual payment assumes 10 months of cost (2 months free)
+        const totalAnnualPayment = monthly * 10;
+        
+        const priceValueSpan = card.querySelector('.price-value');
+        const priceNoteSpan = card.querySelector('.price-note-annual');
+        
+        if (annual) {
+          // Display the total annual cost
+          priceValueSpan.textContent = totalAnnualPayment.toLocaleString();
+          priceNoteSpan.textContent = '/yr';
+          
+        } else {
+          // Display the standard monthly cost
+          priceValueSpan.textContent = monthly.toLocaleString();
+          priceNoteSpan.textContent = '/mo';
+        }
+      });
+    }
+    
+    // Initialize pricing toggle and counters
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initial Price Card setup: inject the correct price structure
+        grid.querySelectorAll('.price-card').forEach(card => {
+            const priceDiv = card.querySelector('.price');
+            const monthlyPrice = card.dataset.monthly;
+            
+            // Reconstruct the HTML of the price div to include the notes span for the JS to target
+            priceDiv.innerHTML = `
+                <span class="currency">£</span>
+                <span class="price-value">${Number(monthlyPrice).toLocaleString()}</span>
+                <span class="price-note-annual">/mo</span>
+            `;
+        });
+        
+        const toggle = document.getElementById('annualToggle');
+        toggle.addEventListener('change', () => setPricing(toggle.checked));
+        setPricing(false); // Init to Monthly
+        
+        // Navigation toggle for mobile (if not handled by assets/js/app.js)
+        const navLinks = document.getElementById('nav-links');
+        const navToggle = document.querySelector('.toggler');
+        if (navToggle) {
+          navToggle.addEventListener('click', () => {
+              navLinks.classList.toggle('open');
+              navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+          });
+        }
+        
+        // Counter animation
+        document.querySelectorAll('.counter').forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace(/,/g, ''); 
+                const speed = 200; 
+                const inc = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc).toLocaleString();
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            };
+            updateCount();
+        });
+        
+        // Year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    });
   </script>
 </body>
 </html>
