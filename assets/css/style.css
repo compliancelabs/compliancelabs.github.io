@@ -176,3 +176,6 @@ Drop this **entire block** into `assets/css/style.css`, hard-refresh, and you’
   vertical-align: baseline;
   margin-left: .25rem;
 }
+/* =====  DEBUG OVERFLOW  ===== */
+* { outline: 1px solid red; }
+/* ----------  rest of your styles follow... ---------- */
