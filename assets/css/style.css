@@ -1,3 +1,5 @@
+/* =====  DEBUG OVERFLOW  ===== */
+* { outline: 1px solid red; }
 /* ----------  VARIABLES  ---------- */
 :root {
   --primary: #0f172a;   /* navy */
