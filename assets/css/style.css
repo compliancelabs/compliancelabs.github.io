@@ -1,6 +1,4 @@
-/* =====  DEBUG OVERFLOW  ===== */
-* { outline: 1px solid red; }
-/* ----------  VARIABLES  ---------- */
+
 :root {
   --primary: #0f172a;   /* navy */
   --accent: #0f766e;    /* teal */
@@ -178,6 +176,16 @@ Drop this **entire block** into `assets/css/style.css`, hard-refresh, and you’
   vertical-align: baseline;
   margin-left: .25rem;
 }
-/* =====  DEBUG OVERFLOW  ===== */
-* { outline: 1px solid red; }
-/* ----------  rest of your styles follow... ---------- */
+/* … (all your existing styles) … */
+
+/* =====  BRAVE-ZOOM SAFETY  ===== */
+footer a,
+footer p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
