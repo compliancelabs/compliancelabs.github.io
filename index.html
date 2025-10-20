@@ -12,235 +12,56 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     /* ---- PUSH PAGE DOWN SO BANNER IS NOT COVERED ---- */
-    body { padding-top: 80px; } /* height of fixed navbar */
+    body { padding-top: 80px; }
     .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; }
 
     /* ---- WHITE BUTTON TEXT FIX ---- */
     .navbar .btn-primary { color: var(--white) !important; }
 
-    /* ---- HERO UPGRADES ---- */
-    .proof-bar {
-      background: var(--accent);
-      color: var(--white);
-      text-align: center;
-      padding: 0.5rem;
-      font-size: 0.875rem;
-    }
-    .star-row {
-      display: flex;
-      gap: 0.25rem;
-      margin-block-end: 1rem;
-    }
-    .star-row svg {
-      width: 16px;
-      height: 16px;
-      fill: #f59e0b;
-    }
-    .hero-cta-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-block-start: 1.5rem;
-    }
-    .btn-outline-white {
-      border: 2px solid var(--white);
-      color: var(--white);
-      background: transparent;
-    }
-    .btn-outline-white:hover {
-      background: var(--white);
-      color: var(--primary);
-    }
-
     /* ---- TRUST BAR – GENERIC CONSTRUCTION ICONS ONLY ---- */
-    .trust {
-      padding: 2rem 0;
-      background: var(--white);
-    }
-    .marquee {
-      display: flex;
-      gap: 2rem;
-      overflow: hidden;
-      animation: scroll 25s linear infinite;
-    }
-    .marquee svg {
-      flex: 0 0 auto;
-      height: 40px;
-      width: 120px;
-      fill: #9ca3af;
-      transition: transform .25s;
-    }
-    .marquee svg:hover {
-      transform: scale(1.05);
-    }
-    @keyframes scroll {
-      0% { transform: translateX(0) }
-      100% { transform: translateX(-50%) }
-    }
+    .trust { padding: 2rem 0; background: var(--white); }
+    .marquee { display: flex; gap: 2rem; overflow: hidden; animation: scroll 25s linear infinite; }
+    .marquee svg { flex: 0 0 auto; height: 40px; width: 120px; fill: #9ca3af; transition: transform .25s; }
+    .marquee svg:hover { transform: scale(1.05); }
+    @keyframes scroll { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
 
     /* ---- PRICING – SAME ROW (no wrap) + taller cards ---- */
-    .pricing-row {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding-block-end: 1rem;
-      scroll-snap-type: x mandatory;
-      flex-wrap: nowrap;
-    }
-    .pricing-row .price-card {
-      flex: 1 1 0;
-      min-width: 260px;
-      scroll-snap-align: start;
-      padding: 2rem 1.5rem 1.5rem;
-      font-size: 0.9375rem;
-      position: relative;
-    }
+    .pricing-row { display: flex; gap: 1rem; overflow-x: auto; padding-block-end: 1rem; scroll-snap-type: x mandatory; flex-wrap: nowrap; }
+    .pricing-row .price-card { flex: 1 1 0; min-width: 260px; scroll-snap-align: start; padding: 2rem 1.5rem 1.5rem; font-size: 0.9375rem; position: relative; }
     .pricing-row .price-card .price { font-size: 1.75rem; margin-block: 0.5rem 0.25rem; }
-    .pricing-row .price-card ul     { margin-block: 1rem 1.25rem; }
-    .pricing-row .price-card li     { margin-block-end: 0.35rem; }
-    .badge {
-      display: inline-block;
-      background: var(--primary);
-      color: var(--white);
-      padding: 0.25rem 0.75rem;
-      border-radius: 99px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-block-end: 0.75rem;
-    }
-    .overage-note {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-block-start: 0.5rem;
-    }
+    .pricing-row .price-card ul { margin-block: 1rem 1.25rem; }
+    .pricing-row .price-card li { margin-block-end: 0.35rem; }
+    .badge { display: inline-block; background: var(--primary); color: var(--white); padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.75rem; font-weight: 600; margin-block-end: 0.75rem; }
+    .overage-note { font-size: 0.75rem; color: #6b7280; margin-block-start: 0.5rem; }
 
     /* ---- TRUST BADGES – REAL SVGs ---- */
-    .trust-badges {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      margin-block: 1rem 2rem;
-      flex-wrap: wrap;
-    }
-    .trust-badges svg {
-      height: 24px;
-      width: auto;
-    }
+    .trust-badges { display: flex; gap: 1rem; justify-content: center; align-items: center; margin-block: 1rem 2rem; flex-wrap: wrap; }
+    .trust-badges svg { height: 24px; width: auto; }
 
-    /* ---- TESTIMONIALS – wider cards ---- */
-    .testi-scroll {
-      display: flex;
-      gap: 1.5rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-block-end: 1rem;
-    }
-    .testi-scroll blockquote {
-      flex: 1 0 360px;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    @media (max-width: 480px) {
-      .testi-scroll blockquote { flex: 1 0 300px; }
-    }
+    /* ---- 60-SEC DEMO – button centred ---- */
+    #demo { padding-block: 4rem 2rem; background: var(--grey); }
+    .demo-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius); max-width: 850px; margin-inline: auto; }
+    .demo-wrapper video, .demo-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .demo-cta { text-align: center; margin-top: 2rem; }
+    .demo-cta .btn { margin-top: 1rem; }
 
-    /* ---- 60-SEC DEMO SECTION – button centred ---- */
-    #demo {
-      padding-block: 4rem 2rem;
-      background: var(--grey);
-    }
-    .demo-wrapper {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
-        height: 0;
-        overflow: hidden;
-        border-radius: var(--radius);
-        max-width: 850px;
-        margin-inline: auto;
-    }
-    .demo-wrapper video,
-    .demo-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-    .demo-cta {          /* centres button under text */
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .demo-cta .btn {
-      margin-top: 1rem;
-    }
-    .silent-hook {
-      text-align: center;
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-top: 0.5rem;
-    }
-
-    /* ---- CALENDLY FILLS THE BOX (no inner scroll) ---- */
-    .calendly-inline-widget {
-      min-height: 680px;
-      height: 680px !important;
-      width: 100% !important;
-    }
+    /* ---- CALENDLY – LOAD IMMEDIATELY (no lazy load) ---- */
+    .calendly-inline-widget { min-height: 680px; height: 680px !important; width: 100% !important; }
 
     /* ---- FOOTER – NO EMAIL ICON, ADD TIKTOK + YOUTUBE ---- */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      padding-block: 3rem 2rem;
-      font-size: 0.875rem;
-    }
-    footer .container {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 2rem;
-    }
-    footer h4 {
-      color: var(--white);
-      margin-block-end: 0.75rem;
-      font-size: 1rem;
-    }
-    footer a:hover {
-      color: var(--white);
-    }
-    .socials {
-      display: flex;
-      gap: 0.75rem;
-      margin-block-start: 1rem;
-    }
-    .socials svg {
-      width: 20px;
-      height: 20px;
-      fill: #9ca3af;
-      transition: fill 0.2s;
-    }
-    .socials a:hover svg {
-      fill: var(--white);
-    }
-    @media (max-width: 768px) {
-      footer .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-    }
+    footer { background: #111827; color: #9ca3af; padding-block: 3rem 2rem; font-size: 0.875rem; }
+    footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; }
+    footer h4 { color: var(--white); margin-block-end: 0.75rem; font-size: 1rem; }
+    footer a:hover { color: var(--white); }
+    .socials { display: flex; gap: 0.75rem; margin-block-start: 1rem; }
+    .socials svg { width: 20px; height: 20px; fill: #9ca3af; transition: fill 0.2s; }
+    .socials a:hover svg { fill: var(--white); }
+    @media (max-width: 768px) { footer .container { grid-template-columns: 1fr; text-align: center; } }
 
     /* ---- H2 FOR SEO (visually hidden) ---- */
-    .seo-only {
-      position: absolute;
-      left: -10000px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
+    .seo-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
   </style>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script defer src="assets/js/app.js"></script>
 </head>
 
@@ -288,7 +109,7 @@
         </div>
       </div>
       <div class="hero-calendly">
-        <!-- Calendly loads here -->
+        <!-- Calendly loads immediately (no lazy load) -->
         <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-width:320px;height:680px;"></div>
       </div>
     </div>
@@ -298,13 +119,9 @@
   <section class="trust" aria-label="Companies we help">
     <div class="container">
       <div class="marquee">
-        <!-- Icon 1: Hard-hat -->
         <span><svg width="120" height="40" aria-label="Construction Partner 1" viewBox="0 0 120 40"><path fill="#9ca3af" d="M10 20h20v10H10zM35 15h20v20H35zM60 18h20v14H60zM85 16h20v18H85zM110 19h20v12h-20z"/></svg></span>
-        <!-- Icon 2: Crane -->
         <span><svg width="120" height="40" aria-label="Construction Partner 2" viewBox="0 0 120 40"><path fill="#9ca3af" d="M5 25h20v5H5zM30 12h20v23H30zM55 20h20v10H55zM80 14h20v16H80zM105 22h20v8h-20z"/></svg></span>
-        <!-- Icon 3: Trowel -->
         <span><svg width="120" height="40" aria-label="Construction Partner 3" viewBox="0 0 120 40"><path fill="#9ca3af" d="M15 17h20v16H15zM40 20h20v10H40zM65 15h20v20H65zM90 18h20v14H90zM115 16h20v18h-20z"/></svg></span>
-        <!-- Icon 4: Bricks -->
         <span><svg width="120" height="40" aria-label="Construction Partner 4" viewBox="0 0 120 40"><path fill="#9ca3af" d="M8 23h20v7H8zM33 19h20v11H33zM58 21h20v9H58zM83 17h20v13H83zM108 20h20v10h-20z"/></svg></span>
         <!-- duplicates for seamless scroll -->
         <span aria-hidden="true"><svg width="120" height="40" aria-hidden="true" viewBox="0 0 120 40"><path fill="#9ca3af" d="M10 20h20v10H10zM35 15h20v20H35zM60 18h20v14H60zM85 16h20v18H85zM110 19h20v12h-20z"/></svg></span>
@@ -320,4 +137,81 @@
       <div class="service-grid">
         <article>
           <img src="assets/img/icon-shield.svg" alt="" width="48" height="48">
-          <h3>Compliance Shield
+          <h3>Compliance Shield</h3>
+          <p>We verify every subbie, file CIS & VAT reverse-charge returns, and keep your HMRC inbox at zero—so you avoid £3k+ fines and sleep at night.</p>
+        </article>
+        <article>
+          <img src="assets/img/icon-chase.svg" alt="" width="48" height="48">
+          <h3>Payment Chase</h3>
+          <p>Our 5-step letter, call & solicitor escalations and further processing recover retentions and overdue invoices, cash-flow unlocked.</p>
+        </article>
+        <article>
+          <img src="assets/img/icon-chart.svg" alt="" width="48" height="48">
+          <h3>Live Dashboard</h3>
+          <p>One login shows who’s compliant, who owes what, and what’s coming in—so you can plan purchases, payroll and projects with confidence.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS – wider cards -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Businesses say about us</h2>
+      <div class="testi-scroll">
+        <blockquote id="testimonial-reel">
+          <p>“Compliance Labs spotted £9k of unverified subbies in one week—saved us from a HMRC penalty.”</p>
+          <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
+        </blockquote>
+
+        <blockquote>
+          <p>“They collected £48k of 90-day retentions within 40 days. Unreal ROI.”</p>
+          <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
+        </blockquote>
+
+        <blockquote>
+          <p>“We reclaimed £127k of retentions in Q1 alone—cash-flow stress gone overnight.”</p>
+          <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
+        </blockquote>
+
+        <blockquote>
+          <p>“On-site audit passed with zero findings for the first time in 8 years. The board is delighted.”</p>
+          <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- 60-SEC DEMO – button centred -->
+  <section id="demo" class="container" style="padding-block:4rem 2rem;">
+    <h2 class="section-title">See it in action (60 seconds)</h2>
+    <div class="demo-wrapper">
+        <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
+            <source src="assets/video/60sec-demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <p class="silent-hook">No sound? No problem—captions on.</p>
+    <!-- centred CTA button -->
+    <div class="demo-cta">
+      <p>Ready to remove compliance & cash-flow stress?</p>
+      <p>Book your £19 CIS & Compliance-Check. We’ll audit your last 3 months and give you a fixed-price quote—no obligation.</p>
+      <a class="btn btn-large btn-primary" href="https://calendly.com/compliancelabs0/30min" target="_blank" rel="noopener">Pick a time in Calendly →</a>
+    </div>
+  </section>
+
+  <!-- PRICING – NEW PRICES (no site visits)
+       Monthly shown; annual = 11× monthly (2 months free) -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <label class="toggle-label">
+        <span>Monthly</span>
+        <input type="checkbox" id="annualToggle" aria-label="Show annual pricing">
+        <span class="switch"></span>
+        <span>Annual <small>(2 months free)</small></span>
+      </label>
+
+      <!-- TRUST BADGES – REAL SVGs -->
+      <div class="trust-badges">
+        <svg role="img" width="70" height="24" aria-label="Stripe secured"><title>Stripe secured</title><path fill="#635BFF" d="M14 10.74l-2.3 5.32H9.2L6.9 10.74h2.34l1.42 3.56 1.42-3.56H14zM4.06 6.6L0 16.06h2.3l.94-2.22h4.5l.94 2.22H11L6.94 6.6H4.06zm3.38 5.32L6.5 8.45 5.06 11.92h2.38zM28 6.6v9.46h6.15v-1.92H30.2V6.6H28zM35.82 6.6l2
