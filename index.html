@@ -10,14 +10,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ==========  HMRC-STYLE PALETTE  ========== */
+    /* ==========  COLOUR SYSTEM  ========== */
     :root{
       --hmrc-grey:#f3f3f3;        /* page background */
       --card-grey:#ffffff;       /* card surfaces   */
-      --primary:#003366;         /* HMRC navy blue  */
-      --accent:#009390;          /* HMRC teal       */
-      --text:#fefefe;            /* near-white text */
-      --muted:#cccccc;           /* soft grey text  */
+      --primary:#003366;         /* navy buttons    */
+      --accent:#009390;          /* teal accents    */
+      --text-dark:#111111;       /* readable body   */
+      --text-light:#fefefe;      /* inverse text    */
+      --muted:#555555;           /* soft grey       */
       --radius:4px;
     }
     /* ==========  RESET  ========== */
@@ -25,19 +26,19 @@
     html{scroll-behavior:smooth;}
     body{
       background:var(--hmrc-grey);
-      color:var(--text);
+      color:var(--text-dark);
       line-height:1.6;
       overflow-x:hidden;
-      padding-top:80px;          /* nav height */
+      padding-top:80px;
     }
     .container{max-width:1100px;margin:0 auto;padding:0 1rem;}
     a{text-decoration:none;color:inherit;}
     img{max-width:100%;display:block;}
     .btn{display:inline-block;padding:.75rem 1.25rem;border-radius:var(--radius);font-weight:600;cursor:pointer;border:2px solid transparent;transition:.25s;}
-    .btn-primary{background:var(--primary);color:var(--text);}
+    .btn-primary{background:var(--primary);color:var(--text-light);}
     .btn-outline{border-color:var(--primary);color:var(--primary);}
     .btn-large{padding:1rem 2rem;font-size:1rem;}
-    .section-title{font-size:2rem;margin-bottom:1.5rem;text-align:center;}
+    .section-title{font-size:2rem;margin-bottom:1.5rem;text-align:center;color:var(--text-dark);}
 
     /* ==========  NAVBAR  ========== */
     .navbar{position:fixed;top:0;width:100%;background:var(--card-grey);box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:1000;}
@@ -53,21 +54,21 @@
     }
 
     /* ==========  PROOF BAR  ========== */
-    .proof-bar{background:var(--accent);color:var(--text);text-align:center;padding:.5rem;font-size:.875rem;}
+    .proof-bar{background:var(--accent);color:var(--text-light);text-align:center;padding:.5rem;font-size:.875rem;}
 
     /* ==========  HERO  ========== */
-    .hero{padding:3rem 0;background:var(--card-grey);color:var(--primary);}
+    .hero{padding:3rem 0;background:var(--card-grey);}
     .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
     .star-row{display:flex;gap:.25rem;margin-bottom:1rem;}
     .star-row svg{width:16px;height:16px;fill:#f59e0b;}
-    .hero-title{font-size:2.5rem;margin-bottom:1rem;}
-    .hero-lead{margin-bottom:1.5rem;font-size:1.125rem;color:var(--primary);}
+    .hero-title{font-size:2.5rem;margin-bottom:1rem;color:var(--primary);}
+    .hero-lead{margin-bottom:1.5rem;font-size:1.125rem;color:var(--text-dark);}
     .hero-stats{display:flex;gap:2rem;margin-bottom:1.5rem;}
     .hero-stats>div{text-align:center;}
     .hero-stats span{font-size:1.5rem;font-weight:700;display:block;color:var(--primary);}
     .hero-cta-group{display:flex;gap:1rem;flex-wrap:wrap;}
     .btn-outline-white{border-color:var(--primary);color:var(--primary);}
-    .btn-outline-white:hover{background:var(--primary);color:var(--text);}
+    .btn-outline-white:hover{background:var(--primary);color:var(--text-light);}
     .hero-calendly{min-height:680px;}
     @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
 
@@ -80,54 +81,54 @@
     /* ==========  SERVICES  ========== */
     .services{padding:4rem 0;}
     .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;}
-    .service-grid article{background:var(--card-grey);padding:2rem;border-radius:var(--radius);box-shadow:0 2px 4px rgba(0,0,0,.05);}
+    .service-grid article{background:var(--card-grey);padding:2rem;border-radius:var(--radius);box-shadow:0 2px 4px rgba(0,0,0,.05);color:var(--text-dark);}
     .service-grid img{margin-bottom:1rem;}
 
     /* ==========  TESTIMONIALS  ========== */
     .testimonials{padding:4rem 0;background:var(--card-grey);}
     .testi-scroll{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;}
-    .testi-scroll blockquote{flex:1 0 360px;scroll-snap-align:start;background:var(--hmrc-grey);padding:1.5rem;border-radius:var(--radius);}
+    .testi-scroll blockquote{flex:1 0 360px;scroll-snap-align:start;background:var(--hmrc-grey);padding:1.5rem;border-radius:var(--radius);color:var(--text-dark);}
     @media(max-width:480px){.testi-scroll blockquote{flex:1 0 300px;}}
 
-    /* ==========  DEMO  (extra top gap) ========== */
+    /* ==========  DEMO  ========== */
     #demo{padding:4rem 0;margin-top:3rem;background:var(--card-grey);}
     .demo-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius);max-width:850px;margin:0 auto;}
     .demo-wrapper video{position:absolute;top:0;left:0;width:100%;height:100%;}
-    .demo-cta{text-align:center;margin-top:2rem;}
+    .demo-cta{text-align:center;margin-top:2rem;color:var(--text-dark);}
     .silent-hook{text-align:center;font-size:.75rem;color:var(--muted);margin-top:.5rem;}
 
-    /* ==========  PRICING  (buttons bottom-aligned) ========== */
+    /* ==========  PRICING  (bottom-aligned buttons) ========== */
     .pricing{padding:4rem 0;}
     .toggle-label{display:flex;justify-content:center;align-items:center;gap:.5rem;margin-bottom:2rem;font-size:.875rem;color:var(--primary);}
     .toggle-label input{accent-color:var(--accent);}
     .pricing-row{display:flex;gap:1rem;overflow-x:auto;padding-bottom:1rem;}
-    .price-card{flex:1 1 0;min-width:260px;background:var(--card-grey);padding:2rem 1.5rem;border-radius:var(--radius);box-shadow:0 2px 4px rgba(0,0,0,.05);display:flex;flex-direction:column;}
+    .price-card{flex:1 1 0;min-width:260px;background:var(--card-grey);padding:2rem 1.5rem;border-radius:var(--radius);box-shadow:0 2px 4px rgba(0,0,0,.05);display:flex;flex-direction:column;color:var(--text-dark);}
     .price-card>*{margin-bottom:.75rem;}
     .price-card .price{font-size:1.75rem;margin:.5rem 0 .25rem;color:var(--primary);}
-    .price-card ul{margin-bottom:auto;flex-grow:1;}   /* pushes button down */
-    .badge{display:inline-block;background:var(--accent);color:var(--text);padding:.25rem .75rem;border-radius:99px;font-size:.75rem;font-weight:600;margin-bottom:.75rem;}
+    .price-card ul{margin-bottom:auto;flex-grow:1;} /* pushes button to bottom */
+    .badge{display:inline-block;background:var(--accent);color:var(--text-light);padding:.25rem .75rem;border-radius:99px;font-size:.75rem;font-weight:600;margin-bottom:.75rem;}
     .overage-note{font-size:.75rem;color:var(--muted);margin-top:.5rem;}
     .trust-badges{display:flex;gap:1rem;justify-content:center;align-items:center;margin:1rem 0 2rem;flex-wrap:wrap;}
     .trust-badges svg{height:24px;}
 
     /* ==========  FAQ  ========== */
     .faq{padding:4rem 0;background:var(--card-grey);}
-    details{background:var(--hmrc-grey);padding:1rem;border-radius:var(--radius);margin-bottom:1rem;color:var(--primary);}
+    details{background:var(--hmrc-grey);padding:1rem;border-radius:var(--radius);margin-bottom:1rem;color:var(--text-dark);}
     summary{cursor:pointer;font-weight:600;}
 
-    /* ==========  CTA  (extra bottom gap) ========== */
-    .cta{padding:4rem 0 6rem;text-align:center;background:var(--card-grey);}
+    /* ==========  CTA  ========== */
+    .cta{padding:4rem 0 6rem;text-align:center;background:var(--card-grey);color:var(--text-dark);}
     .cta .btn{margin-top:1rem;}
 
     /* ==========  FOOTER  ========== */
     footer{background:#0b0c0c;color:#dee0e2;padding:3rem 0 2rem;font-size:.875rem;}
     footer .container{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;}
-    footer h4{color:var(--text);margin-bottom:.75rem;font-size:1rem;}
-    footer a:hover{color:var(--text);}
+    footer h4{color:var(--text-light);margin-bottom:.75rem;font-size:1rem;}
+    footer a:hover{color:var(--text-light);}
     .socials{display:flex;gap:.75rem;margin-top:1rem;}
     .socials svg{width:20px;height:20px;fill:#dee0e2;transition:fill .2s;}
-    .socials a:hover svg{fill:var(--text);}
-    footer a[href^="mailto"]{word-break:break-word;} /* email wrap */
+    .socials a:hover svg{fill:var(--text-light);}
+    footer a[href^="mailto"]{word-break:break-word;}
     @media(max-width:768px){footer .container{grid-template-columns:1fr;text-align:center;}}
   </style>
 </head>
@@ -200,7 +201,7 @@
     </div>
   </div></section>
 
-  <!-- 60-SEC DEMO  (extra top margin) -->
+  <!-- 60-SEC DEMO  (extra top gap) -->
   <section id="demo" class="container" style="padding-block:4rem 2rem;margin-top:4rem;background:var(--card-grey);">
     <h2 class="section-title">See it in action (60 seconds)</h2>
     <div class="demo-wrapper"><video controls preload="metadata" poster="assets/img/demo-poster.jpg"><source src="assets/video/60sec-demo.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
@@ -212,7 +213,7 @@
     </div>
   </section>
 
-  <!-- PRICING  (buttons bottom-aligned) -->
+  <!-- PRICING  (bottom-aligned buttons) -->
   <section id="pricing" class="pricing"><div class="container">
     <h2 class="section-title">Simple, transparent pricing</h2>
     <label class="toggle-label"><span>Monthly</span><input type="checkbox" id="annualToggle"><span class="switch"></span><span>Annual <small>(2 months free)</small></span></label>
@@ -269,7 +270,7 @@
     <details><summary>Is there a setup fee?</summary><p>Zero. We even import your existing subbie list during onboarding at no cost.</p></details>
   </div></section>
 
-  <!-- CTA  (extra bottom padding) -->
+  <!-- CTA -->
   <section id="compliance-check" class="cta"><div class="container">
     <h2 class="section-title">Ready to remove compliance & cash-flow stress?</h2>
     <p>Book your £19 CIS & Compliance-Check. We’ll audit your last 3 months and give you a fixed-price quote—no obligation.</p>
