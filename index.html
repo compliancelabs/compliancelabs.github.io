@@ -42,8 +42,8 @@
   </header>
 
   <div class="proof-bar">
-    <div class="container">
-        <p><strong>£4.2 m</strong> recovered • <strong>1,847</strong> subbies verified • <strong>0</strong> HMRC fines for clients • Next slot today at 3:00 pm – only 3 left this week</p>
+    <div class="container proof-bar-content">
+        <p><strong>£4.2 m</strong> recovered • <strong>1,847</strong> subbies verified • **0** HMRC fines for clients • Next slot today at 3:00 pm – only 3 left this week</p>
     </div>
   </div>
 
@@ -171,12 +171,12 @@
       <p class="risk-line" style="text-align:center;font-size:0.875rem;color:#6b7280;margin-block-end:2rem;">Cancel anytime.</p>
 
       <div id="pricingGrid" class="pricing-row">
-        <article class="price-card" data-monthly="750" data-annual="8250">
+        <article class="price-card" data-monthly="690" data-annual="6900">
           <h3>Starter</h3>
           <p class="price"></p> 
           <p class="note">Perfect for sub-£1m turnover</p>
           <ul>
-            <li>Up to 10 subbies verified /mo</li>
+            <li>Up to 15 subbies verified /mo</li>
             <li>Max £10k per debt chased</li>
             <li>Monthly compliance report</li>
             <li>Email support</li>
@@ -186,7 +186,7 @@
           <a class="btn btn-outline" href="#compliance-check">Get started</a>
         </article>
 
-        <article class="price-card" data-monthly="1495" data-annual="16445">
+        <article class="price-card" data-monthly="1390" data-annual="13900">
           <span class="badge">Most popular</span>
           <h3>Pro</h3>
           <p class="price"></p>
@@ -194,28 +194,29 @@
           <ul>
             <li>Up to 40 subbies verified /mo</li>
             <li>Max £25k per debt chased (5 concurrent)</li>
-            <li>Weekly reports + phone support</li>
+            <li>Weekly 15-min CFO walk-through (recorded)</li>
             <li>Portal access</li>
           </ul>
           <p class="overage-note">Extra verifications £5 each • extra £10k debt chased £150</p>
           <a class="btn btn-primary" href="#compliance-check">Get started</a>
         </article>
 
-        <article class="price-card" data-monthly="2750" data-annual="30250">
+        <article class="price-card" data-monthly="2990" data-annual="29900">
           <h3>Growth</h3>
           <p class="price"></p>
           <p class="note">Full finance-back-office</p>
           <ul>
             <li>Unlimited subbies</li>
             <li>Max £100k per debt chased</li>
+            <li>Quarterly 45-min CFO strategy Zoom (recorded + transcript)</li>
             <li>Same-day reports + dedicated Slack</li>
-            <li>Quarterly on-site visit</li>
+            <li>White-label portal</li>
           </ul>
           <p class="overage-note">Extra £10k debt chased £150 • CFO call add-on £350</p>
           <a class="btn btn-outline" href="#compliance-check">Get started</a>
         </article>
 
-        <article class="price-card" data-monthly="4750" data-annual="52250">
+        <article class="price-card" data-monthly="5190" data-annual="51900">
           <h3>Enterprise</h3>
           <p class="price"></p>
           <p class="note">For £20m+ turnover or main-contractors</p>
@@ -223,7 +224,8 @@
             <li>Unlimited sub-contractor verifications</li>
             <li>£250k debt limit per case</li>
             <li>2h SLA phone & Slack</li>
-            <li>Quarterly strategy call + risk forecast</li>
+            <li>Quarterly strategy Zoom (recorded) + private podcast feed</li>
+            <li>White-label portal</li>
           </ul>
           <p class="overage-note">Extra £50k debt block £500 • white-label portal £500 set-up</p>
           <a class="btn btn-outline" href="#compliance-check">Get started</a>
@@ -334,7 +336,8 @@
         function setPricing(annual) {
             grid.querySelectorAll('.price-card').forEach(card => {
                 const monthly = Number(card.dataset.monthly);
-                const totalAnnualPayment = monthly * 10;
+                // Total annual payment calculation remains the same (10x monthly cost)
+                const totalAnnualPayment = monthly * 10; 
                 
                 const priceValueSpan = card.querySelector('.price-value');
                 const priceNoteSpan = card.querySelector('.price-note-annual');
@@ -381,7 +384,7 @@
         
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Calendly Lazy-Load (moved here for simplicity)
+        // Calendly Lazy-Load 
         const widget = document.querySelector('.calendly-inline-widget');
         if (widget && 'IntersectionObserver' in window) {
           const io = new IntersectionObserver((entries, ob) => {
