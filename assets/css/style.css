@@ -5,8 +5,9 @@
 
 /* ---------- CSS VARIABLES (Final Professional Palette) ---------- */
 :root {
-  --primary: #0f172a;    /* navy */
-  --accent: #0f766e;    /* teal */
+  --primary: #0f172a;    /* navy (Used for button outline, price text, general headings) */
+  --accent: #0f766e;    /* teal (Used for primary button background, badge) */
+  --blue: #2563eb;       /* Requested Blue Button Color */
   --white: #ffffff;
   --grey: #f7f9fc;
   --radius: 6px;
@@ -19,7 +20,7 @@
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;font-family:'Inter',sans-serif;line-height:1.6;color:#1e293b;background:var(--grey);overflow-x:hidden;padding-top:76px} 
 h1,h2,h3{font-weight:700;line-height:1.2}
-.section-title, .hero-title, .section-title-large {text-align:center} 
+.section-title, .section-title-large {text-align:center} 
 a{text-decoration:none !important} 
 .seo-only { position: absolute; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden;text-align: center;}
 .text-center {text-align: center !important;}
@@ -30,7 +31,7 @@ a{text-decoration:none !important}
 section{padding-block:4rem}
 
 
-/* ---------- NAVBAR & BUTTONS ---------- */
+/* ---------- NAVBAR & BUTTONS (Blue Color Implemented) ---------- */
 .navbar{position:fixed;top:0;width:100%;z-index:1000;background:var(--white);box-shadow:0 1px 2px rgba(0,0,0,.06)} 
 .navbar .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
 .navbar a{font-weight:500;color:#334155;transition:color .2s}
@@ -38,32 +39,64 @@ section{padding-block:4rem}
 .nav-links{display:flex;align-items:center;gap:2rem}
 .navbar .btn-primary { color: var(--white) !important;} 
 
-/* Button Styling */
+/* Button Styling (General) */
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:.65rem 1.5rem;border-radius:var(--radius);font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .2s}
-.btn-primary{background:var(--accent);color:var(--white)}
-.btn-primary:hover{background:#115e59}
+
+/* Primary Button (Blue) */
+.btn-primary{background:var(--blue);color:var(--white); border-color: var(--blue);}
+.btn-primary:hover{background:#1d4ed8; border-color: #1d4ed8;}
+
+/* Outline Button (Navy) */
+.btn-outline{background:transparent;color:var(--primary);border-color:var(--primary);}
+.btn-outline:hover{background:var(--primary);color:var(--white);}
+
 .btn-large{padding:.85rem 2rem;font-size:1.125rem}
 
 
-/* ---------- HERO & CALENDLY ---------- */
+/* ---------- HERO & PROOF BAR ALIGNMENT FIXES ---------- */
+/* Proof Bar Styling and Centering */
+.proof-bar {
+    background: var(--primary); 
+    color: var(--white);
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+}
+.proof-bar .container {
+    text-align: center;
+}
+.proof-bar p {
+    margin: 0;
+    font-weight: 800; /* FIX: Makes text bolder/thicker */
+}
+
+/* HERO SECTION - Left Alignment */
 .hero{padding:4rem 0;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%)}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.hero-title{font-size:3rem;font-weight:700;line-height:1.2}
+.hero-title{
+    text-align: left; /* FIX: Left alignment */
+    font-size:3rem;
+    font-weight:700;
+    line-height:1.2;
+}
+.hero-lead{margin:1.5rem 0 2rem 0;font-size:1.25rem;color:#4b5563;max-width:600px; text-align: left;}
 .regulatory-hook {
     font-size: 1rem;
     color: var(--primary); 
     font-weight: 500;
-    margin: 1rem auto 2rem;
+    margin: 1rem 0 2rem 0;
     max-width: 600px;
-    text-align: center;
+    text-align: left;
 }
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;justify-content:flex-start} /* FIX: Left align stats */
+.hero-cta-group{display:flex;gap:1rem;flex-wrap:wrap;justify-content:flex-start;margin-top:1.5rem} /* FIX: Left align CTAs */
+.star-row{display:flex;gap:.25rem;align-items:center;justify-content:flex-start;margin-bottom:1rem} /* FIX: Left align stars */
 
 
-/* ---------- TRUST BAR (Reverted to text/original state) ---------- */
+/* ---------- TRUST BAR (Reverted to Text) ---------- */
 .trust{padding:2rem 0;background:var(--white)}
 .marquee{display:flex;gap:2rem;overflow-x:hidden;animation:scroll 25s linear infinite}
 .marquee span{flex:0 0 auto;height:40px; white-space: nowrap; font-size: 1.1rem; font-weight: 600; color: #4b5563;}
-.marquee img{display: none;} /* Hide placeholder logo images */
+.marquee img{display: none;}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 
@@ -80,6 +113,24 @@ section{padding-block:4rem}
 }
 .testi-scroll::-webkit-scrollbar{display:none} /* FIX: Hide scrollbar in Webkit */
 .testi-scroll blockquote{flex:0 0 360px;scroll-snap-align:start;padding:1.5rem;background:var(--white);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;flex-direction:column;justify-content:space-between}
+
+
+/* ---------- SERVICES (Grid format fix) ---------- */
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:2rem;
+    text-align:center;
+}
+.service-grid article{
+    background:var(--white);
+    padding:2.5rem 2rem;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 /* ---------- PRICING (Button Leveling & Scrollbar HIDDEN) ---------- */
@@ -140,9 +191,11 @@ section{padding-block:4rem}
 }
 .cta .btn-large {
     margin-top: 1.5rem; 
+    /* Ensures button is correctly centered below text */
+    display: inline-block; 
 }
 
 
 /* ---------- FOOTER – NO UNDERLINES ---------- */
 footer a{color:#9ca3af;transition:color .2s; text-decoration: none !important;}
-/* (rest of footer styles omitted for brevity) */
+/* (rest of styles omitted for brevity) */
