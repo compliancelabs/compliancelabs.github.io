@@ -135,7 +135,7 @@
     </div>
   </section>
 
-  <section id="demo-video" class="hero-demo-video">
+  <section id="demo-video-hero" class="demo-video-hero">
     <div class="container"> 
         <h1 class="section-title-large">See how we cut your compliance risk (60 seconds)</h1>
         <div class="demo-wrapper">
@@ -151,6 +151,7 @@
         </div>
     </div>
   </section>
+
 
   <section id="pricing" class="pricing">
     <div class="container">
@@ -175,7 +176,7 @@
           <h3>Starter</h3>
           <p class="price"></p> 
           <p class="note">Perfect for sub-£1m turnover</p>
-          <ul>
+          <ul class="features-list">
             <li>Up to 15 subbies verified /mo</li>
             <li>Max £10k per debt chased</li>
             <li>Monthly compliance report</li>
@@ -191,7 +192,7 @@
           <h3>Pro</h3>
           <p class="price"></p>
           <p class="note">For £1-5m turnover</p>
-          <ul>
+          <ul class="features-list">
             <li>Up to 40 subbies verified /mo</li>
             <li>Max £25k per debt chased (5 concurrent)</li>
             <li>Weekly 15-min CFO walk-through (recorded)</li>
@@ -205,7 +206,7 @@
           <h3>Growth</h3>
           <p class="price"></p>
           <p class="note">Full finance-back-office</p>
-          <ul>
+          <ul class="features-list">
             <li>Unlimited subbies</li>
             <li>Max £100k per debt chased</li>
             <li>Quarterly 45-min CFO strategy Zoom (recorded + transcript)</li>
@@ -220,7 +221,7 @@
           <h3>Enterprise</h3>
           <p class="price"></p>
           <p class="note">For £20m+ turnover or main-contractors</p>
-          <ul>
+          <ul class="features-list">
             <li>Unlimited sub-contractor verifications</li>
             <li>£250k debt limit per case</li>
             <li>2h SLA phone & Slack</li>
@@ -324,7 +325,7 @@
             const priceDiv = card.querySelector('.price');
             const monthlyPrice = card.dataset.monthly;
             
-            // Reconstruct the HTML for the price display
+            // Reconstruct the HTML for the price display with bold numbers
             priceDiv.innerHTML = `
                 <span class="currency">£</span>
                 <span class="price-value">${Number(monthlyPrice).toLocaleString()}</span>
