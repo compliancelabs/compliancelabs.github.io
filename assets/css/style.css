@@ -5,7 +5,7 @@
 
 /* ---------- CSS VARIABLES (HMRC Green Palette) ---------- */
 :root {
-  --primary: #0f172a;    /* navy (Main text, headings) */
+  --primary: #0f172a;    /* navy (Main text, headings, footer background) */
   --accent: #0f766e;    /* teal (Fallback) */
   --hmrc-green: #00823b; /* Official HMRC Dark Green */
   --white: #ffffff;
@@ -79,25 +79,23 @@ section{padding-block:4rem}
 
 /* ---------- HERO & PROOF BAR ALIGNMENT FIXES ---------- */
 .proof-bar {
-    background: var(--primary); /* Navy color restored for proof bar, as requested */
+    background: var(--primary);
     color: var(--white);
     padding: 0.5rem 0;
     font-size: 0.875rem;
 }
-.proof-bar-content { 
-    text-align: center; /* FIX: Proof bar content centered */
+.proof-bar-content {
+    text-align: center;
 }
 .proof-bar p {
     margin: 0;
     font-weight: 800;
 }
-
-/* HERO SECTION - Left Alignment */
 .hero{padding:4rem 0;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%)}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.hero-text {text-align: left;} 
+.hero-text {text-align: left;}
 .hero-title{
-    text-align: left; /* FIX: Left alignment */
+    text-align: left;
     font-size:3rem;
     font-weight:700;
     line-height:1.2;
@@ -133,20 +131,18 @@ section{padding-block:4rem}
 }
 .testi-scroll{
     display:flex;
-    gap:1.5rem; /* FIX: Standard gap restored */
-    overflow-x:auto; /* FIX: Scrolling re-enabled */
+    gap:1.5rem;
+    overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     padding-block-end:1rem;
-    /* FIX: Restore native scrollbar visibility for navigation */
-    scrollbar-width:auto; 
-    -ms-overflow-style:auto;  
     scroll-snap-type: x mandatory;
+    scrollbar-width:auto; /* Re-enable native scrollbar */
+    -ms-overflow-style:auto;
 }
-/* FIX: Remove previous scrollbar hide rules */
-.testi-scroll::-webkit-scrollbar{display:auto} 
+.testi-scroll::-webkit-scrollbar{display:auto} /* Re-enable Webkit scrollbar */
 
 .testi-scroll blockquote{
-    flex:0 0 320px; /* FIX: Adjusted size for a standard card width */
+    flex:0 0 320px;
     scroll-snap-align:start;
     padding:1.5rem;
     background:var(--white);
@@ -209,6 +205,7 @@ section{padding-block:4rem}
     flex-wrap:nowrap;
     padding-block-end:1rem;
 }
+
 .price-card{
     flex:1 1 0;
     min-width:280px;
@@ -226,7 +223,7 @@ section{padding-block:4rem}
 
 .price-card h3 {
     margin-top: 0;
-    color: var(--primary); /* Title color */
+    color: var(--primary);
     font-size: 1.6rem;
 }
 
@@ -238,7 +235,7 @@ section{padding-block:4rem}
     gap: .25rem;
     line-height: 1;
     font-size: 2.5rem;
-    font-weight: 800; /* Bolder price numbers */
+    font-weight: 800;
     color: var(--primary);
     margin-block: 0.5rem 1rem;
 }
@@ -251,29 +248,16 @@ section{padding-block:4rem}
     font-size: 2.5rem; 
     font-weight: 800; 
 }
-.price-card .price-note-annual {
-    font-size: 1rem;
-    color: #6b7280;
-    font-weight: 500;
-}
 
 /* Feature List Styling */
 .price-card .features-list { 
     margin-block:1rem 1.25rem;
     padding-left:1.5rem;
     list-style:disc inside;
-    flex-grow:1; /* FIX: Pushes the button to the bottom */
+    flex-grow:1; /* Pushes the button to the bottom */
     color: var(--primary); 
-    font-weight: 500; /* Make list text slightly heavier/styled */
+    font-weight: 500;
     line-height: 1.7;
-}
-
-.price-card .overage-note{
-    font-size:.75rem;
-    color:#6b7280;
-    margin-block-start:.5rem;
-    margin-bottom: 1.5rem; 
-    text-align: center;
 }
 
 .price-card .btn{
@@ -282,14 +266,14 @@ section{padding-block:4rem}
 }
 .badge{
     display:inline-block;
-    background:var(--hmrc-green); /* Badge uses HMRC green */
+    background:var(--hmrc-green); 
     color:var(--white);
     padding:.35rem .9rem;
     border-radius:99px;
     font-size:.75rem;
     font-weight:600;
     margin-block-end:.75rem;
-    box-shadow:0 2px 4px rgba(0,130,59,.3); /* Shadow adjusted for green */
+    box-shadow:0 2px 4px rgba(0,130,59,.3);
 }
 
 
@@ -313,7 +297,7 @@ section{padding-block:4rem}
     display:flex;
     justify-content:space-between;
     align-items:center;
-    color: var(--primary); /* Revert summary text to primary color */
+    color: var(--primary);
     font-size: 1.1rem;
 }
 .faq summary::marker{content:none}
@@ -321,7 +305,7 @@ section{padding-block:4rem}
     content:'+';
     font-size:1.25rem;
     transition:transform .2s;
-    color: var(--hmrc-green); /* Use HMRC green for icon */
+    color: var(--hmrc-green);
     font-weight: 700;
 }
 .faq details[open] summary::after{transform:rotate(45deg)}
@@ -349,12 +333,20 @@ section{padding-block:4rem}
 }
 
 
-/* ---------- FOOTER (Enhanced Styling) ---------- */
+/* ---------- FOOTER (FIXED LAYOUT) ---------- */
 footer{
   background:var(--primary); 
   color:#9ca3af;
   padding-block:3rem 2rem;
   font-size:.875rem;
+}
+/* FIX: Ensure grid starts at a reasonable width and uses explicit column sizes */
+footer .container{
+  display:grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* 4 columns: 2x wide logo, 3x narrow for links */
+  gap: 2rem;
+  max-width: 1280px;
+  margin-inline: auto;
 }
 footer h4{
   color:var(--white); 
@@ -365,16 +357,18 @@ footer a{
   color:#9ca3af;
   transition:color .2s;
   text-decoration: none !important;
+  display: block; /* Ensure links take up full list item space */
+  padding-block: 2px;
 }
 footer a:hover{color:var(--white)} 
 .socials{display:flex;gap:.75rem;margin-block-start:1rem}
 .socials svg{fill:#9ca3af;transition:fill .2s}
 .socials a:hover svg{fill:var(--white)}
-/* Footer responsive adjustments */
+
+/* Mobile Fix (Stacking below 768px) */
 @media(max-width:768px){
   footer .container{grid-template-columns:1fr;text-align:center}
 }
-
 
 /* ---------- MOBILE & RESPONSIVE ---------- */
 @media(max-width:900px){
@@ -383,9 +377,21 @@ footer a:hover{color:var(--white)}
     .hero-title, .hero-lead, .regulatory-hook {text-align: center;}
     .hero-stats, .hero-cta-group, .star-row {justify-content: center;}
 }
-/* Final mobile layout fix */
+/* Final mobile layout fix for navigation */
 @media(max-width:768px){
-    .navbar .nav-inner {height: auto; flex-direction: column; padding-block: 1rem;}
-    .nav-links {display: flex; flex-direction: column; width: 100%;}
-    .navbar .btn-primary {margin-top: 1rem;}
+    .navbar .nav-inner {height: 72px; padding-block: 0;} /* Restore normal height */
+    .nav-links {display: flex; flex-direction: row; width: auto;} /* Restore inline links on mobile */
+    .navbar .btn-primary {margin-top: 0;}
+}
+
+/* Utility Class Fixes */
+.btn:active{transform:scale(.98)}
+footer a,
+footer p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+html, body {
+  overflow-x: hidden;
+  width: 100%;
 }
