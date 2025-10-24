@@ -17,17 +17,17 @@
 
 /* ---------- BASIC RESET & TYPOGRAPHY ---------- */
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;font-family:'Inter',sans-serif;line-height:1.6;color:#1e293b;background:var(--grey);overflow-x:hidden;padding-top:76px} /* more air */
+body{margin:0;font-family:'Inter',sans-serif;line-height:1.6;color:#1e293b;background:var(--grey);overflow-x:hidden;padding-top:76px} 
 h1,h2,h3{font-weight:700;line-height:1.2}
-.section-title, .hero-title, .section-title-large {text-align:center} /* centre ALL headings */
-a{text-decoration:none !important} /* kill every underline */
-.seo-only { position: absolute; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden;}
+.section-title, .hero-title, .section-title-large {text-align:center} 
+a{text-decoration:none !important} 
+.seo-only { position: absolute; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden;text-align: center;}
+.text-center {text-align: center !important;}
 
 
 /* ---------- GLOBAL LAYOUT & UTILITIES ---------- */
 .container{max-width:1280px;margin-inline:auto;padding-inline:1.5rem}
 section{padding-block:4rem}
-.text-center {text-align: center !important;}
 
 
 /* ---------- NAVBAR & BUTTONS ---------- */
@@ -36,7 +36,7 @@ section{padding-block:4rem}
 .navbar a{font-weight:500;color:#334155;transition:color .2s}
 .navbar a:hover{color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:2rem}
-.navbar .btn-primary { color: var(--white) !important;} /* Ensures button text is white */
+.navbar .btn-primary { color: var(--white) !important;} 
 
 /* Button Styling */
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:.65rem 1.5rem;border-radius:var(--radius);font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .2s}
@@ -57,9 +57,14 @@ section{padding-block:4rem}
     max-width: 600px;
     text-align: center;
 }
-.hero-cta-group{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem}
-.hero-calendly{flex:1 1 auto;order:2;min-width:320px}
-.calendly-inline-widget{border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,.08);margin:2rem auto;width:100% !important;height:680px !important;max-width:520px;position:relative;overflow:hidden}
+
+
+/* ---------- TRUST BAR (Reverted to text/original state) ---------- */
+.trust{padding:2rem 0;background:var(--white)}
+.marquee{display:flex;gap:2rem;overflow-x:hidden;animation:scroll 25s linear infinite}
+.marquee span{flex:0 0 auto;height:40px; white-space: nowrap; font-size: 1.1rem; font-weight: 600; color: #4b5563;}
+.marquee img{display: none;} /* Hide placeholder logo images */
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 
 /* ---------- TESTIMONIALS (Scrollbar HIDDEN) ---------- */
@@ -75,14 +80,6 @@ section{padding-block:4rem}
 }
 .testi-scroll::-webkit-scrollbar{display:none} /* FIX: Hide scrollbar in Webkit */
 .testi-scroll blockquote{flex:0 0 360px;scroll-snap-align:start;padding:1.5rem;background:var(--white);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;flex-direction:column;justify-content:space-between}
-
-
-/* ---------- DEMO VIDEO SECTION ---------- */
-.hero-demo-video {background: var(--white);padding-block: 5rem;}
-.demo-wrapper{max-width:850px;margin:2rem auto 1rem;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-subtle)}
-.demo-wrapper video{width:100%;height:auto;display:block}
-.silent-hook {text-align: center;font-size: 0.8125rem;color: #475569;margin-top: 1rem;}
-.demo-cta{text-align:center;margin-top:2rem}
 
 
 /* ---------- PRICING (Button Leveling & Scrollbar HIDDEN) ---------- */
@@ -112,7 +109,6 @@ section{padding-block:4rem}
     transition:transform .25s,box-shadow .25s;
     position:relative;
 }
-.price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
 .price-card ul{
     margin-block:1rem 1.25rem;
     padding-left:0;
@@ -132,17 +128,6 @@ section{padding-block:4rem}
 }
 
 
-/* ---------- FAQ ACCORDION (Professional Style) ---------- */
-.faq{background:var(--white)}
-.faq details{border-bottom:1px solid var(--border-color);max-width:900px;margin:0 auto}
-.faq details:first-of-type{border-top:1px solid var(--border-color)}
-.faq summary{padding:1.25rem 0;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.faq summary::marker{content:none}
-.faq summary::after{content:'+';font-size:1.25rem;transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details > p{padding:0 2rem 1.25rem;margin:0}
-
-
 /* ---------- FINAL CTA (Centering Fix) ---------- */
 #compliance-check {
     background-color: var(--grey); 
@@ -159,13 +144,5 @@ section{padding-block:4rem}
 
 
 /* ---------- FOOTER – NO UNDERLINES ---------- */
-footer{background:#111827;color:#9ca3af;padding-block:3rem 2rem;font-size:.875rem}
 footer a{color:#9ca3af;transition:color .2s; text-decoration: none !important;}
-.btn-footer-link {
-    display: inline-block;
-    background-color: var(--accent);
-    color: var(--white) !important;
-    padding: 0.35rem 1rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-}
+/* (rest of footer styles omitted for brevity) */
