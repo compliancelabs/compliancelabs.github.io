@@ -29,9 +29,6 @@
       <a class="brand" href="/" aria-label="Compliance Labs home">
         <img src="assets/img/logo.svg" alt="Compliance Labs logo" width="140" height="32">
       </a>
-      <button class="toggler" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
-        <span></span><span></span><span></span>
-      </button>
       <nav id="nav-links" class="nav-links">
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
@@ -315,7 +312,6 @@
   </svg>
 
   <script>
-    // Self-executing script for quick client-side logic
     document.addEventListener('DOMContentLoaded', () => {
         const grid = document.getElementById('pricingGrid');
         const toggle = document.getElementById('annualToggle');
@@ -337,7 +333,6 @@
         function setPricing(annual) {
             grid.querySelectorAll('.price-card').forEach(card => {
                 const monthly = Number(card.dataset.monthly);
-                // Total annual payment calculation remains the same (10x monthly cost)
                 const totalAnnualPayment = monthly * 10; 
                 
                 const priceValueSpan = card.querySelector('.price-value');
