@@ -3,18 +3,18 @@
  * Final Production Styles for Compliance Labs
  */
 
-/* ---------- CSS VARIABLES (HMRC-like Palette) ---------- */
+/* ---------- CSS VARIABLES (HMRC Green Palette) ---------- */
 :root {
   --primary: #0f172a;    /* navy (Main text, headings) */
-  --accent: #0f766e;    /* teal (Current accent, will shift to darker blue for buttons) */
-  --hmrc-blue: #003078; /* Darker blue, closer to HMRC branding */
+  --accent: #0f766e;    /* teal (Fallback) */
+  --hmrc-green: #00823b; /* Official HMRC Dark Green */
   --white: #ffffff;
   --grey: #f7f9fc;
-  --light-grey-bg: #f3f4f6; /* Lighter grey for subtle sections */
+  --light-grey-bg: #f3f4f6; 
   --radius: 6px;
   --shadow-subtle: 0 2px 4px rgba(0,0,0,.04);
   --shadow-hover:  0 12px 24px rgba(0,0,0,.08);
-  --border-color: #d1d5db; /* softer grey */
+  --border-color: #d1d5db; 
   --button-hover-dark: #000000; /* Black for button hover */
 }
 
@@ -24,12 +24,12 @@ body{
   margin:0;
   font-family:'Inter',sans-serif;
   line-height:1.6;
-  color:var(--primary); /* Use primary for general text */
+  color:var(--primary);
   background:var(--grey);
   overflow-x:hidden;
-  padding-top:76px; /* More air below fixed nav */
+  padding-top:76px;
 } 
-h1,h2,h3{font-weight:700;line-height:1.2;color:var(--primary);} /* Headings use primary color */
+h1,h2,h3{font-weight:700;line-height:1.2;color:var(--primary);}
 .section-title, .section-title-large {text-align:center} 
 a{text-decoration:none !important} 
 .seo-only { position: absolute; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden;text-align: center;}
@@ -41,11 +41,11 @@ a{text-decoration:none !important}
 section{padding-block:4rem}
 
 
-/* ---------- NAVBAR & BUTTONS (HMRC Blue & Black Hover) ---------- */
+/* ---------- NAVBAR & BUTTONS (HMRC Green & Black Hover) ---------- */
 .navbar{position:fixed;top:0;width:100%;z-index:1000;background:var(--white);box-shadow:0 1px 2px rgba(0,0,0,.06)} 
 .navbar .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-.navbar a{font-weight:500;color:var(--primary);transition:color .2s}
-.navbar a:hover{color:var(--hmrc-blue)} /* Navbar link hover to HMRC blue */
+.navbar a{font-weight:500;color:#334155;transition:color .2s}
+.navbar a:hover{color:var(--hmrc-green);} 
 .nav-links{display:flex;align-items:center;gap:2rem}
 .navbar .btn-primary { color: var(--white) !important;} 
 
@@ -62,39 +62,42 @@ section{padding-block:4rem}
   transition:all .2s;
 }
 
-/* Primary Button (HMRC Blue, Black Hover) */
-.btn-primary{background:var(--hmrc-blue);color:var(--white); border-color: var(--hmrc-blue);}
+/* Primary Button (HMRC Green, Black Hover) */
+.btn-primary{background:var(--hmrc-green);color:var(--white); border-color: var(--hmrc-green);}
 .btn-primary:hover{background:var(--button-hover-dark); border-color: var(--button-hover-dark);}
 
 /* Outline Button (Primary/Navy, Black Hover) */
 .btn-outline{background:transparent;color:var(--primary);border-color:var(--primary);}
 .btn-outline:hover{background:var(--button-hover-dark);color:var(--white); border-color: var(--button-hover-dark);}
 
+/* White Outline Button (Used in Hero) */
+.btn-outline-white{border-color:var(--white);color:var(--white);background:transparent;}
+.btn-outline-white:hover{background:var(--white);color:var(--primary);}
+
 .btn-large{padding:.85rem 2rem;font-size:1.125rem}
 
 
 /* ---------- HERO & PROOF BAR ALIGNMENT FIXES ---------- */
-/* Proof Bar Styling and Centering */
 .proof-bar {
-    background: var(--hmrc-blue); /* Use HMRC blue for the proof bar */
+    background: var(--primary); /* Navy color restored for proof bar, as requested */
     color: var(--white);
     padding: 0.5rem 0;
     font-size: 0.875rem;
 }
-.proof-bar-content { /* Explicitly target content for centering */
-    text-align: center;
+.proof-bar-content { 
+    text-align: center; /* FIX: Proof bar content centered */
 }
 .proof-bar p {
     margin: 0;
-    font-weight: 800; /* Bolder/thicker text */
+    font-weight: 800;
 }
 
 /* HERO SECTION - Left Alignment */
 .hero{padding:4rem 0;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%)}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.hero-text {text-align: left;} /* Ensure all text within hero-text aligns left */
+.hero-text {text-align: left;} 
 .hero-title{
-    text-align: left; /* Explicitly left align */
+    text-align: left; /* FIX: Left alignment */
     font-size:3rem;
     font-weight:700;
     line-height:1.2;
@@ -112,6 +115,9 @@ section{padding-block:4rem}
 .hero-cta-group{display:flex;gap:1rem;flex-wrap:wrap;justify-content:flex-start;margin-top:1.5rem} 
 .star-row{display:flex;gap:.25rem;align-items:center;justify-content:flex-start;margin-bottom:1rem} 
 
+/* CALENDLY */
+.calendly-inline-widget{border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,.08);margin:2rem auto;width:100% !important;height:680px !important;max-width:520px;position:relative;overflow:hidden}
+
 
 /* ---------- TRUST BAR (Reverted to Text) ---------- */
 .trust{padding:2rem 0;background:var(--white)}
@@ -121,23 +127,26 @@ section{padding-block:4rem}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 
-/* ---------- TESTIMONIALS (Spacing/Cutoff Fix) ---------- */
+/* ---------- TESTIMONIALS (Restored Scrolling Functionality) ---------- */
 .testimonials {
-    background: var(--light-grey-bg); /* Use a subtle background for testimonials */
+    background: var(--light-grey-bg);
 }
 .testi-scroll{
     display:flex;
-    gap:1rem; /* Reduced gap to fit more */
-    overflow-x:auto;
+    gap:1.5rem; /* FIX: Standard gap restored */
+    overflow-x:auto; /* FIX: Scrolling re-enabled */
     -webkit-overflow-scrolling:touch;
     padding-block-end:1rem;
-    scrollbar-width:none; 
-    -ms-overflow-style:none;  
-    scroll-snap-type: x mandatory; /* Ensure proper snapping */
+    /* FIX: Restore native scrollbar visibility for navigation */
+    scrollbar-width:auto; 
+    -ms-overflow-style:auto;  
+    scroll-snap-type: x mandatory;
 }
-.testi-scroll::-webkit-scrollbar{display:none} 
+/* FIX: Remove previous scrollbar hide rules */
+.testi-scroll::-webkit-scrollbar{display:auto} 
+
 .testi-scroll blockquote{
-    flex:0 0 300px; /* Adjusted fixed width to try and fit more */
+    flex:0 0 320px; /* FIX: Adjusted size for a standard card width */
     scroll-snap-align:start;
     padding:1.5rem;
     background:var(--white);
@@ -146,31 +155,22 @@ section{padding-block:4rem}
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    min-height: 180px; /* Ensure a minimum height if content is short */
-}
-/* Responsive adjustments for testimonials */
-@media (max-width: 768px) {
-    .testi-scroll {
-        gap: 0.75rem; /* Further reduce gap on smaller screens */
-    }
-    .testi-scroll blockquote {
-        flex: 0 0 calc(95% - 0.75rem); /* Make it nearly full width, leaving small gap */
-    }
+    min-height: 180px; 
 }
 
 
 /* ---------- SERVICES (Grid format) ---------- */
 .services {
-    background: var(--white); /* White background for services section */
+    background: var(--white);
 }
 .service-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); /* Adjusted minmax for better grid layout */
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:2rem;
     text-align:center;
 }
 .service-grid article{
-    background:var(--grey); /* Use light grey for service cards */
+    background:var(--grey);
     padding:2.5rem 2rem;
     border-radius:var(--radius);
     box-shadow:var(--shadow-subtle);
@@ -182,40 +182,36 @@ section{padding-block:4rem}
 
 /* ---------- DEMO VIDEO HERO SECTION (Prominent Size) ---------- */
 .demo-video-hero{
-    padding-block: 6rem; /* Make it more prominent */
-    background: linear-gradient(135deg,#c7d2fe 0%, #a5b4fc 100%); /* Subtle gradient background */
+    padding-block: 6rem;
+    background: linear-gradient(135deg,#c7d2fe 0%, #a5b4fc 100%); 
 }
 .demo-video-hero .container {
-    max-width: 960px; /* Slightly wider container for video */
+    max-width: 960px;
 }
 .demo-wrapper{
-    max-width:100%; /* Allow video to fill container */
+    max-width:100%;
     margin:2rem auto 1rem;
     border-radius:var(--radius);
     overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,.15); /* More prominent shadow */
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 .demo-wrapper video{width:100%;height:auto;display:block;}
 .silent-hook {text-align: center;font-size: 0.8125rem;color: #475569;margin-top: 1rem;}
 .demo-cta{text-align:center;margin-top:2rem}
 
 
-/* ---------- PRICING (Text/Numbers Styling & Buttons Leveling) ---------- */
+/* ---------- PRICING (Text/Numbers Styling & Button Leveling) ---------- */
 .pricing-row{
     display:flex;
-    gap:1.5rem; /* Standard spacing for pricing cards */
+    gap:1.5rem; 
     overflow-x:auto;
     scroll-snap-type:x mandatory;
     flex-wrap:nowrap;
     padding-block-end:1rem;
-    scrollbar-width:none; 
-    -ms-overflow-style:none;  
 }
-.pricing-row::-webkit-scrollbar{display:none} 
-
 .price-card{
     flex:1 1 0;
-    min-width:280px; /* Ensure good minimum width */
+    min-width:280px;
     display:flex;
     flex-direction:column;
     padding:2.25rem 1.75rem 2rem;
@@ -227,88 +223,89 @@ section{padding-block:4rem}
     position:relative;
 }
 .price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+
 .price-card h3 {
     margin-top: 0;
-    color: var(--hmrc-blue); /* HMRC blue for pricing card titles */
+    color: var(--primary); /* Title color */
     font-size: 1.6rem;
 }
+
+/* Price Display */
 .price-card .price {
     display: flex;
     align-items: baseline;
     justify-content: center;
     gap: .25rem;
     line-height: 1;
-    font-size: 2.5rem; /* Larger price text */
+    font-size: 2.5rem;
     font-weight: 800; /* Bolder price numbers */
-    color: var(--primary); /* Primary color for price */
+    color: var(--primary);
     margin-block: 0.5rem 1rem;
 }
 .price-card .price .currency{
-    font-size: 1.2rem; /* Adjusted currency size */
-    vertical-align: super; /* Align currency slightly higher */
+    font-size: 1.2rem;
+    vertical-align: super; 
     font-weight: 600;
 }
 .price-card .price .price-value {
-    font-size: 2.5rem; /* Match parent font-size for value */
-    font-weight: 800; /* Ensure value is bold */
+    font-size: 2.5rem; 
+    font-weight: 800; 
 }
 .price-card .price-note-annual {
     font-size: 1rem;
     color: #6b7280;
     font-weight: 500;
 }
-.price-card .note {
-    font-size: 0.95rem;
-    color: #4b5563;
-    margin-bottom: 1rem;
-}
-.price-card .features-list { /* New class for features list */
+
+/* Feature List Styling */
+.price-card .features-list { 
     margin-block:1rem 1.25rem;
-    padding-left:1.5rem; /* Add padding for list bullets */
+    padding-left:1.5rem;
     list-style:disc inside;
-    flex-grow:1; 
-    color: var(--primary); /* Text color for list items */
+    flex-grow:1; /* FIX: Pushes the button to the bottom */
+    color: var(--primary); 
+    font-weight: 500; /* Make list text slightly heavier/styled */
+    line-height: 1.7;
 }
-.price-card .features-list li {
-    margin-bottom: 0.5rem;
-}
+
 .price-card .overage-note{
     font-size:.75rem;
     color:#6b7280;
     margin-block-start:.5rem;
-    margin-bottom: 1.5rem; /* Space before button */
+    margin-bottom: 1.5rem; 
     text-align: center;
 }
+
 .price-card .btn{
     margin-top:auto;
     width: 100%;
 }
 .badge{
     display:inline-block;
-    background:var(--hmrc-blue); /* Badge uses HMRC blue */
+    background:var(--hmrc-green); /* Badge uses HMRC green */
     color:var(--white);
     padding:.35rem .9rem;
     border-radius:99px;
     font-size:.75rem;
     font-weight:600;
     margin-block-end:.75rem;
-    box-shadow:0 2px 4px rgba(0,48,120,.3); /* Shadow adjusted for HMRC blue */
+    box-shadow:0 2px 4px rgba(0,130,59,.3); /* Shadow adjusted for green */
 }
 
 
 /* ---------- FAQ ACCORDION (Enhanced Styling) ---------- */
-.faq{background:var(--light-grey-bg);padding-block: 5rem;} /* Lighter background for FAQ */
-.faq .container {max-width: 800px;} /* Narrower for better readability */
+.faq{background:var(--light-grey-bg);padding-block: 5rem;} 
+.faq .container {max-width: 800px;}
 .faq details{
     border-bottom:1px solid var(--border-color);
     margin:0 auto;
     background: var(--white);
-    padding: 0 1.5rem; /* Padding inside details for better look */
+    padding: 0 1.5rem;
     border-radius: var(--radius);
-    margin-bottom: 0.5rem; /* Space between FAQ items */
+    margin-bottom: 0.5rem;
 }
-.faq details:first-of-type{border-top:none; margin-top: 2rem;} /* Remove top border, adjust spacing */
-.faq details:last-of-type {border-bottom: none;} /* Remove bottom border */
+.faq details:first-of-type{border-top:none; margin-top: 2rem;}
+.faq details:last-of-type {border-bottom: none;}
 .faq summary{
     padding:1.25rem 0;
     font-weight:600;
@@ -316,7 +313,7 @@ section{padding-block:4rem}
     display:flex;
     justify-content:space-between;
     align-items:center;
-    color: var(--hmrc-blue); /* HMRC blue for summary text */
+    color: var(--primary); /* Revert summary text to primary color */
     font-size: 1.1rem;
 }
 .faq summary::marker{content:none}
@@ -324,14 +321,14 @@ section{padding-block:4rem}
     content:'+';
     font-size:1.25rem;
     transition:transform .2s;
-    color: var(--primary); /* Plus/minus icon color */
+    color: var(--hmrc-green); /* Use HMRC green for icon */
     font-weight: 700;
 }
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details > p{
-    padding:0 0 1.25rem; /* Adjusted padding */
+    padding:0 0 1.25rem;
     margin:0;
-    color: #4b5563; /* Lighter text for answer */
+    color: #4b5563; 
     line-height: 1.8;
 }
 
@@ -354,18 +351,13 @@ section{padding-block:4rem}
 
 /* ---------- FOOTER (Enhanced Styling) ---------- */
 footer{
-  background:var(--primary); /* Dark primary color for footer */
+  background:var(--primary); 
   color:#9ca3af;
   padding-block:3rem 2rem;
   font-size:.875rem;
 }
-footer .container{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:2rem;
-}
 footer h4{
-  color:var(--white); /* White headings */
+  color:var(--white); 
   margin-block-end:.75rem;
   font-size:1rem;
 }
@@ -374,10 +366,10 @@ footer a{
   transition:color .2s;
   text-decoration: none !important;
 }
-footer a:hover{color:var(--white)} /* White hover for footer links */
+footer a:hover{color:var(--white)} 
 .socials{display:flex;gap:.75rem;margin-block-start:1rem}
 .socials svg{fill:#9ca3af;transition:fill .2s}
-.socials a:hover svg{fill:var(--white)} /* White hover for social icons */
+.socials a:hover svg{fill:var(--white)}
 /* Footer responsive adjustments */
 @media(max-width:768px){
   footer .container{grid-template-columns:1fr;text-align:center}
@@ -387,28 +379,13 @@ footer a:hover{color:var(--white)} /* White hover for footer links */
 /* ---------- MOBILE & RESPONSIVE ---------- */
 @media(max-width:900px){
     .hero-grid{grid-template-columns:1fr}
-    .hero-text {text-align: center;} /* Center hero text on mobile */
+    .hero-text {text-align: center;} 
     .hero-title, .hero-lead, .regulatory-hook {text-align: center;}
     .hero-stats, .hero-cta-group, .star-row {justify-content: center;}
 }
+/* Final mobile layout fix */
 @media(max-width:768px){
-    .toggler{display:flex; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer;}
-    .toggler span{width:24px;height:3px;background:var(--primary);border-radius:2px}
-    .nav-links{position:absolute;top:100%;left:0;width:100%;flex-direction:column;background:var(--white);max-height:0;overflow:hidden;transition:.3s}
-    .nav-links.open{max-height:400px;padding:1rem 0}
-    footer .container{grid-template-columns:1fr;text-align:center}
-}
-
-/* BUTTON PRESS MICRO-INTERACTION */
-.btn:active{transform:scale(.98)}
-
-/* GENERAL BRAVE-ZOOM SAFETY */
-footer a,
-footer p {
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-html, body {
-  overflow-x: hidden;
-  width: 100%;
+    .navbar .nav-inner {height: auto; flex-direction: column; padding-block: 1rem;}
+    .nav-links {display: flex; flex-direction: column; width: 100%;}
+    .navbar .btn-primary {margin-top: 1rem;}
 }
