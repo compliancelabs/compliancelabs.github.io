@@ -97,7 +97,13 @@
 
     /* ---------- 5. FOOTER (FINAL GRID LOCK) ---------- */
     footer{background:var(--primary);color:#a5b1bb;font-size:.875rem;padding-block:2.5rem 1.5rem}
-    footer .container{display:grid;grid-template-columns: 35% 20% 20% 25%; gap: 2rem;max-width: 1280px;margin-inline:auto;}
+    footer .container{
+        display:grid;
+        grid-template-columns: 35% 20% 20% 25%; /* LOCKED DESKTOP COLUMNS */
+        gap: 2rem;
+        max-width: 1280px;
+        margin-inline:auto;
+    }
     footer ul{list-style:none;padding:0;margin:0}
     footer a{color:#a5b1bb;transition:color .2s;display:block;padding-block:2px}
     footer a:hover{color:#fff}
@@ -123,6 +129,7 @@
     <header class="navbar">
     <div class="container nav-inner">
       <a class="brand" href="/" aria-label="Compliance Labs home"><img src="assets/img/logo.svg" alt="Compliance Labs logo" width="140" height="32"></a>
+      <button class="toggler" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
       <nav id="nav-links" class="nav-links">
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
