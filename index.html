@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ComplianceLabs – CIS & Debt Chasing for UK Construction Contractors</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Fixed-fee compliance & retentions chasing for UK construction SMEs. Plans from £690/mo. Book a free Compliance Check today.">
+  <title>Compliance Labs – CIS & Debt Chasing for UK Construction SMEs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fixed-fee compliance & retentions chasing for UK construction SMEs. Plans from £690/mo. Book a £19 Compliance-Check today.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,7 @@
     section{padding-block:4rem}
     .section-title, .section-title-large {text-align:center} 
     .seo-only { position: absolute; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden;text-align: center;}
+    .btn:active{transform:scale(.98)}
 
     /* ---------- 2. NAVBAR & BUTTONS (HMRC Green & Black Hover) ---------- */
     .navbar{position:fixed;top:0;width:100%;z-index:1000;background:var(--white);box-shadow:0 1px 2px rgba(0,0,0,.06)} 
@@ -89,18 +90,26 @@
     .pricing{background:var(--white)}
     .pricing-row{display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:1rem;flex-wrap:nowrap}
     .price-card{flex:1 1 0;min-width:280px;display:flex;flex-direction:column;padding:2.5rem 1.75rem 2rem;border:1px solid var(--border-color);border-radius:var(--radius);box-shadow:var(--shadow-subtle)}
-    .price-card ul{list-style:none !important;padding-left:0;flex-grow:1;line-height:1.7;margin-block:1rem 1.25rem} /* NO BULLETS/DOTS */
+    .price-card ul{list-style:none !important;padding-left:0;flex-grow:1;line-height:1.7;margin-block:1rem 1.25rem}
     .price-card ul li{padding-left:0;margin-bottom:.4rem}
     .price-card .price {font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-block: 0.5rem 1rem;}
-    .price-card .badge{background:var(--highlight-contrast);color:var(--primary);font-weight:700;}
+    .price-card .price-value {font-weight: 800;}
+    .price-card .note {text-align: center; font-size: 0.95rem; color: #4b5563;}
 
 
     /* ---------- 5. FOOTER (FINAL GRID LOCK) ---------- */
     footer{background:var(--primary);color:#a5b1bb;font-size:.875rem;padding-block:2.5rem 1.5rem}
-    footer .container{display:grid;grid-template-columns: 35% 20% 20% 25%; gap: 2rem;max-width: 1280px;margin-inline:auto;}
+    /* FIX: Locking the grid using fixed percentages for maximum stability on desktop */
+    footer .container{
+      display:grid;
+      grid-template-columns: 35% 20% 20% 25%; 
+      gap: 2rem;
+      max-width: 1280px;
+      margin-inline: auto;
+    }
     footer ul{list-style:none;padding:0;margin:0}
-    footer a{color:#a5b1bb;transition:color .2s;display:block;padding-block:2px}
-    footer a:hover{color:#fff}
+    footer a{color:#a5b1bb;transition:color .2s;display:block;padding-block:2px}
+    footer a:hover{color:#fff}
     
     /* ---------- 6. MOBILE RESPONSIVENESS (Ensure stacking works) ---------- */
     @media(max-width:900px){
@@ -112,6 +121,10 @@
     @media(max-width:768px){
         footer .container{grid-template-columns:1fr;text-align:center}
     }
+    
+    /* FINAL UTILITY CLEANUP */
+    .btn:active{transform:scale(.98)}
+    html, body {overflow-x: hidden; width: 100%;}
   </style>
 </head>
 
@@ -145,7 +158,7 @@
         <p class="hero-lead">We verify every subcontractor, file CIS & VAT returns and chase late payments—so UK construction SMEs avoid £3k+ fines and unlock cash.</p>
         <div class="hero-stats"><div><span>£2.5 m</span><small>retained/chased</small></div><div><span>97 %</span><small>success rate</small></div></div>
         <div class="hero-cta-group">
-          <a href="#compliance-check" class="btn btn-large btn-primary">Get My free Risk Audit & Quote</a>
+          <a href="#compliance-check" class="btn btn-large btn-primary">Book £19 Compliance-Check</a>
           <a href="#demo" class="btn btn-large btn-outline">Watch 60-sec demo</a>
         </div>
       </div>
@@ -212,7 +225,7 @@
     </div>
   </section>
 
-    <section class="full-width pricing">
+    <section id="pricing" class="full-width pricing">
     <div class="container">
       <h2 class="section-title">Simple, transparent pricing</h2>
       <label class="toggle-label"><span>Monthly</span><input type="checkbox" id="annualToggle"><span class="switch"></span><span>Annual <small>(2 months free)</small></span></label>
