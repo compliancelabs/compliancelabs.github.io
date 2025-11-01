@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-        <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -120,7 +120,7 @@
       <div class="demo-wrapper">
         <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
           <source src="assets/video/60sec-demo.mp4" type="video/mp4">
-          <track kind="captions" src="assets/video/60sec-demo.vtt" srclang="en" label="English" default>
+          <track kind="captions" label="English Captions" src="assets/video/60sec-demo.vtt" srclang="en" default>
           Your browser does not support the video tag.
         </video>
       </div>
@@ -130,6 +130,7 @@
       </div>
     </div>
   </section>
+
 
     <section id="pricing" class="pricing">
     <div class="container">
@@ -147,19 +148,20 @@
         <img src="assets/img/badges/gdpr.svg" alt="GDPR compliant">
       </div>
 
-      <p class="risk-line" style="text-align:center;font-size:0.875rem;color:var(--muted);margin-block-end:2rem;">Cancel anytime.</p>
+      <p class="risk-line" style="text-align:center;font-size:0.875rem;color:#6b7280;margin-block-end:2rem;">Cancel anytime.</p>
 
       <div id="pricingGrid" class="pricing-row">
                 <article class="price-card" data-monthly="690" data-annual="6900">
           <h3>Starter</h3>
           <p class="price"></p>
           <p class="note">Perfect for sub-£1m turnover</p>
-          <ul class="features-list">
+          <ul>
             <li>Up to 15 subcontractors verified /mo</li>
             <li>Max £10k per debt chased</li>
             <li>Monthly compliance report</li>
             <li>Email support</li>
           </ul>
+          <p class="note"><strong>Does NOT include:</strong> bookkeeping, VAT returns, payroll, legal advice.</p>
           <p class="overage-note">Extra verifications £5 each • extra £10k debt chased £150</p>
           <a class="btn btn-outline" href="#compliance-check">Get started</a>
         </article>
@@ -169,7 +171,7 @@
           <h3>Pro</h3>
           <p class="price"></p>
           <p class="note">For £1-5m turnover</p>
-          <ul class="features-list">
+          <ul>
             <li>Up to 40 subcontractors verified /mo</li>
             <li>Max £25k per debt chased (5 concurrent)</li>
             <li>Weekly 15-min CFO walk-through (recorded)</li>
@@ -183,7 +185,7 @@
           <h3>Growth</h3>
           <p class="price"></p>
           <p class="note">Full finance-back-office</p>
-          <ul class="features-list">
+          <ul>
             <li>Unlimited subcontractors</li>
             <li>Max £100k per debt chased</li>
             <li>Quarterly 45-min CFO strategy Zoom (recorded + transcript)</li>
@@ -198,7 +200,7 @@
           <h3>Enterprise</h3>
           <p class="price"></p>
           <p class="note">For £20m+ turnover or main-contractors</p>
-          <ul class="features-list">
+          <ul>
             <li>Unlimited subcontractors verifications</li>
             <li>£250k debt limit per case</li>
             <li>2h SLA phone & Slack</li>
