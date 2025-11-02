@@ -11,147 +11,121 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ---------- DESIGN TOKENS ---------- */
-    :root{
-      --ink:     #0b1c2b; /* Primary dark color */
-      --green:   #00823b; /* Primary green (HMRC) */
-      --bg:      #f5f7fa; /* Canvas background */
-      --paper:   #ffffff; /* White backgrounds */
-      --slate:   #637381; /* Muted text */
-      --mute:    #889096; /* Secondary muted text */
-      --radius:  8px;
-      --line: #e2e8f0;
-      --shadow:  0 1px 0 rgba(0,0,0,.06);
-      --shadow-h:0 8px 24px rgba(0,0,0,.08);
-      --focus:#2563eb;
+    /* ---------- FINAL PRODUCTION CSS - INTEGRATED STYLES ---------- */
+    :root {
+      --primary: #0f172a;    /* navy (Main text, headings, footer background) */
+      --hmrc-dark-green: #004d33; /* Darker green for buttons (Professional/HMRC feel) */
+      --highlight-contrast: #e59a00; /* Contrasting Amber/Orange for 'Most Popular' */
+      --hmrc-green: #00823b; /* Official HMRC Green for accents */
+      --white: #ffffff;
+      --grey: #f7f9fc;
+      --light-grey-bg: #f3f4f6; 
+      --radius: 6px;
+      --shadow-subtle: 0 2px 4px rgba(0,0,0,.04);
+      --shadow-hover:  0 12px 24px rgba(0,0,0,.08);
+      --border-color: #d1d5db; 
+      --button-hover-dark: #000000; /* Black for button hover */
     }
 
-    /* ---------- GLOBAL RESET & BASE LAYOUT ---------- */
+    /* ---------- 1. GLOBAL RESET & BASE LAYOUT ---------- */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
       font-family:"Inter",system-ui,sans-serif;
-      font-size:19px;
-      line-height:1.55;
-      color:var(--charcoal);
-      background:var(--bg);
+      font-weight:400;
+      color:var(--primary);
+      background:var(--grey);
+      line-height:1.6;
       overflow-x:hidden;
-      padding-top:64px;
+      padding-top:76px;
     }
-    a{text-decoration:none;color:inherit}
-    h1,h2,h3{font-weight:700;line-height:1.2;margin:.5em 0 .25em;color:var(--ink);}
-    .container{max-width:1140px;margin-inline:auto;padding-inline:1.5rem;}
-    .full-width{width:100%;padding-block:4rem 5rem}
+    h1,h2,h3{font-weight:700;line-height:1.2;color:var(--primary);}
+    a{text-decoration:none !important;color:inherit;}
+    .container{max-width:1280px;margin-inline:auto;padding-inline:1.5rem}
+    section{padding-block:4rem}
+    .section-title, .section-title-large {text-align:center} 
+    .seo-only { position: absolute; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden;text-align: center;}
+    .btn:active{transform:scale(.98)}
 
-    /* ---------- BUTTONS (Dark Green Primary) ---------- */
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;font-weight:600;font-size:1.125rem;border:2px solid transparent;border-radius:var(--radius);cursor:pointer;transition:all .2s;}
-    .btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink);} /* FIX: Changed to Ink for darker button */
-    .btn-primary:hover{background:var(--green);border-color:var(--green);} /* Hover: Green */
-    .btn-secondary{background:var(--paper);color:var(--ink);border-color:var(--ink);}
-    .btn-secondary:hover{background:var(--ink);color:var(--paper);}
-    .btn-large{padding:.8rem 2rem;font-size:1rem}
+    /* ---------- 2. NAVBAR & BUTTONS (HMRC Green & Black Hover) ---------- */
+    .navbar{position:fixed;top:0;width:100%;z-index:1000;background:var(--white);box-shadow:0 1px 2px rgba(0,0,0,.06)} 
+    .navbar .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .navbar a{font-weight:500;color:#334155;transition:color .2s}
+    .navbar a:hover{color:var(--hmrc-green);} 
+    .nav-links{display:flex;align-items:center;gap:2rem}
+    .navbar .btn-primary { color: var(--white) !important;} 
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.65rem 1.5rem;border-radius:var(--radius);font-weight:600;border:2px solid transparent;transition:all .2s;cursor:pointer}
+    .btn-primary{background:var(--hmrc-dark-green);color:var(--white); border-color: var(--hmrc-dark-green);}
+    .btn-primary:hover{background:var(--button-hover-dark); color:var(--white); border-color: var(--button-hover-dark);}
+    .btn-outline{background:transparent;color:var(--primary);border-color:var(--primary);}
+    .btn-outline:hover{background:var(--button-hover-dark);color:var(--white); border-color: var(--button-hover-dark);}
+    .btn-large{padding:.85rem 2rem;font-size:1.125rem}
+    .btn-outline-white{border-color:var(--white);color:var(--white);background:transparent;}
+    .btn-outline-white:hover{background:var(--white);color:var(--primary);}
 
-    /* ---------- NAVBAR (64 px slim) ---------- */
-    .header{background:var(--navy);color:var(--paper);position:fixed;top:0;width:100%;z-index:1000;box-shadow:var(--shadow);}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
-    .logo img{height:40px;filter:invert(1);}
-    .nav{display:flex;align-items:center;gap:2rem;}
-    .nav a{color:var(--paper);font-weight:500;}
 
-    /* ---------- PROOF BAR ---------- */
-    .proof-bar{background:var(--green);color:#fff;font-size:.8125rem;text-align:center;padding:.35rem 0;letter-spacing:.2px;font-weight:700;}
-    .proof-bar strong{font-weight:900;}
+    /* ---------- 3. HERO & PROOF BAR ALIGNMENT FIXES ---------- */
+    .proof-bar{background:var(--primary);color:var(--white);padding:.5rem 0;font-size:.875rem;font-weight:800;text-align:center}
+    .hero{background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);padding:4rem 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .hero-text{text-align:left}
+    .hero-title{text-align:left;font-size:3rem;line-height:1.2}
+    .hero-lead{margin:1.5rem 0 2rem 0;font-size:1.25rem;color:#4b5563;max-width:600px;text-align:left}
+    .regulatory-hook{font-size:1rem;color:var(--primary);font-weight:500;margin:1rem 0 2rem 0;max-width:600px;text-align:left}
+    .hero-stats{display:flex;gap:2rem;margin-top:2.5rem;justify-content:flex-start} 
+    .hero-cta-group{display:flex;gap:1rem;flex-wrap:wrap;justify-content:flex-start;margin-top:1.5rem} 
+    .star-row{display:flex;gap:.25rem;align-items:center;justify-content:flex-start;margin-bottom:1rem} 
+    .calendly-inline-widget{width:100% !important;height:680px !important;max-width:520px;} 
 
-    /* ---------- HERO ---------- */
-    .hero{background:var(--paper);padding:4rem 0 5rem}
-    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-    .hero-title{font-size:3rem;font-weight:700;line-height:1.15;margin-bottom:1rem;color:var(--ink);}
-    .hero-lead{font-size:1.25rem;color:var(--slate);margin-bottom:2rem;max-width:560px}
-    .star-row svg{width:16px;height:16px;fill:#f59e0b}
-    .hero-cta-group{display:flex;gap:1rem;flex-wrap:wrap}
 
-    /* ---------- SERVICES ---------- */
-    .services{background:var(--bg);padding:4rem 0;}
-    .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-    .service-card{background:var(--paper);padding:2.5rem;border-radius:var(--radius);box-shadow:var(--shadow);}
-
-    /* ---------- TESTIMONIALS (FIXED SCROLL) ---------- */
-    .testimonials{background:var(--paper);padding:4rem 0;}
-    .testi-track{
-        display:flex;
-        gap:1.5rem;
-        animation:testiScroll 25s linear infinite;
-        width: max-content; /* Critical: Allows track to be wider than container */
-    }
-    .testi-scroll{
-        overflow-x:auto; 
-        padding-bottom:1rem;
-        /* Scrollbar hides in the full code version */
-    }
-    .testi-card{
-        flex:0 0 340px; /* Critical: Fixed width for card animation */
-        background:var(--bg);
-        padding:2rem;
-        border:1px solid var(--line);
-        border-radius:var(--radius);
-        display:flex;
-        flex-direction:column;
-        justify-content:space-between;
-    }
-    @keyframes testiScroll{
-        0%{transform:translateX(0)}
-        100%{transform:translateX(calc(-50% - 1.5rem))} /* Adjusted to loop seamlessly */
-    }
-
-    /* ---------- DEMO ---------- */
-    .demo-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);max-width:860px;margin-inline:auto}
-    .demo-wrapper video{position:absolute;top:0;left:0;width:100%;height:100%}
-
-    /* ---------- PRICING (Corrected List Styling) ---------- */
-    .pricing{background:var(--paper)}
-    .pricing-row{display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:1rem;}
-    .price-card{flex:1 1 0;min-width:280px;background:var(--paper);padding:2rem;border:1px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;box-shadow:var(--shadow);}
-    .price-card .price{font-size:2rem;font-weight:700;margin:.5rem 0 .25rem;color:var(--ink);}
-    .price-card ul{list-style:none !important;padding:0;margin:1rem 0;flex-grow:1;line-height:1.7;} /* NO BULLETS */
-    .price-card .btn{margin-top:auto;width:100%;}
-    .price-card .badge{background:var(--green);color:var(--paper);padding:.25rem .75rem;border-radius:99px;font-size:.75rem;font-weight:600;margin-bottom:.5rem;}
-
-    /* ---------- FAQ ---------- */
-    details{background:var(--canvas);border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem;margin-bottom:.5rem;}
-    summary{cursor:pointer;font-weight:600;color:var(--ink);}
-    details[open] summary{color:var(--green);}
-
-    /* ---------- FOOTER (Locked Grid Fix) ---------- */
-    .footer{background:var(--ink);color:var(--paper);padding:3rem 0 2rem;font-size:.875rem;}
-    .footer-grid{
-        display:grid;
-        grid-template-columns:35% 20% 20% 25%; /* LOCKED COLUMNS */
-        gap:2rem;
-        max-width:1140px;
-        margin-inline:auto;
-    }
-    .footer a{color:inherit;}
-    .footer h4{color:#fff;margin-bottom:.75rem;font-size:1rem}
-    .footer ul{list-style:none;padding:0;margin:0}
+    /* ---------- 4. TESTIMONIALS & PRICING (SCROLL & NO BULLETS) ---------- */
+    .testimonials{background:var(--light-grey-bg)}
+    .testi-scroll{display:flex;gap:1rem;overflow-x:auto;padding-block-end:1rem;scroll-snap-type:x mandatory;animation:testi-scroll 40s linear infinite}
+    .testi-scroll blockquote{flex:0 0 320px;scroll-snap-align:start;padding:1.5rem;background:var(--white);box-shadow:var(--shadow-subtle);display:flex;flex-direction:column;justify-content:space-between;min-height:180px;}
+    @keyframes testi-scroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-320px * 4 - 1.5rem * 4))}}
     
-    /* ---------- MOBILE RESPONSIVENESS ---------- */
-    @media(max-width:768px){
-      .mobile-toggler{display:flex}
-      .nav{display:none;position:absolute;top:72px;left:0;width:100%;background:var(--navy);flex-direction:column;align-items:flex-start;padding:1.5rem;gap:.5rem;box-shadow:var(--shadow-h)}
-      .nav.open{display:flex}
-      .hero-grid{grid-template-columns:1fr;text-align:center;}
-      .hero-stats{justify-content:center;}
-      .footer-grid{grid-template-columns:1fr;text-align:center;}
+    /* PRICING LIST: NO BULLETS */
+    .pricing{background:var(--white)}
+    .pricing-row{display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:1rem;flex-wrap:nowrap}
+    .price-card{flex:1 1 0;min-width:280px;display:flex;flex-direction:column;padding:2.5rem 1.75rem 2rem;border:1px solid var(--border-color);border-radius:var(--radius);box-shadow:var(--shadow-subtle)}
+    .price-card ul{list-style:none !important;padding-left:0;flex-grow:1;line-height:1.7;margin-block:1rem 1.25rem}
+    .price-card ul li{padding-left:0;margin-bottom:.4rem}
+    .price-card .price {display: flex; justify-content: center; align-items: baseline; font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-block: 0.5rem 1rem;}
+    .price-card .price .currency{font-size: 1.2rem; font-weight: 600;} /* Ensure currency size is good */
+    .price-card .price-value {font-weight: 800;} /* FIX: Ensures price numbers are bold */
+    .price-card .note {text-align: center; font-size: 0.95rem; color: #4b5563;}
+    .price-card .overage-note{text-align: center;}
+
+
+    /* ---------- 5. FOOTER (FINAL GRID LOCK) ---------- */
+    footer{background:var(--primary);color:#a5b1bb;font-size:.875rem;padding-block:2.5rem 1.5rem}
+    footer .container{display:grid;grid-template-columns: 35% 20% 20% 25%; gap: 2rem;max-width: 1280px;margin-inline:auto;}
+    footer ul{list-style:none;padding:0;margin:0}
+    footer a{color:#a5b1bb;transition:color .2s;display:block;padding-block:2px}
+    footer a:hover{color:#fff}
+    
+    /* ---------- 6. MOBILE RESPONSIVENESS (Ensure stacking works) ---------- */
+    @media(max-width:900px){
+        .hero-grid{display:flex;flex-direction: column;}
+        .hero-text {text-align: center;} 
+        .hero-title, .hero-lead, .regulatory-hook {text-align: center;}
+        .hero-stats, .hero-cta-group, .star-row {justify-content: center;}
     }
+    @media(max-width:768px){
+        footer .container{grid-template-columns:1fr;text-align:center}
+    }
+    
+    /* FINAL UTILITY CLEANUP */
+    .btn:active{transform:scale(.98)}
+    html, body {overflow-x: hidden; width: 100%;}
   </style>
 </head>
 
 <body>
-    <header class="header">
-    <div class="container header-inner">
-      <a href="/" class="logo" aria-label="Compliance Labs home"><img src="assets/img/logo.svg" alt="Compliance Labs logo" width="160" height="40"></a>
-      <button class="mobile-toggler" id="mobile-toggler" aria-label="Open navigation" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
-      <nav class="nav" id="nav">
+    <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="Compliance Labs home"><img src="assets/img/logo.svg" alt="Compliance Labs logo" width="140" height="32"></a>
+      <nav id="nav-links" class="nav-links">
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
@@ -160,22 +134,28 @@
     </div>
   </header>
 
-    <div class="proof-bar"><p><strong>£4.2 m</strong> recovered • <strong>1,847</strong> subcontractors verified • <strong>0</strong> HMRC fines for clients • Next slot today at 15:00 – only 5 left this week</p></div>
+    <div class="proof-bar">
+    <div class="container proof-bar-content">
+      <p><strong>£4.2 m</strong> recovered • <strong>1,847</strong> subcontractors verified • <strong>0</strong> HMRC fines for clients • Next slot today at 15:00 – only 5 left this week</p>
+    </div>
+  </div>
 
     <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-                <div>
-          <div class="star-row"><svg viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg viewBox="0 0 16 16"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg>&nbsp;4.9/5 from 127 reviews</div>
-          <h1>We keep you HMRC-safe and get you paid faster</h1>
-          <p class="govuk-body-l">We verify every subcontractor, file CIS & VAT returns and chase late payments so UK construction SMEs avoid £3k+ fines and unlock cash.</p>
-          <div class="hero-stats"><div><span>£2.5 m</span><small>retained/chased</small></div><div><span>97 %</span><small>success rate</small></div></div>
-          <p class="hero-cta-group">
-            <a href="#compliance-check" class="btn btn-primary">Book £19 Compliance-Check</a>
-            <a href="#demo" class="btn btn-secondary">Watch 60-sec demo</a>
-          </p>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="star-row">
+          <svg width="18" height="18"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg width="18" height="18"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg width="18" height="18"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg width="18" height="18"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg><svg width="18" height="18"><path fill="#f59e0b" d="M16 6.2l-5.2-.8L8 0 5.2 5.4 0 6.2l4 3.9-.9 5.3L8 12.6l4.9 2.8-.9-5.3 4-3.9z"/></svg>&nbsp;4.9/5 from 127 reviews</div>
+        <h1 class="hero-title">Stay HMRC-safe<br>and get paid faster</h1>
+        <p class="regulatory-hook">We operate strictly within the UK's Financial Conduct Authority (FCA) compliance and data guidelines.</p>
+        <p class="hero-lead">We verify every subcontractor, file CIS & VAT returns and chase late payments—so UK construction SMEs avoid £3k+ fines and unlock cash.</p>
+        <div class="hero-stats"><div><span>£2.5 m</span><small>retained/chased</small></div><div><span>97 %</span><small>success rate</small></div></div>
+        <div class="hero-cta-group">
+          <a href="#compliance-check" class="btn btn-large btn-primary">Book £19 Compliance-Check</a>
+          <a href="#demo" class="btn btn-large btn-outline">Watch 60-sec demo</a>
         </div>
-                <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-width:320px;height:680px;"></div>
+      </div>
+      <div class="hero-calendly">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-width:320px;height:680px;"></div>
       </div>
     </div>
   </section>
@@ -199,9 +179,9 @@
     <div class="container">
       <h2 class="section-title">How we remove your biggest headaches</h2>
       <div class="service-grid">
-        <article class="service-card"><img src="assets/img/icon-shield.svg" alt="" width="48" height="48"><h3>Compliance Shield</h3><p>We verify every subbie, file CIS & VAT reverse-charge returns, and keep your HMRC inbox at zero—so you avoid £3k+ fines and sleep at night.</p></article>
-        <article class="service-card"><img src="assets/img/icon-chase.svg" alt="" width="48" height="48"><h3>Payment Chase</h3><p>Our 5-step letter, call & solicitor escalations recover retentions and overdue invoices—cash-flow unlocked.</p></article>
-        <article class="service-card"><img src="assets/img/icon-chart.svg" alt="" width="48" height="48"><h3>Live Dashboard</h3><p>One login shows who’s compliant, who owes what, and what’s coming in—so you can plan purchases, payroll and projects with confidence.</p></article>
+        <article><img src="assets/img/icon-shield.svg" alt="" width="48" height="48"><h3>Compliance Shield</h3><p>We verify every subbie, file CIS & VAT reverse-charge returns, and keep your HMRC inbox at zero—so you avoid £3k+ fines and sleep at night.</p></article>
+        <article><img src="assets/img/icon-chase.svg" alt="" width="48" height="48"><h3>Payment Chase</h3><p>Our 5-step letter, call & solicitor escalations recover retentions and overdue invoices—cash-flow unlocked.</p></article>
+        <article><img src="assets/img/icon-chart.svg" alt="" width="48" height="48"><h3>Live Dashboard</h3><p>One login shows who’s compliant, who owes what, and what’s coming in—so you can plan purchases, payroll and projects with confidence.</p></article>
       </div>
     </div>
   </section>
@@ -224,9 +204,9 @@
     </div>
   </section>
 
-    <section class="full-width" id="demo">
+    <section class="full-width" id="demo-video-hero">
     <div class="container">
-      <h2 class="section-title">See it in action (60 seconds)</h2>
+      <h2 class="section-title">See how we cut your compliance risk (60 seconds)</h2>
       <div class="demo-wrapper">
             <video controls preload="metadata" poster="assets/img/demo-poster.jpg">
                 <source src="assets/video/60sec-demo.mp4" type="video/mp4">
@@ -274,14 +254,14 @@
           <p class="note">Full finance-back-office</p>
           <ul><li>Unlimited subbies</li><li>Max £100k per debt chased</li><li>Quarterly 45-min CFO strategy Zoom (recorded + transcript)</li><li>Same-day reports + dedicated Slack</li><li>White-label portal</li></ul>
           <p class="overage-note">Extra £10k debt chased £150 • CFO call add-on £350</p>
-          <a class="btn btn-outline" href="#compliance-check">Get started</a>
+          <a class="btn btn-secondary" href="#compliance-check">Get started</a>
         </article>
                 <article class="price-card" data-monthly="5190" data-annual="57090">
           <h3>Enterprise</h3><p class="price"><span class="currency">£</span><span class="price-value" data-monthly="5190">5,190</span></p>
           <p class="note">For £20m+ turnover or main-contractors</p>
           <ul><li>Unlimited sub-contractor verifications</li><li>£250k debt limit per case</li><li>2-hour SLA phone & Slack</li><li>Quarterly strategy Zoom (recorded) + private podcast feed</li><li>White-label portal</li></ul>
           <p class="overage-note">Extra £50k debt block £500 • white-label portal £500 set-up</p>
-          <a class="btn btn-outline" href="#compliance-check">Get started</a>
+          <a class="btn btn-secondary" href="#compliance-check">Get started</a>
         </article>
       </div>
     </div>
@@ -330,7 +310,7 @@
     const toggle=document.getElementById('annualToggle'),grid=document.getElementById('pricingGrid');
     function setPricing(annual){
       grid.querySelectorAll('.price-card').forEach(card=>{
-        const monthly=Number(card.dataset.monthly),a=monthly*10; // Fixed 10x multiplier for 2 months free
+        const m=Number(card.dataset.monthly),a=m*10; // Use 10x for 2 months free
         card.querySelector('.price-value').textContent=(annual?a:m).toLocaleString();
       });
     }
