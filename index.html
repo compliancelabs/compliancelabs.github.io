@@ -6,22 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Fixed-fee compliance & retentions chasing for UK construction SMEs. Plans from £690/mo. Book a free Compliance Check today.">
 
-  <!-- Preload key assets -->
   <link rel="preload" href="assets/img/logo.svg" as="image">
-  <link rel="preload" href="assets/img/demo-poster.jpg" as="image">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Professional colour palette -->
+  <!-- Professional charcoal palette -->
   <style>
     :root{
-      --navy:#0f172a;           /* header bg */
-      --charcoal:#1e293b;       /* buttons + badges */
-      --paper:#ffffff;          /* cards */
-      --canvas:#f8fafc;         /* page bg */
-      --line:#e2e8f0;           /* borders */
-      --mute:#64748b;           /* secondary text */
-      --accent:#f59e0b;         /* amber badge only */
-      --focus:#2563eb;          /* focus ring */
+      --navy:#0f172a;
+      --charcoal:#1e293b;
+      --paper:#ffffff;
+      --canvas:#f8fafc;
+      --line:#e2e8f0;
+      --mute:#64748b;
+      --amber:#f59e0b;
+      --focus:#2563eb;
       --radius:8px;
       --shadow:0 4px 12px rgba(0,0,0,.05);
       --font:'Inter',Helvetica,Arial,sans-serif;
@@ -54,9 +52,9 @@
     .mobile-toggler span{width:24px;height:3px;background:var(--paper);}
     @media(max-width:768px){.nav{display:none;position:absolute;top:72px;left:0;width:100%;background:var(--navy);flex-direction:column;padding:1rem;gap:1rem;}.nav.open{display:flex;}.mobile-toggler{display:flex;}}
 
-    /* ----- TRUST BAR (thinner) ----- */
-    .trust{padding:.4rem 0;background:var(--canvas);font-size:.875rem;font-weight:600;color:var(--mute);}
-    .marquee{display:flex;gap:2rem;animation:scroll 30s linear infinite;white-space:nowrap;}
+    /* ----- TRUST BAR (thinner + contained) ----- */
+    .trust{padding:.4rem 0;background:var(--canvas);font-size:.875rem;font-weight:600;color:var(--mute);overflow:hidden;}
+    .marquee{display:flex;gap:2rem;animation:scroll 30s linear infinite;white-space:nowrap;width:max-content;}
     .marquee span{flex:0 0 auto;}
     @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
@@ -69,8 +67,13 @@
     .services,.testimonials,.demo,.pricing,.faq{padding:4rem 0;}
     .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;}
     .service-card{background:var(--paper);padding:2rem;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);}
-    .testi-scroll{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;}
-    .testi-scroll blockquote{flex:0 0 320px;scroll-snap-align:start;background:var(--canvas);padding:1.5rem;border:1px solid var(--line);border-radius:var(--radius);}
+    
+    /* ----- AUTO-SCROLL TESTIMONIALS (no manual scroller) ----- */
+    .testimonials{background:var(--canvas);}
+    .testi-track{display:flex;gap:2rem;animation:testiScroll 25s linear infinite;}
+    .testi-card{flex:0 0 340px;background:var(--paper);padding:2rem;border:1px solid var(--line);border-radius:var(--radius);}
+    @keyframes testiScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
     .demo-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);}
     .demo-wrapper video{position:absolute;top:0;left:0;width:100%;height:100%;}
 
@@ -80,7 +83,7 @@
     .price-card .price{font-size:1.875rem;margin:.25em 0;color:var(--navy);}
     .price-card ul{list-style:none;padding:0;margin:0 0 1.5rem;flex-grow:1;}
     .price-card .btn{margin-top:auto;}
-    .badge{display:inline-block;background:var(--accent);color:#fff;padding:.25rem .75rem;border-radius:99px;font-size:.75rem;font-weight:600;margin-bottom:.5rem;}
+    .badge{display:inline-block;background:var(--amber);color:#fff;padding:.25rem .75rem;border-radius:99px;font-size:.75rem;font-weight:600;margin-bottom:.5rem;}
 
     /* ----- FAQ ----- */
     details{background:var(--canvas);padding:1rem;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:.5rem;}
@@ -109,7 +112,7 @@
     </div>
   </header>
 
-  <!-- =========  TRUST BAR (thinner)  ========= -->
+  <!-- =========  TRUST BAR (thinner + contained)  ========= -->
   <div class="trust">
     <div class="container">
       <div class="marquee">
@@ -119,6 +122,7 @@
         <span>Retention Chasing.</span>
         <span>VAT Reverse Charge.</span>
         <span>HMRC Audit Prepared.</span>
+        <!-- duplicate for seamless scroll -->
         <span aria-hidden="true">Trusted by over 120 UK Contractors.</span>
         <span aria-hidden="true">CIS Compliance Verified.</span>
         <span aria-hidden="true">Debt Recovery Success.</span>
@@ -129,12 +133,11 @@
     </div>
   </div>
 
-  <!-- =========  HERO  ========= -->
+  <!-- =========  HERO  (NO 4.9/5 BADGE)  ========= -->
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
         <div>
-          <p class="badge">4.9/5 from 127 reviews</p>
           <h1>We keep you HMRC-safe and get you paid faster</h1>
           <p class="govuk-body-l">We verify every subcontractor, file CIS & VAT returns and chase late payments so UK construction SMEs avoid £3k+ fines and unlock cash.</p>
           <ul>
@@ -176,27 +179,47 @@
     </div>
   </section>
 
-  <!-- =========  TESTIMONIALS  ========= -->
+  <!-- =========  AUTO-SCROLL TESTIMONIALS (no manual scroller)  ========= -->
   <section class="testimonials">
     <div class="container">
       <h2>What businesses say about us</h2>
       <div class="testi-scroll">
-        <blockquote>
-          <p>“Compliance Labs spotted £9k of unverified subbies in one week – saved us from a HMRC penalty.”</p>
-          <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
-        </blockquote>
-        <blockquote>
-          <p>“They collected £48k of 90-day retentions within 40 days. Unreal ROI.”</p>
-          <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
-        </blockquote>
-        <blockquote>
-          <p>“We reclaimed £127k of retentions in Q1 alone – cash-flow stress gone overnight.”</p>
-          <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
-        </blockquote>
-        <blockquote>
-          <p>“On-site audit passed with zero findings for the first time in 8 years. The board is delighted.”</p>
-          <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
-        </blockquote>
+        <div class="testi-track">
+          <!-- duplicate set for seamless loop -->
+          <div class="testi-card">
+            <p>“Compliance Labs spotted £9k of unverified subbies in one week – saved us from a HMRC penalty.”</p>
+            <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
+          </div>
+          <div class="testi-card">
+            <p>“They collected £48k of 90-day retentions within 40 days. Unreal ROI.”</p>
+            <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
+          </div>
+          <div class="testi-card">
+            <p>“We reclaimed £127k of retentions in Q1 alone – cash-flow stress gone overnight.”</p>
+            <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
+          </div>
+          <div class="testi-card">
+            <p>“On-site audit passed with zero findings for the first time in 8 years. The board is delighted.”</p>
+            <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
+          </div>
+          <!-- duplicate -->
+          <div class="testi-card" aria-hidden="true">
+            <p>“Compliance Labs spotted £9k of unverified subbies in one week – saved us from a HMRC penalty.”</p>
+            <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
+          </div>
+          <div class="testi-card" aria-hidden="true">
+            <p>“They collected £48k of 90-day retentions within 40 days. Unreal ROI.”</p>
+            <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
+          </div>
+          <div class="testi-card" aria-hidden="true">
+            <p>“We reclaimed £127k of retentions in Q1 alone – cash-flow stress gone overnight.”</p>
+            <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
+          </div>
+          <div class="testi-card" aria-hidden="true">
+            <p>“On-site audit passed with zero findings for the first time in 8 years. The board is delighted.”</p>
+            <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -219,11 +242,11 @@
     </div>
   </section>
 
-  <!-- =========  PRICING (buttons level + price inside)  ========= -->
+  <!-- =========  PRICING (buttons level)  ========= -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2>Simple, transparent pricing</h2>
-      <p style="text-align:center;font-size:.875rem;color:var(--mute);margin-bottom:2rem;">Cancel any time in two clicks – no exit fees.</p>
+      <p style="text-align:center;font-size:.875rem;color:var(--mute);margin-bottom:2rem;">Pay annually and get <strong>2 months free</strong> (equivalent to 10 × monthly price).</p>
       <div class="toggle-label">
         <span>Monthly</span>
         <input type="checkbox" id="annualToggle">
@@ -234,11 +257,11 @@
         <article class="price-card" data-monthly="690" data-annual="6900">
           <h3>Starter</h3>
           <p class="price"><strong>£<span class="price-value">690</span></strong><span class="price-note">/mo</span></p>
-          <p>Perfect for sub-£1m turnover</p>
+          <p>Sub-£1M turnover</p>
           <ul>
-            <li>Up to 15 verifications /mo</li>
-            <li>Max £10k per debt</li>
-            <li>Monthly report</li>
+            <li>Up to 15 subcontractors verified /mo</li>
+            <li>Max £10k per debt chased</li>
+            <li>Monthly compliance report</li>
             <li>Email support</li>
           </ul>
           <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
@@ -249,11 +272,11 @@
           <span class="badge">Most popular</span>
           <h3>Pro</h3>
           <p class="price"><strong>£<span class="price-value">1,390</span></strong><span class="price-note">/mo</span></p>
-          <p>For £1-5m turnover</p>
+          <p>£1M – £5M turnover</p>
           <ul>
-            <li>Up to 40 verifications /mo</li>
-            <li>Max £25k per debt (5 concurrent)</li>
-            <li>Weekly CFO walk-through</li>
+            <li>Up to 40 subcontractors verified /mo</li>
+            <li>Max £25k per debt chased (5 concurrent)</li>
+            <li>Weekly 15-min CFO walk-through (recorded)</li>
             <li>Portal access</li>
           </ul>
           <p><a href="#compliance-check" class="btn btn-primary">Get started</a></p>
@@ -263,12 +286,12 @@
         <article class="price-card" data-monthly="2990" data-annual="29900">
           <h3>Growth</h3>
           <p class="price"><strong>£<span class="price-value">2,990</span></strong><span class="price-note">/mo</span></p>
-          <p>Full finance-back-office</p>
+          <p>Full back-office needs</p>
           <ul>
-            <li>Unlimited verifications</li>
-            <li>Max £100k per debt</li>
-            <li>Quarterly CFO strategy call</li>
-            <li>Same-day reports + Slack</li>
+            <li>Unlimited subcontractors</li>
+            <li>Max £100k per debt chased</li>
+            <li>Quarterly 45-min CFO strategy Zoom (recorded + transcript)</li>
+            <li>Same-day reports + dedicated Slack</li>
             <li>White-label portal</li>
           </ul>
           <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
@@ -278,12 +301,12 @@
         <article class="price-card" data-monthly="5190" data-annual="51900">
           <h3>Enterprise</h3>
           <p class="price"><strong>£<span class="price-value">5,190</span></strong><span class="price-note">/mo</span></p>
-          <p>For £20m+ turnover</p>
+          <p>£20M+ turnover / Main contractors</p>
           <ul>
             <li>Unlimited verifications</li>
             <li>£250k debt limit per case</li>
             <li>2h SLA phone & Slack</li>
-            <li>Quarterly strategy + podcast</li>
+            <li>Quarterly strategy Zoom (recorded) + private podcast feed</li>
             <li>White-label portal</li>
           </ul>
           <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
@@ -389,12 +412,22 @@
     /* Dynamic year */
     document.getElementById('year').textContent=new Date().getFullYear();
 
-    /* Sticky CTA bar */
-    const stickyBar=document.getElementById('sticky-cta');
-    let scrolled=false;
-    window.addEventListener('scroll',()=>{
-      if(!scrolled && window.scrollY>400){stickyBar.style.display='block'; scrolled=true;}
-    });
+    /* Lazy-load Calendly once */
+    const calWidget=document.querySelector('.calendly-inline-widget');
+    if(calWidget&&'IntersectionObserver' in window){
+      const io=new IntersectionObserver((entries,ob)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            const s=document.createElement('script');
+            s.src='https://assets.calendly.com/assets/external/widget.js';
+            s.async=1;
+            calWidget.appendChild(s);
+            ob.disconnect();
+          }
+        });
+      },{rootMargin:'100px 0px'});
+      io.observe(calWidget);
+    }
   </script>
 </body>
 </html>
