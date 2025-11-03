@@ -1,245 +1,465 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ComplianceLabs – CIS & Debt Chasing for UK Contractors</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Fixed-fee compliance & retentions chasing for UK construction SMEs. Plans from £690/mo. Book a free Compliance Check today.">
+<!DOCTYPE html><html lang="en"><head>
+<base href="https://vmebai77fm5rs.ok.kimi.link">
+  <meta charset="utf-8"/>
+  <title>ComplianceLabs – CIS &amp; Debt Chasing for UK Contractors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Fixed-fee compliance &amp; retentions chasing for UK construction SMEs. Plans from £690/mo. Book a free Compliance Check today."/>
 
-  <link rel="preload" href="assets/img/logo.svg" as="image">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preload" href="assets/img/logo.svg" as="image"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-  <style>
-    :root{
-      --navy:#0f172a;
-      --charcoal:#1e293b;
-      --paper:#ffffff;
-      --canvas:#f8fafc;
-      --line:#e2e8f0;
-      --mute:#64748b;
-      --amber:#f59e0b;
-      --focus:#2563eb;
-      --radius:8px;
-      --shadow:0 4px 12px rgba(0,0,0,.05);
-      --font:'Inter',Helvetica,Arial,sans-serif;
-      /* FIX: Added missing button colors */
-      --btn-color: #004d33; 
-      --btn-hover: #000000; 
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    /* FIX: Added overflow-x:hidden to body to prevent all horizontal scroll */
-    body{font-family:var(--font);font-size:19px;line-height:1.55;color:var(--charcoal);background:var(--canvas);overflow-x:hidden;padding-top: 72px;}
-    a{color:var(--charcoal);text-decoration:none;}
-    a:focus{outline:3px solid var(--focus);outline-offset:2px;}
-    h1,h2,h3{font-weight:700;line-height:1.2;margin:.5em 0 .25em;color:var(--navy);}
-    h1{font-size:2.5rem;}h2{font-size:1.875rem;text-align:center;}h3{font-size:1.375rem;}
-    p{margin:.5em 0 1em;}
-    img{max-width:100%;display:block;}
-    /* FIX: Narrower side margins */
-    .container{max-width:1140px;margin-inline:auto;padding-inline:1rem;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;font-weight:600;font-size:1.125rem;border:2px solid transparent;border-radius:var(--radius);cursor:pointer;transition:all .2s;}
-    .btn-primary{background:var(--btn-color);color:var(--paper);border-color:var(--btn-color);}
-    .btn-primary:hover{background:var(--btn-hover);border-color:var(--btn-hover);}
-    .btn-secondary{background:var(--paper);color:var(--btn-color);border-color:var(--btn-color);}
-    .btn-secondary:hover{background:var(--btn-color);color:var(--paper);}
-    .btn:focus{outline:3px solid var(--focus);}
-
-    /* ----- HEADER (no underlines) ----- */
-    .header{background:var(--navy);color:var(--paper);position:sticky;top:0;z-index:1000;}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
-    .logo{display:flex;align-items:center;gap:12px;color:var(--paper);font-weight:700;font-size:1.5rem;}
-    .logo img{height:40px;filter:invert(1);}
-    .nav{display:flex;align-items:center;gap:2rem;}
-    .nav a{color:var(--paper);font-weight:500;}
-    .nav a:hover{opacity:.8;}
-    .mobile-toggler{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;}
-    .mobile-toggler span{width:24px;height:3px;background:var(--paper);}
-    @media(max-width:768px){.nav{display:none;position:absolute;top:72px;left:0;width:100%;background:var(--navy);flex-direction:column;padding:1rem;gap:1rem;}.nav.open{display:flex;}.mobile-toggler{display:flex;}}
-
-    /* ----- TRUST BAR (thinner + contained) ----- */
-    .trust{padding:.4rem 0;background:var(--canvas);font-size:.875rem;font-weight:600;color:var(--mute);overflow:hidden;}
-    .marquee{display:flex;gap:2rem;animation:scroll 30s linear infinite;white-space:nowrap;width:max-content;}
-    .marquee span{flex:0 0 auto;}
-    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-    /* ----- HERO ----- */
-    .hero{padding:4rem 0;background:var(--paper);}
-    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
-    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
-
-    /* ----- SERVICES WITH IMPROVED ICONS ----- */
-    .services,.testimonials,.stats,.pricing,.faq{padding:4rem 0;}
-    .services h2{text-align:center;margin-bottom:3rem;}
-    .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
-    .service-card{background:var(--paper);padding:2.5rem;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;transition:transform .2s;}
-    .service-card:hover{transform:translateY(-2px);}
-    .service-icon{font-size:3rem;color:var(--amber);margin-bottom:1rem;}
-    .service-card h3{color:var(--navy);margin-bottom:1rem;}
-
-    /* ----- FIXED AUTO-SCROLL TESTIMONIALS (SLOWER) ----- */
-    .testimonials{background:var(--canvas);overflow:hidden;}
-    .testimonials h2{text-align:center;margin-bottom:3rem;}
-    .testi-scroll{overflow:hidden;} /* FIX: Container hides the overflow */
-    .testi-track{
-        display:flex;
-        gap:2rem;
-        /* FIX: Width is 2x the card width (340px) + 2x the gap (2rem) */
-        width: calc((340px + 2rem) * 8); 
-        animation:testiScroll 40s linear infinite;
-        white-space:nowrap;
+  <!-- Professional modern palette -->
+  <style>
+    :root{
+      --navy:#1a2332;
+      --charcoal:#2d3748;
+      --paper:#ffffff;
+      --canvas:#f7fafc;
+      --line:#e2e8f0;
+      --mute:#718096;
+      --amber:#f6ad55;
+      --focus:#3182ce;
+      --radius:12px;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     }
-    .testi-card{flex:0 0 340px;background:var(--paper);padding:2rem;border:1px solid var(--line);border-radius:var(--radius);display:inline-block;}
-    /* FIX: Animate only 50% of the track width */
-    @keyframes testiScroll{
-        0%{transform:translateX(0)}
-        100%{transform:translateX(calc((340px + 2rem) * -4))}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font);font-size:18px;line-height:1.6;color:var(--charcoal);background:var(--canvas);}
+    a{color:var(--charcoal);text-decoration:none;}
+    a:focus{outline:3px solid var(--focus);outline-offset:2px;}
+    h1,h2,h3{font-weight:600;line-height:1.2;margin:0;}
+    h1{font-size:3rem;letter-spacing:-0.02em;}h2{font-size:2.25rem;text-align:center;margin-bottom:3rem;}h3{font-size:1.5rem;}
+    p{margin:0 0 1em;}
+    img{max-width:100%;display:block;}
+    .container{max-width:1200px;margin-inline:auto;padding-inline:1.5rem;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:1rem 2rem;font-weight:500;font-size:1rem;border:2px solid transparent;border-radius:var(--radius);cursor:pointer;transition:all .2s;text-decoration:none;}
+    .btn-primary{background:var(--navy);color:var(--paper);}
+    .btn-primary:hover{background:var(--charcoal);transform:translateY(-1px);}
+    .btn-secondary{background:var(--paper);color:var(--navy);border-color:var(--navy);}
+    .btn-secondary:hover{background:var(--navy);color:var(--paper);}
+    .btn:focus{outline:3px solid var(--focus);}
+
+    /* --- HEADER --- */
+    .header{background:var(--paper);box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:1000;}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:80px;}
+    .logo{display:flex;align-items:center;gap:12px;color:var(--navy);font-weight:700;font-size:1.5rem;}
+    .logo img{height:40px;}
+    .nav{display:flex;align-items:center;gap:2.5rem;}
+    .nav a{color:var(--charcoal);font-weight:500;position:relative;}
+    .nav a:hover{color:var(--navy);}
+    .nav a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--amber);transition:width .2s;}
+    .nav a:hover::after{width:100%;}
+    .mobile-toggler{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;}
+    .mobile-toggler span{width:24px;height:3px;background:var(--charcoal);}
+    @media(max-width:768px){
+      .nav{display:none;position:absolute;top:80px;left:0;width:100%;background:var(--paper);flex-direction:column;padding:2rem;gap:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.1);}
+      .nav.open{display:flex;}
+      .mobile-toggler{display:flex;}
     }
 
+    /* --- TRUST BAR --- */
+    .trust{padding:1rem 0;background:var(--navy);color:var(--paper);font-size:.875rem;font-weight:500;overflow:hidden;}
+    .marquee{display:flex;gap:3rem;animation:scroll 30s linear infinite;white-space:nowrap;width:max-content;}
+    .marquee span{flex:0 0 auto;opacity:.9;}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* ----- STATS SECTION (REPLACES DEMO VIDEO) ----- */
-    .stats{background:var(--navy);color:var(--paper);}
-    .stats h2{color:var(--paper);margin-bottom:3rem;}
-    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center;}
-    .stat-item{padding:2rem;}
-    .stat-number{font-size:3rem;font-weight:700;color:var(--amber);display:block;}
-    .stat-label{font-size:1.125rem;margin-top:.5rem;}
+    /* --- HERO --- */
+    .hero{padding:6rem 0;background:linear-gradient(135deg,var(--canvas) 0%,var(--paper) 100%);}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .hero-content h1{color:var(--navy);margin-bottom:1.5rem;}
+    .hero-content .subtitle{font-size:1.25rem;color:var(--mute);margin-bottom:2rem;}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0;}
+    .stat-item{text-align:center;}
+    .stat-number{font-size:1.5rem;font-weight:700;color:var(--amber);}
+    .stat-label{font-size:.875rem;color:var(--mute);}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
 
-    /* ----- PRICING ----- */
-    .pricing h2{margin-bottom:3rem;}
-    .pricing-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;} /* FIX: Switched to grid for better responsive rows */
-    .price-card{background:var(--paper);padding:2rem;border:1px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;}
-    .price-card .price{font-size:1.875rem;margin:.25em 0;color:var(--navy);}
-    .price-card ul{list-style:none;padding:0;margin:0 0 1.5rem;flex-grow:1;}
-    .price-card .btn{margin-top:auto;}
-    .badge{display:inline-block;background:var(--amber);color:#fff;padding:.25rem .75rem;border-radius:99px;font-size:.75rem;font-weight:600;margin-bottom:.5rem;}
-    .toggle-label{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2rem;font-size:.875rem;}
-    .toggle-label input[type="checkbox"]{width:20px;height:20px;cursor:pointer;}
+    /* --- SERVICES --- */
+    .services{padding:6rem 0;}
+    .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;}
+    .service-card{background:var(--paper);padding:3rem;border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;transition:all .3s;border:1px solid var(--line);}
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.12);}
+    .service-icon{font-size:3.5rem;color:var(--amber);margin-bottom:1.5rem;}
+    .service-card h3{color:var(--navy);margin-bottom:1rem;font-weight:600;}
+    .service-card p{color:var(--mute);line-height:1.7;}
 
-    /* ----- FAQ ----- */
-    .faq h2{margin-bottom:3rem;}
-    details{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:.5rem;}
-    summary{cursor:pointer;font-weight:600;padding:1rem;}
-    details[open] p {padding: 0 1rem 1rem;}
+    /* --- TESTIMONIALS --- */
+    .testimonials{padding:6rem 0;background:var(--paper);}
+    .testi-scroll{overflow:hidden;}
+    .testi-track{display:flex;gap:2rem;animation:testiScroll 45s linear infinite;white-space:nowrap;width:max-content;}
+    .testi-card{flex:0 0 400px;background:var(--canvas);padding:2.5rem;border-radius:var(--radius);border:1px solid var(--line);display:inline-block;}
+    .testi-card p{font-style:italic;margin-bottom:1rem;color:var(--charcoal);font-size:1.1rem;}
+    .testi-card cite{color:var(--mute);font-size:.9rem;font-weight:500;}
+    @keyframes testiScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* ----- CTA ----- */
-    .cta{background:var(--charcoal);color:var(--paper);padding:4rem 0;text-align:center;}
-    .cta h2{color:var(--paper);}
+    /* --- STATS --- */
+    .stats{padding:6rem 0;background:var(--navy);color:var(--paper);}
+    .stats h2{color:var(--paper);margin-bottom:4rem;}
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem;text-align:center;}
+    .stat-item{padding:2rem 1rem;}
+    .stat-number{font-size:3.5rem;font-weight:700;color:var(--amber);display:block;margin-bottom:.5rem;}
+    .stat-label{font-size:1.125rem;opacity:.9;}
 
-    /* ----- FOOTER ----- */
-    .footer{background:var(--navy);color:var(--paper);padding:3rem 0 2rem;font-size:.875rem;}
-    .footer a{color:inherit;}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;}
-    @media(max-width:768px){.footer-grid{grid-template-columns:1fr;text-align:center;}}
-  </style>
-</head>
+    /* --- PRICING --- */
+    .pricing{padding:6rem 0;}
+    .pricing-intro{text-align:center;max-width:600px;margin:0 auto 3rem;color:var(--mute);}
+    .toggle-label{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:3rem;font-size:1rem;}
+    .toggle-label input[type="checkbox"]{width:44px;height:24px;appearance:none;background:var(--line);border-radius:12px;position:relative;cursor:pointer;transition:background .2s;}
+    .toggle-label input[type="checkbox"]:checked{background:var(--amber);}
+    .toggle-label input[type="checkbox"]::before{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:var(--paper);border-radius:50%;transition:transform .2s;}
+    .toggle-label input[type="checkbox"]:checked::before{transform:translateX(20px);}
+    
+    /* Pricing Grid - 3 cards first row, enterprise full width second row */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:2rem;}
+    .enterprise-row{grid-column:1 / -1;}
+    .enterprise-card{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:center;padding:2rem;background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);min-height:120px;}
+    .enterprise-info h3{margin-bottom:.5rem;color:var(--navy);}
+    .enterprise-price .price{font-size:1.5rem;margin:.25em 0;color:var(--navy);}
+    .enterprise-features ul{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem 2rem;list-style:none;padding:0;margin:0;font-size:.9rem;}
+    .price-card{background:var(--paper);padding:2.5rem;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-direction:column;position:relative;}
+    .price-card .price{font-size:2rem;margin:.5em 0;color:var(--navy);font-weight:700;}
+    .price-card ul{list-style:none;padding:0;margin:0 0 2rem;flex-grow:1;line-height:1.8;}
+    .price-card .btn{margin-top:auto;width:100%;}
+    .badge{position:absolute;top:1rem;right:1rem;background:var(--amber);color:#fff;padding:.5rem 1rem;border-radius:99px;font-size:.75rem;font-weight:600;}
+    
+    @media(max-width:1024px){
+      .pricing-grid{grid-template-columns:1fr;}
+      .enterprise-card{grid-template-columns:1fr;}
+      .enterprise-features ul{grid-template-columns:1fr;}
+    }
+
+    /* --- FAQ --- */
+    .faq{padding:6rem 0;background:var(--canvas);}
+    .faq-list{max-width:800px;margin:0 auto;}
+    details{background:var(--paper);padding:1.5rem;border-radius:var(--radius);margin-bottom:1rem;border:1px solid var(--line);}
+    summary{cursor:pointer;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;}
+    summary::after{content:'+';font-size:1.5rem;color:var(--amber);}
+    details[open] summary::after{content:'−';}
+    details[open] summary{margin-bottom:1rem;}
+    details p{color:var(--mute);line-height:1.7;margin:0;}
+
+    /* --- CTA --- */
+    .cta{padding:6rem 0;background:linear-gradient(135deg,var(--charcoal) 0%,var(--navy) 100%);color:var(--paper);text-align:center;}
+    .cta h2{color:var(--paper);margin-bottom:1.5rem;}
+    .cta p{max-width:600px;margin:0 auto 2rem;font-size:1.1rem;opacity:.9;}
+
+    /* --- FOOTER --- */
+    .footer{padding:4rem 0 2rem;background:var(--navy);color:var(--paper);font-size:.9rem;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+    .footer a{color:inherit;opacity:.8;}
+    .footer a:hover{opacity:1;}
+    .footer h4{margin-bottom:1rem;font-weight:600;}
+    .footer ul{list-style:none;padding:0;}
+    .footer li{margin-bottom:.5rem;}
+    @media(max-width:768px){.footer-grid{grid-template-columns:1fr;text-align:center;gap:2rem;}}
+  </style>
+<script src="https://statics.moonshot.cn/sdk/preview-widgets.min.js" defer=""></script></head>
 
 <body>
-    <header class="header">
-    <div class="container header-inner">
-      <a href="/" class="logo" aria-label="ComplianceLabs home">
-        <img src="assets/img/logo.svg" alt="ComplianceLabs logo" width="40" height="40">
-        <span>ComplianceLabs</span>
-      </a>
-      <nav class="nav" id="nav">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#compliance-check" class="btn btn-primary">Book Risk Audit</a>
-      </nav>
-      <button class="mobile-toggler" id="mobile-toggler" aria-label="Open navigation" aria-expanded="false" aria-controls="nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <!-- =========  HEADER  ========= -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="ComplianceLabs home">
+        <img src="assets/img/logo.svg" alt="ComplianceLabs logo" width="40" height="40"/>
+        <span>ComplianceLabs</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#compliance-check" class="btn btn-primary">Book Risk Audit</a>
+      </nav>
+      <button class="mobile-toggler" id="mobile-toggler" aria-label="Open navigation" aria-expanded="false" aria-controls="nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
 
-    <div class="trust">
-    <div class="container">
-      <div class="marquee">
-        <span>Trusted by over 120 UK Contractors.</span>
-        <span>CIS Compliance Verified.</span>
-        <span>Debt Recovery Success.</span>
-        <span>Retention Chasing.</span>
-        <span>VAT Reverse Charge.</span>
-        <span>HMRC Audit Prepared.</span>
-                <span aria-hidden="true">Trusted by over 120 UK Contractors.</span>
-        <span aria-hidden="true">CIS Compliance Verified.</span>
-        <span aria-hidden="true">Debt Recovery Success.</span>
-        <span aria-hidden="true">Retention Chasing.</span>
-        <span aria-hidden="true">VAT Reverse Charge.</span>
-        <span aria-hidden="true">HMRC Audit Prepared.</span>
-      </div>
-    </div>
-  </div>
+  <!-- =========  TRUST BAR  ========= -->
+  <div class="trust">
+    <div class="container">
+      <div class="marquee">
+        <span>Trusted by over 120 UK Contractors.</span>
+        <span>CIS Compliance Verified.</span>
+        <span>Debt Recovery Success.</span>
+        <span>Retention Chasing.</span>
+        <span>VAT Reverse Charge.</span>
+        <span>HMRC Audit Prepared.</span>
+        <!-- duplicate for seamless scroll -->
+        <span aria-hidden="true">Trusted by over 120 UK Contractors.</span>
+        <span aria-hidden="true">CIS Compliance Verified.</span>
+        <span aria-hidden="true">Debt Recovery Success.</span>
+        <span aria-hidden="true">Retention Chasing.</span>
+        <span aria-hidden="true">VAT Reverse Charge.</span>
+        <span aria-hidden="true">HMRC Audit Prepared.</span>
+      </div>
+    </div>
+  </div>
 
-    <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <h1>We keep you HMRC-safe and get you paid faster</h1>
-          <p class="govuk-body-l">We verify every subcontractor, file CIS & VAT returns and chase late payments so UK construction SMEs avoid £3k+ fines and unlock cash.</p>
-          <ul>
-            <li>£4.2 m recovered</li>
-            <li>1,847 subcontractors verified</li>
-  SMEs. Plans from £690/mo. Book a free Compliance Check today.">
-
-  <link rel="preload" href="assets/img/logo.svg" as="image">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-    :root{
-      --navy:#0f172a;
-      --charcoal:#1e293b;
-      --paper:#ffffff;
-      --canvas:#f8fafc;
-      --line:#e2e8f0;
-      --mute:#64748b;
-      --amber:#f59e0b;
-      --focus:#2563eb;
-      --radius:8px;
-      --shadow:0 4px 12px rgba(0,0,0,.05);
-      --font:'Inter',Helvetica,Arial,sans-serif;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--font);font-size:19px;line-height:1.55;color:var(--charcoal);background:var(--canvas);}
-    a{color:var(--charcoal);text-decoration:none;}
-    a:focus{outline:3px solid var(--focus);outline-offset:2px;}
-    h1,h2,h3{font-weight:700;line-height:1.2;margin:.5em 0 .25em;}
-    h1{font-size:2.5rem;}h2{font-size:1.875rem;text-align:center;}h3{font-size:1.375rem;}
-    p{margin:.5em 0 1em;}
-    img{max-width:100%;display:block;}
-    .container{max-width:1200px;margin-inline:auto;padding-inline:1rem;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;font-weight:600;font-size:1.125rem;border:2px solid transparent;border-radius:var(--radius);cursor:pointer;transition:all .2s;}
-    .btn-primary{background:var(--charcoal);color:var(--paper);}
-    .btn-primary:hover{background:#0f172a;}
-    .btn-secondary{background:var(--paper);color:var(--charcoal);border-color:var(--charcoal);}
-    .btn-secondary:hover{background:var(--charcoal);color:var(--paper);}
-    .btn:focus{outline:3px solid var(--focus);}
-
-    /* ----- HEADER WITH LOGO ----- */
-    .header{background:var(--navy);color:var(--paper);position:sticky;top:0;z-index:1000;}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
-    .logo{display:flex;align-items:center;gap:12px;color:var(--paper);font-weight:700;font-size:1.5rem;}
-    .logo img{height:40px;filter:invert(1);}
-    .nav{display:flex;align-items:center;gap:2rem;}
-    .nav a{color:var(--paper);font-weight:500;}
-    .nav a:hover{opacity:.8;}
-    .mobile-toggler{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;}
-    .mobile-toggler span{width:24px;height:3px;background:var(--paper);}
-    @media(max-width:768px){.nav{display:none;position:absolute;top:72px;left:0;width:100%;background:var(--navy);flex-direction:column;padding:1rem;gap:1rem;}.nav.open{display:flex;}.mobile-toggler{display:flex;}}
-
-    /* ----- TRUST BAR ----- */
-    .trust{padding:.4rem 0;background:var(--canvas);font-size:.875rem;font-weight:600;color:var(--mute);overflow:hidden;}
-  M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-          <a href="https://twitter.com/compliancelabs" target="_blank" rel="noopener" aria-label="Twitter"><svg width="24" height="24" fill="#a5b1bb"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.83.5-1.75.85-2.72 1.05a4.92 4.92 0 00-8.384 4.482C7.69 8.095 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.93.07 4.28 4.28 0 004 2.98 8.521 8.521 0 01-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
-          <a href="mailto:hello@compliancelabs.co.uk" aria-label="Email"><svg width="24" height="24" fill="#a5b1bb"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+  <!-- =========  HERO  ========= -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1>We keep you HMRC-safe and get you paid faster</h1>
+          <p class="subtitle">We verify every subcontractor, file CIS &amp; VAT returns and chase late payments so UK construction SMEs avoid £3k+ fines and unlock cash.</p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">£4.2M</div>
+              <div class="stat-label">Recovered</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1,847</div>
+              <div class="stat-label">Verified</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">0</div>
+              <div class="stat-label">Fines</div>
+            </div>
+          </div>
+          <p>
+            <a href="#compliance-check" class="btn btn-primary">Get my free Risk Audit</a>
+          </p>
         </div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min" style="min-width:320px;height:600px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========  SERVICES  ========= -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>How we remove your biggest headaches</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Compliance Shield</h3>
+          <p>We verify every subcontractor, file CIS &amp; VAT reverse-charge returns, and keep your HMRC inbox at zero so you avoid £3k+ fines and sleep at night.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-pound-sign"></i>
+          </div>
+          <h3>Payment Chase</h3>
+          <p>Our 5-step letter, call &amp; solicitor escalations recover retentions and overdue invoices – cash-flow unlocked.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Live Dashboard</h3>
+          <p>One login shows who&#39;s compliant, who owes what, and what&#39;s coming in – so you can plan purchases, payroll and projects with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========  TESTIMONIALS  ========= -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>What businesses say about us</h2>
+      <div class="testi-scroll">
+        <div class="testi-track">
+          <!-- duplicate set for seamless loop -->
+          <div class="testi-card">
+            <p>&#34;Compliance Labs spotted £9k of unverified subbies in one week – saved us from a HMRC penalty.&#34;</p>
+            <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
+          </div>
+          <div class="testi-card">
+            <p>&#34;They collected £48k of 90-day retentions within 40 days. Unreal ROI.&#34;</p>
+            <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
+          </div>
+          <div class="testi-card">
+            <p>&#34;We reclaimed £127k of retentions in Q1 alone – cash-flow stress gone overnight.&#34;</p>
+            <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
+          </div>
+          <div class="testi-card">
+            <p>&#34;On-site audit passed with zero findings for the first time in 8 years. The board is delighted.&#34;</p>
+            <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
+          </div>
+          <!-- duplicate -->
+          <div class="testi-card" aria-hidden="true">
+            <p>&#34;Compliance Labs spotted £9k of unverified subbies in one week – saved us from a HMRC penalty.&#34;</p>
+            <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
+          </div>
+          <div class="testi-card" aria-hidden="true">
+            <p>&#34;They collected £48k of 90-day retentions within 40 days. Unreal ROI.&#34;</p>
+            <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
+          </div>
+          <div class="testi-card" aria-hidden="true">
+            <p>&#34;We reclaimed £127k of retentions in Q1 alone – cash-flow stress gone overnight.&#34;</p>
+            <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
+          </div>
+          <div class="testi-card" aria-hidden="true">
+            <p>&#34;On-site audit passed with zero findings for the first time in 8 years. The board is delighted.&#34;</p>
+            <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========  STATS  ========= -->
+  <section class="stats">
+    <div class="container">
+      <h2>Why UK contractors trust us</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">£4.2M</span>
+          <span class="stat-label">Debt Recovered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1,847</span>
+          <span class="stat-label">Subcontractors Verified</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">0</span>
+          <span class="stat-label">HMRC Fines for Clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">120+</span>
+          <span class="stat-label">UK Contractors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========  PRICING  ========= -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2>Simple, transparent pricing</h2>
+      <p class="pricing-intro">Choose the perfect plan for your business size. All plans include our core compliance and payment chasing features.</p>
+      <div class="toggle-label">
+        <span>Monthly</span>
+        <input type="checkbox" id="annualToggle"/>
+        <span>Annual <small>(2 months free)</small></span>
+      </div>
+      
+      <div class="pricing-grid">
+        <!-- STARTER -->
+        <article class="price-card" data-monthly="690" data-annual="6900">
+          <h3>Starter</h3>
+          <p class="price"><strong>£<span class="price-value">690</span></strong><span class="price-note">/mo</span></p>
+          <p style="color:var(--mute);margin-bottom:1.5rem;">Sub-£1M turnover</p>
+          <ul>
+            <li>Up to 15 subcontractors verified /mo</li>
+            <li>Max £10k per debt chased</li>
+            <li>Monthly compliance report</li>
+            <li>Email support</li>
+          </ul>
+          <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
+        </article>
+
+        <!-- PRO -->
+        <article class="price-card" data-monthly="1390" data-annual="13900">
+          <span class="badge">Most popular</span>
+          <h3>Pro</h3>
+          <p class="price"><strong>£<span class="price-value">1,390</span></strong><span class="price-note">/mo</span></p>
+          <p style="color:var(--mute);margin-bottom:1.5rem;">£1M – £5M turnover</p>
+          <ul>
+            <li>Up to 40 subcontractors verified /mo</li>
+            <li>Max £25k per debt chased (5 concurrent)</li>
+            <li>Weekly 15-min CFO walk-through (recorded)</li>
+            <li>Portal access</li>
+          </ul>
+          <p><a href="#compliance-check" class="btn btn-primary">Get started</a></p>
+        </article>
+
+        <!-- GROWTH -->
+        <article class="price-card" data-monthly="2990" data-annual="29900">
+          <h3>Growth</h3>
+          <p class="price"><strong>£<span class="price-value">2,990</span></strong><span class="price-note">/mo</span></p>
+          <p style="color:var(--mute);margin-bottom:1.5rem;">Full back-office needs</p>
+          <ul>
+            <li>Unlimited subcontractors</li>
+            <li>Max £100k per debt chased</li>
+            <li>Quarterly 45-min CFO strategy Zoom (recorded + transcript)</li>
+            <li>Same-day reports + dedicated Slack</li>
+            <li>White-label portal</li>
+          </ul>
+          <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
+        </article>
+      </div>
+
+      <!-- ENTERPRISE - Full width on second row -->
+      <div class="enterprise-row">
+        <article class="enterprise-card" data-monthly="5190" data-annual="51900">
+          <div class="enterprise-info">
+            <h3>Enterprise</h3>
+            <p style="color:var(--mute);margin-bottom:1rem;">£20M+ turnover / Main contractors</p>
+            <div class="enterprise-price">
+              <p class="price"><strong>£<span class="price-value">5,190</span></strong><span class="price-note">/mo</span></p>
+            </div>
+            <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
+          </div>
+          <div class="enterprise-features">
+            <ul>
+              <li>Unlimited verifications</li>
+              <li>£250k debt limit per case</li>
+              <li>2h SLA phone &amp; Slack</li>
+              <li>Quarterly strategy Zoom (recorded) + private podcast feed</li>
+              <li>White-label portal</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========  FAQ  ========= -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>Questions we get asked</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Do you work with sole-traders or only limited companies?</summary>
+          <p>Both. We simply need a valid UTR or Company House number to verify CIS status.</p>
+        </details>
+        <details>
+          <summary>What if the debt is older than 90 days?</summary>
+          <p>We still chase, but success probability drops. We&#39;ll advise upfront if we think legal action is smarter.</p>
+        </details>
+        <details>
+          <summary>Are you FCA-regulated?</summary>
+          <p>No – our service is administrative. We do not offer credit or insurance products.</p>
+        </details>
+        <details>
+          <summary>Can we upgrade or downgrade mid-contract?</summary>
+          <p>Yes. Change tier any time from your dashboard; adjustments are pro-rated to the day.</p>
+        </details>
+        <details>
+          <summary>Is there a setup fee?</summary>
+          <p>Zero. We even import your existing subcontractor list during onboarding at no cost.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========  CTA  ========= -->
+  <section id="compliance-check" class="cta">
+    <div class="container">
+      <h2>Ready to remove compliance &amp; cash-flow stress?</h2>
+      <p>Book your free CIS &amp; Compliance Check. We&#39;ll audit your last 3 months and give you a fixed-price quote – no obligation.</p>
+      <a href="https://calendly.com/compliancelabs0/30min" target="_blank" rel="noopener" class="btn" style="background:var(--paper);color:var(--navy);">Free Risk Audit Now</a>
+    </div>
+  </section>
+
+  <!-- =========  FOOTER  ========= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+          <img src="assets/img/logo.svg" alt="ComplianceLabs" width="32" height="32" style="filter:invert(1)"/>
+          <span style="font-weight:700;font-size:1.25rem;">ComplianceLabs</span>
+        </div>
+        <p>Keeping UK construction SMEs HMRC-safe and cash-flow positive.</p>
+        <p>© <span id="year"></span> ComplianceLabs.</p>
       </div>
       <div>
         <h4>Product</h4>
@@ -261,67 +481,75 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <p>London, UK<br><a href="mailto:hello@compliancelabs.co.uk">hello@compliancelabs.co.uk</a></p>
-        <p><a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p>
-        <p>&copy; <span id="year"></span> Compliance Labs Ltd.</p>
+        <p>London, UK<br/><a href="mailto:compliancelabs0@gmail.com">compliancelabs0@gmail.com</a></p>
       </div>
     </div>
   </footer>
 
+  <!-- =========  SCRIPTS  ========= -->
   <script>
     /* Mobile nav */
-    const toggler=document.getElementById('mobile-toggler');
-    const nav=document.getElementById('nav');
-    toggler.addEventListener('click',()=>{
+    const toggler = document.getElementById('mobile-toggler');
+    const nav = document.getElementById('nav');
+    toggler.addEventListener('click', () => {
       nav.classList.toggle('open');
-      toggler.setAttribute('aria-expanded',nav.classList.contains('open'));
+      toggler.setAttribute('aria-expanded', nav.classList.contains('open'));
     });
 
     /* Annual pricing toggle */
-    const annualToggle=document.getElementById('annualToggle');
-    const pricingRow=document.getElementById('pricingGrid');
-
-    function setPricing(annual){
-      // Loop over the .price-card elements
-      pricingRow.querySelectorAll('.price-card').forEach(card => {
-        // Find the elements inside this card
+    const annualToggle = document.getElementById('annualToggle');
+    
+    function setPricing(annual) {
+      const priceCards = document.querySelectorAll('.price-card, .enterprise-card');
+      priceCards.forEach((card) => {
+        const monthlyPrice = parseInt(card.dataset.monthly);
+        const annualPrice = parseInt(card.dataset.annual);
         const priceValue = card.querySelector('.price-value');
         const priceNote = card.querySelector('.price-note');
         
-        // Get the data from the card's dataset
-        const monthly = parseInt(card.dataset.monthly);
-        const annualPrice = monthly * 10; // 2 months free
-        
-        // Update the text content
-        priceValue.textContent = (annual ? annualPrice : monthly).toLocaleString();
-        if (priceNote) { // Check if priceNote exists
-          priceNote.textContent = annual ? '/yr' : '/mo';
+        if (annual) {
+          priceValue.textContent = annualPrice.toLocaleString();
+          priceNote.textContent = '/yr';
+        } else {
+          priceValue.textContent = monthlyPrice.toLocaleString();
+          priceNote.textContent = '/mo';
         }
       });
     }
     
-    annualToggle.addEventListener('change',()=>setPricing(annualToggle.checked));
-    setPricing(false); // Initialize to Monthly
+    annualToggle.addEventListener('change', () => setPricing(annualToggle.checked));
+    setPricing(false);
 
     /* Dynamic year */
-    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     /* Lazy-load Calendly once */
-    const calWidget=document.querySelector('.calendly-inline-widget');
-    if(calWidget&&'IntersectionObserver' in window){
-      const io=new IntersectionObserver((entries,ob)=>{
-        entries.forEach(en=>{
-          if(en.isIntersecting){
-            const s=document.createElement('script');
-s.src='https://assets.calendly.com/assets/external/widget.js';
-            s.async=1;
+    const calWidget = document.querySelector('.calendly-inline-widget');
+    if (calWidget && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries, ob) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            const s = document.createElement('script');
+            s.src = 'https://assets.calendly.com/assets/external/widget.js';
+            s.async = 1;
             calWidget.appendChild(s);
             ob.disconnect();
           }
         });
-      },{rootMargin:'100px 0px'});
+      }, { rootMargin: '100px 0px' });
       io.observe(calWidget);
     }
+
+    /* FAQ accordion functionality */
+    document.querySelectorAll('details').forEach(detail => {
+      detail.addEventListener('toggle', function() {
+        if (this.open) {
+          this.style.marginBottom = '1rem';
+        } else {
+          this.style.marginBottom = '';
+        }
+      });
+    });
   </script>
-</body>
-</html>
+
+</body></html>
