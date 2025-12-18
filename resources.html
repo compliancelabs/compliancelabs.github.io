@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComplianceLabs | Financial Control Dashboard</title>
+    <title>ComplianceLabs | Contractor Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
     <style>
-        /* --- BRANDING VARIABLES (Matches Home Page) --- */
+        /* --- BRANDING VARIABLES --- */
         :root {
             --navy: #1a2332;
             --charcoal: #2d3748;
             --paper: #ffffff;
-            --canvas: #f7fafc;
+            --canvas: #f1f5f9;
             --line: #e2e8f0;
-            --mute: #718096;
-            --amber: #f6ad55;
-            --focus: #3182ce;
-            --danger: #ef4444;
-            --success: #10b981;
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --mute: #64748b;
+            --amber: #f59e0b;
+            --focus: #3b82f6;
+            --font: 'Inter', sans-serif;
         }
 
         * { box-sizing: border-box; }
@@ -28,143 +26,60 @@
 
         /* --- SIDEBAR --- */
         .sidebar {
-            width: 260px;
-            background-color: var(--navy);
-            color: #a0aec0;
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem;
-            position: fixed;
-            height: 100vh;
-            left: 0; top: 0;
-            overflow-y: auto;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            width: 260px; background-color: var(--navy); color: #94a3b8; display: flex; flex-direction: column; padding: 1.5rem; position: fixed; height: 100vh; left: 0; top: 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.05);
         }
-
-        .brand {
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .nav-item {
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            color: #a0aec0;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: 0.2s;
-            font-weight: 500;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-        }
-        
+        .brand { color: #fff; font-weight: 700; font-size: 1.25rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-item { padding: 0.8rem 1rem; margin-bottom: 0.5rem; border-radius: 8px; cursor: pointer; color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 12px; transition: 0.2s; font-weight: 500; font-size: 0.95rem; }
+        .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); color: #fff; }
         .nav-item i { width: 20px; text-align: center; }
-
-        .sidebar-cta {
-            margin-top: auto;
-            padding: 1.5rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            text-align: center;
-        }
         
-        .cta-btn {
-            display: block;
-            background: var(--amber);
-            color: #fff;
-            padding: 0.8rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 10px;
-            transition: transform 0.2s;
-        }
-        .cta-btn:hover { transform: translateY(-2px); }
+        .sidebar-cta { margin-top: auto; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .cta-btn { display: block; background: var(--amber); color: #fff; padding: 0.8rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 10px; font-size: 0.9rem; transition: transform 0.2s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
 
         /* --- MAIN CONTENT --- */
         .main-content { margin-left: 260px; flex: 1; padding: 3rem; }
         
-        header { margin-bottom: 3rem; border-bottom: 1px solid var(--line); padding-bottom: 1.5rem; }
+        header { margin-bottom: 3rem; }
         h1 { margin: 0; color: var(--navy); font-size: 2rem; letter-spacing: -0.02em; }
         .subtitle { color: var(--mute); margin-top: 0.5rem; font-size: 1.1rem; }
-
-        /* --- GRID LAYOUT --- */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        /* --- TOOL CARDS --- */
-        .tool-card {
-            background: var(--paper);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid var(--line);
-            border-top: 4px solid var(--navy); /* Default Border */
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-        }
-
-        .card-header { margin-bottom: 1.5rem; }
-        .card-title { font-size: 1.25rem; font-weight: 700; color: var(--navy); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 10px; }
-        .card-desc { font-size: 0.9rem; color: var(--mute); line-height: 1.5; min-height: 2.7em; }
-
-        /* --- INPUTS & BUTTONS --- */
-        label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
         
-        input, select { 
-            width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 1.2rem; font-size: 0.95rem; background: var(--canvas); 
-            transition: border-color 0.2s;
-        }
-        input:focus, select:focus { outline: none; border-color: var(--focus); background: #fff; }
+        .category-label { margin-top: 3rem; margin-bottom: 1.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mute); font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
 
-        .row { display: flex; gap: 15px; }
+        /* --- GRID --- */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+
+        /* --- CARDS --- */
+        .tool-card { background: var(--paper); border-radius: 12px; padding: 1.8rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--line); border-top: 4px solid var(--navy); transition: transform 0.2s; }
+        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.1); }
+        .card-header { margin-bottom: 1.5rem; min-height: 80px; }
+        .card-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 10px; }
+        .card-desc { font-size: 0.85rem; color: var(--mute); line-height: 1.5; }
+
+        /* --- INPUTS --- */
+        label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        input, select { width: 100%; padding: 0.7rem; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; background: #fff; transition: border-color 0.2s; }
+        input:focus, select:focus { outline: none; border-color: var(--focus); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+
+        .row { display: flex; gap: 12px; }
         .col { flex: 1; }
 
-        button.run-tool { 
-            width: 100%; padding: 0.8rem; background: var(--navy); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 1rem; 
-        }
-        button.run-tool:hover { background: var(--charcoal); }
+        button.run-tool { width: 100%; padding: 0.75rem; background: var(--navy); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
+        button.run-tool:hover { background: #334155; }
 
-        /* --- RESULTS BOX --- */
-        .result-box { 
-            margin-top: 1.5rem; padding: 1.2rem; background: #f8fafc; border: 1px dashed var(--line); border-radius: 8px; display: none; 
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .result-label { font-size: 0.8rem; color: var(--mute); font-weight: 600; text-transform: uppercase; }
-        .result-val { font-size: 1.5rem; font-weight: 800; color: var(--navy); display: block; margin-top: 0.2rem; margin-bottom: 0.5rem; }
-        
-        .alert { font-size: 0.85rem; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem; display: flex; align-items: center; gap: 8px; }
+        /* --- RESULTS --- */
+        .result-box { margin-top: 1.2rem; padding: 1rem; background: #f8fafc; border: 1px dashed var(--line); border-radius: 8px; display: none; animation: fadeIn 0.3s ease; }
+        .result-label { font-size: 0.75rem; color: var(--mute); font-weight: 700; text-transform: uppercase; }
+        .result-val { font-size: 1.4rem; font-weight: 800; color: var(--navy); display: block; margin-top: 0.2rem; margin-bottom: 0.5rem; }
+        .alert { font-size: 0.8rem; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem; display: flex; align-items: center; gap: 8px; line-height: 1.4; }
         .alert-danger { background: #fee2e2; color: #991b1b; }
         .alert-success { background: #dcfce7; color: #166534; }
-
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- MOBILE --- */
         @media (max-width: 900px) {
-            .sidebar { display: none; } /* Simplified for mobile */
+            .sidebar { display: none; }
             .main-content { margin-left: 0; padding: 1.5rem; }
-            h1 { font-size: 1.75rem; }
         }
     </style>
 </head>
@@ -174,297 +89,383 @@
         <a href="index.html" class="brand">
             <i class="fas fa-shield-alt" style="color: var(--amber);"></i> ComplianceLabs
         </a>
+        <a href="#" class="nav-item active"><i class="fas fa-th-large"></i> Dashboard</a>
+        <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Back to Home</a>
+        <a href="index.html#pricing" class="nav-item"><i class="fas fa-tag"></i> Pricing</a>
         
-        <a href="#" class="nav-item active">
-            <i class="fas fa-th-large"></i> Tools Dashboard
-        </a>
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-home"></i> Back to Home
-        </a>
-        <a href="index.html#services" class="nav-item">
-            <i class="fas fa-layer-group"></i> Services
-        </a>
-        <a href="index.html#pricing" class="nav-item">
-            <i class="fas fa-tags"></i> Pricing
-        </a>
-
         <div class="sidebar-cta">
             <i class="fas fa-file-invoice-dollar" style="font-size: 2rem; color: #fff; margin-bottom: 10px;"></i>
-            <p style="font-size: 0.9rem; margin-bottom: 10px; color: #e2e8f0;">Need a full audit?</p>
+            <p style="font-size: 0.85rem; margin-bottom: 10px; color: #cbd5e1;">Need a full CIS audit?</p>
             <a href="index.html#compliance-check" class="cta-btn">Book Free Check</a>
         </div>
     </div>
 
     <div class="main-content">
         <header>
-            <h1>Operational Dashboard</h1>
-            <div class="subtitle">Free financial control tools for UK Contractors & FDs.</div>
+            <h1>Financial Control Dashboard</h1>
+            <div class="subtitle">12 Tools to manage risk, compliance, and cash flow.</div>
         </header>
 
+        <div class="category-label">Daily Utilities</div>
+        <div class="tools-grid">
+
+            <div class="tool-card" style="border-top-color: #0f172a; grid-column: span 1 / -1;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-file-invoice" style="color:#0f172a;"></i> Pro CIS Invoice Generator</h3>
+                    <p class="card-desc">Create a compliant PDF invoice. Supports CIS, Reverse Charge & Logo Upload.</p>
+                </div>
+                <div style="margin-bottom: 1rem; background: #f8fafc; padding: 0.8rem; border-radius: 8px; border: 1px dashed #cbd5e1; text-align: center;">
+                    <label style="margin-bottom: 5px; cursor: pointer;">Upload Logo (Optional)</label>
+                    <input type="file" id="inv-logo" accept="image/*" style="margin-bottom:0; border:none; padding:0;">
+                </div>
+                <div class="row">
+                    <div class="col"><label>From (Your Co)</label><input type="text" id="inv-from" placeholder="My Building Ltd"></div>
+                    <div class="col"><label>To (Client)</label><input type="text" id="inv-to" placeholder="Big Contractor PLC"></div>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Labour (£)</label><input type="number" id="gen-lab" placeholder="1000"></div>
+                    <div class="col"><label>Materials (£)</label><input type="number" id="gen-mat" placeholder="200"></div>
+                    <div class="col">
+                        <label>VAT Mode</label>
+                        <select id="gen-vat">
+                            <option value="drc">Reverse Charge (DRC)</option>
+                            <option value="std">Standard 20%</option>
+                            <option value="none">No VAT</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="run-tool" onclick="generateProInvoice()">Generate PDF Invoice</button>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #d97706;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-hard-hat" style="color:#d97706;"></i> RAMS Creator</h3>
+                    <p class="card-desc">Auto-generate a Risk Assessment & Method Statement (PDF).</p>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Project</label><input type="text" id="rams-proj" placeholder="Project Name"></div>
+                    <div class="col"><label>Activity</label><input type="text" id="rams-act" placeholder="e.g. Painting"></div>
+                </div>
+                <label>Hazards (Tick all that apply)</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1rem;">
+                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-height" style="width:auto;"> Height</label>
+                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-dust" style="width:auto;"> Dust</label>
+                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-slip" style="width:auto;"> Slips</label>
+                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-elec" style="width:auto;"> Elec</label>
+                </div>
+                <button class="run-tool" onclick="generateRAMS()">Create Safety Doc</button>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #db2777;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-calculator" style="color:#db2777;"></i> Reverse Take-Home</h3>
+                    <p class="card-desc">"I want £200 in my hand." Calculate what you need to invoice.</p>
+                </div>
+                <label>Desired Net Pay (£)</label><input type="number" id="rev-net" placeholder="200">
+                <label>CIS Rate</label>
+                <select id="rev-rate"><option value="0.2">Standard (20%)</option><option value="0.3">Unverified (30%)</option></select>
+                <button class="run-tool" onclick="calcReverse()">Calculate Invoice</button>
+                <div class="result-box" id="res-rev">
+                    <div class="result-label">You must invoice Labour:</div>
+                    <span class="result-val" id="val-rev-inv" style="color:#db2777;">£0.00</span>
+                    <div class="alert" style="background:#fce7f3; color:#831843;">Plus VAT & Materials.</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="category-label">Cash Flow & Recovery</div>
         <div class="tools-grid">
 
             <div class="tool-card" style="border-top-color: #10b981;">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-percent" style="color:#10b981;"></i> Late Payment Interest</h3>
-                    <p class="card-desc">Calculate 8% statutory interest + compensation using live Bank of England base rates.</p>
+                    <h3 class="card-title"><i class="fas fa-percent" style="color:#10b981;"></i> Interest Recovery</h3>
+                    <p class="card-desc">Calculate 8% statutory interest + compensation on late debts.</p>
                 </div>
-                
-                <label>Invoice Amount (£)</label>
-                <input type="number" id="int-amount" placeholder="e.g. 5000">
-                <label>Date Invoice Due</label>
-                <input type="date" id="int-date">
+                <label>Amount (£)</label><input type="number" id="int-amount" placeholder="5000">
+                <label>Due Date</label><input type="date" id="int-date">
                 <button class="run-tool" onclick="calcInterest()">Calculate Claim</button>
-
                 <div class="result-box" id="res-int">
-                    <div class="result-label">Total Claimable Amount</div>
-                    <span class="result-val" id="val-int" style="color: #10b981;">£0.00</span>
-                    <div class="alert alert-success">Includes statutory compensation fee.</div>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #f59e0b;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-file-invoice" style="color:#f59e0b;"></i> Invoice Validator</h3>
-                    <p class="card-desc">Validate CIS Deductions and Domestic Reverse Charge (DRC) logic instantly.</p>
-                </div>
-                
-                <div class="row">
-                    <div class="col"><label>Labour (£)</label><input type="number" id="inv-lab" placeholder="0"></div>
-                    <div class="col"><label>Materials (£)</label><input type="number" id="inv-mat" placeholder="0"></div>
-                </div>
-                <label>VAT Mode</label>
-                <select id="inv-vat">
-                    <option value="std">Standard 20% VAT</option>
-                    <option value="drc">Reverse Charge (DRC)</option>
-                </select>
-                <button class="run-tool" onclick="calcInvoice()">Validate Payment</button>
-
-                <div class="result-box" id="res-inv">
-                    <div class="result-label">Pay Subcontractor (Bank)</div>
-                    <span class="result-val" id="val-pay">£0.00</span>
-                    <div id="drc-warn" style="display:none;" class="alert alert-danger">
-                        <i class="fas fa-exclamation-triangle"></i> STOP: Do not pay VAT. Apply DRC.
-                    </div>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #3b82f6;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-user-clock" style="color:#3b82f6;"></i> True Labour Cost</h3>
-                    <p class="card-desc">Reveal the hidden cost of "Holiday Pay", Pension & NICs on hourly wages.</p>
-                </div>
-                
-                <label>Hourly Wage (PAYE) (£)</label>
-                <input type="number" id="lab-wage" placeholder="e.g. 15.00">
-                <button class="run-tool" onclick="calcLabour()">Reveal Hidden Costs</button>
-
-                <div class="result-box" id="res-lab">
-                    <div class="result-label">Real Break-Even Cost</div>
-                    <span class="result-val" id="val-cost">£0.00 /hr</span>
-                    <div class="alert alert-danger">
-                        Hidden Load: +<span id="val-hidden">0</span>%
-                    </div>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #6366f1;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-calendar-alt" style="color:#6366f1;"></i> Deadline Tracker</h3>
-                    <p class="card-desc">Calculate mandatory Pay Less Notice dates for JCT/Scheme contracts.</p>
-                </div>
-                
-                <label>Valuation / App Date</label>
-                <input type="date" id="dl-date">
-                <label>Contract Type</label>
-                <select id="dl-type">
-                    <option value="scheme">Construction Act (Scheme)</option>
-                    <option value="jct">JCT Standard Form</option>
-                </select>
-                <button class="run-tool" onclick="calcDeadlines()">Get Critical Dates</button>
-
-                <div class="result-box" id="res-dl">
-                    <div class="result-label" style="color:#ef4444;">Pay Less Notice Deadline</div>
-                    <span class="result-val" style="color:#ef4444;" id="val-pln">---</span>
-                    <div style="margin-top:10px; font-size:0.9rem;">
-                        <strong>Final Date for Payment:</strong> <span id="val-fdp">---</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #ef4444;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-gavel" style="color:#ef4444;"></i> Adjudication Risk</h3>
-                    <p class="card-desc">Forecast unrecoverable "sunk cost" legal fees vs total claim value.</p>
-                </div>
-                
-                <label>Total Claim Value (£)</label>
-                <input type="number" id="adj-claim" placeholder="e.g. 50000">
-                <button class="run-tool" onclick="calcRisk()">Forecast Exposure</button>
-
-                <div class="result-box" id="res-adj">
-                    <div class="result-label">Est. Sunk Cost (Fees)</div>
-                    <span class="result-val" id="val-sunk">£0.00</span>
-                    <div class="alert alert-danger">
-                        You will burn <strong style="margin-left:4px;"><span id="val-burn">0</span>%</strong> of the claim.
-                    </div>
+                    <div class="result-label">Total Claimable</div>
+                    <span class="result-val" id="val-int" style="color:#10b981;">£0.00</span>
                 </div>
             </div>
 
             <div class="tool-card" style="border-top-color: #8b5cf6;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-eraser" style="color:#8b5cf6;"></i> Retention Eraser</h3>
-                    <p class="card-desc">See how much value your retention loses to inflation over the defects period.</p>
+                    <p class="card-desc">See how inflation destroys retention value over time.</p>
                 </div>
-                
-                <label>Retention Amount (£)</label>
-                <input type="number" id="ret-amt" placeholder="e.g. 10000">
                 <div class="row">
-                    <div class="col"><label>Years Held</label><input type="number" id="ret-year" value="2"></div>
+                    <div class="col"><label>Retention (£)</label><input type="number" id="ret-amt" placeholder="10000"></div>
+                    <div class="col"><label>Years</label><input type="number" id="ret-year" value="2"></div>
                 </div>
                 <button class="run-tool" onclick="calcRetention()">Calculate Loss</button>
-
                 <div class="result-box" id="res-ret">
-                    <div class="result-label">Real Value After Inflation</div>
+                    <div class="result-label">Real Value Today</div>
                     <span class="result-val" id="val-real">£0.00</span>
-                    <div class="alert alert-danger">
-                        Loss of Value: <span id="val-loss">£0.00</span>
-                    </div>
+                    <div class="alert alert-danger">Loss: <span id="val-loss">£0.00</span></div>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #059669;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-hand-holding-usd" style="color:#059669;"></i> CIS Refund Est.</h3>
+                    <p class="card-desc">Estimate potential tax rebate for Sole Traders.</p>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Gross (£)</label><input type="number" id="cis-gross" placeholder="30000"></div>
+                    <div class="col"><label>Mats (£)</label><input type="number" id="cis-mat" placeholder="5000"></div>
+                </div>
+                <button class="run-tool" onclick="calcCisRefund()">Estimate Rebate</button>
+                <div class="result-box" id="res-cis">
+                    <div class="result-label">Est. Refund</div>
+                    <span class="result-val" id="val-refund" style="color:#059669;">£0.00</span>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #3b82f6;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-user-clock" style="color:#3b82f6;"></i> True Labour Cost</h3>
+                    <p class="card-desc">Reveal hidden Holiday Pay, Pension & NIC costs.</p>
+                </div>
+                <label>Hourly Wage (£)</label><input type="number" id="lab-wage" placeholder="15.00">
+                <button class="run-tool" onclick="calcLabour()">Reveal Hidden Costs</button>
+                <div class="result-box" id="res-lab">
+                    <div class="result-label">Real Cost</div>
+                    <span class="result-val" id="val-cost">£0.00 /hr</span>
+                    <div class="alert alert-danger">Hidden Load: +28.8%</div>
                 </div>
             </div>
 
         </div>
-        
-        <p style="margin-top: 3rem; text-align: center; color: var(--mute); font-size: 0.9rem;">
-            Disclaimer: These tools provide estimates for guidance only. Consult a professional for legal or tax advice.
-        </p>
+
+        <div class="category-label">Risk & Compliance</div>
+        <div class="tools-grid">
+
+            <div class="tool-card" style="border-top-color: #6366f1;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-calendar-alt" style="color:#6366f1;"></i> Deadline Tracker</h3>
+                    <p class="card-desc">Get Pay Less Notice dates for JCT/Scheme contracts.</p>
+                </div>
+                <label>Valuation Date</label><input type="date" id="dl-date">
+                <label>Contract</label><select id="dl-type"><option value="scheme">Scheme (Default)</option><option value="jct">JCT Standard</option></select>
+                <button class="run-tool" onclick="calcDeadlines()">Get Dates</button>
+                <div class="result-box" id="res-dl">
+                    <div class="result-label" style="color:#ef4444;">Pay Less Notice Date</div>
+                    <span class="result-val" style="color:#ef4444;" id="val-pln">---</span>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #ef4444;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-gavel" style="color:#ef4444;"></i> Dispute Cost</h3>
+                    <p class="card-desc">Forecast unrecoverable legal fees vs claim value.</p>
+                </div>
+                <label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="50000">
+                <button class="run-tool" onclick="calcRisk()">Forecast Sunk Cost</button>
+                <div class="result-box" id="res-adj">
+                    <div class="result-label">Est. Legal Fees</div>
+                    <span class="result-val" id="val-sunk">£0.00</span>
+                    <div class="alert alert-danger">Burn Rate: <span id="val-burn">0</span>%</div>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #be185d;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-balance-scale-right" style="color:#be185d;"></i> Safe Credit Limit</h3>
+                    <p class="card-desc">Calculate safe contract value based on subbie turnover.</p>
+                </div>
+                <label>Subbie Turnover (£)</label><input type="number" id="risk-turnover" placeholder="500000">
+                <button class="run-tool" onclick="calcCreditLimit()">Calculate Limit</button>
+                <div class="result-box" id="res-risk">
+                    <div class="result-label">Max Safe Contract</div>
+                    <span class="result-val" id="val-limit" style="color:#be185d;">£0.00</span>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #f59e0b;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-check-double" style="color:#f59e0b;"></i> Invoice Validator</h3>
+                    <p class="card-desc">Check CIS Deductions & VAT Reverse Charge logic.</p>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Lab</label><input type="number" id="inv-lab" placeholder="0"></div>
+                    <div class="col"><label>Mat</label><input type="number" id="inv-mat" placeholder="0"></div>
+                </div>
+                <label>VAT</label><select id="inv-vat"><option value="std">Standard</option><option value="drc">Reverse Charge</option></select>
+                <button class="run-tool" onclick="calcInvoice()">Validate</button>
+                <div class="result-box" id="res-inv">
+                    <div class="result-label">Pay Subbie</div>
+                    <span class="result-val" id="val-pay">£0.00</span>
+                    <div id="drc-warn" style="display:none;" class="alert alert-danger">STOP: Apply DRC.</div>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #7c3aed;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-feather-alt" style="color:#7c3aed;"></i> Demand Writer</h3>
+                    <p class="card-desc">Generate a formal legal demand for retention.</p>
+                </div>
+                <label>Client</label><input type="text" id="let-client" placeholder="ABC Ltd">
+                <label>Amount (£)</label><input type="number" id="let-amt" placeholder="5000">
+                <button class="run-tool" onclick="writeLetter()">Generate Letter</button>
+                <div class="result-box" id="res-let" style="display:none;">
+                    <textarea id="let-out" style="width:100%; height:80px; font-size:0.75rem; border:1px solid #ccc;" readonly></textarea>
+                    <button onclick="copyLetter()" style="margin-top:5px; padding:5px; font-size:0.8rem; background:#7c3aed; color:white; border:none; border-radius:4px; cursor:pointer;">Copy</button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <script>
-        // --- 1. INTEREST CALCULATOR ---
+        // 1. PRO INVOICE GEN
+        function generateProInvoice() {
+            const from = document.getElementById('inv-from').value || "Your Company";
+            const to = document.getElementById('inv-to').value || "Client Name";
+            const lab = parseFloat(document.getElementById('gen-lab').value) || 0;
+            const mat = parseFloat(document.getElementById('gen-mat').value) || 0;
+            const vatMode = document.getElementById('gen-vat').value;
+            const logoInput = document.getElementById('inv-logo');
+            
+            if (logoInput.files && logoInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) { printInvoiceWindow(from, to, lab, mat, vatMode, e.target.result); }
+                reader.readAsDataURL(logoInput.files[0]);
+            } else {
+                printInvoiceWindow(from, to, lab, mat, vatMode, null);
+            }
+        }
+        function printInvoiceWindow(from, to, lab, mat, vatMode, logoSrc) {
+            const sub = lab + mat;
+            const cis = lab * 0.20;
+            let vat = 0, total = 0, note = "Exempt", drc = "";
+            
+            if(vatMode === 'std') { vat = sub * 0.20; total = (sub + vat) - cis; note = "20%"; }
+            else if(vatMode === 'drc') { total = sub - cis; note = "0% (DRC)"; drc = "<p style='border:1px solid #333; padding:10px; margin-top:20px; font-size:0.8rem;'><strong>VAT Act 1994 S55A Applies.</strong> Customer to account for VAT.</p>"; }
+            else { total = sub - cis; }
+
+            const img = logoSrc ? `<img src="${logoSrc}" style="max-height:80px;">` : `<h1>INVOICE</h1>`;
+            const html = `<html><head><title>Invoice</title><style>body{font-family:Arial,sans-serif;padding:40px;color:#333;} td{padding:8px;border-bottom:1px solid #eee;}</style></head><body><div style="display:flex;justify-content:space-between;margin-bottom:40px;"><div>${img}<br><strong>${from}</strong></div><div style="text-align:right;"><h3>${to}</h3>Date: ${new Date().toLocaleDateString()}</div></div><table width="100%"><tr><th align="left">Desc</th><th align="right">Amount</th></tr><tr><td>Labour</td><td align="right">£${lab.toFixed(2)}</td></tr><tr><td>Materials</td><td align="right">£${mat.toFixed(2)}</td></tr></table><div style="text-align:right; margin-top:20px;"><p>Sub: £${sub.toFixed(2)}</p><p>VAT (${note}): £${vat.toFixed(2)}</p><p style="color:red;">CIS (20%): -£${cis.toFixed(2)}</p><h3 style="border-top:2px solid #333; padding-top:10px;">TOTAL: £${total.toFixed(2)}</h3></div>${drc}<script>window.print();<\/script></body></html>`;
+            const win = window.open('','_blank'); win.document.write(html); win.document.close();
+        }
+
+        // 2. RAMS GEN
+        function generateRAMS() {
+            const proj = document.getElementById('rams-proj').value || "Project";
+            const act = document.getElementById('rams-act').value || "Works";
+            let haz = [];
+            if(document.getElementById('haz-height').checked) haz.push("<strong>Work at Height:</strong> Use secure access equipment.");
+            if(document.getElementById('haz-dust').checked) haz.push("<strong>Dust:</strong> Wear FFP3 masks.");
+            if(document.getElementById('haz-slip').checked) haz.push("<strong>Slips:</strong> Keep area clear.");
+            if(document.getElementById('haz-elec').checked) haz.push("<strong>Electrical:</strong> 110v tools only.");
+            if(haz.length===0) haz.push("General site risks.");
+            
+            const html = `<html><head><title>RAMS</title><style>body{font-family:Arial;padding:40px;} .box{background:#f9f9f9;padding:15px;border:1px solid #ddd;margin-bottom:20px;}</style></head><body><h1>Risk Assessment & Method Statement</h1><p><strong>Project:</strong> ${proj}<br><strong>Activity:</strong> ${act}<br><strong>Date:</strong> ${new Date().toLocaleDateString()}</p><h3>Risks & Controls</h3><div class="box">${haz.join('<br><br>')}</div><h3>PPE</h3><p>Hard Hat, Hi-Vis, Boots, Gloves, Glasses.</p><br><br>Signed: __________________________<script>window.print();<\/script></body></html>`;
+            const win = window.open('','_blank'); win.document.write(html); win.document.close();
+        }
+
+        // 3. REVERSE TAKE-HOME
+        function calcReverse() {
+            const net = parseFloat(document.getElementById('rev-net').value) || 0;
+            const rate = parseFloat(document.getElementById('rev-rate').value);
+            const inv = net / (1 - rate);
+            document.getElementById('val-rev-inv').innerText = "£" + inv.toFixed(2);
+            document.getElementById('res-rev').style.display = 'block';
+        }
+
+        // 4. STATUTORY INTEREST
         function calcInterest() {
             const amt = parseFloat(document.getElementById('int-amount').value) || 0;
             const dStr = document.getElementById('int-date').value;
-            if(!dStr || amt === 0) return;
-            
-            const due = new Date(dStr);
-            const today = new Date();
-            const days = Math.floor((today - due) / (1000 * 60 * 60 * 24));
-            
-            if(days < 1) { 
-                alert("Invoice is not overdue yet."); 
-                document.getElementById('res-int').style.display = 'none';
-                return; 
-            }
-
-            // Simplified BoE Logic (Base 4.75% + 8% = 12.75% as of Late 2024)
-            // Ideally linked to a database, but using static recent average for free tool speed.
-            const rate = 0.1275; 
-            const interest = (amt * rate * days) / 365;
-            
-            let comp = amt < 1000 ? 40 : (amt < 10000 ? 70 : 100);
-            const total = interest + comp;
-
-            document.getElementById('val-int').innerText = "£" + total.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            if(!dStr) return;
+            const days = Math.floor((new Date() - new Date(dStr)) / (86400000));
+            if(days < 1) { alert("Not overdue"); return; }
+            const total = (amt * 0.1275 * days / 365) + (amt<1000?40:(amt<10000?70:100));
+            document.getElementById('val-int').innerText = "£" + total.toLocaleString('en-GB',{minimumFractionDigits:2});
             document.getElementById('res-int').style.display = 'block';
         }
 
-        // --- 2. INVOICE VALIDATOR ---
+        // 5. RETENTION
+        function calcRetention() {
+            const ret = parseFloat(document.getElementById('ret-amt').value) || 0;
+            const yrs = parseFloat(document.getElementById('ret-year').value) || 0;
+            const real = ret / Math.pow(1.04, yrs);
+            document.getElementById('val-real').innerText = "£" + real.toFixed(0);
+            document.getElementById('val-loss').innerText = "-£" + (ret - real).toFixed(0);
+            document.getElementById('res-ret').style.display = 'block';
+        }
+
+        // 6. CIS REFUND
+        function calcCisRefund() {
+            const gross = parseFloat(document.getElementById('cis-gross').value) || 0;
+            const mat = parseFloat(document.getElementById('cis-mat').value) || 0;
+            const profit = gross - mat;
+            let taxDue = profit > 12570 ? (profit - 12570) * 0.20 : 0;
+            const taxPaid = (gross - mat) * 0.20;
+            const ref = Math.max(0, taxPaid - taxDue);
+            document.getElementById('val-refund').innerText = "£" + ref.toLocaleString('en-GB',{minimumFractionDigits:2});
+            document.getElementById('res-cis').style.display = 'block';
+        }
+
+        // 7. LABOUR COST
+        function calcLabour() {
+            const wage = parseFloat(document.getElementById('lab-wage').value) || 0;
+            document.getElementById('val-cost').innerText = "£" + (wage * 1.288).toFixed(2) + " /hr";
+            document.getElementById('res-lab').style.display = 'block';
+        }
+
+        // 8. DEADLINES
+        function calcDeadlines() {
+            const dStr = document.getElementById('dl-date').value;
+            if(!dStr) return;
+            const valDate = new Date(dStr);
+            const daysToAdd = document.getElementById('dl-type').value === 'jct' ? 16 : 17; // +7 due + 14/17 final - 5/7 notice = approx result
+            valDate.setDate(valDate.getDate() + daysToAdd); 
+            document.getElementById('val-pln').innerText = valDate.toLocaleDateString('en-GB');
+            document.getElementById('res-dl').style.display = 'block';
+        }
+
+        // 9. RISK
+        function calcRisk() {
+            const claim = parseFloat(document.getElementById('adj-claim').value) || 0;
+            const sunk = 5000 + (claim * 0.10);
+            document.getElementById('val-sunk').innerText = "£" + sunk.toLocaleString();
+            document.getElementById('val-burn').innerText = ((sunk/claim)*100).toFixed(1);
+            document.getElementById('res-adj').style.display = 'block';
+        }
+
+        // 10. CREDIT LIMIT
+        function calcCreditLimit() {
+            const t = parseFloat(document.getElementById('risk-turnover').value) || 0;
+            document.getElementById('val-limit').innerText = "£" + (t * 0.25).toLocaleString();
+            document.getElementById('res-risk').style.display = 'block';
+        }
+
+        // 11. INVOICE VALIDATOR
         function calcInvoice() {
             const lab = parseFloat(document.getElementById('inv-lab').value) || 0;
             const mat = parseFloat(document.getElementById('inv-mat').value) || 0;
             const mode = document.getElementById('inv-vat').value;
-
-            const cisDed = lab * 0.20; // Assuming 20% standard deduction
-            let vat = 0;
-            
-            document.getElementById('drc-warn').style.display = 'none';
-
-            if(mode === 'std') {
-                vat = (lab + mat) * 0.20;
-            } else {
-                document.getElementById('drc-warn').style.display = 'flex';
-            }
-
-            // Pay Sub = (Materials + Labour) - CIS + VAT
-            const pay = (mat + (lab - cisDed)) + vat;
-
-            document.getElementById('val-pay').innerText = "£" + pay.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            const vat = mode === 'std' ? (lab+mat)*0.20 : 0;
+            document.getElementById('drc-warn').style.display = mode === 'drc' ? 'none' : (mode==='std'?'none':'none'); 
+            if(mode !== 'std') document.getElementById('drc-warn').style.display = 'block';
+            document.getElementById('val-pay').innerText = "£" + ((mat + (lab*0.8)) + vat).toLocaleString('en-GB',{minimumFractionDigits:2});
             document.getElementById('res-inv').style.display = 'block';
         }
 
-        // --- 3. LABOUR COST ---
-        function calcLabour() {
-            const wage = parseFloat(document.getElementById('lab-wage').value) || 0;
-            if(wage === 0) return;
-
-            // Multiplier Logic (Holiday 12.07% + NIC 13.8% + Pension 3% = ~28.8% Load)
-            const load = 1.288;
-            const trueCost = wage * load;
-            const hiddenPct = 28.8;
-
-            document.getElementById('val-cost').innerText = "£" + trueCost.toFixed(2) + " /hr";
-            document.getElementById('val-hidden').innerText = hiddenPct;
-            document.getElementById('res-lab').style.display = 'block';
+        // 12. DEMAND LETTER
+        function writeLetter() {
+            const c = document.getElementById('let-client').value;
+            const a = document.getElementById('let-amt').value;
+            document.getElementById('let-out').value = `Strictly Private\nTo ${c},\n\nRe: Overdue Retention £${a}\n\nThe Defects Period has expired. Payment is due immediately under the Construction Act. Please release funds within 7 days to avoid adjudication.\n\nSincerely,\n[Your Co]`;
+            document.getElementById('res-let').style.display = 'block';
         }
-
-        // --- 4. DEADLINES ---
-        function calcDeadlines() {
-            const dStr = document.getElementById('dl-date').value;
-            const type = document.getElementById('dl-type').value;
-            if(!dStr) return;
-
-            const valDate = new Date(dStr);
-            let fdpDays = type === 'jct' ? 14 : 17; // JCT usually 14 days from Due Date, Scheme 17 days
-            
-            // Due date approx +7 days from Val
-            const dueDate = new Date(valDate); 
-            dueDate.setDate(dueDate.getDate() + 7);
-            
-            // FDP
-            const fdpDate = new Date(dueDate); 
-            fdpDate.setDate(fdpDate.getDate() + fdpDays);
-            
-            // PLN (Usually -7 days before FDP in Scheme, -5 in JCT)
-            const plnDays = type === 'jct' ? -5 : -7;
-            const plnDate = new Date(fdpDate); 
-            plnDate.setDate(plnDate.getDate() + plnDays);
-
-            const opts = { day: 'numeric', month: 'short', year: 'numeric' };
-            document.getElementById('val-pln').innerText = plnDate.toLocaleDateString('en-GB', opts);
-            document.getElementById('val-fdp').innerText = fdpDate.toLocaleDateString('en-GB', opts);
-            document.getElementById('res-dl').style.display = 'block';
-        }
-
-        // --- 5. RISK ---
-        function calcRisk() {
-            const claim = parseFloat(document.getElementById('adj-claim').value) || 0;
-            if(claim === 0) return;
-
-            // Rough industry math: Base £5k + 10% of claim for legal + adjudicator fees
-            const sunk = 5000 + (claim * 0.10);
-            const burn = (sunk / claim) * 100;
-
-            document.getElementById('val-sunk').innerText = "£" + sunk.toLocaleString('en-GB');
-            document.getElementById('val-burn').innerText = burn.toFixed(1);
-            document.getElementById('res-adj').style.display = 'block';
-        }
-
-        // --- 6. RETENTION ---
-        function calcRetention() {
-            const ret = parseFloat(document.getElementById('ret-amt').value) || 0;
-            const yrs = parseFloat(document.getElementById('ret-year').value) || 0;
-            if(ret === 0) return;
-
-            // Inflation calculation (PV) assuming 4% avg inflation
-            const inflation = 0.04;
-            const realVal = ret / Math.pow((1 + inflation), yrs);
-            const loss = ret - realVal;
-
-            document.getElementById('val-real').innerText = "£" + realVal.toLocaleString('en-GB', {maximumFractionDigits:0});
-            document.getElementById('val-loss').innerText = "-£" + loss.toLocaleString('en-GB', {maximumFractionDigits:0});
-            document.getElementById('res-ret').style.display = 'block';
+        function copyLetter() {
+            const t = document.getElementById("let-out"); t.select(); document.execCommand("copy"); alert("Copied!");
         }
     </script>
-
 </body>
 </html>
