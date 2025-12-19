@@ -13,7 +13,7 @@
             --navy: #1a2332;
             --charcoal: #2d3748;
             --paper: #ffffff;
-            --canvas: #f1f5f9;
+            --canvas: #f8fafc;
             --line: #e2e8f0;
             --mute: #64748b;
             --amber: #f59e0b;
@@ -24,9 +24,9 @@
         * { box-sizing: border-box; }
         body { margin: 0; font-family: var(--font); background-color: var(--canvas); display: flex; min-height: 100vh; color: var(--charcoal); }
 
-        /* --- SIDEBAR --- */
+        /* --- SIDEBAR (Fixed Left) --- */
         .sidebar {
-            width: 260px; background-color: var(--navy); color: #94a3b8; display: flex; flex-direction: column; padding: 1.5rem; position: fixed; height: 100vh; left: 0; top: 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.05);
+            width: 260px; background-color: var(--navy); color: #94a3b8; display: flex; flex-direction: column; padding: 1.5rem; position: fixed; height: 100vh; left: 0; top: 0; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.05); z-index: 100;
         }
         .brand { color: #fff; font-weight: 700; font-size: 1.25rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .nav-item { padding: 0.8rem 1rem; margin-bottom: 0.5rem; border-radius: 8px; cursor: pointer; color: #94a3b8; text-decoration: none; display: flex; align-items: center; gap: 12px; transition: 0.2s; font-weight: 500; font-size: 0.95rem; }
@@ -35,40 +35,71 @@
         
         .sidebar-cta { margin-top: auto; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
         .cta-btn { display: block; background: var(--amber); color: #fff; padding: 0.8rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 10px; font-size: 0.9rem; transition: transform 0.2s; }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+        .cta-btn:hover { transform: translateY(-2px); }
 
         /* --- MAIN CONTENT --- */
-        .main-content { margin-left: 260px; flex: 1; padding: 3rem; }
+        .main-content { margin-left: 260px; flex: 1; padding: 3rem; width: calc(100% - 260px); }
         
-        header { margin-bottom: 3rem; }
+        header { margin-bottom: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
         h1 { margin: 0; color: var(--navy); font-size: 2rem; letter-spacing: -0.02em; }
         .subtitle { color: var(--mute); margin-top: 0.5rem; font-size: 1.1rem; }
         
-        .category-label { margin-top: 3rem; margin-bottom: 1.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mute); font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        .category-label { 
+            max-width: 1200px; margin: 3rem auto 1.5rem auto; 
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; 
+            color: var(--mute); font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; 
+        }
 
-        /* --- GRID --- */
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+        /* --- STRICT GRID SYSTEM --- */
+        .tools-grid { 
+            display: grid; 
+            /* Forces cards to be at least 320px but fit 3 in a row on big screens */
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 24px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            align-items: stretch; /* Makes all cards in a row the same height */
+        }
 
-        /* --- CARDS --- */
-        .tool-card { background: var(--paper); border-radius: 12px; padding: 1.8rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--line); border-top: 4px solid var(--navy); transition: transform 0.2s; }
-        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.1); }
-        .card-header { margin-bottom: 1.5rem; min-height: 80px; }
+        /* --- CARD STYLING --- */
+        .tool-card { 
+            background: var(--paper); 
+            border-radius: 12px; 
+            padding: 1.8rem; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+            border: 1px solid var(--line); 
+            border-top: 5px solid var(--navy); 
+            transition: transform 0.2s;
+            /* Flexbox to push button to bottom */
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
+        }
+        
+        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1); }
+        
+        .card-header { margin-bottom: 1.5rem; }
         .card-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 10px; }
         .card-desc { font-size: 0.85rem; color: var(--mute); line-height: 1.5; }
 
+        /* Spacer to push content up and button down */
+        .spacer { flex-grow: 1; }
+
         /* --- INPUTS --- */
-        label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        input, select { width: 100%; padding: 0.7rem; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; background: #fff; transition: border-color 0.2s; }
+        label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 10px; }
+        input, select { width: 100%; padding: 0.7rem; border: 1px solid var(--line); border-radius: 8px; font-size: 0.9rem; background: #fff; transition: border-color 0.2s; }
         input:focus, select:focus { outline: none; border-color: var(--focus); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
 
         .row { display: flex; gap: 12px; }
         .col { flex: 1; }
 
-        button.run-tool { width: 100%; padding: 0.75rem; background: var(--navy); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
+        button.run-tool { 
+            width: 100%; padding: 0.8rem; background: var(--navy); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.95rem; margin-top: 1.5rem;
+        }
         button.run-tool:hover { background: #334155; }
 
         /* --- RESULTS --- */
-        .result-box { margin-top: 1.2rem; padding: 1rem; background: #f8fafc; border: 1px dashed var(--line); border-radius: 8px; display: none; animation: fadeIn 0.3s ease; }
+        .result-box { margin-top: 1.2rem; padding: 1rem; background: #f1f5f9; border: 1px dashed var(--line); border-radius: 8px; display: none; animation: fadeIn 0.3s ease; }
         .result-label { font-size: 0.75rem; color: var(--mute); font-weight: 700; text-transform: uppercase; }
         .result-val { font-size: 1.4rem; font-weight: 800; color: var(--navy); display: block; margin-top: 0.2rem; margin-bottom: 0.5rem; }
         .alert { font-size: 0.8rem; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem; display: flex; align-items: center; gap: 8px; line-height: 1.4; }
@@ -79,7 +110,8 @@
 
         @media (max-width: 900px) {
             .sidebar { display: none; }
-            .main-content { margin-left: 0; padding: 1.5rem; }
+            .main-content { margin-left: 0; padding: 1.5rem; width: 100%; }
+            .tools-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -109,66 +141,60 @@
         <div class="category-label">Daily Utilities</div>
         <div class="tools-grid">
 
-            <div class="tool-card" style="border-top-color: #0f172a; grid-column: span 1 / -1;">
+            <div class="tool-card" style="border-top-color: #0f172a;">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-file-invoice" style="color:#0f172a;"></i> Pro CIS Invoice Generator</h3>
-                    <p class="card-desc">Create a compliant PDF invoice. Supports CIS, Reverse Charge & Logo Upload.</p>
+                    <h3 class="card-title"><i class="fas fa-file-invoice" style="color:#0f172a;"></i> Pro CIS Invoice</h3>
+                    <p class="card-desc">Create a compliant PDF invoice with Logo Upload.</p>
                 </div>
-                <div style="margin-bottom: 1rem; background: #f8fafc; padding: 0.8rem; border-radius: 8px; border: 1px dashed #cbd5e1; text-align: center;">
-                    <label style="margin-bottom: 5px; cursor: pointer;">Upload Logo (Optional)</label>
-                    <input type="file" id="inv-logo" accept="image/*" style="margin-bottom:0; border:none; padding:0;">
+                <label style="margin-top:0;">Upload Logo</label>
+                <input type="file" id="inv-logo" accept="image/*" style="border:none; padding:0; font-size:0.8rem;">
+                <div class="row">
+                    <div class="col"><label>From</label><input type="text" id="inv-from" placeholder="My Co"></div>
+                    <div class="col"><label>To</label><input type="text" id="inv-to" placeholder="Client"></div>
                 </div>
                 <div class="row">
-                    <div class="col"><label>From (Your Co)</label><input type="text" id="inv-from" placeholder="My Building Ltd"></div>
-                    <div class="col"><label>To (Client)</label><input type="text" id="inv-to" placeholder="Big Contractor PLC"></div>
+                    <div class="col"><label>Lab</label><input type="number" id="gen-lab" placeholder="0"></div>
+                    <div class="col"><label>Mat</label><input type="number" id="gen-mat" placeholder="0"></div>
                 </div>
-                <div class="row">
-                    <div class="col"><label>Labour (£)</label><input type="number" id="gen-lab" placeholder="1000"></div>
-                    <div class="col"><label>Materials (£)</label><input type="number" id="gen-mat" placeholder="200"></div>
-                    <div class="col">
-                        <label>VAT Mode</label>
-                        <select id="gen-vat">
-                            <option value="drc">Reverse Charge (DRC)</option>
-                            <option value="std">Standard 20%</option>
-                            <option value="none">No VAT</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="run-tool" onclick="generateProInvoice()">Generate PDF Invoice</button>
+                <label>VAT</label>
+                <select id="gen-vat"><option value="drc">Reverse Charge</option><option value="std">Standard</option></select>
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="generateProInvoice()">Generate PDF</button>
             </div>
 
             <div class="tool-card" style="border-top-color: #d97706;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-hard-hat" style="color:#d97706;"></i> RAMS Creator</h3>
-                    <p class="card-desc">Auto-generate a Risk Assessment & Method Statement (PDF).</p>
+                    <p class="card-desc">Auto-generate Risk Assessment & Method Statement.</p>
                 </div>
                 <div class="row">
-                    <div class="col"><label>Project</label><input type="text" id="rams-proj" placeholder="Project Name"></div>
-                    <div class="col"><label>Activity</label><input type="text" id="rams-act" placeholder="e.g. Painting"></div>
+                    <div class="col"><label>Project</label><input type="text" id="rams-proj" placeholder="Name"></div>
+                    <div class="col"><label>Activity</label><input type="text" id="rams-act" placeholder="Work"></div>
                 </div>
-                <label>Hazards (Tick all that apply)</label>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1rem;">
-                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-height" style="width:auto;"> Height</label>
-                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-dust" style="width:auto;"> Dust</label>
-                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-slip" style="width:auto;"> Slips</label>
-                    <label style="font-weight:500; text-transform:none;"><input type="checkbox" id="haz-elec" style="width:auto;"> Elec</label>
+                <label>Hazards</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                    <label style="text-transform:none; font-weight:500;"><input type="checkbox" id="haz-height"> Height</label>
+                    <label style="text-transform:none; font-weight:500;"><input type="checkbox" id="haz-dust"> Dust</label>
+                    <label style="text-transform:none; font-weight:500;"><input type="checkbox" id="haz-slip"> Slips</label>
+                    <label style="text-transform:none; font-weight:500;"><input type="checkbox" id="haz-elec"> Elec</label>
                 </div>
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="generateRAMS()">Create Safety Doc</button>
             </div>
 
             <div class="tool-card" style="border-top-color: #db2777;">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-calculator" style="color:#db2777;"></i> Reverse Take-Home</h3>
-                    <p class="card-desc">"I want £200 in my hand." Calculate what you need to invoice.</p>
+                    <h3 class="card-title"><i class="fas fa-calculator" style="color:#db2777;"></i> Reverse Calc</h3>
+                    <p class="card-desc">Calculate required invoice value for desired net pay.</p>
                 </div>
                 <label>Desired Net Pay (£)</label><input type="number" id="rev-net" placeholder="200">
                 <label>CIS Rate</label>
                 <select id="rev-rate"><option value="0.2">Standard (20%)</option><option value="0.3">Unverified (30%)</option></select>
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="calcReverse()">Calculate Invoice</button>
                 <div class="result-box" id="res-rev">
-                    <div class="result-label">You must invoice Labour:</div>
+                    <div class="result-label">Invoice Labour At:</div>
                     <span class="result-val" id="val-rev-inv" style="color:#db2777;">£0.00</span>
-                    <div class="alert" style="background:#fce7f3; color:#831843;">Plus VAT & Materials.</div>
                 </div>
             </div>
 
@@ -180,10 +206,11 @@
             <div class="tool-card" style="border-top-color: #10b981;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-percent" style="color:#10b981;"></i> Interest Recovery</h3>
-                    <p class="card-desc">Calculate 8% statutory interest + compensation on late debts.</p>
+                    <p class="card-desc">Calculate 8% statutory interest + compensation.</p>
                 </div>
                 <label>Amount (£)</label><input type="number" id="int-amount" placeholder="5000">
                 <label>Due Date</label><input type="date" id="int-date">
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="calcInterest()">Calculate Claim</button>
                 <div class="result-box" id="res-int">
                     <div class="result-label">Total Claimable</div>
@@ -194,15 +221,16 @@
             <div class="tool-card" style="border-top-color: #8b5cf6;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-eraser" style="color:#8b5cf6;"></i> Retention Eraser</h3>
-                    <p class="card-desc">See how inflation destroys retention value over time.</p>
+                    <p class="card-desc">See how inflation destroys retention value.</p>
                 </div>
                 <div class="row">
-                    <div class="col"><label>Retention (£)</label><input type="number" id="ret-amt" placeholder="10000"></div>
+                    <div class="col"><label>Amt (£)</label><input type="number" id="ret-amt" placeholder="10000"></div>
                     <div class="col"><label>Years</label><input type="number" id="ret-year" value="2"></div>
                 </div>
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="calcRetention()">Calculate Loss</button>
                 <div class="result-box" id="res-ret">
-                    <div class="result-label">Real Value Today</div>
+                    <div class="result-label">Real Value</div>
                     <span class="result-val" id="val-real">£0.00</span>
                     <div class="alert alert-danger">Loss: <span id="val-loss">£0.00</span></div>
                 </div>
@@ -211,12 +239,13 @@
             <div class="tool-card" style="border-top-color: #059669;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-hand-holding-usd" style="color:#059669;"></i> CIS Refund Est.</h3>
-                    <p class="card-desc">Estimate potential tax rebate for Sole Traders.</p>
+                    <p class="card-desc">Estimate tax rebate for Sole Traders.</p>
                 </div>
                 <div class="row">
-                    <div class="col"><label>Gross (£)</label><input type="number" id="cis-gross" placeholder="30000"></div>
-                    <div class="col"><label>Mats (£)</label><input type="number" id="cis-mat" placeholder="5000"></div>
+                    <div class="col"><label>Gross</label><input type="number" id="cis-gross" placeholder="30000"></div>
+                    <div class="col"><label>Mat</label><input type="number" id="cis-mat" placeholder="5000"></div>
                 </div>
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="calcCisRefund()">Estimate Rebate</button>
                 <div class="result-box" id="res-cis">
                     <div class="result-label">Est. Refund</div>
@@ -227,14 +256,33 @@
             <div class="tool-card" style="border-top-color: #3b82f6;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-user-clock" style="color:#3b82f6;"></i> True Labour Cost</h3>
-                    <p class="card-desc">Reveal hidden Holiday Pay, Pension & NIC costs.</p>
+                    <p class="card-desc">Reveal hidden Holiday Pay & NIC costs.</p>
                 </div>
                 <label>Hourly Wage (£)</label><input type="number" id="lab-wage" placeholder="15.00">
-                <button class="run-tool" onclick="calcLabour()">Reveal Hidden Costs</button>
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="calcLabour()">Reveal Cost</button>
                 <div class="result-box" id="res-lab">
                     <div class="result-label">Real Cost</div>
                     <span class="result-val" id="val-cost">£0.00 /hr</span>
                     <div class="alert alert-danger">Hidden Load: +28.8%</div>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #4b5563;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-stopwatch" style="color:#4b5563;"></i> Daywork vs Price</h3>
+                    <p class="card-desc">Compare hourly labour vs fixed price quotes.</p>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Rate</label><input type="number" id="dw-rate" placeholder="150"></div>
+                    <div class="col"><label>Days</label><input type="number" id="dw-days" placeholder="5"></div>
+                </div>
+                <label>Fixed Quote (£)</label><input type="number" id="dw-fixed" placeholder="1000">
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="calcDaywork()">Compare</button>
+                <div class="result-box" id="res-dw">
+                    <div class="result-label">Cheaper:</div>
+                    <span class="result-val" id="val-cheaper">---</span>
                 </div>
             </div>
 
@@ -250,9 +298,10 @@
                 </div>
                 <label>Valuation Date</label><input type="date" id="dl-date">
                 <label>Contract</label><select id="dl-type"><option value="scheme">Scheme (Default)</option><option value="jct">JCT Standard</option></select>
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="calcDeadlines()">Get Dates</button>
                 <div class="result-box" id="res-dl">
-                    <div class="result-label" style="color:#ef4444;">Pay Less Notice Date</div>
+                    <div class="result-label" style="color:#ef4444;">Pay Less Deadline</div>
                     <span class="result-val" style="color:#ef4444;" id="val-pln">---</span>
                 </div>
             </div>
@@ -263,7 +312,8 @@
                     <p class="card-desc">Forecast unrecoverable legal fees vs claim value.</p>
                 </div>
                 <label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="50000">
-                <button class="run-tool" onclick="calcRisk()">Forecast Sunk Cost</button>
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="calcRisk()">Forecast Cost</button>
                 <div class="result-box" id="res-adj">
                     <div class="result-label">Est. Legal Fees</div>
                     <span class="result-val" id="val-sunk">£0.00</span>
@@ -274,9 +324,10 @@
             <div class="tool-card" style="border-top-color: #be185d;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-balance-scale-right" style="color:#be185d;"></i> Safe Credit Limit</h3>
-                    <p class="card-desc">Calculate safe contract value based on subbie turnover.</p>
+                    <p class="card-desc">Calculate safe contract value from turnover.</p>
                 </div>
-                <label>Subbie Turnover (£)</label><input type="number" id="risk-turnover" placeholder="500000">
+                <label>Turnover (£)</label><input type="number" id="risk-turnover" placeholder="500000">
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="calcCreditLimit()">Calculate Limit</button>
                 <div class="result-box" id="res-risk">
                     <div class="result-label">Max Safe Contract</div>
@@ -286,7 +337,7 @@
 
             <div class="tool-card" style="border-top-color: #f59e0b;">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-check-double" style="color:#f59e0b;"></i> Invoice Validator</h3>
+                    <h3 class="card-title"><i class="fas fa-check-double" style="color:#f59e0b;"></i> Invoice Check</h3>
                     <p class="card-desc">Check CIS Deductions & VAT Reverse Charge logic.</p>
                 </div>
                 <div class="row">
@@ -294,25 +345,12 @@
                     <div class="col"><label>Mat</label><input type="number" id="inv-mat" placeholder="0"></div>
                 </div>
                 <label>VAT</label><select id="inv-vat"><option value="std">Standard</option><option value="drc">Reverse Charge</option></select>
+                <div class="spacer"></div>
                 <button class="run-tool" onclick="calcInvoice()">Validate</button>
                 <div class="result-box" id="res-inv">
                     <div class="result-label">Pay Subbie</div>
                     <span class="result-val" id="val-pay">£0.00</span>
                     <div id="drc-warn" style="display:none;" class="alert alert-danger">STOP: Apply DRC.</div>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #7c3aed;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-feather-alt" style="color:#7c3aed;"></i> Demand Writer</h3>
-                    <p class="card-desc">Generate a formal legal demand for retention.</p>
-                </div>
-                <label>Client</label><input type="text" id="let-client" placeholder="ABC Ltd">
-                <label>Amount (£)</label><input type="number" id="let-amt" placeholder="5000">
-                <button class="run-tool" onclick="writeLetter()">Generate Letter</button>
-                <div class="result-box" id="res-let" style="display:none;">
-                    <textarea id="let-out" style="width:100%; height:80px; font-size:0.75rem; border:1px solid #ccc;" readonly></textarea>
-                    <button onclick="copyLetter()" style="margin-top:5px; padding:5px; font-size:0.8rem; background:#7c3aed; color:white; border:none; border-radius:4px; cursor:pointer;">Copy</button>
                 </div>
             </div>
 
@@ -417,7 +455,18 @@
             document.getElementById('res-lab').style.display = 'block';
         }
 
-        // 8. DEADLINES
+        // 8. DAYWORK
+        function calcDaywork() {
+            const rate = parseFloat(document.getElementById('dw-rate').value) || 0;
+            const days = parseFloat(document.getElementById('dw-days').value) || 0;
+            const fixed = parseFloat(document.getElementById('dw-fixed').value) || 0;
+            const dw = rate * days;
+            const win = dw < fixed ? "Daywork" : "Fixed Price";
+            document.getElementById('val-cheaper').innerText = win;
+            document.getElementById('res-dw').style.display = 'block';
+        }
+
+        // 9. DEADLINES
         function calcDeadlines() {
             const dStr = document.getElementById('dl-date').value;
             if(!dStr) return;
@@ -428,7 +477,7 @@
             document.getElementById('res-dl').style.display = 'block';
         }
 
-        // 9. RISK
+        // 10. RISK
         function calcRisk() {
             const claim = parseFloat(document.getElementById('adj-claim').value) || 0;
             const sunk = 5000 + (claim * 0.10);
@@ -437,14 +486,14 @@
             document.getElementById('res-adj').style.display = 'block';
         }
 
-        // 10. CREDIT LIMIT
+        // 11. CREDIT LIMIT
         function calcCreditLimit() {
             const t = parseFloat(document.getElementById('risk-turnover').value) || 0;
             document.getElementById('val-limit').innerText = "£" + (t * 0.25).toLocaleString();
             document.getElementById('res-risk').style.display = 'block';
         }
 
-        // 11. INVOICE VALIDATOR
+        // 12. INVOICE VALIDATOR
         function calcInvoice() {
             const lab = parseFloat(document.getElementById('inv-lab').value) || 0;
             const mat = parseFloat(document.getElementById('inv-mat').value) || 0;
@@ -454,17 +503,6 @@
             if(mode !== 'std') document.getElementById('drc-warn').style.display = 'block';
             document.getElementById('val-pay').innerText = "£" + ((mat + (lab*0.8)) + vat).toLocaleString('en-GB',{minimumFractionDigits:2});
             document.getElementById('res-inv').style.display = 'block';
-        }
-
-        // 12. DEMAND LETTER
-        function writeLetter() {
-            const c = document.getElementById('let-client').value;
-            const a = document.getElementById('let-amt').value;
-            document.getElementById('let-out').value = `Strictly Private\nTo ${c},\n\nRe: Overdue Retention £${a}\n\nThe Defects Period has expired. Payment is due immediately under the Construction Act. Please release funds within 7 days to avoid adjudication.\n\nSincerely,\n[Your Co]`;
-            document.getElementById('res-let').style.display = 'block';
-        }
-        function copyLetter() {
-            const t = document.getElementById("let-out"); t.select(); document.execCommand("copy"); alert("Copied!");
         }
     </script>
 </body>
