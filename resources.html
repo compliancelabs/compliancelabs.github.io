@@ -53,10 +53,9 @@
             color: var(--mute); font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; 
         }
 
-        /* --- FIXED GRID SYSTEM --- */
+        /* --- GRID SYSTEM --- */
         .tools-grid { 
             display: grid; 
-            /* Min 320px width per card, filling space evenly */
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
             gap: 24px; 
             max-width: 1200px; 
@@ -81,7 +80,7 @@
         .card-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 0 0 0.5rem 0; display: flex; align-items: center; gap: 10px; }
         .card-desc { font-size: 0.85rem; color: var(--mute); line-height: 1.5; }
 
-        .spacer { flex-grow: 1; } /* Pushes buttons to bottom */
+        .spacer { flex-grow: 1; }
 
         /* --- INPUTS --- */
         label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 10px; }
@@ -97,7 +96,7 @@
         button.run-tool:hover { background: #334155; }
         
         button.action-btn {
-            background: white; border: 1px solid var(--line); color: var(--navy); margin-top: 10px; font-size: 0.8rem;
+            width: 100%; background: white; border: 1px solid var(--line); color: var(--navy); margin-top: 10px; font-size: 0.8rem; padding: 0.6rem; border-radius: 6px; cursor: pointer; font-weight: 600;
         }
         button.action-btn:hover { background: #f1f5f9; }
 
@@ -141,6 +140,80 @@
             <div class="subtitle">Operational tools for risk, compliance, and commercial finance.</div>
         </header>
 
+        <div class="category-label">Finance & Cash Flow</div>
+        <div class="tools-grid">
+
+            <div class="tool-card" style="border-top-color: #0ea5e9;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-money-bill-wave" style="color:#0ea5e9;"></i> Invoice Finance</h3>
+                    <p class="card-desc">Calculate cost to unlock cash from unpaid invoices.</p>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Invoice Value</label><input type="number" id="fac-val" placeholder="10000" onchange="saveData()"></div>
+                    <div class="col"><label>Days Wait</label><input type="number" id="fac-days" placeholder="60" onchange="saveData()"></div>
+                </div>
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="calcFactoring()">Calculate Cost</button>
+                <div class="result-box" id="res-fac">
+                    <div class="result-label">Total Cost to Unlock:</div>
+                    <span class="result-val" id="val-fac-cost" style="color:#0ea5e9;">£0.00</span>
+                    <div class="alert alert-success">Cash Today: <strong id="val-fac-now">£0.00</strong></div>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #10b981;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-percent" style="color:#10b981;"></i> Interest Recovery</h3>
+                    <p class="card-desc">Calculate 8% statutory interest on late debts.</p>
+                </div>
+                <label>Amount (£)</label><input type="number" id="int-amount" placeholder="5000" onchange="saveData()">
+                <label>Due Date</label><input type="date" id="int-date" onchange="saveData()">
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="calcInterest()">Calculate Claim</button>
+                <div class="result-box" id="res-int">
+                    <div class="result-label">Total Claimable</div>
+                    <span class="result-val" id="val-int" style="color:#10b981;">£0.00</span>
+                    <button class="action-btn" onclick="printInterestClaim()"><i class="fas fa-print"></i> Print Proof</button>
+                </div>
+            </div>
+
+            <div class="tool-card" style="border-top-color: #8b5cf6;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-eraser" style="color:#8b5cf6;"></i> Retention Eraser</h3>
+                    <p class="card-desc">See how inflation destroys retention value.</p>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Amt (£)</label><input type="number" id="ret-amt" placeholder="10000" onchange="saveData()"></div>
+                    <div class="col"><label>Years</label><input type="number" id="ret-year" value="2" onchange="saveData()"></div>
+                </div>
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="calcRetention()">Calculate Loss</button>
+                <div class="result-box" id="res-ret">
+                    <div class="result-label">Real Value</div>
+                    <span class="result-val" id="val-real">£0.00</span>
+                    <div class="alert alert-danger">Loss: <span id="val-loss">£0.00</span></div>
+                </div>
+            </div>
+
+             <div class="tool-card" style="border-top-color: #059669;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-hand-holding-usd" style="color:#059669;"></i> CIS Refund Est.</h3>
+                    <p class="card-desc">Estimate tax rebate for Sole Traders.</p>
+                </div>
+                <div class="row">
+                    <div class="col"><label>Gross</label><input type="number" id="cis-gross" placeholder="30000" onchange="saveData()"></div>
+                    <div class="col"><label>Mat</label><input type="number" id="cis-mat" placeholder="5000" onchange="saveData()"></div>
+                </div>
+                <div class="spacer"></div>
+                <button class="run-tool" onclick="calcCisRefund()">Estimate Rebate</button>
+                <div class="result-box" id="res-cis">
+                    <div class="result-label">Est. Refund</div>
+                    <span class="result-val" id="val-refund" style="color:#059669;">£0.00</span>
+                </div>
+            </div>
+
+        </div>
+
         <div class="category-label">Daily Utilities</div>
         <div class="tools-grid">
 
@@ -152,12 +225,12 @@
                 <label style="margin-top:0;">Upload Logo</label>
                 <input type="file" id="inv-logo" accept="image/*" style="border:none; padding:0; font-size:0.8rem;">
                 <div class="row">
-                    <div class="col"><label>From</label><input type="text" id="inv-from" placeholder="My Co"></div>
-                    <div class="col"><label>To</label><input type="text" id="inv-to" placeholder="Client"></div>
+                    <div class="col"><label>From</label><input type="text" id="inv-from" placeholder="My Co" onchange="saveData()"></div>
+                    <div class="col"><label>To</label><input type="text" id="inv-to" placeholder="Client" onchange="saveData()"></div>
                 </div>
                 <div class="row">
-                    <div class="col"><label>Lab</label><input type="number" id="gen-lab" placeholder="0"></div>
-                    <div class="col"><label>Mat</label><input type="number" id="gen-mat" placeholder="0"></div>
+                    <div class="col"><label>Lab</label><input type="number" id="gen-lab" placeholder="0" onchange="saveData()"></div>
+                    <div class="col"><label>Mat</label><input type="number" id="gen-mat" placeholder="0" onchange="saveData()"></div>
                 </div>
                 <label>VAT</label>
                 <select id="gen-vat"><option value="drc">Reverse Charge</option><option value="std">Standard</option></select>
@@ -171,8 +244,8 @@
                     <p class="card-desc">Auto-generate Risk Assessment & Method Statement.</p>
                 </div>
                 <div class="row">
-                    <div class="col"><label>Project</label><input type="text" id="rams-proj" placeholder="Name"></div>
-                    <div class="col"><label>Activity</label><input type="text" id="rams-act" placeholder="Work"></div>
+                    <div class="col"><label>Project</label><input type="text" id="rams-proj" placeholder="Name" onchange="saveData()"></div>
+                    <div class="col"><label>Activity</label><input type="text" id="rams-act" placeholder="Work" onchange="saveData()"></div>
                 </div>
                 <label>Hazards</label>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
@@ -190,7 +263,7 @@
                     <h3 class="card-title"><i class="fas fa-calculator" style="color:#db2777;"></i> Reverse Calc</h3>
                     <p class="card-desc">Calculate required invoice value for desired net pay.</p>
                 </div>
-                <label>Desired Net Pay (£)</label><input type="number" id="rev-net" placeholder="200">
+                <label>Desired Net Pay (£)</label><input type="number" id="rev-net" placeholder="200" onchange="saveData()">
                 <label>CIS Rate</label>
                 <select id="rev-rate"><option value="0.2">Standard (20%)</option><option value="0.3">Unverified (30%)</option></select>
                 <div class="spacer"></div>
@@ -201,86 +274,12 @@
                 </div>
             </div>
 
-        </div>
-
-        <div class="category-label">Finance & Cash Flow</div>
-        <div class="tools-grid">
-
-            <div class="tool-card" style="border-top-color: #0ea5e9;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-money-bill-wave" style="color:#0ea5e9;"></i> Invoice Finance</h3>
-                    <p class="card-desc">Calculate cost to unlock cash from unpaid invoices today.</p>
-                </div>
-                <div class="row">
-                    <div class="col"><label>Invoice Value</label><input type="number" id="fac-val" placeholder="10000"></div>
-                    <div class="col"><label>Days Wait</label><input type="number" id="fac-days" placeholder="60"></div>
-                </div>
-                <div class="spacer"></div>
-                <button class="run-tool" onclick="calcFactoring()">Calculate Cost</button>
-                <div class="result-box" id="res-fac">
-                    <div class="result-label">Cost to Unlock:</div>
-                    <span class="result-val" id="val-fac-cost" style="color:#0ea5e9;">£0.00</span>
-                    <div class="alert alert-success">Cash Today: <span id="val-fac-now" style="font-weight:700;">£0.00</span></div>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #10b981;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-percent" style="color:#10b981;"></i> Interest Recovery</h3>
-                    <p class="card-desc">Calculate 8% statutory interest on late debts.</p>
-                </div>
-                <label>Amount (£)</label><input type="number" id="int-amount" placeholder="5000">
-                <label>Due Date</label><input type="date" id="int-date">
-                <div class="spacer"></div>
-                <button class="run-tool" onclick="calcInterest()">Calculate Claim</button>
-                <div class="result-box" id="res-int">
-                    <div class="result-label">Total Claimable</div>
-                    <span class="result-val" id="val-int" style="color:#10b981;">£0.00</span>
-                    <button class="run-tool action-btn" onclick="printInterestClaim()"><i class="fas fa-print"></i> Print Proof</button>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #8b5cf6;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-eraser" style="color:#8b5cf6;"></i> Retention Eraser</h3>
-                    <p class="card-desc">See how inflation destroys retention value.</p>
-                </div>
-                <div class="row">
-                    <div class="col"><label>Amt (£)</label><input type="number" id="ret-amt" placeholder="10000"></div>
-                    <div class="col"><label>Years</label><input type="number" id="ret-year" value="2"></div>
-                </div>
-                <div class="spacer"></div>
-                <button class="run-tool" onclick="calcRetention()">Calculate Loss</button>
-                <div class="result-box" id="res-ret">
-                    <div class="result-label">Real Value</div>
-                    <span class="result-val" id="val-real">£0.00</span>
-                    <div class="alert alert-danger">Loss: <span id="val-loss">£0.00</span></div>
-                </div>
-            </div>
-
-            <div class="tool-card" style="border-top-color: #059669;">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-hand-holding-usd" style="color:#059669;"></i> CIS Refund Est.</h3>
-                    <p class="card-desc">Estimate tax rebate for Sole Traders.</p>
-                </div>
-                <div class="row">
-                    <div class="col"><label>Gross</label><input type="number" id="cis-gross" placeholder="30000"></div>
-                    <div class="col"><label>Mat</label><input type="number" id="cis-mat" placeholder="5000"></div>
-                </div>
-                <div class="spacer"></div>
-                <button class="run-tool" onclick="calcCisRefund()">Estimate Rebate</button>
-                <div class="result-box" id="res-cis">
-                    <div class="result-label">Est. Refund</div>
-                    <span class="result-val" id="val-refund" style="color:#059669;">£0.00</span>
-                </div>
-            </div>
-
             <div class="tool-card" style="border-top-color: #3b82f6;">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-user-clock" style="color:#3b82f6;"></i> True Labour Cost</h3>
                     <p class="card-desc">Reveal hidden Holiday Pay & NIC costs.</p>
                 </div>
-                <label>Hourly Wage (£)</label><input type="number" id="lab-wage" placeholder="15.00">
+                <label>Hourly Wage (£)</label><input type="number" id="lab-wage" placeholder="15.00" onchange="saveData()">
                 <div class="spacer"></div>
                 <button class="run-tool" onclick="calcLabour()">Reveal Cost</button>
                 <div class="result-box" id="res-lab">
@@ -300,8 +299,8 @@
                     <h3 class="card-title"><i class="fas fa-balance-scale-right" style="color:#be185d;"></i> Safe Credit Limit</h3>
                     <p class="card-desc">Calculate safe contract value from turnover.</p>
                 </div>
-                <label>Turnover (£)</label><input type="number" id="risk-turnover" placeholder="500000">
-                <label>Contract Value (£)</label><input type="number" id="risk-contract" placeholder="50000">
+                <label>Turnover (£)</label><input type="number" id="risk-turnover" placeholder="500000" onchange="saveData()">
+                <label>Contract Value (£)</label><input type="number" id="risk-contract" placeholder="50000" onchange="saveData()">
                 <div class="spacer"></div>
                 <button class="run-tool" onclick="calcCreditLimit()">Check Safety</button>
                 <div class="result-box" id="res-risk">
@@ -319,7 +318,7 @@
                     <h3 class="card-title"><i class="fas fa-calendar-alt" style="color:#6366f1;"></i> Deadline Tracker</h3>
                     <p class="card-desc">Get Pay Less Notice dates for JCT/Scheme contracts.</p>
                 </div>
-                <label>Valuation Date</label><input type="date" id="dl-date">
+                <label>Valuation Date</label><input type="date" id="dl-date" onchange="saveData()">
                 <label>Contract</label><select id="dl-type"><option value="scheme">Scheme (Default)</option><option value="jct">JCT Standard</option></select>
                 <div class="spacer"></div>
                 <button class="run-tool" onclick="calcDeadlines()">Get Dates</button>
@@ -334,7 +333,7 @@
                     <h3 class="card-title"><i class="fas fa-gavel" style="color:#ef4444;"></i> Dispute Cost</h3>
                     <p class="card-desc">Forecast unrecoverable legal fees vs claim value.</p>
                 </div>
-                <label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="50000">
+                <label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="50000" onchange="saveData()">
                 <div class="spacer"></div>
                 <button class="run-tool" onclick="calcRisk()">Forecast Cost</button>
                 <div class="result-box" id="res-adj">
@@ -350,8 +349,8 @@
                     <p class="card-desc">Check CIS Deductions & VAT Reverse Charge logic.</p>
                 </div>
                 <div class="row">
-                    <div class="col"><label>Lab</label><input type="number" id="inv-lab" placeholder="0"></div>
-                    <div class="col"><label>Mat</label><input type="number" id="inv-mat" placeholder="0"></div>
+                    <div class="col"><label>Lab</label><input type="number" id="inv-lab" placeholder="0" onchange="saveData()"></div>
+                    <div class="col"><label>Mat</label><input type="number" id="inv-mat" placeholder="0" onchange="saveData()"></div>
                 </div>
                 <label>VAT</label><select id="inv-vat"><option value="std">Standard</option><option value="drc">Reverse Charge</option></select>
                 <div class="spacer"></div>
@@ -368,6 +367,25 @@
     </div>
 
     <script>
+        // --- LOCAL STORAGE SAVE SYSTEM ---
+        function saveData() {
+            const inputs = document.querySelectorAll('input');
+            const data = {};
+            inputs.forEach(i => { if(i.id) data[i.id] = i.value; });
+            localStorage.setItem('cl_tools_data', JSON.stringify(data));
+        }
+        function loadData() {
+            const data = JSON.parse(localStorage.getItem('cl_tools_data'));
+            if(data) {
+                for (const [key, value] of Object.entries(data)) {
+                    const el = document.getElementById(key);
+                    if(el) el.value = value;
+                }
+            }
+        }
+        // Load data when page opens
+        window.onload = loadData;
+
         // 1. PRO INVOICE GEN
         function generateProInvoice() {
             const from = document.getElementById('inv-from').value || "Your Company";
@@ -428,9 +446,10 @@
             const val = parseFloat(document.getElementById('fac-val').value) || 0;
             const days = parseFloat(document.getElementById('fac-days').value) || 0;
             
-            const serviceFee = val * 0.025; // 2.5% fee
-            const advance = val * 0.90; // 90% advance
-            const interest = (advance * 0.09 * days) / 365; // 9% annual interest
+            // Logic: 2% Service Fee + 9% Annual Interest
+            const serviceFee = val * 0.02; 
+            const advance = val * 0.90;
+            const interest = (advance * 0.09 * days) / 365;
             
             const totalCost = serviceFee + interest;
             const cashNow = advance - serviceFee;
@@ -440,7 +459,7 @@
             document.getElementById('res-fac').style.display = 'block';
         }
 
-        // 5. STATUTORY INTEREST (UPDATED WITH PRINT)
+        // 5. STATUTORY INTEREST
         function calcInterest() {
             const amt = parseFloat(document.getElementById('int-amount').value) || 0;
             const dStr = document.getElementById('int-date').value;
@@ -452,7 +471,7 @@
             const comp = (amt<1000?40:(amt<10000?70:100));
             const total = interest + comp;
 
-            window.claimData = { amt, days, interest, comp, total }; // Store for print
+            window.claimData = { amt, days, interest, comp, total };
             document.getElementById('val-int').innerText = "£" + total.toLocaleString('en-GB',{minimumFractionDigits:2});
             document.getElementById('res-int').style.display = 'block';
         }
@@ -491,7 +510,7 @@
             document.getElementById('res-lab').style.display = 'block';
         }
 
-        // 9. CREDIT LIMIT (UPDATED WITH VISUALS)
+        // 9. CREDIT LIMIT (UPDATED)
         function calcCreditLimit() {
             const t = parseFloat(document.getElementById('risk-turnover').value) || 0;
             const c = parseFloat(document.getElementById('risk-contract').value) || 0;
