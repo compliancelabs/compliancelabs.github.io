@@ -1,535 +1,582 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8"/>
-  <title>ComplianceLabs – CIS &amp; Debt Chasing for UK Contractors</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="Fixed-fee compliance &amp; retentions chasing for UK construction SMEs. Plans from £690/mo. Book a free Compliance Check today."/>
-
-  <link rel="preload" href="assets/img/PROFES~4.JPG" as="image"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css "/>
-
-  <!-- Professional modern palette -->
-  <style>
-    :root{
-      --navy:#1a2332;
-      --charcoal:#2d3748;
-      --paper:#ffffff;
-      --canvas:#f7fafc;
-      --line:#e2e8f0;
-      --mute:#718096;
-      --amber:#f6ad55;
-      --focus:#3182ce;
-      --radius:12px;
-      --shadow:0 10px 25px rgba(0,0,0,.08);
-      --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:var(--font);font-size:18px;line-height:1.6;color:var(--charcoal);background:var(--canvas);}
-    a{color:var(--charcoal);text-decoration:none;}
-    a:focus{outline:3px solid var(--focus);outline-offset:2px;}
-    h1,h2,h3{font-weight:600;line-height:1.2;margin:0;}
-    h1{font-size:3rem;letter-spacing:-0.02em;}h2{font-size:2.25rem;text-align:center;margin-bottom:3rem;}h3{font-size:1.5rem;}
-    p{margin:0 0 1em;}
-    img{max-width:100%;display:block;}
-    .container{max-width:1200px;margin-inline:auto;padding-inline:1.5rem;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:1rem 2rem;font-weight:500;font-size:1rem;border:2px solid transparent;border-radius:var(--radius);cursor:pointer;transition:all .2s;text-decoration:none;}
-    .btn-primary{background:var(--navy);color:var(--paper);}
-    .btn-primary:hover{background:var(--charcoal);transform:translateY(-1px);}
-    .btn-secondary{background:var(--paper);color:var(--navy);border-color:var(--navy);}
-    .btn-secondary:hover{background:var(--navy);color:var(--paper);}
-    .btn:focus{outline:3px solid var(--focus);}
-
-    /* --- HEADER --- */
-    .header{background:var(--paper);box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:1000;}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;height:80px;}
-    .logo{display:flex;align-items:center;gap:12px;color:var(--navy);font-weight:700;font-size:1.5rem;}
-    .logo img{height:40px;border-radius:8px;object-fit:cover;}
-    .nav{display:flex;align-items:center;gap:2.5rem;}
-    .nav a{color:var(--charcoal);font-weight:500;position:relative;}
-    .nav a:hover{color:var(--navy);}
-    .nav a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--amber);transition:width .2s;}
-    .nav a:hover::after{width:100%;}
-    .mobile-toggler{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;}
-    .mobile-toggler span{width:24px;height:3px;background:var(--charcoal);}
-    @media(max-width:768px){
-      .nav{display:none;position:absolute;top:80px;left:0;width:100%;background:var(--paper);flex-direction:column;padding:2rem;gap:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.1);}
-      .nav.open{display:flex;}
-      .mobile-toggler{display:flex;}
-    }
-
-    /* --- TRUST BAR --- */
-    .trust{padding:1rem 0;background:var(--navy);color:var(--paper);font-size:.875rem;font-weight:500;overflow:hidden;}
-    .marquee{display:flex;gap:3rem;animation:scroll 30s linear infinite;white-space:nowrap;width:max-content;}
-    .marquee span{flex:0 0 auto;opacity:.9;}
-    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-    /* --- HERO --- */
-    .hero{padding:6rem 0;background:linear-gradient(135deg,var(--canvas) 0%,var(--paper) 100%);}
-    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-    .hero-content h1{color:var(--navy);margin-bottom:1.5rem;}
-    .hero-content .subtitle{font-size:1.25rem;color:var(--mute);margin-bottom:2rem;}
-    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0;}
-    .stat-item{text-align:center;}
-    .stat-number{font-size:0.875rem;font-weight:700;color:var(--amber);}
-    .stat-label{font-size:.875rem;color:var(--mute);}
-    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
-
-    /* --- SERVICES --- */
-    .services{padding:6rem 0;}
-    .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;}
-    .service-card{background:var(--paper);padding:3rem;border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;transition:all .3s;border:1px solid var(--line);}
-    .service-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.12);}
-    .service-icon{font-size:3.5rem;color:var(--amber);margin-bottom:1.5rem;}
-    .service-card h3{color:var(--navy);margin-bottom:1rem;font-weight:600;}
-    .service-card p{color:var(--mute);line-height:1.7;}
-
-    /* --- TESTIMONIALS --- */
-    .testimonials{padding:6rem 0;background:var(--paper);}
-    .testi-scroll{overflow:hidden;}
-    .testi-track{display:flex;gap:2rem;animation:testiScroll 45s linear infinite;white-space:nowrap;width:max-content;}
-    .testi-card{flex:0 0 400px;background:var(--canvas);padding:2.5rem;border-radius:var(--radius);border:1px solid var(--line);display:inline-block;}
-    .testi-card p{font-style:italic;margin-bottom:1rem;color:var(--charcoal);font-size:1.1rem;}
-    .testi-card cite{color:var(--mute);font-size:.9rem;font-weight:500;}
-    @keyframes testiScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-    /* --- STATS --- */
-    .stats{padding:6rem 0;background:var(--navy);color:var(--paper);}
-    .stats h2{color:var(--paper);margin-bottom:4rem;}
-    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem;text-align:center;}
-    .stat-item{padding:2rem 1rem;}
-    .stat-number{font-size:3.5rem;font-weight:700;color:var(--amber);display:block;margin-bottom:.5rem;}
-    .stat-label{font-size:1.125rem;opacity:.9;}
-
-    /* --- PRICING --- */
-    .pricing{padding:6rem 0;}
-    .pricing-intro{text-align:center;max-width:600px;margin:0 auto 3rem;color:var(--mute);}
-    .toggle-label{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:3rem;font-size:1rem;}
-    .toggle-label input[type="checkbox"]{width:44px;height:24px;appearance:none;background:var(--line);border-radius:12px;position:relative;cursor:pointer;transition:background .2s;}
-    .toggle-label input[type="checkbox"]:checked{background:var(--amber);}
-    .toggle-label input[type="checkbox"]::before{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:var(--paper);border-radius:50%;transition:transform .2s;}
-    .toggle-label input[type="checkbox"]:checked::before{transform:translateX(20px);}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <title>Compliance Labs & Capital | Institutional Infrastructure for Construction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Institutional-grade CIS compliance and commercial finance for UK construction SMEs. Eliminate HMRC risk and unlock capital flow."/>
     
-    /* Pricing Grid - 3 cards first row, enterprise full width second row */
-    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:2rem;}
-    .enterprise-row{grid-column:1 / -1;}
-    .enterprise-card{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:center;padding:2rem;background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);min-height:120px;}
-    .enterprise-info h3{margin-bottom:.5rem;color:var(--navy);}
-    .enterprise-price .price{font-size:1.5rem;margin:.25em 0;color:var(--navy);}
-    .enterprise-features ul{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem 2rem;list-style:none;padding:0;margin:0;font-size:.9rem;}
-    .price-card{background:var(--paper);padding:2.5rem;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-direction:column;position:relative;}
-    .price-card .price{font-size:2rem;margin:.5em 0;color:var(--navy);font-weight:700;}
-    .price-card .description{color:var(--mute);line-height:1.7;margin-bottom:2rem;font-size:1rem;}
-    .price-card .btn{margin-top:auto;width:100%;}
-    .badge{position:absolute;top:1rem;right:1rem;background:var(--amber);color:#fff;padding:.5rem 1rem;border-radius:99px;font-size:.75rem;font-weight:600;}
-    
-    @media(max-width:1024px){
-      .pricing-grid{grid-template-columns:1fr;}
-      .enterprise-card{grid-template-columns:1fr;}
-      .enterprise-features ul{grid-template-columns:1fr;}
-    }
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Compliance Labs & Capital | The Architect of Construction Finance">
+    <meta property="og:description" content="Protecting the downside with automated CIS compliance. Fueling the upside with specialist commercial capital.">
 
-    /* --- FAQ --- */
-    .faq{padding:6rem 0;background:var(--canvas);}
-    .faq-list{max-width:800px;margin:0 auto;}
-    details{background:var(--paper);padding:1.5rem;border-radius:var(--radius);margin-bottom:1rem;border:1px solid var(--line);}
-    summary{cursor:pointer;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;}
-    summary::after{content:'+';font-size:1.5rem;color:var(--amber);}
-    details[open] summary::after{content:'−';}
-    details[open] summary{margin-bottom:1rem;}
-    details p{color:var(--mute);line-height:1.7;margin:0;}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-    /* --- CTA --- */
-    .cta{padding:6rem 0;background:linear-gradient(135deg,var(--charcoal) 0%,var(--navy) 100%);color:var(--paper);text-align:center;}
-    .cta h2{color:var(--paper);margin-bottom:1.5rem;}
-    .cta p{max-width:600px;margin:0 auto 2rem;font-size:1.1rem;opacity:.9;}
-
-    /* --- FOOTER --- */
-    .footer{padding:4rem 0 2rem;background:var(--navy);color:var(--paper);font-size:.9rem;}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
-    .footer a{color:inherit;opacity:.8;}
-    .footer a:hover{opacity:1;}
-    .footer h4{margin-bottom:1rem;font-weight:600;}
-    .footer ul{list-style:none;padding:0;}
-    .footer li{margin-bottom:.5rem;}
-    @media(max-width:768px){.footer-grid{grid-template-columns:1fr;text-align:center;gap:2rem;}}
-  </style>
-    
-  </head>          <!-- ← ADD THIS LINE HERE -->
-
-
-<body>
-  <!-- =========  HEADER  ========= -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="/" class="logo" aria-label="ComplianceLabs home">
-        
-        <span>ComplianceLabs</span>
-      </a>
-      <nav class="nav" id="nav">
-        <a href="about-us">About Us</a>
-        <a href="#services">Services</a>
-        <a href="resources.html">Free Tools</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-        <a href="#compliance-check" class="btn btn-primary" style="color: white;">Book Risk Audit</a>
-      </nav>
-      <button class="mobile-toggler" id="mobile-toggler" aria-label="Open navigation" aria-expanded="false" aria-controls="nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- =========  TRUST BAR  ========= -->
-  <div class="trust">
-    <div class="container">
-      <div class="marquee">
-        <span>Trusted by over 120 UK Contractors.</span>
-        <span>CIS Compliance Verified.</span>
-        <span>Debt Recovery Success.</span>
-        <span>Retention Chasing.</span>
-        <span>VAT Reverse Charge.</span>
-        <span>HMRC Audit Prepared.</span>
-        <!-- duplicate for seamless scroll -->
-        <span aria-hidden="true">Trusted by over 120 UK Contractors.</span>
-        <span aria-hidden="true">CIS Compliance Verified.</span>
-        <span aria-hidden="true">Debt Recovery Success.</span>
-        <span aria-hidden="true">Retention Chasing.</span>
-        <span aria-hidden="true">VAT Reverse Charge.</span>
-        <span aria-hidden="true">HMRC Audit Prepared.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- =========  HERO  ========= -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <h1>We keep you HMRC-safe and get you paid faster</h1>
-          <p class="subtitle">We verify every subcontractor, file CIS &amp; VAT returns and chase late payments so UK construction SMEs avoid £3k+ fines and unlock cash.</p>
-          <div class="hero-stats">
-            <div class="stat-item">
-              <div class="stat-number">£4.2M</div>
-              <div class="stat-label">Debt Recovered</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">1,847</div>
-              <div class="stat-label">Verified</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">0</div>
-              <div class="stat-label">Fines</div>
-            </div>
-          </div>
-          <p>
-            <a href="#compliance-check" class="btn btn-primary">Get my free Risk Audit</a>
-          </p>
-        </div>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/30min " style="min-width:320px;height:600px;"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========  SERVICES  ========= -->
-  <section id="services" class="services">
-    <div class="container">
-      <h2>How we remove your biggest headaches</h2>
-      <div class="service-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3>Compliance Shield</h3>
-          <p>We verify every subcontractor, file CIS &amp; VAT reverse-charge returns, and keep your HMRC inbox at zero so you avoid £3k+ fines and sleep at night.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-pound-sign"></i>
-          </div>
-          <h3>Payment Chase</h3>
-          <p>Our 5-step letter, call &amp; solicitor escalations recover retentions and overdue invoices – cash-flow unlocked.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <h3>Live Dashboard</h3>
-          <p>One login shows who&#39;s compliant, who owes what, and what&#39;s coming in – so you can plan purchases, payroll and projects with confidence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========  TESTIMONIALS  ========= -->
-  <section class="testimonials">
-    <div class="container">
-      <h2>What businesses say about us</h2>
-      <div class="testi-scroll">
-        <div class="testi-track">
-          <!-- duplicate set for seamless loop -->
-          <div class="testi-card">
-            <p>&#34;Compliance Labs spotted £9k of unverified subbies in one week – saved us from a HMRC penalty.&#34;</p>
-            <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
-          </div>
-          <div class="testi-card">
-            <p>&#34;They collected £48k of 90-day retentions within 40 days. Unreal ROI.&#34;</p>
-            <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
-          </div>
-          <div class="testi-card">
-            <p>&#34;We reclaimed £127k of retentions in Q1 alone – cash-flow stress gone overnight.&#34;</p>
-            <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
-          </div>
-          <div class="testi-card">
-            <p>&#34;On-site audit passed with zero findings for the first time in 8 years. The board is delighted.&#34;</p>
-            <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
-          </div>
-          <!-- duplicate -->
-          <div class="testi-card" aria-hidden="true">
-            <p>&#34;Compliance Labs spotted £9k of unverified subbies in one week – saved us from a HMRC penalty.&#34;</p>
-            <cite>— Matt Johnson, MJS Contractors – £120k turnover</cite>
-          </div>
-          <div class="testi-card" aria-hidden="true">
-            <p>&#34;They collected £48k of 90-day retentions within 40 days. Unreal ROI.&#34;</p>
-            <cite>— Sarah Hodgson, Hodgson Builders – £12m turnover</cite>
-          </div>
-          <div class="testi-card" aria-hidden="true">
-            <p>&#34;We reclaimed £127k of retentions in Q1 alone – cash-flow stress gone overnight.&#34;</p>
-            <cite>— David Reef, Reef Developments – £2.3m turnover</cite>
-          </div>
-          <div class="testi-card" aria-hidden="true">
-            <p>&#34;On-site audit passed with zero findings for the first time in 8 years. The board is delighted.&#34;</p>
-            <cite>— Lisa Ahmed, ABC Construction – £5m turnover</cite>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========  STATS  ========= -->
-  <section class="stats">
-    <div class="container">
-      <h2>Why UK contractors trust us</h2>
-      <div class="stats-grid">
-        <div class="stat-item">
-          <span class="stat-number">£4.2M</span>
-          <span class="stat-label">Debt Recovered</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">1,847</span>
-          <span class="stat-label">Subcontractors Verified</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">0</span>
-          <span class="stat-label">HMRC Fines for Clients</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">120+</span>
-          <span class="stat-label">UK Contractors</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========  PRICING  ========= -->
-  <section id="pricing" class="pricing">
-    <div class="container">
-      <h2>Simple, transparent pricing</h2>
-      <p class="pricing-intro">Choose the perfect plan for your business size. All plans include our core compliance and payment chasing features.</p>
-      <div class="toggle-label">
-        <span>Monthly</span>
-        <input type="checkbox" id="annualToggle"/>
-        <span>Annual <small>(2 months free)</small></span>
-      </div>
-      
-      <div class="pricing-grid">
-        <!-- STARTER -->
-        <article class="price-card" data-monthly="690" data-annual="6900">
-          <h3>Starter</h3>
-          <p class="price"><strong>£<span class="price-value">690</span></strong><span class="price-note">/mo</span></p>
-          <p style="color:var(--mute);margin-bottom:1.5rem;">Sub-£1M turnover</p>
-          <p class="description">Perfect for smaller contractors. Includes up to 15 subcontractor verifications monthly, debt chasing up to £10k per case, monthly compliance reports, and email support.</p>
-          <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
-        </article>
-
-        <!-- PRO -->
-        <article class="price-card" data-monthly="1390" data-annual="13900">
-          <span class="badge">Most popular</span>
-          <h3>Pro</h3>
-          <p class="price"><strong>£<span class="price-value">1,390</span></strong><span class="price-note">/mo</span></p>
-          <p style="color:var(--mute);margin-bottom:1.5rem;">£1M – £5M turnover</p>
-          <p class="description">Our most popular plan. Up to 40 verifications monthly, debt chasing up to £25k per case with 5 concurrent cases, weekly CFO walk-throughs, and full portal access.</p>
-          <p><a href="#compliance-check" class="btn btn-primary">Get started</a></p>
-        </article>
-
-        <!-- GROWTH -->
-        <article class="price-card" data-monthly="2990" data-annual="29900">
-          <h3>Growth</h3>
-          <p class="price"><strong>£<span class="price-value">2,990</span></strong><span class="price-note">/mo</span></p>
-          <p style="color:var(--mute);margin-bottom:1.5rem;">Full back-office needs</p>
-          <p class="description">Complete solution with unlimited verifications, debt chasing up to £100k per case, quarterly strategy sessions, same-day reports, dedicated Slack channel, and white-label portal.</p>
-          <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
-        </article>
-      </div>
-
-      <!-- ENTERPRISE - Full width on second row -->
-      <div class="enterprise-row">
-        <article class="enterprise-card" data-monthly="5190" data-annual="51900">
-          <div class="enterprise-info">
-            <h3>Enterprise</h3>
-            <p style="color:var(--mute);margin-bottom:1rem;">£20M+ turnover / Main contractors</p>
-            <div class="enterprise-price">
-              <p class="price"><strong>£<span class="price-value">5,190</span></strong><span class="price-note">/mo</span></p>
-            </div>
-            <p class="description">Enterprise-grade solution with unlimited verifications, £250k debt limit per case, 2-hour SLA support, quarterly strategy sessions with private podcast feed, and full white-label capabilities.</p>
-            <p><a href="#compliance-check" class="btn btn-secondary">Get started</a></p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========  FAQ  ========= -->
-  <section id="faq" class="faq">
-    <div class="container">
-      <h2>Questions we get asked</h2>
-      <div class="faq-list">
-        <details>
-          <summary>Do you work with sole-traders or only limited companies?</summary>
-          <p>Both. We simply need a valid UTR or Company House number to verify CIS status.</p>
-        </details>
-        <details>
-          <summary>What if the debt is older than 90 days?</summary>
-          <p>We still chase, but success probability drops. We&#39;ll advise upfront if we think legal action is smarter.</p>
-        </details>
-        <details>
-          <summary>Are you FCA-regulated?</summary>
-          <p>No – our service is administrative. We do not offer credit or insurance products.</p>
-        </details>
-        <details>
-          <summary>Can we upgrade or downgrade mid-contract?</summary>
-          <p>Yes. Change tier any time from your dashboard; adjustments are pro-rated to the day.</p>
-        </details>
-        <details>
-          <summary>Is there a setup fee?</summary>
-          <p>Zero. We even import your existing subcontractor list during onboarding at no cost.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========  CTA  ========= -->
-  <section id="compliance-check" class="cta">
-    <div class="container">
-      <h2>Ready to remove compliance &amp; cash-flow stress?</h2>
-      <p>Book your free CIS &amp; Compliance Check. We&#39;ll audit your last 3 months and give you a fixed-price quote – no obligation.</p>
-      <a href="https://calendly.com/compliancelabs0/30min " target="_blank" rel="noopener" class="btn" style="background:var(--paper);color:var(--navy);">Free Risk Audit Now</a>
-    </div>
-  </section>
-
-  <!-- =========  FOOTER  ========= -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
-          
-          <span style="font-weight:700;font-size:1.25rem;">ComplianceLabs</span>
-        </div>
-        <p>Keeping UK construction SMEs HMRC-safe and cash-flow positive.</p>
-        <p>© <span id="year"></span> ComplianceLabs.</p>
-      </div>
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#services">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#compliance-check">Compliance-Check</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="resources.html">Free Tools</a></li> <li><a href="/blog">Blog</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/27-point-compliance-checklist.pdf" target="_blank" rel="noopener">Checklist PDF</a></li>
-          
-          <li><a href="/webinar">Free Webinar</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>London, UK<br/><a href="mailto:compliancelabs0@gmail.com">compliancelabs0@gmail.com</a></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- =========  SCRIPTS  ========= -->
-  <script>
-    /* Mobile nav */
-    const toggler = document.getElementById('mobile-toggler');
-    const nav = document.getElementById('nav');
-    toggler.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      toggler.setAttribute('aria-expanded', nav.classList.contains('open'));
-    });
-
-    /* Annual pricing toggle */
-    const annualToggle = document.getElementById('annualToggle');
-    
-    function setPricing(annual) {
-      const priceCards = document.querySelectorAll('.price-card, .enterprise-card');
-      priceCards.forEach((card) => {
-        const monthlyPrice = parseInt(card.dataset.monthly);
-        const annualPrice = parseInt(card.dataset.annual);
-        const priceValue = card.querySelector('.price-value');
-        const priceNote = card.querySelector('.price-note');
-        
-        if (annual) {
-          priceValue.textContent = annualPrice.toLocaleString();
-          priceNote.textContent = '/yr';
-        } else {
-          priceValue.textContent = monthlyPrice.toLocaleString();
-          priceNote.textContent = '/mo';
+    <style>
+        :root {
+            --emerald: #10b981;
+            --charcoal: #0f172a;
+            --navy: #1e293b;
+            --canvas: #f8fafc;
         }
-      });
-    }
-    
-    annualToggle.addEventListener('change', () => setPricing(annualToggle.checked));
-    setPricing(false);
+        body { font-family: 'Urbanist', sans-serif; overflow-x: hidden; }
+        .serif-heading { font-family: 'Playfair Display', serif; }
+        
+        .bg-institutional {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    /* Dynamic year */
-    document.getElementById('year').textContent = new Date().getFullYear();
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--emerald);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
 
-    /* Lazy-load Calendly once */
-    const calWidget = document.querySelector('.calendly-inline-widget');
-    if (calWidget && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries, ob) => {
-        entries.forEach(en => {
-          if (en.isIntersecting) {
-            const s = document.createElement('script');
-            s.src = 'https://assets.calendly.com/assets/external/widget.js ';
-            s.async = 1;
-            calWidget.appendChild(s);
-            ob.disconnect();
-          }
+        /* Trust Bar Animation */
+        .marquee {
+            display: flex;
+            gap: 4rem;
+            animation: scroll 40s linear infinite;
+            white-space: nowrap;
+            width: max-content;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.12);
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Diagonal Aesthetic Component */
+        .diagonal-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 48%;
+            height: 100%;
+            background: #f1f5f9;
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: -1;
+        }
+
+        /* SVG Logo Scaling */
+        .logo-svg {
+            height: 44px;
+            width: auto;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 z-[1100] bg-slate-900 translate-x-full transition-transform duration-500 md:hidden p-8 flex flex-col justify-between">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- SVG Logo (Mobile) -->
+                <svg viewBox="0 0 100 120" class="h-10 w-auto">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#10b981" stroke-width="4"/>
+                    <path d="M50 25 V95 M30 45 H70 M30 75 H70" stroke="#10b981" stroke-width="2" opacity="0.6"/>
+                    <circle cx="50" cy="25" r="4" fill="#10b981"/>
+                    <circle cx="30" cy="45" r="3" fill="#10b981"/>
+                    <circle cx="70" cy="45" r="3" fill="#10b981"/>
+                    <circle cx="50" cy="60" r="5" fill="#10b981"/>
+                    <circle cx="30" cy="75" r="3" fill="#10b981"/>
+                    <circle cx="70" cy="75" r="3" fill="#10b981"/>
+                </svg>
+                <span class="text-white font-bold uppercase text-xs tracking-widest">Compliance Labs</span>
+            </div>
+            <button id="close-menu" class="text-white text-2xl"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-8 text-2xl font-bold text-white uppercase tracking-tighter">
+            <a href="#services" class="mobile-nav-link">Services</a>
+            <a href="#capital" class="mobile-nav-link">Capital</a>
+            <a href="#pricing" class="mobile-nav-link">Pricing</a>
+            <a href="resources.html" class="mobile-nav-link text-emerald-400">Resources</a>
+            <a href="#faq" class="mobile-nav-link">Intelligence</a>
+        </nav>
+        <div class="border-t border-white/10 pt-8">
+            <a href="#compliance-check" class="block w-full py-5 bg-emerald-500 text-slate-900 rounded-full text-center font-bold uppercase tracking-widest text-xs">Request Audit</a>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[1000] transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center space-x-4 group">
+                <!-- Inline SVG Logo (Header) -->
+                <svg viewBox="0 0 100 120" class="logo-svg transition-transform group-hover:scale-105">
+                    <!-- Main Shield -->
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <!-- Geometric Inner Lines -->
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+                    <!-- Data Nodes -->
+                    <circle cx="50" cy="20" r="4" fill="#10b981"/>
+                    <circle cx="25" cy="40" r="3" fill="#10b981"/>
+                    <circle cx="75" cy="40" r="3" fill="#10b981"/>
+                    <circle cx="50" cy="55" r="5" fill="#10b981"/>
+                    <circle cx="25" cy="70" r="3" fill="#10b981"/>
+                    <circle cx="75" cy="70" r="3" fill="#10b981"/>
+                    <circle cx="50" cy="100" r="4" fill="#10b981"/>
+                </svg>
+                <div class="hidden sm:block">
+                    <h1 class="font-bold tracking-tighter text-slate-900 text-base uppercase leading-none">Compliance <span class="text-emerald-600">Labs</span></h1>
+                    <p class="text-[9px] tracking-[0.2em] font-semibold text-slate-400 uppercase leading-none mt-1">& Capital</p>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <a href="#services" class="nav-link hover:text-slate-900">Services</a>
+                <a href="#capital" class="nav-link hover:text-slate-900">Capital</a>
+                <a href="#pricing" class="nav-link hover:text-slate-900">Pricing</a>
+                <a href="resources.html" class="nav-link hover:text-emerald-600 font-extrabold border-b border-emerald-500">Resources</a>
+                <a href="#faq" class="nav-link hover:text-slate-900">Intelligence</a>
+                <a href="#compliance-check" class="bg-slate-900 text-white px-6 py-3 rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-slate-200 ml-4">
+                    Free Risk Audit
+                </a>
+            </nav>
+
+            <button id="open-menu" class="md:hidden text-slate-900 p-2"><i class="fas fa-bars-staggered text-xl"></i></button>
+        </div>
+    </header>
+
+    <!-- TRUST BAR -->
+    <div class="bg-slate-900 py-3 overflow-hidden border-y border-white/5">
+        <div class="marquee text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+            <span>Verified over 120 UK Contractors</span>
+            <span>£4.2M Debt Recovered</span>
+            <span>Zero HMRC Fines for Clients</span>
+            <span>Institutional Asset Finance</span>
+            <span>CIS Compliance Verified</span>
+            <span>Retention Recovery Specialists</span>
+            <!-- Duplicate for loop -->
+            <span>Verified over 120 UK Contractors</span>
+            <span>£4.2M Debt Recovered</span>
+            <span>Zero HMRC Fines for Clients</span>
+            <span>Institutional Asset Finance</span>
+            <span>CIS Compliance Verified</span>
+            <span>Retention Recovery Specialists</span>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-40 overflow-hidden bg-white">
+        <div class="diagonal-bg hidden lg:block"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 mb-8 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 reveal active">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[10px] uppercase tracking-widest font-extrabold text-emerald-800">Operational Infrastructure v2.5</span>
+            </div>
+            <h2 class="serif-heading text-5xl md:text-8xl mb-10 leading-[1.05] text-slate-900 reveal active" style="transition-delay: 0.1s">
+                De-Risk Payroll. <br>
+                <span class="text-gradient italic">Fund Growth.</span>
+            </h2>
+            <p class="text-slate-500 text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-2xl mx-auto reveal active" style="transition-delay: 0.2s">
+                Institutional-grade compliance and capital placement for construction SMEs. We eliminate the downside and leverage clean data to fuel the upside.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-24 reveal active" style="transition-delay: 0.3s">
+                <a href="#compliance-check" class="px-14 py-5 bg-slate-900 text-white rounded-full font-bold text-xs uppercase tracking-[0.25em] hover:bg-emerald-600 transition-all shadow-2xl shadow-slate-300">
+                    Request Strategy Audit
+                </a>
+                <a href="#services" class="px-14 py-5 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-xs uppercase tracking-[0.25em] hover:bg-slate-50 transition-all">
+                    Explore The Engines
+                </a>
+            </div>
+            
+            <!-- Hero Stats Centered -->
+            <div class="flex flex-wrap justify-center gap-12 md:gap-24 border-t border-slate-100 pt-16 reveal active" style="transition-delay: 0.4s">
+                <div class="text-center group">
+                    <div class="text-4xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">£4.2M</div>
+                    <div class="text-[10px] uppercase tracking-widest font-extrabold text-slate-400 mt-2">Debt Recovered</div>
+                </div>
+                <div class="text-center group border-x border-slate-100 px-12 md:px-24">
+                    <div class="text-4xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">1,847</div>
+                    <div class="text-[10px] uppercase tracking-widest font-extrabold text-slate-400 mt-2">Subs Verified</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-4xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">0</div>
+                    <div class="text-[10px] uppercase tracking-widest font-extrabold text-slate-400 mt-2">HMRC Fines</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPRIETARY ENGINES -->
+    <section id="services" class="py-32 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="serif-heading text-4xl md:text-5xl mb-6 text-slate-900 uppercase tracking-tight">The Compliancelabs Framework</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-light">Replacing administrative volatility with standardized proprietary mechanisms.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Firewall -->
+                <div class="glass-card p-14 rounded-[2.5rem] border-b-8 border-emerald-500 reveal">
+                    <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-10 shadow-xl overflow-hidden p-2">
+                        <svg viewBox="0 0 100 120" class="w-full h-full">
+                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#10b981" stroke-width="6"/>
+                            <path d="M50 30 V90 M30 50 L70 50 M30 80 L70 80" stroke="#10b981" stroke-width="4" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-slate-900 uppercase tracking-tight">The Payment Firewall™</h3>
+                    <p class="text-slate-600 mb-10 leading-relaxed text-lg font-light">
+                        A zero-trust automated system. We cross-reference every payment against HMRC's live database in real-time, making human-error fines mathematically impossible.
+                    </p>
+                    <ul class="space-y-6 text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Real-time CIS Verification API</li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Automated Nil Return Guarantee</li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Digital Audit Evidence Kit</li>
+                    </ul>
+                </div>
+
+                <!-- Recovery -->
+                <div class="glass-card p-14 rounded-[2.5rem] border-b-8 border-slate-900 reveal">
+                    <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-xl overflow-hidden p-2">
+                         <svg viewBox="0 0 100 120" class="w-full h-full">
+                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#ffffff" stroke-width="6"/>
+                            <path d="M50 30 V90 M30 50 L70 50 M30 80 L70 80" stroke="#ffffff" stroke-width="4" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 text-slate-900 uppercase tracking-tight">7-Step Recovery™</h3>
+                    <p class="text-slate-600 mb-10 leading-relaxed text-lg font-light">
+                        Moving beyond "friendly reminders." We deploy a systematic legal escalation using the Construction Act to force your invoices to the top of the payment pile.
+                    </p>
+                    <ul class="space-y-6 text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> 30-Day Retention Recovery Hack</li>
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Statutory Interest Demands</li>
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Notice of Sum Due Protocols</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITAL SECTION -->
+    <section id="capital" class="bg-institutional py-32 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <h2 class="serif-heading text-4xl md:text-6xl mb-8 italic text-emerald-400 leading-tight">Clean Data is <br>Growth Capital.</h2>
+                <p class="text-slate-400 text-xl font-light leading-relaxed mb-12 max-w-lg">
+                    Lenders prioritize verified stability. By institutionalizing your compliance data, we make your firm the most attractive risk in the market for specialist capital.
+                </p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors cursor-default group">
+                        <div class="text-emerald-400 font-extrabold text-[10px] uppercase mb-2 tracking-[0.3em] group-hover:translate-y-[-2px] transition-transform">Asset</div>
+                        <div class="text-2xl font-bold">Finance</div>
+                    </div>
+                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors cursor-default group">
+                        <div class="text-emerald-400 font-extrabold text-[10px] uppercase mb-2 tracking-[0.3em] group-hover:translate-y-[-2px] transition-transform">Invoice</div>
+                        <div class="text-2xl font-bold">Finance</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white/5 p-16 rounded-[3rem] border border-white/10 backdrop-blur-xl reveal">
+                <div class="text-center mb-14">
+                    <span class="text-7xl md:text-8xl font-bold text-emerald-400 tracking-tighter">£4.2M</span>
+                    <p class="text-slate-400 uppercase tracking-[0.4em] text-[11px] mt-6 font-extrabold">Total Capital Unlocked</p>
+                </div>
+                <div class="space-y-8">
+                    <div class="flex justify-between items-center text-sm border-b border-white/5 pb-6">
+                        <span class="text-slate-500 font-bold uppercase tracking-widest">Average Recovery</span>
+                        <span class="font-bold text-emerald-400">34 Days</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm border-b border-white/5 pb-6">
+                        <span class="text-slate-500 font-bold uppercase tracking-widest">Audit Pass Rate</span>
+                        <span class="font-bold text-emerald-400">100%</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-slate-500 font-bold uppercase tracking-widest">Penalty Risk ROI</span>
+                        <span class="font-bold text-emerald-400">Infinite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="serif-heading text-4xl md:text-5xl mb-6 text-slate-900">Institutional Tiers</h2>
+                <div class="flex items-center justify-center gap-6 mt-10">
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Monthly Billing</span>
+                    <button id="price-toggle" class="w-14 h-7 bg-slate-200 rounded-full relative p-1 transition-colors">
+                        <div class="w-5 h-5 bg-slate-900 rounded-full transition-transform"></div>
+                    </button>
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Annual <small class="text-emerald-600 font-black ml-1">(2 Months Free)</small></span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10 mb-12">
+                <!-- Starter -->
+                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
+                    <h4 class="font-bold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Starter</h4>
+                    <div class="mb-8">
+                        <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="690" data-annual="575">690</span></span>
+                        <span class="text-slate-400 text-sm font-bold">/mo</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-10 font-medium leading-relaxed italic">Sub-£1M turnover. <br>Fundamental risk management.</p>
+                    <ul class="space-y-5 text-[11px] font-bold text-slate-600 uppercase tracking-widest mb-12">
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> 15 Verifications /mo</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £10k Debt Recovery Limit</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Monthly Health Report</li>
+                    </ul>
+                    <a href="#compliance-check" class="mt-auto w-full py-5 bg-white border-2 border-slate-200 text-slate-900 rounded-full text-center font-bold text-[10px] tracking-widest hover:bg-slate-900 hover:text-white transition-all uppercase">Secure Plan</a>
+                </div>
+
+                <!-- Pro -->
+                <div class="p-12 rounded-[2.5rem] bg-white border-2 border-slate-900 flex flex-col relative shadow-2xl reveal">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[9px] font-black px-6 py-2 rounded-full uppercase tracking-[0.3em]">The Standard Choice</span>
+                    <h4 class="font-bold uppercase tracking-widest text-[11px] text-emerald-600 mb-8">Pro</h4>
+                    <div class="mb-8">
+                        <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="1390" data-annual="1158">1,390</span></span>
+                        <span class="text-slate-400 text-sm font-bold">/mo</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-10 font-medium leading-relaxed italic">£1M – £5M turnover. <br>High-performance infrastructure.</p>
+                    <ul class="space-y-5 text-[11px] font-bold text-slate-600 uppercase tracking-widest mb-12">
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> 40 Verifications /mo</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £25k Debt Recovery Limit</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Weekly CFO Walkthroughs</li>
+                    </ul>
+                    <a href="#compliance-check" class="mt-auto w-full py-4 bg-slate-900 text-white rounded-full text-center font-bold text-[10px] tracking-widest hover:bg-emerald-600 transition-all uppercase shadow-lg shadow-slate-300">Secure Plan</a>
+                </div>
+
+                <!-- Growth -->
+                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
+                    <h4 class="font-bold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Growth</h4>
+                    <div class="mb-8">
+                        <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="2990" data-annual="2490">2,990</span></span>
+                        <span class="text-slate-400 text-sm font-bold">/mo</span>
+                    </div>
+                    <p class="text-sm text-slate-500 mb-10 font-medium leading-relaxed italic">£5M - £20M turnover. <br>Enterprise-grade strategy.</p>
+                    <ul class="space-y-5 text-[11px] font-bold text-slate-600 uppercase tracking-widest mb-12">
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> Unlimited Verifications</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £100k Debt Recovery Limit</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Dedicated Case Manager</li>
+                    </ul>
+                    <a href="#compliance-check" class="mt-auto w-full py-5 bg-white border-2 border-slate-200 text-slate-900 rounded-full text-center font-bold text-[10px] tracking-widest hover:bg-slate-900 hover:text-white transition-all uppercase">Secure Plan</a>
+                </div>
+            </div>
+
+            <!-- ENTERPRISE FULL WIDTH -->
+            <div class="w-full reveal">
+                <div class="bg-institutional rounded-[3rem] p-12 md:p-16 text-white border border-white/5 flex flex-col md:flex-row items-center justify-between gap-12 group shadow-2xl">
+                    <div class="max-w-2xl text-center md:text-left">
+                        <div class="flex items-center justify-center md:justify-start space-x-4 mb-6">
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest border border-emerald-500/30 rounded-lg">Custom Infrastructure</span>
+                            <h4 class="text-3xl font-bold serif-heading italic">Enterprise</h4>
+                        </div>
+                        <p class="text-slate-400 text-lg mb-0 leading-relaxed font-light">For Main Contractors and £20M+ turnover firms. Fully integrated digital office, custom white-label portals, and institutional capital placement pipelines.</p>
+                    </div>
+                    <div class="text-center md:text-right min-w-[240px]">
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">£<span class="price-val" data-monthly="5190" data-annual="4325">5,190</span></span>
+                            <span class="text-slate-500 text-sm font-bold">/mo</span>
+                        </div>
+                        <a href="#compliance-check" class="inline-block px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-[10px] tracking-widest hover:bg-emerald-600 hover:text-white transition-all uppercase shadow-2xl">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / INTELLIGENCE -->
+    <section id="faq" class="py-32 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="serif-heading text-5xl text-center mb-20 text-slate-900 reveal">Intelligence Center</h2>
+            <div class="space-y-6">
+                <details class="group glass-card rounded-3xl p-8 transition-all reveal" open>
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-900 uppercase text-[11px] tracking-[0.25em]">
+                        What is a "Payment Firewall"?
+                        <span class="text-emerald-500 transition-transform group-open:rotate-45 text-lg"><i class="fas fa-plus"></i></span>
+                    </summary>
+                    <p class="mt-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-6 font-medium">
+                        It is our proprietary integration that links your payment processing to live HMRC verification data. If a sub-contractor's status is invalid or unverified, the firewall prevents the payment transaction, eliminating human error fines at the absolute point of origin.
+                    </p>
+                </details>
+                <details class="group glass-card rounded-2xl p-6 transition-all reveal">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-900 uppercase text-[11px] tracking-[0.25em]">
+                        How does the "7-Step Recovery" differ from debt chasing?
+                        <span class="text-emerald-500 transition-transform group-open:rotate-45 text-lg"><i class="fas fa-plus"></i></span>
+                    </summary>
+                    <p class="mt-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-6 font-medium">
+                        Standard debt chasing is based on persistence. Our 7-Step Recovery is based on legal leverage. We deploy the Construction Act 1996 and Statutory Interest demands to create immediate financial pressure on the debtor, moving your invoice to the top of their priority list.
+                    </p>
+                </details>
+                <details class="group glass-card rounded-3xl p-8 transition-all reveal">
+                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-900 uppercase text-[11px] tracking-[0.25em]">
+                        Are you regulated for Commercial Finance?
+                        <span class="text-emerald-500 transition-transform group-open:rotate-45 text-lg"><i class="fas fa-plus"></i></span>
+                    </summary>
+                    <p class="mt-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-6 font-medium">
+                        We operate as a specialist commercial finance intermediary, partnering with FCA-authorized institutional lenders. We focus specifically on Commercial Asset and Invoice finance, using your verified 'Labs' data to de-risk applications and secure preferential rates.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FOOTER -->
+    <footer class="bg-slate-900 pt-32 pb-16 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div id="compliance-check" class="bg-emerald-600 rounded-[3.5rem] p-16 md:p-24 text-center mb-32 relative overflow-hidden group reveal">
+                <div class="relative z-10">
+                    <h2 class="serif-heading text-5xl md:text-6xl mb-8 leading-tight uppercase tracking-tight">Secure Infrastructure. <br> Pass Every Audit.</h2>
+                    <p class="text-emerald-100 text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed">Join the contractors moving toward institutional precision. Request your Performance Audit today.</p>
+                    <a href="https://calendly.com/compliancelabs0/30min" target="_blank" class="inline-block px-14 py-6 bg-slate-900 text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-white hover:text-slate-900 transition-all shadow-2xl">Book Risk Audit Now</a>
+                </div>
+                <div class="absolute inset-0 bg-slate-900/10 pointer-events-none group-hover:bg-slate-900/0 transition-all"></div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-16 pb-24 border-b border-white/5">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <!-- SVG Logo (Footer) -->
+                        <svg viewBox="0 0 100 120" class="h-12 w-auto">
+                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#10b981" stroke-width="4"/>
+                            <path d="M50 25 V95 M30 45 H70 M30 75 H70" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+                            <circle cx="50" cy="25" r="4" fill="#10b981"/>
+                            <circle cx="50" cy="60" r="5" fill="#10b981"/>
+                            <circle cx="50" cy="100" r="4" fill="#10b981"/>
+                        </svg>
+                        <span class="font-bold text-sm uppercase tracking-tighter">Compliance Labs & Capital Ltd.</span>
+                    </div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed max-w-sm font-bold uppercase tracking-widest">
+                        The Institutional Standard for Construction Compliance and Capital Placement. Professional Indemnity Insurance held to a value of £2,000,000.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-black uppercase tracking-[0.3em] text-emerald-400 mb-8">Intelligence</h4>
+                    <ul class="text-[11px] text-slate-500 space-y-5 uppercase tracking-widest font-bold">
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Audit Research</a></li>
+                        <li><a href="resources.html" class="hover:text-white transition-colors text-emerald-500">Resource Library</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[11px] font-black uppercase tracking-[0.3em] text-emerald-400 mb-8">Capital</h4>
+                    <ul class="text-[11px] text-slate-500 space-y-5 uppercase tracking-widest font-bold">
+                        <li><a href="#" class="hover:text-white transition-colors">Asset Finance</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Invoice Finance</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Lender Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-16 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-600 font-black uppercase tracking-[0.4em]">
+                <p>&copy; 2025 Compliance Labs & Capital Ltd.</p>
+                <div class="flex space-x-10 mt-8 md:mt-0">
+                    <a href="#" class="hover:text-emerald-400 transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-emerald-400 transition-colors">Terms</a>
+                    <a href="#" class="hover:text-emerald-400 transition-colors">PI Proof</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Pricing Toggle
+        const toggle = document.getElementById('price-toggle');
+        const priceVals = document.querySelectorAll('.price-val');
+        let annual = false;
+
+        toggle.addEventListener('click', () => {
+            annual = !annual;
+            toggle.querySelector('div').style.transform = annual ? 'translateX(28px)' : 'translateX(0)';
+            toggle.classList.toggle('bg-emerald-500', annual);
+            
+            priceVals.forEach(v => {
+                v.textContent = annual ? v.dataset.annual : v.dataset.monthly;
+            });
         });
-      }, { rootMargin: '100px 0px' });
-      io.observe(calWidget);
-    }
 
-    /* FAQ accordion functionality */
-    document.querySelectorAll('details').forEach(detail => {
-      detail.addEventListener('toggle', function() {
-        if (this.open) {
-          this.style.marginBottom = '1rem';
-        } else {
-          this.style.marginBottom = '';
-        }
-      });
-    });
-  </script>
+        // Sticky Nav Shadow
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-2xl');
+                header.classList.add('h-16');
+                header.classList.remove('h-20');
+            } else {
+                header.classList.remove('shadow-2xl');
+                header.classList.add('h-20');
+                header.classList.remove('h-16');
+            }
+        });
 
-</body></html>
+        // Mobile Menu Logic
+        const openBtn = document.getElementById('open-menu');
+        const closeBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+
+        openBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Reveal on Scroll Logic
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        };
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+    </script>
+
+</body>
+</html>
