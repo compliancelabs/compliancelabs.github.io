@@ -37,10 +37,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .shield-icon-path {
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-
         .nav-link {
             position: relative;
             transition: color 0.3s;
@@ -134,7 +130,7 @@
             <a href="#capital" class="mobile-nav-link">Capital</a>
             <a href="#pricing" class="mobile-nav-link">Pricing</a>
             <a href="resources.html" class="mobile-nav-link text-emerald-400">Resources</a>
-            <a href="#intelligence" class="mobile-nav-link">Intelligence Hub</a>
+            <a href="#intelligence" class="mobile-nav-link">Intelligence</a>
         </nav>
         <div class="border-t border-white/10 pt-8 text-center">
             <a href="#compliance-check" class="block w-full py-5 bg-emerald-500 text-slate-900 rounded-full text-center font-bold uppercase tracking-widest text-xs">Request Strategy Audit</a>
@@ -185,14 +181,14 @@
     <div class="bg-slate-900 py-3 overflow-hidden border-y border-white/5">
         <div class="marquee text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
             <span>Verified over 120 UK Contractors</span>
-            <span>£1.3M Debt Recovered</span>
+            <span>£4.2M Debt Recovered</span>
             <span>Zero HMRC Fines for Clients</span>
             <span>Direct Institutional Lender Panel</span>
             <span>CIS Compliance Verified</span>
             <span>Retention Recovery Specialists</span>
-            <!-- Loop -->
+            <!-- Duplicate loop -->
             <span>Verified over 120 UK Contractors</span>
-            <span>£1.3M Debt Recovered</span>
+            <span>£4.2M Debt Recovered</span>
             <span>Zero HMRC Fines for Clients</span>
             <span>Direct Institutional Lender Panel</span>
             <span>CIS Compliance Verified</span>
@@ -226,15 +222,15 @@
             
             <div class="flex flex-wrap justify-center gap-12 md:gap-24 border-t border-slate-100 pt-16 reveal active" style="transition-delay: 0.4s">
                 <div class="text-center group">
-                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">£1.3M</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter group-hover:text-emerald-500 transition-colors">£4.2M</div>
                     <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">Debt Recovered</div>
                 </div>
                 <div class="text-center group border-x border-slate-100 px-12 md:px-24">
-                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">1,847</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter group-hover:text-emerald-500 transition-colors">1,847</div>
                     <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">Subs Verified</div>
                 </div>
                 <div class="text-center group">
-                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">0</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter group-hover:text-emerald-500 transition-colors">0</div>
                     <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">HMRC Fines</div>
                 </div>
             </div>
@@ -246,21 +242,17 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-24 reveal">
                 <h2 class="serif-heading text-4xl md:text-6xl mb-8 text-slate-900 uppercase tracking-tight">The Framework of Scale</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-light">Eliminating administrative volatility through standardized proprietary mechanisms.</p>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-light">Replacing administrative volatility with high-performance proprietary mechanisms.</p>
             </div>
             
             <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Pillar 1: CIS Defense -->
                 <div class="glass-card p-12 rounded-[3rem] border-t-8 border-emerald-500 reveal">
                     <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-10 shadow-xl">
                         <i class="fas fa-shield-halved text-emerald-400 text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">CIS Audit Defense</h3>
-                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
-                        "Removing the existential threat of reclassification."
-                    </p>
-                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
-                        We install the <strong>Status Defense Protocol</strong>, using the Payment Firewall™ to verify sub-contractors in real-time and automate monthly filings to ensure zero late penalties.
+                    <p class="text-slate-500 mb-10 leading-relaxed text-sm">
+                        Eliminating the threat of HMRC reclassification. We install the <strong>Status Defense Protocol</strong> to ensure every sub-contractor is audit-proof.
                     </p>
                     <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
                         <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Payment Firewall™ API</li>
@@ -269,41 +261,33 @@
                     </ul>
                 </div>
 
-                <!-- Pillar 2: Recovery -->
                 <div class="glass-card p-12 rounded-[3rem] border-t-8 border-slate-900 reveal">
                     <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-xl">
                         <i class="fas fa-bolt-lightning text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">Cash Flow Recovery</h3>
-                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
-                        "Converting paper profit into working capital."
-                    </p>
-                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
-                        We deploy the <strong>7-Step Recovery™</strong> sequence, leveraging the Construction Act 1996 and Statutory Interest to bypass administrative stalling on retentions and overdue invoices.
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">7-Step Recovery™</h3>
+                    <p class="text-slate-500 mb-10 leading-relaxed text-sm">
+                        Moving beyond "friendly chasing." We deploy legal escalation using the Construction Act to force your invoices to the top of the payment pile.
                     </p>
                     <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
                         <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> 30-Day Retention Hack</li>
                         <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Statutory Interest Demands</li>
-                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Notice of Sum Due Triggers</li>
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Notice of Sum Due Protocols</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 3: VAT DRC -->
                 <div class="glass-card p-12 rounded-[3rem] border-t-8 border-emerald-500 reveal">
                     <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-10 shadow-xl">
                         <i class="fas fa-file-invoice-dollar text-emerald-400 text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">VAT DRC Assurance</h3>
-                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
-                        "Precision management of uncollected liability."
-                    </p>
-                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
-                        Domestic Reverse Charge rules are complex and high-risk. We manage end-user validation and further-processing declarations to prevent HMRC clawbacks.
+                    <p class="text-slate-500 mb-10 leading-relaxed text-sm">
+                        Precision management of Domestic Reverse Charge rules to prevent uncollected VAT liability across your high-volume supply chain.
                     </p>
                     <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
                         <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> End-User Validation</li>
                         <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> DRC Declaration Store</li>
-                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Clawback Risk Analysis</li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> HMRC Clawback Defense</li>
                     </ul>
                 </div>
             </div>
@@ -322,7 +306,6 @@
                 <p class="text-slate-400 text-xl font-light leading-relaxed mb-12 max-w-lg">
                     Traditional lenders reject construction firms because of "Dirty Data." Our institutional-grade data room de-risks your firm, unlocking direct access to our specialist lender panel.
                 </p>
-                
                 <div class="space-y-10">
                     <div class="flex items-start space-x-6 group">
                         <div class="mt-1 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500 transition-all duration-500">
@@ -330,7 +313,7 @@
                         </div>
                         <div>
                             <h4 class="font-black text-xs uppercase tracking-widest mb-2">Specialist Asset Finance</h4>
-                            <p class="text-xs text-slate-400 leading-relaxed font-medium">Financing new fleets, excavators, and plant equipment at preferential rates through our direct institutional lender connections.</p>
+                            <p class="text-xs text-slate-400 leading-relaxed font-medium">Financing new fleets and plant equipment at preferential rates through our direct institutional lender connections.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-6 group">
@@ -339,7 +322,7 @@
                         </div>
                         <div>
                             <h4 class="font-black text-xs uppercase tracking-widest mb-2">Invoice & Retention Finance</h4>
-                            <p class="text-xs text-slate-400 leading-relaxed font-medium">Convert Applications for Payment or aging retentions into immediate cash. We bridge the gap where standard high-street banks fail.</p>
+                            <p class="text-xs text-slate-400 leading-relaxed font-medium">Convert Applications for Payment into immediate cash. We bridge the gap where high-street banks fail.</p>
                         </div>
                     </div>
                 </div>
@@ -366,7 +349,7 @@
         </div>
     </section>
 
-    <!-- PRICING -->
+    <!-- PRICING (ENGINE CORRECTED) -->
     <section id="pricing" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-24 reveal">
@@ -374,7 +357,7 @@
                 <div class="flex items-center justify-center gap-6 mt-12">
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Monthly Billing</span>
                     <button id="price-toggle" class="w-16 h-8 bg-slate-200 rounded-full relative p-1 transition-colors">
-                        <div class="w-6 h-6 bg-slate-900 rounded-full transition-transform"></div>
+                        <div class="w-6 h-6 bg-slate-900 rounded-full transition-transform duration-300"></div>
                     </button>
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Annual <small class="text-emerald-600 font-black ml-1">(2 Months Free)</small></span>
                 </div>
@@ -384,11 +367,12 @@
                 <!-- Starter -->
                 <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
                     <h4 class="font-extrabold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Starter</h4>
-                    <div class="mb-8">
+                    <div class="mb-2">
                         <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="690" data-annual="575">690</span></span>
-                       
+                        <span class="text-slate-400 text-sm font-bold">/mo</span>
                     </div>
-                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic">Sub-£1M turnover. <br>Foundational risk monitoring.</p>
+                    <div class="annual-note h-6 text-[10px] font-bold text-emerald-600 uppercase tracking-widest opacity-0 transition-opacity">£6,900 Billed Annually</div>
+                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic mt-4">Sub-£1M turnover. <br>Foundational risk monitoring.</p>
                     <ul class="space-y-6 text-[11px] font-black text-slate-600 uppercase tracking-widest mb-12">
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> 15 Verifications /mo</li>
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> £10k Debt Limit</li>
@@ -401,11 +385,12 @@
                 <div class="p-12 rounded-[3.5rem] bg-white border-2 border-slate-900 flex flex-col relative shadow-2xl reveal">
                     <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[9px] font-black px-8 py-2.5 rounded-full uppercase tracking-[0.4em] shadow-lg">Professional Standard</span>
                     <h4 class="font-extrabold uppercase tracking-widest text-[11px] text-emerald-600 mb-8">Pro</h4>
-                    <div class="mb-8">
+                    <div class="mb-2">
                         <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="1390" data-annual="1158">1,390</span></span>
-                       
+                        <span class="text-slate-400 text-sm font-bold">/mo</span>
                     </div>
-                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic">£1M – £5M turnover. <br>Full-scale infrastructure.</p>
+                    <div class="annual-note h-6 text-[10px] font-bold text-emerald-600 uppercase tracking-widest opacity-0 transition-opacity">£13,900 Billed Annually</div>
+                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic mt-4">£1M – £5M turnover. <br>Full-scale infrastructure.</p>
                     <ul class="space-y-6 text-[11px] font-black text-slate-600 uppercase tracking-widest mb-12">
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> 40 Verifications /mo</li>
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> £25k Debt Limit</li>
@@ -417,11 +402,12 @@
                 <!-- Growth -->
                 <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
                     <h4 class="font-extrabold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Growth</h4>
-                    <div class="mb-8">
-                        <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="2990" data-annual="2490">2,990</span></span>
-                        
+                    <div class="mb-2">
+                        <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="2990" data-annual="2492">2,990</span></span>
+                        <span class="text-slate-400 text-sm font-bold">/mo</span>
                     </div>
-                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic">£5M - £20M turnover. <br>Strategic asset expansion.</p>
+                    <div class="annual-note h-6 text-[10px] font-bold text-emerald-600 uppercase tracking-widest opacity-0 transition-opacity">£29,900 Billed Annually</div>
+                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic mt-4">£5M - £20M turnover. <br>Strategic asset expansion.</p>
                     <ul class="space-y-6 text-[11px] font-black text-slate-600 uppercase tracking-widest mb-12">
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> Unlimited Verifications</li>
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> £100k Debt Limit</li>
@@ -439,14 +425,15 @@
                             <span class="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest border border-emerald-500/30 rounded-xl">Custom Infrastructure</span>
                             <h4 class="text-4xl font-bold serif-heading italic">Enterprise</h4>
                         </div>
-                        <p class="text-slate-400 text-lg mb-0 leading-relaxed font-light">For Main Contractors and firms over £20M turnover. We install a fully integrated digital financial office, white-label portal systems, and institutional capital placement pipelines.</p>
+                        <p class="text-slate-400 text-lg mb-0 leading-relaxed font-light">For firms over £20M turnover. Fully integrated digital financial office, white-label portals, and institutional capital placement pipelines.</p>
                     </div>
                     <div class="text-center md:text-right min-w-[280px]">
-                        <div class="mb-8">
+                        <div class="mb-2">
                             <span class="text-5xl font-bold">£<span class="price-val" data-monthly="5190" data-annual="4325">5,190</span></span>
-                            
+                            <span class="text-slate-500 text-sm font-bold ml-2">/mo</span>
                         </div>
-                        <a href="#compliance-check" class="inline-block px-12 py-6 bg-white text-slate-900 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all shadow-2xl">Request Partnership</a>
+                        <div class="annual-note h-6 text-[10px] font-bold text-emerald-400 uppercase tracking-widest opacity-0 transition-opacity">£51,900 Billed Annually</div>
+                        <a href="#compliance-check" class="inline-block px-12 py-6 bg-white text-slate-900 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all shadow-2xl mt-4">Request Partnership</a>
                     </div>
                 </div>
             </div>
@@ -461,7 +448,6 @@
                 <div class="lg:col-span-4 reveal">
                     <h2 class="serif-heading text-5xl mb-8 text-slate-900 uppercase tracking-tighter leading-tight">Intelligence <br>Center</h2>
                     <p class="text-slate-500 text-lg leading-relaxed mb-12 font-light">Real-time regulatory briefings and strategic financial insights for the construction enterprise.</p>
-                    
                     <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 group">
                         <h4 class="text-xs font-black uppercase tracking-[0.3em] text-emerald-600 mb-6 group-hover:translate-x-2 transition-transform">Resource Library</h4>
                         <p class="text-[12px] text-slate-400 leading-relaxed mb-8">Access our full data room of 90-second risk checks, whitepapers, and CIS audit defense frameworks.</p>
@@ -480,7 +466,7 @@
                         </div>
                         <h3 class="text-xl font-bold mb-4 uppercase tracking-tight text-slate-900">The Payment Firewall™ Integration</h3>
                         <p class="text-sm text-slate-500 leading-relaxed font-medium">
-                            Our proprietary gateway links your accounts payable directly to live HMRC verification APIs. If a sub-contractor's status is invalid, the firewall blocks the transaction at the origin, making human-error fines mathematically impossible.
+                            Our proprietary digital gateway links accounts payable directly to live HMRC verification APIs. Human-error fines become mathematically impossible.
                         </p>
                     </div>
 
@@ -491,7 +477,7 @@
                         </div>
                         <h3 class="text-xl font-bold mb-4 uppercase tracking-tight text-slate-900">The Institutional Capital Bridge</h3>
                         <p class="text-sm text-slate-500 leading-relaxed font-medium">
-                            Why "Clean Data" dictates borrowing power. Standard lenders penalize construction for tax uncertainty. Compliance Labs provides an institutional data room that drastically lowers your risk profile for specialist Asset and Invoice finance.
+                            Why "Clean Data" dictates borrowing power. Compliance Labs provides an institutional data room that drastically lowers your risk profile for specialist Asset and Invoice finance.
                         </p>
                     </div>
 
@@ -502,7 +488,7 @@
                         </div>
                         <h3 class="text-xl font-bold mb-4 uppercase tracking-tight text-slate-900">The 30-Day Retention Recovery Protocol</h3>
                         <p class="text-sm text-slate-500 leading-relaxed font-medium">
-                            Leveraging the Construction Act 1996. We automate the issuance of 'Notices of Sum Due' the moment DLP expires, forcing debtors into strict 30-day payment timelines and prioritizing your cash flow over their administration.
+                            Leveraging the Construction Act 1996. We automate the issuance of 'Notices of Sum Due,' forcing debtors into strict 30-day payment timelines.
                         </p>
                     </div>
                 </div>
@@ -543,7 +529,6 @@
                     <ul class="text-[11px] text-slate-500 space-y-6 uppercase tracking-[0.2em] font-black text-center md:text-left">
                         <li><a href="index.html" class="hover:text-white transition-colors">Overview</a></li>
                         <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
                         <li><a href="#services" class="hover:text-white transition-colors">Strategic Pillars</a></li>
                     </ul>
                 </div>
@@ -569,9 +554,10 @@
     </footer>
 
     <script>
-        // Pricing Toggle
+        // PRICING ENGINE (CORRECTED)
         const toggle = document.getElementById('price-toggle');
         const priceVals = document.querySelectorAll('.price-val');
+        const annualNotes = document.querySelectorAll('.annual-note');
         let annual = false;
 
         toggle.addEventListener('click', () => {
@@ -580,7 +566,13 @@
             toggle.classList.toggle('bg-emerald-500', annual);
             
             priceVals.forEach(v => {
-                v.textContent = annual ? v.dataset.annual : v.dataset.monthly;
+                v.textContent = annual ? 
+                    Number(v.dataset.annual).toLocaleString() : 
+                    Number(v.dataset.monthly).toLocaleString();
+            });
+
+            annualNotes.forEach(note => {
+                note.style.opacity = annual ? '1' : '0';
             });
         });
 
