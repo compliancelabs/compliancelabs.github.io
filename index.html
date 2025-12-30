@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="Institutional-grade CIS compliance and commercial finance for UK construction SMEs. Eliminate HMRC risk and unlock capital flow."/>
     
-    <!-- Open Graph / LinkedIn -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Compliance Labs & Capital | The Architect of Construction Finance">
-    <meta property="og:description" content="Protecting the downside with automated CIS compliance. Fueling the upside with specialist commercial capital.">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
     <style>
@@ -35,6 +30,10 @@
             background: linear-gradient(90deg, #10b981, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .shield-icon-path {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
 
         .nav-link {
@@ -90,25 +89,20 @@
             transform: translateY(0);
         }
 
-        #mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        /* Diagonal Aesthetic Component */
+        /* Diagonal Hero Background */
         .diagonal-bg {
             position: absolute;
             top: 0;
             right: 0;
-            width: 48%;
+            width: 50%;
             height: 100%;
             background: #f1f5f9;
             clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
             z-index: -1;
         }
 
-        /* SVG Logo Scaling */
-        .logo-svg {
-            height: 44px;
+        .logo-container svg {
+            height: 48px;
             width: auto;
         }
     </style>
@@ -119,16 +113,11 @@
     <div id="mobile-menu" class="fixed inset-0 z-[1100] bg-slate-900 translate-x-full transition-transform duration-500 md:hidden p-8 flex flex-col justify-between">
         <div class="flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <!-- SVG Logo (Mobile) -->
                 <svg viewBox="0 0 100 120" class="h-10 w-auto">
-                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#10b981" stroke-width="4"/>
-                    <path d="M50 25 V95 M30 45 H70 M30 75 H70" stroke="#10b981" stroke-width="2" opacity="0.6"/>
-                    <circle cx="50" cy="25" r="4" fill="#10b981"/>
-                    <circle cx="30" cy="45" r="3" fill="#10b981"/>
-                    <circle cx="70" cy="45" r="3" fill="#10b981"/>
-                    <circle cx="50" cy="60" r="5" fill="#10b981"/>
-                    <circle cx="30" cy="75" r="3" fill="#10b981"/>
-                    <circle cx="70" cy="75" r="3" fill="#10b981"/>
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#10b981"/>
+                    <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#0f172a" stroke-width="3" opacity="0.8"/>
+                    <circle cx="50" cy="25" r="5" fill="#ffffff"/>
+                    <circle cx="50" cy="95" r="5" fill="#ffffff"/>
                 </svg>
                 <span class="text-white font-bold uppercase text-xs tracking-widest">Compliance Labs</span>
             </div>
@@ -141,8 +130,8 @@
             <a href="resources.html" class="mobile-nav-link text-emerald-400">Resources</a>
             <a href="#faq" class="mobile-nav-link">Intelligence</a>
         </nav>
-        <div class="border-t border-white/10 pt-8">
-            <a href="#compliance-check" class="block w-full py-5 bg-emerald-500 text-slate-900 rounded-full text-center font-bold uppercase tracking-widest text-xs">Request Audit</a>
+        <div class="border-t border-white/10 pt-8 text-center">
+            <a href="#compliance-check" class="block w-full py-5 bg-emerald-500 text-slate-900 rounded-full text-center font-bold uppercase tracking-widest text-xs">Request Strategy Audit</a>
         </div>
     </div>
 
@@ -150,32 +139,31 @@
     <header class="bg-white/95 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[1000] transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="/" class="flex items-center space-x-4 group">
-                <!-- Inline SVG Logo (Header) -->
-                <svg viewBox="0 0 100 120" class="logo-svg transition-transform group-hover:scale-105">
-                    <!-- Main Shield -->
-                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
-                    <!-- Geometric Inner Lines -->
-                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
-                    <!-- Data Nodes -->
-                    <circle cx="50" cy="20" r="4" fill="#10b981"/>
-                    <circle cx="25" cy="40" r="3" fill="#10b981"/>
-                    <circle cx="75" cy="40" r="3" fill="#10b981"/>
-                    <circle cx="50" cy="55" r="5" fill="#10b981"/>
-                    <circle cx="25" cy="70" r="3" fill="#10b981"/>
-                    <circle cx="75" cy="70" r="3" fill="#10b981"/>
-                    <circle cx="50" cy="100" r="4" fill="#10b981"/>
-                </svg>
+                <!-- INSTITUTIONAL SHIELD LOGO (SVG) -->
+                <div class="logo-container">
+                    <svg viewBox="0 0 100 120" class="transition-transform group-hover:scale-105">
+                        <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                        <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="20" r="4.5" fill="#10b981"/>
+                        <circle cx="50" cy="55" r="6" fill="#10b981"/>
+                        <circle cx="50" cy="100" r="4.5" fill="#10b981"/>
+                        <circle cx="25" cy="40" r="3" fill="#10b981"/>
+                        <circle cx="75" cy="40" r="3" fill="#10b981"/>
+                        <circle cx="25" cy="70" r="3" fill="#10b981"/>
+                        <circle cx="75" cy="70" r="3" fill="#10b981"/>
+                    </svg>
+                </div>
                 <div class="hidden sm:block">
-                    <h1 class="font-bold tracking-tighter text-slate-900 text-base uppercase leading-none">Compliance <span class="text-emerald-600">Labs</span></h1>
-                    <p class="text-[9px] tracking-[0.2em] font-semibold text-slate-400 uppercase leading-none mt-1">& Capital</p>
+                    <h1 class="font-black tracking-tighter text-slate-900 text-lg uppercase leading-none">Compliance <span class="text-emerald-600">Labs</span></h1>
+                    <p class="text-[9px] tracking-[0.3em] font-extrabold text-slate-400 uppercase leading-none mt-1">& Capital</p>
                 </div>
             </a>
             
-            <nav class="hidden md:flex items-center space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            <nav class="hidden md:flex items-center space-x-8 text-[10px] font-black uppercase tracking-widest text-slate-500">
                 <a href="#services" class="nav-link hover:text-slate-900">Services</a>
                 <a href="#capital" class="nav-link hover:text-slate-900">Capital</a>
                 <a href="#pricing" class="nav-link hover:text-slate-900">Pricing</a>
-                <a href="resources.html" class="nav-link hover:text-emerald-600 font-extrabold border-b border-emerald-500">Resources</a>
+                <a href="resources.html" class="nav-link hover:text-emerald-600">Resources</a>
                 <a href="#faq" class="nav-link hover:text-slate-900">Intelligence</a>
                 <a href="#compliance-check" class="bg-slate-900 text-white px-6 py-3 rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-slate-200 ml-4">
                     Free Risk Audit
@@ -190,14 +178,14 @@
     <div class="bg-slate-900 py-3 overflow-hidden border-y border-white/5">
         <div class="marquee text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
             <span>Verified over 120 UK Contractors</span>
-            <span>£4.2M Debt Recovered</span>
+            <span>£1.3M Debt Recovered</span>
             <span>Zero HMRC Fines for Clients</span>
             <span>Institutional Asset Finance</span>
             <span>CIS Compliance Verified</span>
             <span>Retention Recovery Specialists</span>
-            <!-- Duplicate for loop -->
+            <!-- Loop -->
             <span>Verified over 120 UK Contractors</span>
-            <span>£4.2M Debt Recovered</span>
+            <span>£1.3M Debt Recovered</span>
             <span>Zero HMRC Fines for Clients</span>
             <span>Institutional Asset Finance</span>
             <span>CIS Compliance Verified</span>
@@ -206,135 +194,167 @@
     </div>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-40 overflow-hidden bg-white">
+    <section class="relative pt-32 pb-44 overflow-hidden bg-white">
         <div class="diagonal-bg hidden lg:block"></div>
         <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
             <div class="inline-flex items-center space-x-2 mb-8 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 reveal active">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-[10px] uppercase tracking-widest font-extrabold text-emerald-800">Operational Infrastructure v2.5</span>
+                <span class="text-[10px] uppercase tracking-widest font-black text-emerald-800">The Institutional Standard v2.5</span>
             </div>
-            <h2 class="serif-heading text-5xl md:text-8xl mb-10 leading-[1.05] text-slate-900 reveal active" style="transition-delay: 0.1s">
+            <h2 class="serif-heading text-6xl md:text-8xl mb-10 leading-[1.05] text-slate-900 reveal active" style="transition-delay: 0.1s">
                 De-Risk Payroll. <br>
                 <span class="text-gradient italic">Fund Growth.</span>
             </h2>
             <p class="text-slate-500 text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-2xl mx-auto reveal active" style="transition-delay: 0.2s">
-                Institutional-grade compliance and capital placement for construction SMEs. We eliminate the downside and leverage clean data to fuel the upside.
+                Protecting construction SMEs from systemic HMRC risk through proprietary automation and unlocking specialist capital flow.
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center mb-24 reveal active" style="transition-delay: 0.3s">
-                <a href="#compliance-check" class="px-14 py-5 bg-slate-900 text-white rounded-full font-bold text-xs uppercase tracking-[0.25em] hover:bg-emerald-600 transition-all shadow-2xl shadow-slate-300">
+                <a href="#compliance-check" class="px-14 py-6 bg-slate-900 text-white rounded-full font-bold text-xs uppercase tracking-[0.3em] hover:bg-emerald-600 transition-all shadow-2xl shadow-slate-300">
                     Request Strategy Audit
                 </a>
-                <a href="#services" class="px-14 py-5 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-xs uppercase tracking-[0.25em] hover:bg-slate-50 transition-all">
-                    Explore The Engines
+                <a href="#services" class="px-14 py-6 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-xs uppercase tracking-[0.3em] hover:bg-slate-50 transition-all">
+                    Explore The Pillars
                 </a>
             </div>
             
-            <!-- Hero Stats Centered -->
             <div class="flex flex-wrap justify-center gap-12 md:gap-24 border-t border-slate-100 pt-16 reveal active" style="transition-delay: 0.4s">
                 <div class="text-center group">
-                    <div class="text-4xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">£4.2M</div>
-                    <div class="text-[10px] uppercase tracking-widest font-extrabold text-slate-400 mt-2">Debt Recovered</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">£1.3M</div>
+                    <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">Debt Recovered</div>
                 </div>
                 <div class="text-center group border-x border-slate-100 px-12 md:px-24">
-                    <div class="text-4xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">1,847</div>
-                    <div class="text-[10px] uppercase tracking-widest font-extrabold text-slate-400 mt-2">Subs Verified</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">1,847</div>
+                    <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">Subs Verified</div>
                 </div>
                 <div class="text-center group">
-                    <div class="text-4xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">0</div>
-                    <div class="text-[10px] uppercase tracking-widest font-extrabold text-slate-400 mt-2">HMRC Fines</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">0</div>
+                    <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">HMRC Fines</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROPRIETARY ENGINES -->
+    <!-- THE THREE PILLARS (EXPANDED SERVICE SECTION) -->
     <section id="services" class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <h2 class="serif-heading text-4xl md:text-5xl mb-6 text-slate-900 uppercase tracking-tight">The Compliancelabs Framework</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-light">Replacing administrative volatility with standardized proprietary mechanisms.</p>
+            <div class="text-center mb-24 reveal">
+                <h2 class="serif-heading text-4xl md:text-6xl mb-8 text-slate-900">The Framework of Scale</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-light">Eliminating administrative volatility through standardized proprietary mechanisms.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Firewall -->
-                <div class="glass-card p-14 rounded-[2.5rem] border-b-8 border-emerald-500 reveal">
-                    <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-10 shadow-xl overflow-hidden p-2">
-                        <svg viewBox="0 0 100 120" class="w-full h-full">
-                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#10b981" stroke-width="6"/>
-                            <path d="M50 30 V90 M30 50 L70 50 M30 80 L70 80" stroke="#10b981" stroke-width="4" opacity="0.6"/>
-                        </svg>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Pillar 1: CIS Defense -->
+                <div class="glass-card p-12 rounded-[3rem] border-t-8 border-emerald-500 reveal">
+                    <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-10 shadow-xl">
+                        <i class="fas fa-shield-halved text-emerald-400 text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-bold mb-6 text-slate-900 uppercase tracking-tight">The Payment Firewall™</h3>
-                    <p class="text-slate-600 mb-10 leading-relaxed text-lg font-light">
-                        A zero-trust automated system. We cross-reference every payment against HMRC's live database in real-time, making human-error fines mathematically impossible.
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">CIS Audit Defense</h3>
+                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
+                        "Removing the existential threat of reclassification."
                     </p>
-                    <ul class="space-y-6 text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">
-                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Real-time CIS Verification API</li>
-                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Automated Nil Return Guarantee</li>
+                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
+                        We install the <strong>Status Defense Protocol</strong>, using the Payment Firewall™ to verify sub-contractors in real-time and automate monthly filings to ensure zero late penalties.
+                    </p>
+                    <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Payment Firewall™ API</li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Nil Return Guarantee</li>
                         <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Digital Audit Evidence Kit</li>
                     </ul>
                 </div>
 
-                <!-- Recovery -->
-                <div class="glass-card p-14 rounded-[2.5rem] border-b-8 border-slate-900 reveal">
-                    <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-xl overflow-hidden p-2">
-                         <svg viewBox="0 0 100 120" class="w-full h-full">
-                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#ffffff" stroke-width="6"/>
-                            <path d="M50 30 V90 M30 50 L70 50 M30 80 L70 80" stroke="#ffffff" stroke-width="4" opacity="0.4"/>
-                        </svg>
+                <!-- Pillar 2: Recovery -->
+                <div class="glass-card p-12 rounded-[3rem] border-t-8 border-slate-900 reveal">
+                    <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-xl">
+                        <i class="fas fa-bolt-lightning text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-bold mb-6 text-slate-900 uppercase tracking-tight">7-Step Recovery™</h3>
-                    <p class="text-slate-600 mb-10 leading-relaxed text-lg font-light">
-                        Moving beyond "friendly reminders." We deploy a systematic legal escalation using the Construction Act to force your invoices to the top of the payment pile.
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">Cash Flow Recovery</h3>
+                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
+                        "Converting paper profit into working capital."
                     </p>
-                    <ul class="space-y-6 text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">
-                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> 30-Day Retention Recovery Hack</li>
+                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
+                        We deploy the <strong>7-Step Recovery™</strong> sequence, leveraging the Construction Act 1996 and Statutory Interest to bypass administrative stalling on retentions and overdue invoices.
+                    </p>
+                    <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> 30-Day Retention Hack</li>
                         <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Statutory Interest Demands</li>
-                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Notice of Sum Due Protocols</li>
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Notice of Sum Due Triggers</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3: VAT DRC -->
+                <div class="glass-card p-12 rounded-[3rem] border-t-8 border-emerald-500 reveal">
+                    <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-10 shadow-xl">
+                        <i class="fas fa-file-invoice-dollar text-emerald-400 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">VAT DRC Assurance</h3>
+                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
+                        "Precision management of uncollected liability."
+                    </p>
+                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
+                        Domestic Reverse Charge rules are complex and high-risk. We manage end-user validation and further-processing declarations to prevent HMRC clawbacks.
+                    </p>
+                    <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> End-User Validation</li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> DRC Declaration Store</li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Clawback Risk Analysis</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CAPITAL SECTION -->
-    <section id="capital" class="bg-institutional py-32 text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+    <!-- THE CAPITAL BRIDGE (EXPANDED CLEAN DATA SECTION) -->
+    <section id="capital" class="bg-institutional py-32 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
             <div class="reveal">
-                <h2 class="serif-heading text-4xl md:text-6xl mb-8 italic text-emerald-400 leading-tight">Clean Data is <br>Growth Capital.</h2>
+                <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8">
+                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">The Capital Bridge</span>
+                </div>
+                <h2 class="serif-heading text-4xl md:text-7xl mb-8 italic text-emerald-400 leading-[1.1]">Clean Data is <br>Growth Capital.</h2>
                 <p class="text-slate-400 text-xl font-light leading-relaxed mb-12 max-w-lg">
-                    Lenders prioritize verified stability. By institutionalizing your compliance data, we make your firm the most attractive risk in the market for specialist capital.
+                    Traditional lenders reject construction firms because of "Dirty Data." By running Compliance Labs, you create a pre-vetted, institutional-grade data room that makes your firm bankable.
                 </p>
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors cursor-default group">
-                        <div class="text-emerald-400 font-extrabold text-[10px] uppercase mb-2 tracking-[0.3em] group-hover:translate-y-[-2px] transition-transform">Asset</div>
-                        <div class="text-2xl font-bold">Finance</div>
+                
+                <div class="space-y-10">
+                    <div class="flex items-start space-x-6 group">
+                        <div class="mt-1 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500 transition-all duration-500">
+                            <i class="fas fa-truck-pickup text-emerald-400 group-hover:text-slate-900 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-xs uppercase tracking-widest mb-2">Specialist Asset Finance</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed font-medium">Financing new fleets, excavators, and plant equipment at preferential rates. Our lenders trust our audited asset depreciation logs.</p>
+                        </div>
                     </div>
-                    <div class="p-8 rounded-3xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-colors cursor-default group">
-                        <div class="text-emerald-400 font-extrabold text-[10px] uppercase mb-2 tracking-[0.3em] group-hover:translate-y-[-2px] transition-transform">Invoice</div>
-                        <div class="text-2xl font-bold">Finance</div>
+                    <div class="flex items-start space-x-6 group">
+                        <div class="mt-1 w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500 transition-all duration-500">
+                            <i class="fas fa-hand-holding-dollar text-emerald-400 group-hover:text-slate-900 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-xs uppercase tracking-widest mb-2">Invoice & Retention Finance</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed font-medium">Turn your Applications for Payment or aging retentions into immediate cash. We bridge the gap where high-street banks fail to understand construction contracts.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white/5 p-16 rounded-[3rem] border border-white/10 backdrop-blur-xl reveal">
-                <div class="text-center mb-14">
-                    <span class="text-7xl md:text-8xl font-bold text-emerald-400 tracking-tighter">£4.2M</span>
-                    <p class="text-slate-400 uppercase tracking-[0.4em] text-[11px] mt-6 font-extrabold">Total Capital Unlocked</p>
+
+            <div class="bg-white/5 p-16 rounded-[4rem] border border-white/10 backdrop-blur-xl reveal shadow-2xl">
+                <div class="text-center mb-16">
+                    <p class="text-slate-500 uppercase tracking-[0.4em] text-[10px] mb-4 font-black">Pre-Vetted Deal Pipeline</p>
+                    <span class="text-8xl font-bold text-emerald-400 tracking-tighter">£4.2M</span>
+                    <p class="text-slate-400 uppercase tracking-[0.4em] text-[11px] mt-6 font-extrabold">Total Capital Placed</p>
                 </div>
-                <div class="space-y-8">
-                    <div class="flex justify-between items-center text-sm border-b border-white/5 pb-6">
-                        <span class="text-slate-500 font-bold uppercase tracking-widest">Average Recovery</span>
-                        <span class="font-bold text-emerald-400">34 Days</span>
+                <div class="grid grid-cols-2 gap-8 mb-12">
+                    <div class="p-6 rounded-3xl bg-white/5 border border-white/10 text-center">
+                        <div class="text-[10px] text-slate-500 uppercase mb-2 font-black">Approval Rate</div>
+                        <div class="text-2xl font-bold text-emerald-400">94%</div>
                     </div>
-                    <div class="flex justify-between items-center text-sm border-b border-white/5 pb-6">
-                        <span class="text-slate-500 font-bold uppercase tracking-widest">Audit Pass Rate</span>
-                        <span class="font-bold text-emerald-400">100%</span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-500 font-bold uppercase tracking-widest">Penalty Risk ROI</span>
-                        <span class="font-bold text-emerald-400">Infinite</span>
+                    <div class="p-6 rounded-3xl bg-white/5 border border-white/10 text-center">
+                        <div class="text-[10px] text-slate-500 uppercase mb-2 font-black">Time to Fund</div>
+                        <div class="text-2xl font-bold text-emerald-400">72hrs</div>
                     </div>
                 </div>
+                <a href="#compliance-check" class="block w-full py-6 bg-emerald-500 text-slate-900 rounded-full text-center font-black text-[11px] uppercase tracking-[0.35em] hover:bg-emerald-400 transition-all shadow-xl">Secure Funding Exit</a>
             </div>
         </div>
     </section>
@@ -342,63 +362,63 @@
     <!-- PRICING -->
     <section id="pricing" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal">
-                <h2 class="serif-heading text-4xl md:text-5xl mb-6 text-slate-900">Institutional Tiers</h2>
-                <div class="flex items-center justify-center gap-6 mt-10">
-                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Monthly Billing</span>
-                    <button id="price-toggle" class="w-14 h-7 bg-slate-200 rounded-full relative p-1 transition-colors">
-                        <div class="w-5 h-5 bg-slate-900 rounded-full transition-transform"></div>
+            <div class="text-center mb-24 reveal">
+                <h2 class="serif-heading text-4xl md:text-6xl mb-8 text-slate-900">Institutional Tiers</h2>
+                <div class="flex items-center justify-center gap-6 mt-12">
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Monthly Billing</span>
+                    <button id="price-toggle" class="w-16 h-8 bg-slate-200 rounded-full relative p-1 transition-colors">
+                        <div class="w-6 h-6 bg-slate-900 rounded-full transition-transform"></div>
                     </button>
-                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Annual <small class="text-emerald-600 font-black ml-1">(2 Months Free)</small></span>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Annual <small class="text-emerald-600 font-black ml-1">(2 Months Free)</small></span>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-10 mb-12">
                 <!-- Starter -->
-                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
-                    <h4 class="font-bold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Starter</h4>
+                <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
+                    <h4 class="font-extrabold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Starter</h4>
                     <div class="mb-8">
                         <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="690" data-annual="575">690</span></span>
                         <span class="text-slate-400 text-sm font-bold">/mo</span>
                     </div>
-                    <p class="text-sm text-slate-500 mb-10 font-medium leading-relaxed italic">Sub-£1M turnover. <br>Fundamental risk management.</p>
-                    <ul class="space-y-5 text-[11px] font-bold text-slate-600 uppercase tracking-widest mb-12">
+                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic">Sub-£1M turnover. <br>Foundational risk monitoring.</p>
+                    <ul class="space-y-6 text-[11px] font-black text-slate-600 uppercase tracking-widest mb-12">
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> 15 Verifications /mo</li>
-                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £10k Debt Recovery Limit</li>
-                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Monthly Health Report</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £10k Debt Limit</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> Monthly Health Report</li>
                     </ul>
                     <a href="#compliance-check" class="mt-auto w-full py-5 bg-white border-2 border-slate-200 text-slate-900 rounded-full text-center font-bold text-[10px] tracking-widest hover:bg-slate-900 hover:text-white transition-all uppercase">Secure Plan</a>
                 </div>
 
                 <!-- Pro -->
-                <div class="p-12 rounded-[2.5rem] bg-white border-2 border-slate-900 flex flex-col relative shadow-2xl reveal">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[9px] font-black px-6 py-2 rounded-full uppercase tracking-[0.3em]">The Standard Choice</span>
-                    <h4 class="font-bold uppercase tracking-widest text-[11px] text-emerald-600 mb-8">Pro</h4>
+                <div class="p-12 rounded-[3.5rem] bg-white border-2 border-slate-900 flex flex-col relative shadow-2xl reveal">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[9px] font-black px-8 py-2.5 rounded-full uppercase tracking-[0.4em] shadow-lg">Professional Standard</span>
+                    <h4 class="font-extrabold uppercase tracking-widest text-[11px] text-emerald-600 mb-8">Pro</h4>
                     <div class="mb-8">
                         <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="1390" data-annual="1158">1,390</span></span>
                         <span class="text-slate-400 text-sm font-bold">/mo</span>
                     </div>
-                    <p class="text-sm text-slate-500 mb-10 font-medium leading-relaxed italic">£1M – £5M turnover. <br>High-performance infrastructure.</p>
-                    <ul class="space-y-5 text-[11px] font-bold text-slate-600 uppercase tracking-widest mb-12">
+                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic">£1M – £5M turnover. <br>Full-scale infrastructure.</p>
+                    <ul class="space-y-6 text-[11px] font-black text-slate-600 uppercase tracking-widest mb-12">
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> 40 Verifications /mo</li>
-                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £25k Debt Recovery Limit</li>
-                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Weekly CFO Walkthroughs</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £25k Debt Limit</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> Weekly CFO Strategy</li>
                     </ul>
-                    <a href="#compliance-check" class="mt-auto w-full py-4 bg-slate-900 text-white rounded-full text-center font-bold text-[10px] tracking-widest hover:bg-emerald-600 transition-all uppercase shadow-lg shadow-slate-300">Secure Plan</a>
+                    <a href="#compliance-check" class="mt-auto w-full py-5 bg-slate-900 text-white rounded-full text-center font-bold text-[10px] tracking-widest hover:bg-emerald-600 transition-all uppercase shadow-lg">Secure Plan</a>
                 </div>
 
                 <!-- Growth -->
-                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
-                    <h4 class="font-bold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Growth</h4>
+                <div class="p-12 rounded-[3rem] bg-slate-50 border border-slate-100 flex flex-col hover:border-emerald-200 transition-all reveal group">
+                    <h4 class="font-extrabold uppercase tracking-widest text-[11px] text-slate-400 mb-8">Growth</h4>
                     <div class="mb-8">
                         <span class="text-5xl font-bold text-slate-900">£<span class="price-val" data-monthly="2990" data-annual="2490">2,990</span></span>
                         <span class="text-slate-400 text-sm font-bold">/mo</span>
                     </div>
-                    <p class="text-sm text-slate-500 mb-10 font-medium leading-relaxed italic">£5M - £20M turnover. <br>Enterprise-grade strategy.</p>
-                    <ul class="space-y-5 text-[11px] font-bold text-slate-600 uppercase tracking-widest mb-12">
+                    <p class="text-sm text-slate-500 mb-12 font-medium leading-relaxed italic">£5M - £20M turnover. <br>Strategic asset expansion.</p>
+                    <ul class="space-y-6 text-[11px] font-black text-slate-600 uppercase tracking-widest mb-12">
                         <li><i class="fas fa-check text-emerald-500 mr-3"></i> Unlimited Verifications</li>
-                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £100k Debt Recovery Limit</li>
-                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Dedicated Case Manager</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> £100k Debt Limit</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-3"></i> Dedicated Case Manager</li>
                     </ul>
                     <a href="#compliance-check" class="mt-auto w-full py-5 bg-white border-2 border-slate-200 text-slate-900 rounded-full text-center font-bold text-[10px] tracking-widest hover:bg-slate-900 hover:text-white transition-all uppercase">Secure Plan</a>
                 </div>
@@ -406,112 +426,127 @@
 
             <!-- ENTERPRISE FULL WIDTH -->
             <div class="w-full reveal">
-                <div class="bg-institutional rounded-[3rem] p-12 md:p-16 text-white border border-white/5 flex flex-col md:flex-row items-center justify-between gap-12 group shadow-2xl">
+                <div class="bg-institutional rounded-[4rem] p-12 md:p-20 text-white border border-white/5 flex flex-col md:flex-row items-center justify-between gap-12 group shadow-2xl">
                     <div class="max-w-2xl text-center md:text-left">
-                        <div class="flex items-center justify-center md:justify-start space-x-4 mb-6">
-                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest border border-emerald-500/30 rounded-lg">Custom Infrastructure</span>
-                            <h4 class="text-3xl font-bold serif-heading italic">Enterprise</h4>
+                        <div class="flex items-center justify-center md:justify-start space-x-4 mb-8">
+                            <span class="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest border border-emerald-500/30 rounded-xl">Custom Infrastructure</span>
+                            <h4 class="text-4xl font-bold serif-heading italic">Enterprise</h4>
                         </div>
-                        <p class="text-slate-400 text-lg mb-0 leading-relaxed font-light">For Main Contractors and £20M+ turnover firms. Fully integrated digital office, custom white-label portals, and institutional capital placement pipelines.</p>
+                        <p class="text-slate-400 text-lg mb-0 leading-relaxed font-light">For Main Contractors and firms over £20M turnover. We install a fully integrated digital financial office, white-label portal systems, and direct institutional capital placement pipelines.</p>
                     </div>
-                    <div class="text-center md:text-right min-w-[240px]">
-                        <div class="mb-6">
-                            <span class="text-4xl font-bold">£<span class="price-val" data-monthly="5190" data-annual="4325">5,190</span></span>
-                            <span class="text-slate-500 text-sm font-bold">/mo</span>
+                    <div class="text-center md:text-right min-w-[280px]">
+                        <div class="mb-8">
+                            <span class="text-5xl font-bold">£<span class="price-val" data-monthly="5190" data-annual="4325">5,190</span></span>
+                            <span class="text-slate-500 text-sm font-bold ml-2">/mo</span>
                         </div>
-                        <a href="#compliance-check" class="inline-block px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-[10px] tracking-widest hover:bg-emerald-600 hover:text-white transition-all uppercase shadow-2xl">Request Quote</a>
+                        <a href="#compliance-check" class="inline-block px-12 py-6 bg-white text-slate-900 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all shadow-2xl">Request Partnership</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ / INTELLIGENCE -->
+    <!-- FAQ / INTELLIGENCE CENTER (Enhanced Hub) -->
     <section id="faq" class="py-32 bg-slate-50 border-t border-slate-100">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="serif-heading text-5xl text-center mb-20 text-slate-900 reveal">Intelligence Center</h2>
-            <div class="space-y-6">
-                <details class="group glass-card rounded-3xl p-8 transition-all reveal" open>
-                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-900 uppercase text-[11px] tracking-[0.25em]">
-                        What is a "Payment Firewall"?
-                        <span class="text-emerald-500 transition-transform group-open:rotate-45 text-lg"><i class="fas fa-plus"></i></span>
-                    </summary>
-                    <p class="mt-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-6 font-medium">
-                        It is our proprietary integration that links your payment processing to live HMRC verification data. If a sub-contractor's status is invalid or unverified, the firewall prevents the payment transaction, eliminating human error fines at the absolute point of origin.
-                    </p>
-                </details>
-                <details class="group glass-card rounded-2xl p-6 transition-all reveal">
-                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-900 uppercase text-[11px] tracking-[0.25em]">
-                        How does the "7-Step Recovery" differ from debt chasing?
-                        <span class="text-emerald-500 transition-transform group-open:rotate-45 text-lg"><i class="fas fa-plus"></i></span>
-                    </summary>
-                    <p class="mt-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-6 font-medium">
-                        Standard debt chasing is based on persistence. Our 7-Step Recovery is based on legal leverage. We deploy the Construction Act 1996 and Statutory Interest demands to create immediate financial pressure on the debtor, moving your invoice to the top of their priority list.
-                    </p>
-                </details>
-                <details class="group glass-card rounded-3xl p-8 transition-all reveal">
-                    <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-slate-900 uppercase text-[11px] tracking-[0.25em]">
-                        Are you regulated for Commercial Finance?
-                        <span class="text-emerald-500 transition-transform group-open:rotate-45 text-lg"><i class="fas fa-plus"></i></span>
-                    </summary>
-                    <p class="mt-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-6 font-medium">
-                        We operate as a specialist commercial finance intermediary, partnering with FCA-authorized institutional lenders. We focus specifically on Commercial Asset and Invoice finance, using your verified 'Labs' data to de-risk applications and secure preferential rates.
-                    </p>
-                </details>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-20">
+                <!-- Sidebar / Resources Callout -->
+                <div class="lg:col-span-4 reveal">
+                    <h2 class="serif-heading text-5xl mb-8 text-slate-900 uppercase tracking-tighter">Intelligence <br>Center</h2>
+                    <p class="text-slate-500 text-lg leading-relaxed mb-12 font-light">Expert insights into the UK construction sector's regulatory and financial evolution.</p>
+                    
+                    <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 group">
+                        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-emerald-600 mb-6 group-hover:translate-x-2 transition-transform">Resource Library</h4>
+                        <p class="text-[12px] text-slate-400 leading-relaxed mb-8">Download our 90-second risk checks, VAT DRC whitepapers, and CIS audit checklists.</p>
+                        <a href="resources.html" class="inline-flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 hover:text-emerald-500 transition-colors">
+                            ENTER THE LIBRARY <i class="fas fa-arrow-right ml-3"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FAQ List -->
+                <div class="lg:col-span-8 space-y-6">
+                    <details class="group glass-card rounded-[2.5rem] p-10 transition-all reveal" open>
+                        <summary class="flex justify-between items-center cursor-pointer list-none font-black text-slate-900 uppercase text-[11px] tracking-[0.3em]">
+                            What is the "Payment Firewall™"?
+                            <span class="text-emerald-500 transition-transform group-open:rotate-45 text-xl"><i class="fas fa-plus"></i></span>
+                        </summary>
+                        <p class="mt-8 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-8 font-medium">
+                            It is our proprietary digital gateway that links your accounts payable to live HMRC verification data. If a sub-contractor's status is invalid, the firewall blocks the transaction at the point of origin, making human-error fines mathematically impossible.
+                        </p>
+                    </details>
+                    <details class="group glass-card rounded-[2.5rem] p-10 transition-all reveal">
+                        <summary class="flex justify-between items-center cursor-pointer list-none font-black text-slate-900 uppercase text-[11px] tracking-[0.3em]">
+                            Why does "Clean Data" matter for finance?
+                            <span class="text-emerald-500 transition-transform group-open:rotate-45 text-xl"><i class="fas fa-plus"></i></span>
+                        </summary>
+                        <p class="mt-8 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-8 font-medium">
+                            Standard lenders view construction as "High Risk" due to poor financial history and tax uncertainty. Compliance Labs provides an institutional-grade data room that de-risks your firm, leading to higher credit limits and lower interest rates on asset and invoice finance.
+                        </p>
+                    </details>
+                    <details class="group glass-card rounded-[2.5rem] p-10 transition-all reveal">
+                        <summary class="flex justify-between items-center cursor-pointer list-none font-black text-slate-900 uppercase text-[11px] tracking-[0.3em]">
+                            How does the 30-Day Retention Hack work?
+                            <span class="text-emerald-500 transition-transform group-open:rotate-45 text-xl"><i class="fas fa-plus"></i></span>
+                        </summary>
+                        <p class="mt-8 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-8 font-medium">
+                            Leveraging the Construction Act 1996, we automate the issuance of a 'Notice of Sum Due' the moment the Defects Liability Period expires. This forces the debtor into a strict 30-day payment timeline, making administrative stalling financially punitive.
+                        </p>
+                    </details>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CTA FOOTER -->
     <footer class="bg-slate-900 pt-32 pb-16 text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div id="compliance-check" class="bg-emerald-600 rounded-[3.5rem] p-16 md:p-24 text-center mb-32 relative overflow-hidden group reveal">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div id="compliance-check" class="bg-emerald-600 rounded-[4rem] p-20 md:p-28 mb-32 relative overflow-hidden group reveal">
                 <div class="relative z-10">
-                    <h2 class="serif-heading text-5xl md:text-6xl mb-8 leading-tight uppercase tracking-tight">Secure Infrastructure. <br> Pass Every Audit.</h2>
-                    <p class="text-emerald-100 text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed">Join the contractors moving toward institutional precision. Request your Performance Audit today.</p>
-                    <a href="https://calendly.com/compliancelabs0/30min" target="_blank" class="inline-block px-14 py-6 bg-slate-900 text-white font-bold rounded-full uppercase tracking-widest text-xs hover:bg-white hover:text-slate-900 transition-all shadow-2xl">Book Risk Audit Now</a>
+                    <h2 class="serif-heading text-5xl md:text-7xl mb-8 leading-tight uppercase tracking-tight">Secure Infrastructure. <br> Pass Every Audit.</h2>
+                    <p class="text-emerald-100 text-xl mb-14 max-w-2xl mx-auto font-light leading-relaxed">Join the elite contractors moving toward institutional precision. Request your Performance Audit today.</p>
+                    <a href="https://calendly.com/compliancelabs0/30min" target="_blank" class="inline-block px-16 py-7 bg-slate-900 text-white font-black rounded-full uppercase tracking-[0.35em] text-xs hover:bg-white hover:text-slate-900 transition-all shadow-2xl">Book Risk Audit Now</a>
                 </div>
                 <div class="absolute inset-0 bg-slate-900/10 pointer-events-none group-hover:bg-slate-900/0 transition-all"></div>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-16 pb-24 border-b border-white/5">
+            <div class="grid md:grid-cols-4 gap-20 pb-24 border-b border-white/5 text-left">
                 <div class="col-span-2">
-                    <div class="flex items-center space-x-4 mb-8">
-                        <!-- SVG Logo (Footer) -->
-                        <svg viewBox="0 0 100 120" class="h-12 w-auto">
-                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="none" stroke="#10b981" stroke-width="4"/>
-                            <path d="M50 25 V95 M30 45 H70 M30 75 H70" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
-                            <circle cx="50" cy="25" r="4" fill="#10b981"/>
-                            <circle cx="50" cy="60" r="5" fill="#10b981"/>
-                            <circle cx="50" cy="100" r="4" fill="#10b981"/>
+                    <div class="flex items-center space-x-6 mb-10">
+                        <svg viewBox="0 0 100 120" class="h-14 w-auto brightness-0 invert">
+                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/>
+                            <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#000000" stroke-width="4"/>
                         </svg>
-                        <span class="font-bold text-sm uppercase tracking-tighter">Compliance Labs & Capital Ltd.</span>
+                        <div>
+                            <span class="font-black text-sm uppercase tracking-[0.3em]">Compliance Labs & Capital Ltd.</span>
+                            <p class="text-slate-500 text-[10px] mt-1 uppercase font-bold tracking-widest">Architects of Construction Growth</p>
+                        </div>
                     </div>
                     <p class="text-slate-500 text-[11px] leading-relaxed max-w-sm font-bold uppercase tracking-widest">
-                        The Institutional Standard for Construction Compliance and Capital Placement. Professional Indemnity Insurance held to a value of £2,000,000.
+                        Specialist business consultancy for the UK construction sector. Registered in England & Wales. Professional Indemnity insurance held to a value of £2,000,000.
                     </p>
                 </div>
                 <div>
-                    <h4 class="text-[11px] font-black uppercase tracking-[0.3em] text-emerald-400 mb-8">Intelligence</h4>
-                    <ul class="text-[11px] text-slate-500 space-y-5 uppercase tracking-widest font-bold">
-                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-10">Intelligence</h4>
+                    <ul class="text-[11px] text-slate-500 space-y-6 uppercase tracking-[0.2em] font-black">
+                        <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Audit Research</a></li>
-                        <li><a href="resources.html" class="hover:text-white transition-colors text-emerald-500">Resource Library</a></li>
+                        <li><a href="resources.html" class="hover:text-emerald-500 text-emerald-600">Resource Library</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-[11px] font-black uppercase tracking-[0.3em] text-emerald-400 mb-8">Capital</h4>
-                    <ul class="text-[11px] text-slate-500 space-y-5 uppercase tracking-widest font-bold">
+                    <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-10">Capital</h4>
+                    <ul class="text-[11px] text-slate-500 space-y-6 uppercase tracking-[0.2em] font-black">
+                        <li><a href="#" class="hover:text-white transition-colors text-emerald-600">Lender Portal</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Asset Finance</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Invoice Finance</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Lender Portal</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="pt-16 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-600 font-black uppercase tracking-[0.4em]">
+            <div class="pt-16 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-600 font-black uppercase tracking-[0.5em]">
                 <p>&copy; 2025 Compliance Labs & Capital Ltd.</p>
-                <div class="flex space-x-10 mt-8 md:mt-0">
+                <div class="flex space-x-12 mt-10 md:mt-0">
                     <a href="#" class="hover:text-emerald-400 transition-colors">Privacy</a>
                     <a href="#" class="hover:text-emerald-400 transition-colors">Terms</a>
                     <a href="#" class="hover:text-emerald-400 transition-colors">PI Proof</a>
@@ -528,7 +563,7 @@
 
         toggle.addEventListener('click', () => {
             annual = !annual;
-            toggle.querySelector('div').style.transform = annual ? 'translateX(28px)' : 'translateX(0)';
+            toggle.querySelector('div').style.transform = annual ? 'translateX(32px)' : 'translateX(0)';
             toggle.classList.toggle('bg-emerald-500', annual);
             
             priceVals.forEach(v => {
@@ -536,7 +571,7 @@
             });
         });
 
-        // Sticky Nav Shadow
+        // Sticky Nav Shadow & Scroll Polish
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
@@ -575,7 +610,7 @@
             }
         };
         window.addEventListener('scroll', reveal);
-        reveal(); // Initial check
+        reveal();
     </script>
 
 </body>
