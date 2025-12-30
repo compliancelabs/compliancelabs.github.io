@@ -37,6 +37,10 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .shield-icon-path {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
         .nav-link {
             position: relative;
             transition: color 0.3s;
@@ -130,7 +134,7 @@
             <a href="#capital" class="mobile-nav-link">Capital</a>
             <a href="#pricing" class="mobile-nav-link">Pricing</a>
             <a href="resources.html" class="mobile-nav-link text-emerald-400">Resources</a>
-            <a href="#faq" class="mobile-nav-link">Intelligence</a>
+            <a href="#intelligence" class="mobile-nav-link">Intelligence Hub</a>
         </nav>
         <div class="border-t border-white/10 pt-8 text-center">
             <a href="#compliance-check" class="block w-full py-5 bg-emerald-500 text-slate-900 rounded-full text-center font-bold uppercase tracking-widest text-xs">Request Strategy Audit</a>
@@ -164,10 +168,10 @@
             <nav class="hidden md:flex items-center space-x-8 text-[10px] font-black uppercase tracking-widest text-slate-500">
                 <a href="#services" class="nav-link hover:text-slate-900">Services</a>
                 <a href="about-us.html" class="nav-link hover:text-slate-900">About Us</a>
-                <a href="#capital" class="nav-link hover:text-slate-900">Capital</a>
+                <a href="#capital" class="nav-link hover:text-slate-900 text-emerald-600">Institutional Capital</a>
                 <a href="#pricing" class="nav-link hover:text-slate-900">Pricing</a>
                 <a href="resources.html" class="nav-link hover:text-emerald-600">Resources</a>
-                <a href="#faq" class="nav-link hover:text-slate-900">Intelligence</a>
+                <a href="#intelligence" class="nav-link hover:text-slate-900">Intelligence</a>
                 <a href="#compliance-check" class="bg-slate-900 text-white px-6 py-3 rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-slate-200 ml-4">
                     Free Risk Audit
                 </a>
@@ -183,14 +187,14 @@
             <span>Verified over 120 UK Contractors</span>
             <span>£1.3M Debt Recovered</span>
             <span>Zero HMRC Fines for Clients</span>
-            <span>Institutional Asset Finance Panel</span>
+            <span>Direct Institutional Lender Panel</span>
             <span>CIS Compliance Verified</span>
             <span>Retention Recovery Specialists</span>
-            <!-- Duplicate loop -->
+            <!-- Loop -->
             <span>Verified over 120 UK Contractors</span>
             <span>£1.3M Debt Recovered</span>
             <span>Zero HMRC Fines for Clients</span>
-            <span>Institutional Asset Finance Panel</span>
+            <span>Direct Institutional Lender Panel</span>
             <span>CIS Compliance Verified</span>
             <span>Retention Recovery Specialists</span>
         </div>
@@ -202,7 +206,7 @@
         <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
             <div class="inline-flex items-center space-x-2 mb-8 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 reveal active">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-[10px] uppercase tracking-widest font-black text-emerald-800">The Institutional Standard v2.5</span>
+                <span class="text-[10px] uppercase tracking-widest font-black text-emerald-800">Operational Infrastructure v2.5</span>
             </div>
             <h2 class="serif-heading text-6xl md:text-8xl mb-10 leading-[1.05] text-slate-900 reveal active" style="transition-delay: 0.1s">
                 De-Risk Payroll. <br>
@@ -222,15 +226,15 @@
             
             <div class="flex flex-wrap justify-center gap-12 md:gap-24 border-t border-slate-100 pt-16 reveal active" style="transition-delay: 0.4s">
                 <div class="text-center group">
-                    <div class="text-4xl font-bold text-slate-900 tracking-tighter group-hover:text-emerald-500 transition-colors">£1.3M</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">£1.3M</div>
                     <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">Debt Recovered</div>
                 </div>
                 <div class="text-center group border-x border-slate-100 px-12 md:px-24">
-                    <div class="text-4xl font-bold text-slate-900 tracking-tighter group-hover:text-emerald-500 transition-colors">1,847</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">1,847</div>
                     <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">Subs Verified</div>
                 </div>
                 <div class="text-center group">
-                    <div class="text-4xl font-bold text-slate-900 tracking-tighter group-hover:text-emerald-500 transition-colors">0</div>
+                    <div class="text-4xl font-bold text-slate-900 tracking-tighter">0</div>
                     <div class="text-[10px] uppercase tracking-widest font-black text-slate-400 mt-2">HMRC Fines</div>
                 </div>
             </div>
@@ -242,7 +246,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-24 reveal">
                 <h2 class="serif-heading text-4xl md:text-6xl mb-8 text-slate-900 uppercase tracking-tight">The Framework of Scale</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-light">Replacing administrative volatility with high-performance proprietary mechanisms.</p>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg md:text-xl font-light">Eliminating administrative volatility through standardized proprietary mechanisms.</p>
             </div>
             
             <div class="grid lg:grid-cols-3 gap-8">
@@ -252,8 +256,11 @@
                         <i class="fas fa-shield-halved text-emerald-400 text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">CIS Audit Defense</h3>
-                    <p class="text-slate-500 mb-10 leading-relaxed text-sm">
-                        Eliminating the existential threat of HMRC reclassification. We install the <strong>Status Defense Protocol</strong> to ensure every sub-contractor is audit-proof.
+                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
+                        "Removing the existential threat of reclassification."
+                    </p>
+                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
+                        We install the <strong>Status Defense Protocol</strong>, using the Payment Firewall™ to verify sub-contractors in real-time and automate monthly filings to ensure zero late penalties.
                     </p>
                     <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
                         <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Payment Firewall™ API</li>
@@ -267,14 +274,17 @@
                     <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-xl">
                         <i class="fas fa-bolt-lightning text-white text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">7-Step Recovery™</h3>
-                    <p class="text-slate-500 mb-10 leading-relaxed text-sm">
-                        Moving beyond "friendly chasing." We deploy a systematic legal escalation using the Construction Act to force your invoices to the top of the payment pile.
+                    <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">Cash Flow Recovery</h3>
+                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
+                        "Converting paper profit into working capital."
+                    </p>
+                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
+                        We deploy the <strong>7-Step Recovery™</strong> sequence, leveraging the Construction Act 1996 and Statutory Interest to bypass administrative stalling on retentions and overdue invoices.
                     </p>
                     <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> 30-Day Retention Recovery Hack</li>
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> 30-Day Retention Hack</li>
                         <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Statutory Interest Demands</li>
-                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Notice of Sum Due Protocols</li>
+                        <li class="flex items-center"><i class="fas fa-check text-slate-900 mr-4"></i> Notice of Sum Due Triggers</li>
                     </ul>
                 </div>
 
@@ -284,30 +294,33 @@
                         <i class="fas fa-file-invoice-dollar text-emerald-400 text-3xl"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-6 text-slate-900 uppercase tracking-tight">VAT DRC Assurance</h3>
-                    <p class="text-slate-500 mb-10 leading-relaxed text-sm">
-                        Precision management of Domestic Reverse Charge (DRC) rules to prevent uncollected VAT liability and compliance failures across your supply chain.
+                    <p class="text-slate-600 mb-10 text-sm leading-relaxed font-medium italic">
+                        "Precision management of uncollected liability."
+                    </p>
+                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">
+                        Domestic Reverse Charge rules are complex and high-risk. We manage end-user validation and further-processing declarations to prevent HMRC clawbacks.
                     </p>
                     <ul class="space-y-5 text-[10px] font-black text-slate-500 uppercase tracking-widest">
                         <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> End-User Validation</li>
                         <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> DRC Declaration Store</li>
-                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> HMRC Clawback Defense</li>
+                        <li class="flex items-center"><i class="fas fa-check text-emerald-500 mr-4"></i> Clawback Risk Analysis</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- THE CAPITAL BRIDGE (CLEAN DATA SECTION) -->
+    <!-- THE CAPITAL BRIDGE -->
     <section id="capital" class="bg-institutional py-32 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10">
             <div class="reveal">
                 <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8">
-                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">Institutional Capital Bridge</span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">Institutional Capital Placement</span>
                 </div>
                 <h2 class="serif-heading text-4xl md:text-7xl mb-8 italic text-emerald-400 leading-[1.1]">Clean Data is <br>Growth Capital.</h2>
                 <p class="text-slate-400 text-xl font-light leading-relaxed mb-12 max-w-lg">
-                    Traditional lenders reject construction firms because of "Dirty Data." By running Compliance Labs, you create a pre-vetted, institutional-grade data room that makes your firm bankable.
+                    Traditional lenders reject construction firms because of "Dirty Data." Our institutional-grade data room de-risks your firm, unlocking direct access to our specialist lender panel.
                 </p>
                 
                 <div class="space-y-10">
@@ -440,8 +453,8 @@
         </div>
     </section>
 
-    <!-- STRATEGIC INTELLIGENCE CENTER (Enhanced Hub) -->
-    <section id="faq" class="py-32 bg-slate-50 border-t border-slate-100">
+    <!-- STRATEGIC INTELLIGENCE CENTER (BRIEFING HUB) -->
+    <section id="intelligence" class="py-32 bg-slate-50 border-t border-slate-100">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid lg:grid-cols-12 gap-20">
                 <!-- Sidebar Briefing -->
@@ -460,36 +473,36 @@
 
                 <!-- Strategic Briefings Grid -->
                 <div class="lg:col-span-8 space-y-6">
-                    <div class="p-10 bg-white border border-slate-200 rounded-[2.5rem] shadow-lg reveal">
+                    <div class="p-10 bg-white border border-slate-200 rounded-[2.5rem] shadow-lg reveal group hover:border-emerald-500 transition-all duration-500">
                         <div class="flex items-center justify-between mb-8">
-                            <span class="text-[9px] font-black uppercase tracking-[0.3em] bg-emerald-100 text-emerald-700 px-3 py-1 rounded">Briefing 01</span>
-                            <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Protocol: Firewall™</span>
+                            <span class="text-[9px] font-black uppercase tracking-[0.3em] bg-emerald-100 text-emerald-700 px-3 py-1 rounded">Briefing 01 | Ref: CIS-205</span>
+                            <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Security: Firewall™</span>
                         </div>
                         <h3 class="text-xl font-bold mb-4 uppercase tracking-tight text-slate-900">The Payment Firewall™ Integration</h3>
                         <p class="text-sm text-slate-500 leading-relaxed font-medium">
-                            How we hard-code compliance into your payroll. By linking accounts payable to live HMRC verification APIs, we block unverified transactions at the point of origin, making human-error fines mathematically impossible.
+                            Our proprietary gateway links your accounts payable directly to live HMRC verification APIs. If a sub-contractor's status is invalid, the firewall blocks the transaction at the origin, making human-error fines mathematically impossible.
                         </p>
                     </div>
 
-                    <div class="p-10 bg-white border border-slate-200 rounded-[2.5rem] shadow-lg reveal">
+                    <div class="p-10 bg-white border border-slate-200 rounded-[2.5rem] shadow-lg reveal group hover:border-emerald-500 transition-all duration-500">
                         <div class="flex items-center justify-between mb-8">
-                            <span class="text-[9px] font-black uppercase tracking-[0.3em] bg-slate-100 text-slate-600 px-3 py-1 rounded">Briefing 02</span>
-                            <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Intelligence: Capital</span>
+                            <span class="text-[9px] font-black uppercase tracking-[0.3em] bg-slate-100 text-slate-600 px-3 py-1 rounded">Briefing 02 | Ref: CAP-402</span>
+                            <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Intelligence: Capital Flow</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tight text-slate-900">The Pre-Vetted Capital Exit</h3>
+                        <h3 class="text-xl font-bold mb-4 uppercase tracking-tight text-slate-900">The Institutional Capital Bridge</h3>
                         <p class="text-sm text-slate-500 leading-relaxed font-medium">
-                            Why "Clean Data" dictates borrowing power. Standard lenders penalize construction for tax uncertainty. Compliance Labs provides an institutional data room that drastically lowers your risk profile for Asset and Invoice finance.
+                            Why "Clean Data" dictates borrowing power. Standard lenders penalize construction for tax uncertainty. Compliance Labs provides an institutional data room that drastically lowers your risk profile for specialist Asset and Invoice finance.
                         </p>
                     </div>
 
-                    <div class="p-10 bg-white border border-slate-200 rounded-[2.5rem] shadow-lg reveal">
+                    <div class="p-10 bg-white border border-slate-200 rounded-[2.5rem] shadow-lg reveal group hover:border-emerald-500 transition-all duration-500">
                         <div class="flex items-center justify-between mb-8">
-                            <span class="text-[9px] font-black uppercase tracking-[0.3em] bg-emerald-100 text-emerald-700 px-3 py-1 rounded">Briefing 03</span>
-                            <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Law: Enforcement</span>
+                            <span class="text-[9px] font-black uppercase tracking-[0.3em] bg-emerald-100 text-emerald-700 px-3 py-1 rounded">Briefing 03 | Ref: LAW-906</span>
+                            <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Legislation: Enforcement</span>
                         </div>
                         <h3 class="text-xl font-bold mb-4 uppercase tracking-tight text-slate-900">The 30-Day Retention Recovery Protocol</h3>
                         <p class="text-sm text-slate-500 leading-relaxed font-medium">
-                            Leveraging the Construction Act 1996. We automate the issuance of 'Notices of Sum Due' the moment DLP expires, forcing debtors into strict 30-day payment timelines and prioritizing your cash flow.
+                            Leveraging the Construction Act 1996. We automate the issuance of 'Notices of Sum Due' the moment DLP expires, forcing debtors into strict 30-day payment timelines and prioritizing your cash flow over their administration.
                         </p>
                     </div>
                 </div>
