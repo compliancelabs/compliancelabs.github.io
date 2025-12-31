@@ -15,16 +15,15 @@
             --emerald: #10b981;
             --charcoal: #0f172a;
             --navy: #1e293b;
-            --canvas: #f8fafc;
+            --canvas: #0b0f1a;
         }
-        body { font-family: 'Urbanist', sans-serif; background-color: var(--canvas); color: var(--charcoal); }
+        body { font-family: 'Urbanist', sans-serif; background-color: var(--canvas); color: #cbd5e1; overflow-x: hidden; }
         .serif-heading { font-family: 'Playfair Display', serif; }
 
-        /* --- SIDEBAR --- */
+        /* --- TERMINAL SIDEBAR --- */
         .sidebar {
-            width: 280px; 
-            background-color: var(--charcoal); 
-            color: #94a3b8; 
+            width: 300px; 
+            background-color: #0f172a; 
             display: flex; 
             flex-direction: column; 
             padding: 2rem; 
@@ -32,115 +31,118 @@
             height: 100vh; 
             left: 0; 
             top: 0; 
-            border-right: 1px solid rgba(255,255,255,0.05); 
+            border-right: 1px solid rgba(16, 185, 129, 0.1); 
             z-index: 100;
         }
 
         .nav-item { 
-            padding: 0.9rem 1.2rem; 
+            padding: 1rem 1.2rem; 
             margin-bottom: 0.5rem; 
-            border-radius: 12px; 
+            border-radius: 16px; 
             cursor: pointer; 
-            color: #94a3b8; 
+            color: #64748b; 
             text-decoration: none; 
             display: flex; 
             align-items: center; 
             gap: 14px; 
             transition: 0.3s; 
-            font-weight: 600; 
-            font-size: 0.85rem; 
+            font-weight: 700; 
+            font-size: 0.75rem; 
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
         }
-        .nav-item:hover, .nav-item.active { background: rgba(16, 185, 129, 0.1); color: var(--emerald); }
+        .nav-item:hover, .nav-item.active { background: rgba(16, 185, 129, 0.1); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.2); }
         
-        /* --- MAIN CONTENT --- */
-        .main-stage { margin-left: 280px; flex: 1; padding: 4rem; position: relative; }
+        /* --- MAIN TERMINAL STAGE --- */
+        .main-stage { margin-left: 300px; flex: 1; padding: 4rem; position: relative; background: radial-gradient(circle at top right, #111827, #0b0f1a); }
 
-        .diagonal-accent {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40%;
-            height: 100%;
-            background: #f1f5f9;
-            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
-            z-index: -1;
-        }
-
-        /* --- TOOL CARDS --- */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(15, 23, 42, 0.05);
-            border-radius: 24px;
+        /* --- DATA CARDS --- */
+        .terminal-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
             padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
             height: 100%;
         }
-        .glass-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.1);
+        .terminal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+            opacity: 0.3;
+        }
+        .terminal-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
         }
 
-        .category-header {
-            font-size: 0.7rem;
+        .category-tag {
+            font-size: 9px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.4em;
             color: var(--emerald);
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            display: block;
+            margin: 3rem 0 2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
             width: 100%;
         }
+        .category-tag::after { content: ''; flex: 1; height: 1px; background: rgba(16, 185, 129, 0.2); }
 
         /* --- INPUTS --- */
-        label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; margin-bottom: 0.5rem; display: block; }
+        label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-bottom: 0.6rem; display: block; }
         input, select { 
             width: 100%; 
             padding: 0.8rem 1rem; 
-            background: #f8fafc; 
-            border: 1px solid #e2e8f0; 
+            background: #0f172a; 
+            border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 12px; 
             font-size: 0.9rem; 
+            color: #fff;
             font-weight: 600;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
-        input:focus { outline: none; border-color: var(--emerald); background: #fff; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.05); }
+        input:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
 
-        .run-btn {
+        .execute-btn {
             width: 100%;
             padding: 1rem;
-            background: var(--charcoal);
-            color: #fff;
+            background: #fff;
+            color: #0f172a;
             border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.75rem;
+            font-weight: 900;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            transition: all 0.3s;
+            transition: all 0.4s;
             margin-top: 1.5rem;
         }
-        .run-btn:hover { background: var(--emerald); transform: scale(1.02); }
+        .execute-btn:hover { background: var(--emerald); color: #fff; transform: translateY(-2px); }
 
         /* --- RESULTS --- */
-        .result-panel {
+        .output-box {
             margin-top: 1.5rem;
             padding: 1.5rem;
-            background: #f1f5f9;
+            background: #0b0f1a;
             border-radius: 16px;
             display: none;
-            animation: slideUp 0.4s ease;
+            border: 1px dashed rgba(16, 185, 129, 0.3);
+            animation: pulseIn 0.5s ease;
         }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseIn { from { opacity: 0; scale: 0.98; } to { opacity: 1; scale: 1; } }
 
-        .res-val { font-size: 1.8rem; font-weight: 800; color: var(--charcoal); display: block; letter-spacing: -0.03em; }
+        .res-big { font-size: 2rem; font-weight: 900; color: #fff; display: block; letter-spacing: -0.04em; }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
             .sidebar { display: none; }
             .main-stage { margin-left: 0; padding: 2rem; }
         }
@@ -148,247 +150,230 @@
 </head>
 <body class="flex">
 
-    <!-- SIDEBAR -->
+    <!-- TERMINAL SIDEBAR -->
     <div class="sidebar">
-        <a href="index.html" class="flex items-center space-x-3 mb-12 group">
-            <svg viewBox="0 0 100 120" class="h-10 w-auto transition-transform group-hover:scale-105">
+        <a href="index.html" class="flex items-center space-x-3 mb-16 group">
+            <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform group-hover:rotate-12">
+                <!-- Our Official Shield Logo -->
                 <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#10b981"/>
-                <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#0f172a" stroke-width="3" opacity="0.8"/>
-                <circle cx="50" cy="25" r="5" fill="#ffffff"/>
-                <circle cx="50" cy="95" r="5" fill="#ffffff"/>
+                <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#0f172a" stroke-width="4"/>
             </svg>
             <div class="leading-none">
-                <span class="text-white font-black text-sm uppercase tracking-tighter block">Compliance Labs</span>
-                <span class="text-emerald-500 font-bold text-[9px] uppercase tracking-[0.3em]">& Capital</span>
+                <span class="text-white font-black text-lg uppercase tracking-tighter block text-gradient">CL & Capital</span>
+                <span class="text-slate-500 font-bold text-[9px] uppercase tracking-[0.4em]">Intelligence</span>
             </div>
         </a>
 
-        <nav class="space-y-2">
-            <a href="#" class="nav-item active"><i class="fas fa-terminal"></i> Terminal</a>
-            <a href="index.html" class="nav-item"><i class="fas fa-house"></i> Overview</a>
-            <a href="index.html#pricing" class="nav-item"><i class="fas fa-shield-check"></i> Assurance</a>
+        <nav class="space-y-3">
+            <a href="#" class="nav-item active"><i class="fas fa-microchip"></i> System Tools</a>
+            <a href="index.html" class="nav-item"><i class="fas fa-arrow-left"></i> Exit Hub</a>
+            <a href="about-us.html" class="nav-item"><i class="fas fa-user-shield"></i> The Firm</a>
         </nav>
 
-        <div class="mt-auto p-6 bg-white/5 border border-white/10 rounded-[2rem] text-center">
-            <i class="fas fa-vault text-emerald-500 text-2xl mb-4"></i>
-            <p class="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-4 leading-relaxed">Direct Institutional Capital Access</p>
-            <a href="index.html#compliance-check" class="block w-full py-3 bg-emerald-500 text-slate-900 rounded-full font-black text-[9px] uppercase tracking-widest hover:bg-white transition-all">Request Deal Room</a>
+        <div class="mt-auto p-8 bg-emerald-500/5 border border-emerald-500/20 rounded-[2.5rem] text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-24 h-24 bg-emerald-500/10 blur-3xl rounded-full"></div>
+            <i class="fas fa-server text-emerald-500 text-3xl mb-6"></i>
+            <p class="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-6 leading-relaxed">Encrypted Institutional Data Link</p>
+            <a href="index.html#compliance-check" class="block w-full py-4 bg-emerald-500 text-slate-900 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-lg shadow-emerald-500/20">Open Deal Room</a>
         </div>
     </div>
 
-    <!-- MAIN STAGE -->
+    <!-- MAIN TERMINAL STAGE -->
     <div class="main-stage">
-        <div class="diagonal-accent"></div>
-
-        <header class="max-w-6xl mx-auto mb-16 relative">
-            <div class="inline-flex items-center space-x-2 mb-4 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-[9px] uppercase tracking-[0.2em] font-black text-emerald-700">Live Intelligence Terminal v2.5</span>
+        
+        <header class="max-w-6xl mx-auto mb-20">
+            <div class="inline-flex items-center space-x-3 mb-6 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="text-[10px] uppercase tracking-[0.3em] font-black text-emerald-400">System Ready: Global Construction Data-Set v2.9</span>
             </div>
-            <h1 class="serif-heading text-5xl md:text-6xl text-slate-900 leading-tight">Financial Control <br><span class="italic text-emerald-600">& Intelligence.</span></h1>
-            <p class="text-slate-500 text-lg font-light mt-4 max-w-2xl">Proprietary operational tools for risk mitigation, automated compliance, and institutional capital placement.</p>
+            <h1 class="serif-heading text-6xl md:text-8xl text-white leading-none">Operational <br><span class="italic text-emerald-500 font-bold">Intelligence.</span></h1>
+            <p class="text-slate-400 text-xl font-light mt-8 max-w-2xl leading-relaxed">Advanced diagnostic engines for UK construction enterprises. Calculate risk, project liability, and unlock institutional capital exits.</p>
         </header>
 
-        <!-- PILLAR 1: CAPITAL PLACEMENT -->
         <div class="max-w-6xl mx-auto">
-            <span class="category-header">Pillar 01: Capital Placement & Cash Flow</span>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            
+            <!-- CLUSTER 01: CAPITAL OPTIMIZATION -->
+            <span class="category-tag">Diagnostic Cluster 01: Capital Optimization</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
                 <!-- Invoice Finance -->
-                <div class="glass-card border-t-4 border-sky-500">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-money-bill-transfer text-sky-500"></i> Invoice Finance
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-bolt text-sky-400"></i> Liquidity Proj.
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Institutional Exit Cost</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Invoice Factoring Exit</p>
                     </div>
                     <div class="space-y-4">
-                        <div><label>Invoice Value (£)</label><input type="number" id="fac-val" placeholder="50000" onchange="saveData()"></div>
-                        <div><label>Projected Days Wait</label><input type="number" id="fac-days" placeholder="60" onchange="saveData()"></div>
+                        <div><label>Invoice Value (£)</label><input type="number" id="fac-val" placeholder="100000" onchange="saveData()"></div>
+                        <div><label>Days Wait</label><input type="number" id="fac-days" placeholder="60" onchange="saveData()"></div>
                     </div>
-                    <div class="flex-grow"></div>
-                    <button class="run-btn" onclick="calcFactoring()">Calculate Liquidity</button>
-                    <div class="result-panel" id="res-fac">
-                        <span class="text-[10px] font-black uppercase text-slate-400">Total Cost to Unlock</span>
-                        <span class="res-val text-sky-600" id="val-fac-cost">£0.00</span>
-                        <div class="mt-4 p-3 bg-white rounded-lg text-center">
-                            <span class="text-[9px] font-bold text-slate-400 uppercase">Available Today</span>
-                            <div class="text-lg font-black text-slate-900" id="val-fac-now">£0.00</div>
-                        </div>
+                    <button class="execute-btn" onclick="calcFactoring()">Run Projection</button>
+                    <div class="output-box" id="res-fac">
+                        <span class="text-[10px] font-black uppercase text-slate-500">Cost of Immediate Capital</span>
+                        <span class="res-big text-sky-400" id="val-fac-cost">£0.00</span>
+                        <div class="mt-4 text-[10px] font-bold text-white uppercase">Cash Today: <span id="val-fac-now">£0.00</span></div>
                     </div>
                 </div>
 
-                <!-- Statutory Interest -->
-                <div class="glass-card border-t-4 border-emerald-500">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-percent text-emerald-500"></i> Late Interest
+                <!-- Late Interest Claim -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-percent text-emerald-400"></i> Recovery Claim
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">LPCDEA 1998 Recovery</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Statutory Interest (8%)</p>
                     </div>
                     <div class="space-y-4">
-                        <div><label>Debt Principal (£)</label><input type="number" id="int-amount" placeholder="10000" onchange="saveData()"></div>
+                        <div><label>Principal Amount (£)</label><input type="number" id="int-amount" placeholder="10000" onchange="saveData()"></div>
                         <div><label>Original Due Date</label><input type="date" id="int-date" onchange="saveData()"></div>
                     </div>
-                    <div class="flex-grow"></div>
-                    <button class="run-btn" onclick="calcInterest()">Calculate Recovery</button>
-                    <div class="result-panel" id="res-int">
-                        <span class="text-[10px] font-black uppercase text-slate-400">Claimable Interest + Comp</span>
-                        <span class="res-val text-emerald-600" id="val-int">£0.00</span>
-                        <button class="w-full mt-4 py-2 border border-slate-200 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-white" onclick="printInterestClaim()">Print Evidence</button>
+                    <button class="execute-btn" onclick="calcInterest()">Run Recovery Calc</button>
+                    <div class="output-box" id="res-int">
+                        <span class="text-[10px] font-black uppercase text-slate-500">Total Claimable</span>
+                        <span class="res-big text-emerald-400" id="val-int">£0.00</span>
                     </div>
                 </div>
 
-                <!-- Retention Eraser -->
-                <div class="glass-card border-t-4 border-slate-900">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-hourglass-half text-slate-900"></i> Retention Eraser
+                <!-- Director Yield -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-user-tie text-amber-400"></i> Director Yield
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Inflationary Degradation</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Dividend vs Salary</p>
                     </div>
                     <div class="space-y-4">
-                        <div><label>Retention Amount (£)</label><input type="number" id="ret-amt" placeholder="25000" onchange="saveData()"></div>
-                        <div><label>Projected Years Wait</label><input type="number" id="ret-year" value="2" onchange="saveData()"></div>
+                        <div><label>Annual Extraction (£)</label><input type="number" id="div-target" placeholder="80000" onchange="saveData()"></div>
+                        <div><label>Corp Tax Rate</label><select id="corp-tax"><option value="0.25">Main Rate (25%)</option><option value="0.19">Small Profit (19%)</option></select></div>
                     </div>
-                    <div class="flex-grow"></div>
-                    <button class="run-btn" onclick="calcRetention()">Calculate Erosion</button>
-                    <div class="result-panel" id="res-ret">
-                        <span class="text-[10px] font-black uppercase text-slate-400">Real Future Value</span>
-                        <span class="res-val" id="val-real">£0.00</span>
-                        <div class="mt-2 text-[10px] font-black text-rose-500 uppercase tracking-widest">Total Lost: <span id="val-loss">£0.00</span></div>
+                    <button class="execute-btn" onclick="calcDirector()">Run Optimization</button>
+                    <div class="output-box" id="res-div">
+                        <span class="text-[10px] font-black uppercase text-slate-500">Tax Liability</span>
+                        <span class="res-big text-amber-400" id="val-div-tax">£0.00</span>
                     </div>
                 </div>
 
             </div>
 
-            <!-- PILLAR 2: OPERATIONAL DAILY -->
-            <span class="category-header">Pillar 02: Operational Infrastructure</span>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            <!-- CLUSTER 02: OPERATIONAL INFRASTRUCTURE -->
+            <span class="category-tag">Diagnostic Cluster 02: Operational Daily</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                <!-- Pro Invoice -->
-                <div class="glass-card border-t-4 border-emerald-500">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-file-invoice-dollar text-emerald-500"></i> Pro CIS Invoice
+                <!-- Pro CIS Invoice -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-file-invoice-dollar text-emerald-400"></i> Pro Invoice
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Compliant PDF Generation</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">CIS & DRC Compliant</p>
                     </div>
                     <div class="space-y-4">
-                        <div><label>Project Name</label><input type="text" id="inv-from" placeholder="My Co" onchange="saveData()"></div>
                         <div class="grid grid-cols-2 gap-3">
                             <div><label>Labour (£)</label><input type="number" id="gen-lab" onchange="saveData()"></div>
                             <div><label>Materials (£)</label><input type="number" id="gen-mat" onchange="saveData()"></div>
                         </div>
-                        <div>
-                            <label>VAT Logic</label>
-                            <select id="gen-vat"><option value="drc">Reverse Charge</option><option value="std">Standard (20%)</option></select>
-                        </div>
+                        <div><label>VAT Mode</label><select id="gen-vat"><option value="drc">Reverse Charge</option><option value="std">Standard (20%)</option></select></div>
                     </div>
-                    <button class="run-btn" onclick="generateProInvoice()">Generate PDF</button>
+                    <button class="execute-btn" onclick="generateProInvoice()">Export PDF</button>
                 </div>
 
-                <!-- RAMS -->
-                <div class="glass-card border-t-4 border-amber-500">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-hard-hat text-amber-500"></i> RAMS Creator
+                <!-- RAMS Creator -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-hard-hat text-amber-500"></i> RAMS Builder
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Risk & Method Statement</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Method Statement</p>
                     </div>
                     <div class="space-y-4">
-                        <div><label>Activity Description</label><input type="text" id="rams-act" placeholder="Bricklaying" onchange="saveData()"></div>
-                        <div class="grid grid-cols-2 gap-2 text-[10px] font-black uppercase text-slate-500">
-                            <label class="flex items-center"><input type="checkbox" id="haz-height" class="mr-2"> Height</label>
-                            <label class="flex items-center"><input type="checkbox" id="haz-dust" class="mr-2"> Dust</label>
-                            <label class="flex items-center"><input type="checkbox" id="haz-slip" class="mr-2"> Slips</label>
-                            <label class="flex items-center"><input type="checkbox" id="haz-elec" class="mr-2"> Elec</label>
+                        <div><label>Activity</label><input type="text" id="rams-act" placeholder="Bricklaying" onchange="saveData()"></div>
+                        <div class="grid grid-cols-2 gap-2">
+                             <label class="flex items-center text-[8px]"><input type="checkbox" id="haz-height" class="mr-2"> Height</label>
+                             <label class="flex items-center text-[8px]"><input type="checkbox" id="haz-dust" class="mr-2"> Dust</label>
                         </div>
                     </div>
-                    <button class="run-btn" style="background:#d97706;" onclick="generateRAMS()">Export Safety Doc</button>
+                    <button class="execute-btn" onclick="generateRAMS()">Export Safety Doc</button>
                 </div>
 
-                <!-- Reverse Calc -->
-                <div class="glass-card border-t-4 border-rose-500">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-calculator text-rose-500"></i> Reverse Take-Home
+                <!-- DRC Validator -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-file-contract text-sky-400"></i> DRC Validator
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Deduction Engineering</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Reverse Charge Logic</p>
                     </div>
                     <div class="space-y-4">
-                        <div><label>Desired Net Amount (£)</label><input type="number" id="rev-net" placeholder="1000" onchange="saveData()"></div>
-                        <div>
-                            <label>CIS Status</label>
-                            <select id="rev-rate"><option value="0.2">Verified (20%)</option><option value="0.3">Unverified (30%)</option></select>
-                        </div>
+                        <div><label>Are you a sub-contractor?</label><select id="drc-sub"><option value="yes">Yes</option><option value="no">No</option></select></div>
+                        <div><label>Customer is End User?</label><select id="drc-end"><option value="no">No (Contractor)</option><option value="yes">Yes (End Client)</option></select></div>
                     </div>
-                    <button class="run-btn" style="background:#be185d;" onclick="calcReverse()">Calculate Gross</button>
-                    <div class="result-panel" id="res-rev">
-                        <span class="text-[10px] font-black uppercase text-slate-400">Invoice Labour At</span>
-                        <span class="res-val text-rose-600" id="val-rev-inv">£0.00</span>
+                    <button class="execute-btn" onclick="checkDRC()">Run Logic Test</button>
+                    <div class="output-box" id="res-drc">
+                        <span class="text-[10px] font-black uppercase text-slate-500">Verdict</span>
+                        <span class="res-big text-sky-400" id="val-drc-text">---</span>
                     </div>
                 </div>
 
             </div>
 
-            <!-- PILLAR 3: RISK INTELLIGENCE -->
-            <span class="category-header">Pillar 03: Risk & Compliance Intelligence</span>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-32">
+            <!-- CLUSTER 03: RISK INTELLIGENCE -->
+            <span class="category-tag">Diagnostic Cluster 03: Risk Intelligence</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-44">
 
-                <!-- Credit Limit -->
-                <div class="glass-card border-t-4 border-slate-900">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-scale-balanced text-slate-900"></i> Safe Credit Limit
+                <!-- Safe Credit Limit -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-scale-balanced text-rose-400"></i> Credit Stress
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Solvency Stress Test</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Exposure vs Turnover</p>
                     </div>
                     <div class="space-y-4">
                         <div><label>Annual Turnover (£)</label><input type="number" id="risk-turnover" placeholder="1000000" onchange="saveData()"></div>
-                        <div><label>Proposed Contract (£)</label><input type="number" id="risk-contract" placeholder="200000" onchange="saveData()"></div>
+                        <div><label>Contract Value (£)</label><input type="number" id="risk-contract" placeholder="200000" onchange="saveData()"></div>
                     </div>
-                    <button class="run-btn" onclick="calcCreditLimit()">Analyze Risk</button>
-                    <div class="result-panel" id="res-risk">
-                        <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden mb-4">
-                            <div id="risk-bar" class="h-full bg-emerald-500 transition-all duration-1000" style="width:0%"></div>
-                        </div>
-                        <span class="res-val text-sm uppercase tracking-widest" id="val-risk-text">---</span>
+                    <button class="execute-btn" onclick="calcCreditLimit()">Analyze Exposure</button>
+                    <div class="output-box" id="res-risk">
+                        <div class="w-full h-1.5 bg-white/10 rounded-full mb-4 overflow-hidden"><div id="risk-bar" class="h-full bg-emerald-500 transition-all duration-1000" style="width:0%"></div></div>
+                        <span class="res-big text-sm uppercase tracking-widest" id="val-risk-text">---</span>
                     </div>
                 </div>
 
-                <!-- Deadlines -->
-                <div class="glass-card border-t-4 border-emerald-500">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-calendar-circle-exclamation text-emerald-500"></i> Pay Less Tracker
+                <!-- CIS Status Probe -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-user-secret text-indigo-400"></i> Status Probe
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">JCT/Scheme Deadlines</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">IR35 Liability Test</p>
                     </div>
                     <div class="space-y-4">
-                        <div><label>Application/Val Date</label><input type="date" id="dl-date" onchange="saveData()"></div>
-                        <div><label>Contract Framework</label><select id="dl-type"><option value="scheme">The Scheme</option><option value="jct">JCT Standard</option></select></div>
+                        <div><label>Right of Substitution?</label><select id="cis-sub"><option value="yes">Yes (Safe)</option><option value="no">No (Risk)</option></select></div>
+                        <div><label>Control/Supervision?</label><select id="cis-moo"><option value="no">Limited (Safe)</option><option value="yes">Direct (Risk)</option></select></div>
                     </div>
-                    <button class="run-btn" onclick="calcDeadlines()">Generate Timeline</button>
-                    <div class="result-panel" id="res-dl">
-                        <span class="text-[10px] font-black uppercase text-rose-500">Pay Less Notice Deadline</span>
-                        <span class="res-val text-rose-600" id="val-pln">---</span>
+                    <button class="execute-btn" onclick="checkCIS()">Probe Status</button>
+                    <div class="output-box" id="res-cis-status">
+                        <span class="text-[10px] font-black uppercase text-slate-500">Risk Profile</span>
+                        <span class="res-big text-indigo-400" id="val-cis-score">---</span>
                     </div>
                 </div>
 
-                <!-- Dispute Cost -->
-                <div class="glass-card border-t-4 border-slate-400">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight flex items-center gap-3">
-                            <i class="fas fa-gavel text-slate-400"></i> Adjudication Burn
+                <!-- Adjudication Burn -->
+                <div class="terminal-card">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-gavel text-slate-400"></i> Dispute Burn
                         </h3>
-                        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Unrecoverable Fee Forecast</p>
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Unrecoverable Fee Map</p>
                     </div>
-                    <div><label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="50000" onchange="saveData()"></div>
-                    <button class="run-btn" style="background:#64748b;" onclick="calcRisk()">Forecast Burn</button>
-                    <div class="result-panel" id="res-adj">
-                        <span class="text-[10px] font-black uppercase text-slate-400">Estimated Sunk Fees</span>
-                        <span class="res-val" id="val-sunk">£0.00</span>
+                    <div class="space-y-4">
+                        <div><label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="50000" onchange="saveData()"></div>
+                    </div>
+                    <button class="execute-btn" onclick="calcRisk()">Project Sunk Costs</button>
+                    <div class="output-box" id="res-adj">
+                        <span class="text-[10px] font-black uppercase text-slate-500">Est. Sunk Fees</span>
+                        <span class="res-big text-slate-300" id="val-sunk">£0.00</span>
                     </div>
                 </div>
 
@@ -397,17 +382,16 @@
     </div>
 
     <script>
-        // --- LOGIC ENGINE ---
-
+        // --- DATA PERSISTENCE ENGINE ---
         function saveData() {
             const inputs = document.querySelectorAll('input, select');
             const data = {};
             inputs.forEach(i => { if(i.id) data[i.id] = i.value; });
-            localStorage.setItem('cl_terminal_data', JSON.stringify(data));
+            localStorage.setItem('cl_terminal_master_v3', JSON.stringify(data));
         }
 
         function loadData() {
-            const data = JSON.parse(localStorage.getItem('cl_terminal_data'));
+            const data = JSON.parse(localStorage.getItem('cl_terminal_master_v3'));
             if(data) {
                 for (const [key, value] of Object.entries(data)) {
                     const el = document.getElementById(key);
@@ -417,109 +401,75 @@
         }
         window.onload = loadData;
 
-        // 1. LIQUIDITY CALC (Invoice Finance)
+        // --- CALCULATOR LOGIC ---
+
         function calcFactoring() {
             const val = parseFloat(document.getElementById('fac-val').value) || 0;
             const days = parseFloat(document.getElementById('fac-days').value) || 0;
-            const serviceFee = val * 0.022; 
-            const advance = val * 0.85;
-            const interest = (advance * 0.095 * days) / 365;
-            const totalCost = serviceFee + interest;
-            document.getElementById('val-fac-cost').innerText = "£" + totalCost.toLocaleString('en-GB', {minimumFractionDigits: 2});
-            document.getElementById('val-fac-now').innerText = "£" + (advance - serviceFee).toLocaleString('en-GB');
+            const cost = (val * 0.02) + (val * 0.9 * 0.1 * days / 365);
+            document.getElementById('val-fac-cost').innerText = "£" + cost.toLocaleString('en-GB', {minimumFractionDigits: 2});
+            document.getElementById('val-fac-now').innerText = "£" + (val * 0.88).toLocaleString('en-GB');
             document.getElementById('res-fac').style.display = 'block';
         }
 
-        // 2. INTEREST RECOVERY
         function calcInterest() {
             const amt = parseFloat(document.getElementById('int-amount').value) || 0;
             const dStr = document.getElementById('int-date').value;
             if(!dStr) return;
             const days = Math.floor((new Date() - new Date(dStr)) / (86400000));
-            if(days < 1) return;
             const interest = (amt * 0.1275 * days / 365);
             const comp = (amt < 1000 ? 40 : (amt < 10000 ? 70 : 100));
-            window.claimData = { amt, days, interest, comp, total: interest + comp };
             document.getElementById('val-int').innerText = "£" + (interest + comp).toLocaleString('en-GB', {minimumFractionDigits: 2});
             document.getElementById('res-int').style.display = 'block';
         }
 
-        function printInterestClaim() {
-            const d = window.claimData;
-            const win = window.open('','_blank');
-            win.document.write(`<html><body style="font-family:Arial; padding:50px;">
-                <div style="border-bottom: 2px solid #10b981; padding-bottom: 20px; margin-bottom: 30px;">
-                    <h1 style="margin:0;">LATE PAYMENT CLAIM</h1>
-                    <p style="color:#666;">Generated by Compliance Labs & Capital Terminal</p>
-                </div>
-                <p>Principal: <strong>£${d.amt.toFixed(2)}</strong></p>
-                <p>Days Late: <strong>${d.days}</strong></p>
-                <p>Statutory Interest (8.5% + Base): <strong>£${d.interest.toFixed(2)}</strong></p>
-                <p>Fixed Compensation: <strong>£${d.comp.toFixed(2)}</strong></p>
-                <hr>
-                <h2 style="color:#10b981;">TOTAL CLAIM: £${d.total.toFixed(2)}</h2>
-                <script>window.print();<\/script></body></html>`);
-            win.document.close();
+        function calcDirector() {
+            const target = parseFloat(document.getElementById('div-target').value) || 0;
+            const taxable = Math.max(0, target - 12570 - 500);
+            const tax = taxable * 0.0875;
+            document.getElementById('val-div-tax').innerText = "£" + tax.toLocaleString('en-GB', {minimumFractionDigits: 2});
+            document.getElementById('res-div').style.display = 'block';
         }
 
-        // 3. RETENTION EROSION
         function calcRetention() {
             const amt = parseFloat(document.getElementById('ret-amt').value) || 0;
-            const yrs = parseFloat(document.getElementById('ret-year').value) || 0;
-            const real = amt / Math.pow(1.05, yrs); // 5% inflation factor
+            const months = parseFloat(document.getElementById('ret-year').value) || 0;
+            const real = amt / Math.pow(1.004, months);
             document.getElementById('val-real').innerText = "£" + real.toLocaleString('en-GB', {maximumFractionDigits: 0});
             document.getElementById('val-loss').innerText = "£" + (amt - real).toLocaleString('en-GB', {maximumFractionDigits: 0});
             document.getElementById('res-ret').style.display = 'block';
         }
 
-        // 4. PRO INVOICE GEN
         function generateProInvoice() {
-            const from = document.getElementById('inv-from').value || "Project";
             const lab = parseFloat(document.getElementById('gen-lab').value) || 0;
             const mat = parseFloat(document.getElementById('gen-mat').value) || 0;
-            const vatMode = document.getElementById('gen-vat').value;
             const cis = lab * 0.20;
-            let vat = vatMode === 'std' ? (lab+mat)*0.20 : 0;
-            let note = vatMode === 'drc' ? "VAT ACT 1994 S55A APPLIES (DRC)" : "Standard 20%";
-            
             const win = window.open('','_blank');
             win.document.write(`<html><body style="font-family:sans-serif; padding:50px;">
-                <h1 style="color:#0f172a;">INVOICE</h1>
-                <p>Project Reference: ${from}</p><hr>
-                <table width="100%">
-                    <tr><td>Labour</td><td align="right">£${lab.toFixed(2)}</td></tr>
-                    <tr><td>Materials</td><td align="right">£${mat.toFixed(2)}</td></tr>
-                    <tr style="color:red;"><td>CIS Deduction (20%)</td><td align="right">-£${cis.toFixed(2)}</td></tr>
-                    <tr><td>VAT (${note})</td><td align="right">£${vat.toFixed(2)}</td></tr>
-                </table>
-                <h2 style="text-align:right; border-top:2px solid #000; padding-top:20px;">TOTAL DUE: £${(lab + mat + vat - cis).toFixed(2)}</h2>
-                <script>window.print();<\/script></body></html>`);
+                <h1>CIS INVOICE</h1><hr><table width="100%">
+                <tr><td>Labour</td><td align="right">£${lab.toFixed(2)}</td></tr>
+                <tr><td>Materials</td><td align="right">£${mat.toFixed(2)}</td></tr>
+                <tr style="color:red;"><td>CIS Deduction</td><td align="right">-£${cis.toFixed(2)}</td></tr>
+                </table><h2>Total Due: £${(lab + mat - cis).toFixed(2)}</h2><script>window.print();<\/script></body></html>`);
             win.document.close();
         }
 
-        // 5. RAMS GEN
         function generateRAMS() {
-            const act = document.getElementById('rams-act').value || "Work Activity";
+            const act = document.getElementById('rams-act').value || "Activity";
             const win = window.open('','_blank');
-            win.document.write(`<html><body style="font-family:sans-serif; padding:50px;">
-                <h1 style="background:#0f172a; color:#fff; padding:20px;">RAMS DOCUMENT</h1>
-                <h3>Activity: ${act}</h3>
-                <p>Date: ${new Date().toLocaleDateString()}</p><hr>
-                <h4>General Controls:</h4>
-                <ul><li>Area cordoned off</li><li>PPE: Boots, Hat, Hi-Vis</li><li>110v Tools only</li></ul>
-                <script>window.print();<\/script></body></html>`);
+            win.document.write(`<html><body style="font-family:sans-serif; padding:50px;"><h1>RAMS: ${act}</h1><p>Date: ${new Date().toLocaleDateString()}</p><hr><h3>Safety Protocol: Required PPE worn at all times. Area cleared of debris.</h3><script>window.print();<\/script></body></html>`);
             win.document.close();
         }
 
-        // 6. REVERSE CALC
-        function calcReverse() {
-            const net = parseFloat(document.getElementById('rev-net').value) || 0;
-            const rate = parseFloat(document.getElementById('rev-rate').value);
-            document.getElementById('val-rev-inv').innerText = "£" + (net / (1 - rate)).toLocaleString('en-GB', {minimumFractionDigits: 2});
-            document.getElementById('res-rev').style.display = 'block';
+        function checkDRC() {
+            const sub = document.getElementById('drc-sub').value;
+            const end = document.getElementById('drc-end').value;
+            const out = document.getElementById('val-drc-text');
+            if(sub === 'yes' && end === 'no') { out.innerText = "USE DRC (0%)"; out.style.color = "#10b981"; }
+            else { out.innerText = "USE STD (20%)"; out.style.color = "#f59e0b"; }
+            document.getElementById('res-drc').style.display = 'block';
         }
 
-        // 7. RISK STRESS TEST
         function calcCreditLimit() {
             const t = parseFloat(document.getElementById('risk-turnover').value) || 0;
             const c = parseFloat(document.getElementById('risk-contract').value) || 0;
@@ -529,23 +479,20 @@
             const label = document.getElementById('val-risk-text');
             bar.style.width = pct + "%";
             if(pct < 50) { label.innerText = "Investment Grade ✅"; label.style.color="#10b981"; bar.style.backgroundColor="#10b981"; }
-            else if(pct < 85) { label.innerText = "Elevated Exposure ⚠️"; label.style.color="#f59e0b"; bar.style.backgroundColor="#f59e0b"; }
-            else { label.innerText = "Critical Risk 🛑"; label.style.color="#ef4444"; bar.style.backgroundColor="#ef4444"; }
+            else if(pct < 85) { label.innerText = "Caution ⚠️"; label.style.color="#f59e0b"; bar.style.backgroundColor="#f59e0b"; }
+            else { label.innerText = "High Risk 🛑"; label.style.color="#ef4444"; bar.style.backgroundColor="#ef4444"; }
             document.getElementById('res-risk').style.display = 'block';
         }
 
-        // 8. DEADLINES
-        function calcDeadlines() {
-            const dStr = document.getElementById('dl-date').value;
-            if(!dStr) return;
-            const date = new Date(dStr);
-            const offset = document.getElementById('dl-type').value === 'jct' ? 16 : 17;
-            date.setDate(date.getDate() + offset);
-            document.getElementById('val-pln').innerText = date.toLocaleDateString('en-GB', {day: '2-digit', month: 'short', year: 'numeric'});
-            document.getElementById('res-dl').style.display = 'block';
+        function checkCIS() {
+            const sub = document.getElementById('cis-sub').value;
+            const moo = document.getElementById('cis-moo').value;
+            const out = document.getElementById('val-cis-score');
+            if(sub === 'yes' && moo === 'no') { out.innerText = "Low Exposure"; out.style.color = "#10b981"; }
+            else { out.innerText = "High Liability"; out.style.color = "#ef4444"; }
+            document.getElementById('res-cis-status').style.display = 'block';
         }
 
-        // 9. ADJUDICATION BURN
         function calcRisk() {
             const claim = parseFloat(document.getElementById('adj-claim').value) || 0;
             const sunk = 4500 + (claim * 0.12);
