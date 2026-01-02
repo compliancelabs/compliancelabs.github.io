@@ -17,7 +17,7 @@
 
     <style>
         :root {
-            --emerald: #059669; /* Darker, more corporate emerald */
+            --emerald: #059669; 
             --charcoal: #020617;
             --concrete: #f1f5f9;
         }
@@ -40,7 +40,7 @@
             z-index: -1;
         }
 
-        /* Nav Hover Effect - Underline Slide */
+        /* Nav Hover Effect */
         .nav-link { position: relative; font-weight: 600; letter-spacing: 0.05em; font-size: 11px; text-transform: uppercase; }
         .nav-link::after {
             content: '';
@@ -65,7 +65,7 @@
             text-transform: uppercase;
             letter-spacing: 0.2em;
             font-weight: 800;
-            border-radius: 0; /* Square edges = more corporate */
+            border-radius: 0; 
             transition: all 0.3s;
         }
         .btn-institutional:hover { background: var(--emerald); }
@@ -83,15 +83,39 @@
         }
         .btn-outline:hover { border-color: var(--charcoal); background: #fff; }
 
+        /* Scanning Animation for Terminal */
+        @keyframes scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        .scan-line {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.2), transparent);
+            animation: scan 3s infinite linear;
+            pointer-events: none;
+        }
+
+        /* Institutional Grain Texture */
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+        
+        /* Bar Graph Animation */
+        @keyframes grow {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+        .chart-bar { animation: grow 1.5s ease-out forwards; }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- NAVIGATION: FIXED, SOLID, AUTHORITATIVE -->
+    <!-- NAVIGATION -->
     <header class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-slate-100 z-[1000] transition-all duration-300">
         <div class="max-w-[1600px] mx-auto px-8 h-24 flex items-center justify-between">
             
-            <!-- LOGO BLOCK -->
             <a href="/" class="flex items-center gap-5 group">
                 <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform duration-500 group-hover:scale-105">
                     <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
@@ -109,7 +133,6 @@
                 </div>
             </a>
 
-            <!-- NAVIGATION LINKS -->
             <nav class="hidden lg:flex items-center gap-12 text-slate-600">
                 <a href="services.html" class="nav-link hover:text-slate-900">Services</a>
                 <a href="about-us.html" class="nav-link hover:text-slate-900">About Us</a>
@@ -117,19 +140,17 @@
                 <a href="resources.html" class="nav-link text-emerald-700">Terminal</a>
             </nav>
 
-            <!-- ACTION -->
             <div class="hidden lg:block">
                 <a href="#compliance-check" class="bg-slate-900 text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-emerald-700 transition-colors">
                     Request Audit
                 </a>
             </div>
 
-            <!-- MOBILE BURGER -->
             <button id="open-menu" class="lg:hidden text-slate-900"><i class="fas fa-bars text-xl"></i></button>
         </div>
     </header>
 
-    <!-- MOBILE MENU OVERLAY -->
+    <!-- MOBILE MENU -->
     <div id="mobile-menu" class="fixed inset-0 z-[1100] bg-slate-900 translate-x-full transition-transform duration-500 lg:hidden p-10 flex flex-col">
         <div class="flex justify-between items-center mb-16">
             <span class="text-white font-bold uppercase text-xs tracking-widest">Menu</span>
@@ -146,13 +167,13 @@
         </div>
     </div>
 
-    <!-- HERO SECTION: THE ARCHITECT'S DESK -->
+    <!-- HERO SECTION -->
     <section class="relative pt-40 pb-32 lg:pt-52 lg:pb-40 overflow-hidden">
         <div class="diagonal-hero"></div>
         <div class="max-w-[1600px] mx-auto px-8 relative z-10 grid lg:grid-cols-12 gap-16">
             <div class="lg:col-span-7">
                 <div class="inline-flex items-center gap-3 mb-10 border-b border-emerald-500/30 pb-2">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700">Financial Infrastructure v3.0</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700">Financial Infrastructure v3.1</span>
                 </div>
                 <h1 class="serif-heading text-6xl lg:text-8xl leading-[1.05] text-slate-900 mb-10">
                     Precision <br>
@@ -173,7 +194,7 @@
                 </div>
             </div>
             
-            <!-- HERO METRICS (Aligned Right) -->
+            <!-- HERO METRICS -->
             <div class="lg:col-span-5 flex flex-col justify-end pb-4">
                 <div class="grid grid-cols-2 gap-px bg-slate-200 border border-slate-200">
                     <div class="bg-white p-10">
@@ -196,7 +217,7 @@
         </div>
     </section>
 
-    <!-- OPERATIONAL THEATRES (Grid Layout) -->
+    <!-- OPERATIONAL THEATRES -->
     <section class="py-32 bg-white border-y border-slate-100">
         <div class="max-w-[1600px] mx-auto px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
@@ -210,7 +231,6 @@
             </div>
 
             <div class="grid lg:grid-cols-3 border-t border-slate-200">
-                <!-- Pillar 1 -->
                 <div class="group border-r border-slate-200 pt-12 pr-12 pb-12 hover:bg-slate-50 transition-colors duration-500 reveal">
                     <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6 block">01</span>
                     <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">CIS Firewall</h3>
@@ -222,7 +242,6 @@
                     </a>
                 </div>
 
-                <!-- Pillar 2 -->
                 <div class="group border-r border-slate-200 pt-12 px-12 pb-12 hover:bg-slate-50 transition-colors duration-500 reveal" style="transition-delay: 0.1s">
                     <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6 block">02</span>
                     <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">Debt Recovery</h3>
@@ -234,7 +253,6 @@
                     </a>
                 </div>
 
-                <!-- Pillar 3 -->
                 <div class="group pt-12 pl-12 pb-12 hover:bg-slate-50 transition-colors duration-500 reveal" style="transition-delay: 0.2s">
                     <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6 block">03</span>
                     <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors">Capital Bridge</h3>
@@ -268,24 +286,55 @@
                 </div>
             </div>
             
-            <!-- TERMINAL CALLOUT -->
-            <div class="bg-slate-900 text-white p-16 relative overflow-hidden reveal">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-                <div class="relative z-10">
-                    <i class="fas fa-terminal text-emerald-500 text-4xl mb-8"></i>
-                    <h3 class="serif-heading text-4xl mb-6">The Terminal.</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-10 max-w-md">
-                        Launch our proprietary diagnostic engine. Calculate your Adjudication Burn Rate, Credit Stress Limits, and Director Yield in real-time.
-                    </p>
-                    <a href="resources.html" class="inline-block border border-white/20 px-8 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all">
-                        Launch System
-                    </a>
+            <!-- TERMINAL CALLOUT (UPGRADED UI) -->
+            <div class="bg-slate-900 text-white p-12 relative overflow-hidden reveal bg-grain rounded-[2rem] border border-white/5">
+                <div class="scan-line"></div>
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-10">
+                        <div>
+                            <span class="text-[9px] uppercase tracking-[0.3em] font-bold text-emerald-500">Live Status</span>
+                            <h3 class="text-3xl font-bold mt-2">Terminal Access</h3>
+                        </div>
+                        <i class="fas fa-fingerprint text-white/20 text-4xl"></i>
+                    </div>
+
+                    <!-- FAKE DATA VISUALIZATION -->
+                    <div class="grid grid-cols-2 gap-6 mb-12">
+                        <div class="bg-white/5 p-4 rounded-lg border border-white/10">
+                            <span class="text-[9px] text-slate-400 uppercase tracking-wider block mb-2">Compliance Score</span>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full mb-1"><div class="h-full bg-emerald-500 w-[92%] rounded-full chart-bar"></div></div>
+                            <span class="text-lg font-mono font-bold text-emerald-400">92/100</span>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-lg border border-white/10">
+                            <span class="text-[9px] text-slate-400 uppercase tracking-wider block mb-2">Capital Liquidity</span>
+                            <div class="flex items-end gap-1 h-6">
+                                <div class="w-1 bg-emerald-500/30 h-[40%] rounded-t-sm"></div>
+                                <div class="w-1 bg-emerald-500/50 h-[60%] rounded-t-sm"></div>
+                                <div class="w-1 bg-emerald-500/80 h-[85%] rounded-t-sm"></div>
+                                <div class="w-1 bg-emerald-500 h-[100%] rounded-t-sm chart-bar"></div>
+                            </div>
+                            <span class="text-lg font-mono font-bold text-white">£4.2M</span>
+                        </div>
+                        <div class="col-span-2 bg-white/5 p-4 rounded-lg border border-white/10 flex justify-between items-center">
+                            <span class="text-[9px] text-slate-400 uppercase tracking-wider">HMRC API Gateway</span>
+                            <span class="text-[9px] font-bold text-emerald-400 uppercase tracking-widest animate-pulse">● Connected</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto">
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-md">
+                            Launch our proprietary diagnostic engine. Calculate your Adjudication Burn Rate and Director Yield in real-time.
+                        </p>
+                        <a href="resources.html" class="inline-block border border-white/20 px-8 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all">
+                            Launch Intelligence Terminal
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- THE STRUCTURAL CHOICE (Comparison Matrix) -->
+    <!-- THE STRUCTURAL CHOICE -->
     <section class="py-32 bg-slate-50 border-t border-slate-200">
         <div class="max-w-[1200px] mx-auto px-8">
             <div class="text-center mb-20 reveal">
@@ -295,41 +344,42 @@
 
             <div class="grid grid-cols-12 border border-slate-200 bg-white shadow-xl reveal">
                 <!-- Headers -->
-                <div class="col-span-4 p-8 border-b border-r border-slate-100 bg-slate-50">
+                <div class="col-span-4 p-8 border-b border-r border-t border-l border-slate-200 bg-slate-50">
                     <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Operational Area</span>
                 </div>
-                <div class="col-span-4 p-8 border-b border-r border-slate-100 text-center">
+                <div class="col-span-4 p-8 border-b border-t border-slate-200 bg-white text-center">
                     <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Standard Accountant</span>
                 </div>
-                <div class="col-span-4 p-8 border-b border-slate-100 text-center bg-slate-900">
+                
+                <!-- THE DOMINANT ARCHITECT HEADER -->
+                <div class="col-span-4 p-8 bg-slate-900 text-center transform scale-105 shadow-2xl rounded-t-xl border-t-4 border-emerald-500 relative z-10">
                     <span class="text-[10px] font-black uppercase tracking-widest text-emerald-400">Compliance Labs Architect</span>
                 </div>
 
                 <!-- Row 1 -->
-                <div class="col-span-4 p-8 border-b border-r border-slate-100 font-bold text-sm text-slate-900">CIS Compliance</div>
-                <div class="col-span-4 p-8 border-b border-r border-slate-100 text-center text-sm text-slate-500">Manual Filing</div>
-                <div class="col-span-4 p-8 border-b border-slate-100 text-center text-sm font-bold text-slate-900 bg-emerald-50/10">API Real-Time Firewall</div>
+                <div class="col-span-4 p-8 border-b border-r border-l border-slate-200 bg-white font-bold text-sm text-slate-900">CIS Compliance</div>
+                <div class="col-span-4 p-8 border-b border-r border-slate-200 bg-white text-center text-sm text-slate-500">Manual Filing</div>
+                <div class="col-span-4 p-8 border-b border-slate-200 text-center text-sm font-bold text-slate-900 bg-white transform scale-105 shadow-2xl relative z-10">API Real-Time Firewall</div>
 
                 <!-- Row 2 -->
-                <div class="col-span-4 p-8 border-b border-r border-slate-100 font-bold text-sm text-slate-900">Debt Recovery</div>
-                <div class="col-span-4 p-8 border-b border-r border-slate-100 text-center text-sm text-slate-500">Passive Emails</div>
-                <div class="col-span-4 p-8 border-b border-slate-100 text-center text-sm font-bold text-slate-900 bg-emerald-50/10">Statutory Enforcement</div>
+                <div class="col-span-4 p-8 border-b border-r border-l border-slate-200 bg-white font-bold text-sm text-slate-900">Debt Recovery</div>
+                <div class="col-span-4 p-8 border-b border-r border-slate-200 bg-white text-center text-sm text-slate-500">Passive Emails</div>
+                <div class="col-span-4 p-8 border-b border-slate-200 text-center text-sm font-bold text-slate-900 bg-white transform scale-105 shadow-2xl relative z-10">Statutory Enforcement</div>
 
                 <!-- Row 3 -->
-                <div class="col-span-4 p-8 border-r border-slate-100 font-bold text-sm text-slate-900">Capital Access</div>
-                <div class="col-span-4 p-8 border-r border-slate-100 text-center text-sm text-slate-500">Referral Only</div>
-                <div class="col-span-4 p-8 text-center text-sm font-bold text-slate-900 bg-emerald-50/10">Direct Deal-Room Placement</div>
+                <div class="col-span-4 p-8 border-b border-r border-l border-slate-200 bg-white font-bold text-sm text-slate-900">Capital Access</div>
+                <div class="col-span-4 p-8 border-b border-r border-slate-200 bg-white text-center text-sm text-slate-500">Referral Only</div>
+                <div class="col-span-4 p-8 border-b border-slate-200 text-center text-sm font-bold text-slate-900 bg-white transform scale-105 shadow-2xl rounded-b-xl relative z-10">Direct Deal-Room Placement</div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING: ENGAGEMENT TIERS -->
+    <!-- PRICING -->
     <section id="pricing" class="py-32 bg-white">
         <div class="max-w-[1200px] mx-auto px-8">
             <div class="flex justify-between items-end mb-16 reveal">
                 <h2 class="serif-heading text-4xl text-slate-900">Engagement Tiers</h2>
                 
-                <!-- Toggle -->
                 <div class="flex items-center gap-4 bg-slate-50 p-2 rounded-full border border-slate-200">
                     <button id="monthly-btn" class="px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white text-slate-900 shadow-sm transition-all">Monthly</button>
                     <button id="annual-btn" class="px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-all">Annual</button>
@@ -354,7 +404,7 @@
                 </div>
 
                 <!-- Tier 2 (Pro) -->
-                <div class="p-12 border-r border-slate-200 bg-slate-900 text-white relative reveal" style="transition-delay: 0.1s">
+                <div class="p-12 border-r border-slate-200 bg-slate-900 text-white relative reveal bg-grain" style="transition-delay: 0.1s">
                     <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">Standard</div>
                     <h4 class="text-xs font-black uppercase tracking-widest text-emerald-400 mb-6">Professional</h4>
                     <div class="mb-2 flex items-baseline gap-1">
@@ -387,7 +437,6 @@
                 </div>
             </div>
             
-            <!-- Enterprise Custom Link -->
             <div class="text-center mt-12">
                 <a href="#compliance-check" class="text-slate-400 text-xs font-bold uppercase tracking-widest hover:text-slate-900 transition-colors">Contact us for Main Contractor (£20M+) Licensing -></a>
             </div>
