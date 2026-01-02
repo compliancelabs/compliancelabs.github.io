@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="Technical financial infrastructure for UK construction SMEs. CIS Defense, Retention Recovery, and Institutional Capital Placement."/>
 
+    <!-- Favicon (Institutional Shield Logo) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +63,7 @@
         }
 
         .logo-container svg {
-            height: 44px;
+            height: 52px;
             width: auto;
         }
 
@@ -92,8 +95,8 @@
 
     <!-- HEADER -->
     <header class="bg-white/95 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[1000] transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-4 group">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-5 group">
                 <div class="logo-container">
                     <svg viewBox="0 0 100 120" class="transition-transform group-hover:scale-105">
                         <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
@@ -106,21 +109,22 @@
                     </svg>
                 </div>
                 <div class="hidden sm:block leading-none">
-                    <h1 class="font-black tracking-tighter text-slate-900 text-lg uppercase">Compliance <span class="text-emerald-600">Labs</span></h1>
-                    <p class="text-[9px] tracking-[0.3em] font-extrabold text-slate-400 uppercase mt-1">& Capital</p>
+                    <h1 class="font-black tracking-tighter text-slate-900 text-xl uppercase">Compliance <span class="text-emerald-600 font-extrabold">Labs</span></h1>
+                    <h2 class="text-[11px] tracking-[0.35em] font-black text-slate-500 uppercase mt-1.5 border-t border-slate-100 pt-1.5">& CAPITAL</h2>
                 </div>
             </a>
             
-            <nav class="hidden md:flex items-center space-x-8 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                <a href="#" class="nav-link text-emerald-600 font-extrabold border-b border-emerald-500">Services</a>
+            <nav class="hidden lg:flex items-center space-x-8 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                <a href="#" class="nav-link text-emerald-600 font-extrabold border-b-2 border-emerald-500 pb-1">Services</a>
                 <a href="about-us.html" class="nav-link hover:text-slate-900">About Us</a>
-                <a href="index.html#capital" class="nav-link hover:text-slate-900">Capital</a>
-                <a href="resources.html" class="nav-link hover:text-slate-900">Resources</a>
-                <a href="index.html#intelligence" class="nav-link hover:text-slate-900">Intelligence</a>
-                <a href="#compliance-check" class="bg-slate-900 text-white px-6 py-3 rounded-full hover:bg-emerald-600 transition-all shadow-lg">
+                <a href="intelligence.html" class="nav-link hover:text-slate-900">Intelligence</a>
+                <a href="resources.html" class="nav-link hover:text-emerald-500">Terminal</a>
+                <a href="index.html#compliance-check" class="bg-slate-900 text-white px-7 py-4 rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-slate-200">
                     Free Risk Audit
                 </a>
             </nav>
+
+            <button id="open-menu" class="lg:hidden text-slate-900 p-2"><i class="fas fa-bars-staggered text-xl"></i></button>
         </div>
     </header>
 
@@ -352,7 +356,7 @@
                             <div class="text-3xl font-bold text-emerald-400">100%</div>
                         </div>
                     </div>
-                    <a href="#compliance-check" class="block w-full py-6 bg-emerald-500 text-slate-900 rounded-full text-center font-black text-xs uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl">Activate Capital Pipe</a>
+                    <a href="index.html#compliance-check" class="block w-full py-6 bg-emerald-500 text-slate-900 rounded-full text-center font-black text-xs uppercase tracking-[0.4em] hover:bg-white transition-all shadow-xl">Activate Capital Pipe</a>
                 </div>
             </div>
         </div>
@@ -435,15 +439,14 @@
                     <ul class="text-[11px] text-slate-500 space-y-6 uppercase tracking-[0.2em] font-black text-center md:text-left">
                         <li><a href="index.html" class="hover:text-white transition-colors">Overview</a></li>
                         <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors text-emerald-500">Institutional Services</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors text-emerald-500">Institutional Services</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-10 text-center md:text-left">Resources</h4>
                     <ul class="text-[11px] text-slate-500 space-y-6 uppercase tracking-[0.2em] font-black text-center md:text-left">
-                        <li><a href="resources.html" class="hover:text-emerald-500 text-emerald-600 transition-colors">Intelligence Hub</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Audit Research</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="intelligence.html" class="hover:text-white transition-colors">Intelligence Hub</a></li>
+                        <li><a href="resources.html" class="hover:text-white transition-colors">The Terminal</a></li>
                     </ul>
                 </div>
             </div>
@@ -451,9 +454,9 @@
             <div class="pt-16 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-600 font-black uppercase tracking-[0.5em]">
                 <p>&copy; 2025 Compliance Labs & Capital Ltd.</p>
                 <div class="flex space-x-12 mt-10 md:mt-0">
-                    <a href="#" class="hover:text-emerald-400 transition-colors">Privacy</a>
-                    <a href="#" class="hover:text-emerald-400 transition-colors">Terms</a>
-                    <a href="#" class="hover:text-emerald-400 transition-colors text-emerald-500">PI Proof</a>
+                    <a href="privacy.html" class="hover:text-emerald-400 transition-colors">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-400 transition-colors">Terms</a>
+                    <a href="idd.html" class="hover:text-emerald-400 transition-colors text-emerald-500">IDD</a>
                 </div>
             </div>
         </div>
