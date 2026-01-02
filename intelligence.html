@@ -7,7 +7,7 @@
     <meta name="description" content="Institutional regulatory briefings and technical financial intelligence for the UK construction sector. Stay audit-proof and credit-ready."/>
     
     <!-- Favicon (Institutional Shield Logo) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,6 +85,33 @@
             border-color: var(--emerald);
         }
 
+        .video-card {
+            background: #0f172a;
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .video-card:hover .play-btn { transform: scale(1.1); background: var(--emerald); }
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
         .briefing-badge {
             background: rgba(16, 185, 129, 0.1);
             color: var(--emerald);
@@ -95,16 +122,17 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
         }
+        .logo-container svg { height: 52px; width: auto; }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- HEADER -->
     <header class="bg-white/95 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[1000] transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-4 group">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-5 group">
                 <div class="logo-container">
-                    <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform group-hover:scale-105">
+                    <svg viewBox="0 0 100 120" class="transition-transform group-hover:scale-105">
                         <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
                         <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
                         <circle cx="50" cy="20" r="4.5" fill="#10b981"/>
@@ -115,18 +143,17 @@
                     </svg>
                 </div>
                 <div class="hidden sm:block leading-none">
-                    <h1 class="font-black tracking-tighter text-slate-900 text-lg uppercase">Compliance <span class="text-emerald-600">Labs</span></h1>
-                    <p class="text-[9px] tracking-[0.2em] font-extrabold text-slate-400 uppercase mt-1">& Capital</p>
+                    <h1 class="font-black tracking-tighter text-slate-900 text-xl uppercase">Compliance <span class="text-emerald-600 font-extrabold">Labs</span></h1>
+                    <h2 class="text-[11px] tracking-[0.35em] font-black text-slate-500 uppercase mt-1.5 border-t border-slate-100 pt-1.5">& CAPITAL</h2>
                 </div>
             </a>
             
             <nav class="hidden lg:flex items-center space-x-8 text-[10px] font-black uppercase tracking-widest text-slate-500">
                 <a href="services.html" class="nav-link hover:text-slate-900">Services</a>
                 <a href="about-us.html" class="nav-link hover:text-slate-900">About Us</a>
-                <a href="index.html#capital" class="nav-link hover:text-slate-900">Capital</a>
-                <a href="resources.html" class="nav-link hover:text-slate-900">Resources</a>
-                <a href="#" class="nav-link text-emerald-600 font-extrabold border-b border-emerald-500">Intelligence</a>
-                <a href="index.html#compliance-check" class="bg-slate-900 text-white px-6 py-3 rounded-full hover:bg-emerald-600 transition-all shadow-lg">
+                <a href="#" class="nav-link text-emerald-600 font-extrabold border-b-2 border-emerald-500 pb-1">Intelligence</a>
+                <a href="resources.html" class="nav-link hover:text-emerald-500">Terminal</a>
+                <a href="index.html#compliance-check" class="bg-slate-900 text-white px-7 py-4 rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-slate-200">
                     Free Risk Audit
                 </a>
             </nav>
@@ -140,81 +167,81 @@
             <div class="max-w-3xl">
                 <div class="inline-flex items-center space-x-3 mb-8 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-[10px] uppercase tracking-widest font-black text-emerald-800">Operational Intelligence Hub v2.8</span>
+                    <span class="text-[10px] uppercase tracking-widest font-black text-emerald-800">Sector Intelligence Agency v3.2</span>
                 </div>
                 <h1 class="serif-heading text-5xl md:text-7xl mb-8 leading-tight text-slate-900">
-                    Strategic Counsel <br>
-                    <span class="text-gradient italic font-bold text-6xl md:text-8xl">In Real-Time.</span>
+                    Strategic Publication <br>
+                    <span class="text-gradient italic font-bold text-6xl md:text-8xl">& Research Hub.</span>
                 </h1>
                 <p class="text-slate-500 text-xl font-light leading-relaxed mb-0">
-                    Access high-level regulatory briefings, legislative updates, and technical financial strategies curated specifically for the UK construction enterprise.
+                    High-level technical briefings and operational frameworks curated for the UK construction elite. Our intelligence dictates passing audits and unlocking capital.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- ACTIVE BRIEFINGS GRID -->
+    <!-- ACTIVE BRIEFINGS (PILLARS) -->
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-20 reveal">
-                <h2 class="serif-heading text-4xl text-slate-900">Active Briefings</h2>
-                <p class="text-slate-500 mt-4 max-w-xl">Deep-dives into current regulatory friction points and capital opportunities.</p>
+                <h2 class="serif-heading text-4xl text-slate-900">Master Briefings</h2>
+                <p class="text-slate-500 mt-4 max-w-xl">Deep-dive frameworks establishing the Institutional standard for the industry.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Briefing 1 -->
+                <!-- Master Briefing 1 -->
                 <div class="briefing-card flex flex-col reveal">
                     <div class="p-8 pb-0">
                         <div class="flex justify-between items-center mb-6">
-                            <span class="briefing-badge">Briefing 01 | CIS</span>
-                            <span class="text-[10px] font-bold text-slate-300">Ref: CIS-205</span>
+                            <span class="briefing-badge">Master | CIS</span>
+                            <span class="text-[10px] font-bold text-slate-300">Ref: CIS-M100</span>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight text-slate-900 leading-tight">The Deemed Payment Trap</h3>
+                        <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight text-slate-900 leading-tight">The Materials Protocol</h3>
                         <p class="text-sm text-slate-500 leading-relaxed mb-8">
-                            HMRC is aggressively auditing material exclusions on mixed contracts. Without third-party receipt verification, your material costs are zero in an audit.
+                            A complete guide to avoiding the £10k Deemed Payment trap through technical line-item segregation and Regulation 4 proofing.
                         </p>
                     </div>
-                    <div class="mt-auto p-8 border-t border-slate-50 bg-slate-50/50">
-                        <a href="blog_cis_materials.md" class="text-[10px] font-black uppercase tracking-widest text-slate-900 flex items-center hover:text-emerald-500 transition-colors">
+                    <div class="mt-auto p-8 border-t border-slate-50 bg-slate-50/50 text-center">
+                        <a href="blog_cis_materials.md" class="text-[10px] font-black uppercase tracking-widest text-slate-900 hover:text-emerald-500 transition-colors">
                             Access Full Protocol <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Briefing 2 -->
+                <!-- Master Briefing 2 -->
                 <div class="briefing-card flex flex-col reveal" style="transition-delay: 0.1s">
                     <div class="p-8 pb-0">
                         <div class="flex justify-between items-center mb-6">
-                            <span class="briefing-badge">Briefing 02 | Capital</span>
-                            <span class="text-[10px] font-bold text-slate-300">Ref: CAP-402</span>
+                            <span class="briefing-badge">Master | Recovery</span>
+                            <span class="text-[10px] font-bold text-slate-300">Ref: REC-R200</span>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight text-slate-900 leading-tight">Institutional Debt Exits</h3>
+                        <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight text-slate-900 leading-tight">The Retention Trap</h3>
                         <p class="text-sm text-slate-500 leading-relaxed mb-8">
-                            Why standard lenders penalize construction for "Tax Uncertainty." Learn how Compliance Labs data creates an investment-grade data room for lower interest rates.
+                            How to turn contractual debt into immediate cash flow using the 7-Step Recovery sequence and Section 111 enforcement.
                         </p>
                     </div>
-                    <div class="mt-auto p-8 border-t border-slate-50 bg-slate-50/50">
-                        <a href="#" class="text-[10px] font-black uppercase tracking-widest text-slate-900 flex items-center hover:text-emerald-500 transition-colors">
-                            Analyze Capital Pipes <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="mt-auto p-8 border-t border-slate-50 bg-slate-50/50 text-center">
+                        <a href="master_retention_trap.md" class="text-[10px] font-black uppercase tracking-widest text-slate-900 hover:text-emerald-500 transition-colors">
+                            Execute Recovery Sequence <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Briefing 3 -->
+                <!-- Master Briefing 3 -->
                 <div class="briefing-card flex flex-col reveal" style="transition-delay: 0.2s">
                     <div class="p-8 pb-0">
                         <div class="flex justify-between items-center mb-6">
-                            <span class="briefing-badge">Briefing 03 | Law</span>
-                            <span class="text-[10px] font-bold text-slate-300">Ref: LAW-906</span>
+                            <span class="briefing-badge">Master | Law</span>
+                            <span class="text-[10px] font-bold text-slate-300">Ref: LAW-S300</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight text-slate-900 leading-tight">Smash-and-Grab Advisory</h3>
                         <p class="text-sm text-slate-500 leading-relaxed mb-8">
-                            Leveraging Section 111 of the Construction Act. If the Pay Less Notice window is missed by one hour, the debt becomes undisputed.
+                            Technical mastery of the Pay Less Notice window. Learn how one hour of administrative delay creates a statutory right to payment.
                         </p>
                     </div>
-                    <div class="mt-auto p-8 border-t border-slate-50 bg-slate-50/50">
-                        <a href="master_retention_trap_pt2.md" class="text-[10px] font-black uppercase tracking-widest text-slate-900 flex items-center hover:text-emerald-500 transition-colors">
-                            View Enforcement Guide <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="mt-auto p-8 border-t border-slate-50 bg-slate-50/50 text-center">
+                        <a href="master_retention_trap_pt2.md" class="text-[10px] font-black uppercase tracking-widest text-slate-900 hover:text-emerald-500 transition-colors">
+                            View Legal Precedent <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -222,44 +249,39 @@
         </div>
     </section>
 
-    <!-- INTELLIGENCE TERMINAL CALLOUT -->
-    <section class="py-32 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-                <h2 class="serif-heading text-4xl md:text-6xl mb-8 italic text-slate-900">Data-Led <br>Diagnostics.</h2>
-                <p class="text-slate-500 text-lg leading-relaxed mb-12">
-                    Access our proprietary software suite designed to identify silent liabilities and project future capital erosion. The terminal is free for enterprise constructors.
-                </p>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                        <i class="fas fa-scale-balanced text-emerald-500 text-2xl mb-4"></i>
-                        <h4 class="font-bold text-xs uppercase mb-2">Credit Stress Test</h4>
-                        <p class="text-[10px] text-slate-400">Analyze safe contract value vs turnover.</p>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                        <i class="fas fa-hourglass-start text-rose-500 text-2xl mb-4"></i>
-                        <h4 class="font-bold text-xs uppercase mb-2">Retention Eraser</h4>
-                        <p class="text-[10px] text-slate-400">Calculate inflationary decay on debt.</p>
+    <!-- VIDEO INTELLIGENCE (Stick-Man Animations) -->
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 reveal">
+                <span class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-600">Audio-Visual Briefings</span>
+                <h2 class="serif-heading text-4xl text-slate-900 mt-4">Video Intelligence</h2>
+                <p class="text-slate-500 mt-4">Simplified technical animations for the high-impact Financial Director.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Video 1 -->
+                <div class="reveal">
+                    <div class="video-card group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-1"></div>
+                        <div class="play-btn">
+                            <i class="fas fa-play text-white text-xl ml-1"></i>
+                        </div>
+                        <div class="absolute bottom-8 left-8 right-8 z-10">
+                            <span class="briefing-badge bg-emerald-500/20 text-emerald-400 mb-4 inline-block">EP 01 | 05:42</span>
+                            <h4 class="text-white text-xl font-bold uppercase tracking-tight">The Hidden Tax Cost of Materials</h4>
+                        </div>
                     </div>
                 </div>
-                <a href="resources.html" class="inline-block mt-12 px-10 py-5 bg-slate-900 text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-emerald-600 transition-all shadow-xl">Launch Intelligence Terminal</a>
-            </div>
-            <div class="relative reveal">
-                <div class="aspect-video bg-institutional rounded-[3rem] shadow-2xl flex items-center justify-center p-12 overflow-hidden border border-white/10">
-                    <!-- SVG Terminal Mockup -->
-                    <div class="w-full h-full border border-emerald-500/30 rounded-2xl bg-black/40 p-8">
-                        <div class="flex space-x-2 mb-8">
-                            <div class="w-2 h-2 rounded-full bg-rose-500/50"></div>
-                            <div class="w-2 h-2 rounded-full bg-amber-500/50"></div>
-                            <div class="w-2 h-2 rounded-full bg-emerald-500/50"></div>
+                <!-- Video 2 -->
+                <div class="reveal" style="transition-delay: 0.1s">
+                    <div class="video-card group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-1"></div>
+                        <div class="play-btn">
+                            <i class="fas fa-play text-white text-xl ml-1"></i>
                         </div>
-                        <div class="space-y-4">
-                            <div class="h-2 w-3/4 bg-white/5 rounded-full"></div>
-                            <div class="h-2 w-1/2 bg-white/5 rounded-full"></div>
-                            <div class="h-12 w-full bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center px-4">
-                                <span class="text-emerald-500 font-mono text-[10px]">VERDICT: HIGH RISK EXPOSURE DETECTED [CIS-R4]</span>
-                            </div>
-                            <div class="h-2 w-2/3 bg-white/5 rounded-full"></div>
+                        <div class="absolute bottom-8 left-8 right-8 z-10">
+                            <span class="briefing-badge bg-emerald-500/20 text-emerald-400 mb-4 inline-block">EP 02 | 04:15</span>
+                            <h4 class="text-white text-xl font-bold uppercase tracking-tight">Retention: The Smash-and-Grab Legal Play</h4>
                         </div>
                     </div>
                 </div>
@@ -267,45 +289,72 @@
         </div>
     </section>
 
-    <!-- SECTOR BRIEFINGS (Knowledge Base Feed) -->
+    <!-- STRATEGIC PUBLICATION ARCHIVE (Blog Feed) -->
     <section class="py-32 bg-slate-900 text-white relative">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 reveal">
                 <div class="max-w-2xl">
-                    <span class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-4 block">Knowledge Base</span>
-                    <h2 class="serif-heading text-4xl md:text-5xl leading-tight">Operational <br>Expert Commentary.</h2>
+                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-400 mb-4 block">Sector Archive</span>
+                    <h2 class="serif-heading text-5xl italic">The Intelligence Ledger.</h2>
+                    <p class="text-slate-400 mt-6 text-lg font-light leading-relaxed">Our repository of technical research covering CIS, VAT, IR35, and High-Ticket Capital Flow.</p>
                 </div>
-                <a href="#" class="text-xs font-black uppercase tracking-widest border-b-2 border-emerald-500 pb-1 mt-8 md:mt-0 hover:text-emerald-400 transition-colors">View All Publications</a>
             </div>
 
-            <div class="grid gap-12">
+            <div class="grid gap-1 border-t border-white/5">
+                <!-- BRIEFING ENTRY TEMPLATE (Use this for your 30+ titles) -->
+                
                 <!-- Entry 1 -->
-                <div class="group border-b border-white/5 pb-12 reveal">
+                <a href="#" class="group block py-10 border-b border-white/5 hover:bg-white/[0.02] transition-all px-4 -mx-4 rounded-xl">
                     <div class="grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-2 text-slate-500 font-bold text-sm">Oct 2025</div>
+                        <div class="md:col-span-2 text-slate-500 font-bold text-xs uppercase tracking-widest">October 2025</div>
                         <div class="md:col-span-7">
-                            <h4 class="text-2xl font-bold group-hover:text-emerald-400 transition-colors">Why Your Monthly CIS Return is Always Late: The "Pay & Report" Trap</h4>
-                            <p class="text-slate-400 text-sm mt-4 leading-relaxed font-light">Analyzing the systemic friction between manual payment processing and automated HMRC filing deadlines.</p>
+                            <h4 class="text-2xl font-bold group-hover:text-emerald-400 transition-colors uppercase tracking-tight">IR35 vs. CIS Gross Status: The Double Liability Trap</h4>
+                            <p class="text-slate-500 text-sm mt-3 leading-relaxed font-medium">Analyzing the intersection of employment status and CIS gross status preservation.</p>
                         </div>
-                        <div class="md:col-span-3 md:text-right">
-                            <span class="px-4 py-2 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-slate-900 transition-all">Read Briefing</span>
+                        <div class="md:col-span-3 text-right">
+                            <span class="px-5 py-2 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all">Download Briefing</span>
                         </div>
                     </div>
-                </div>
+                </a>
+
                 <!-- Entry 2 -->
-                <div class="group border-b border-white/5 pb-12 reveal" style="transition-delay: 0.1s">
+                <a href="#" class="group block py-10 border-b border-white/5 hover:bg-white/[0.02] transition-all px-4 -mx-4 rounded-xl">
                     <div class="grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-2 text-slate-500 font-bold text-sm">Sep 2025</div>
+                        <div class="md:col-span-2 text-slate-500 font-bold text-xs uppercase tracking-widest">October 2025</div>
                         <div class="md:col-span-7">
-                            <h4 class="text-2xl font-bold group-hover:text-emerald-400 transition-colors">The 120-Day Problem: Unlocking Trapped Construction Retentions</h4>
-                            <p class="text-slate-400 text-sm mt-4 leading-relaxed font-light">A technical framework for converting aging contractual debts into immediate working capital.</p>
+                            <h4 class="text-2xl font-bold group-hover:text-emerald-400 transition-colors uppercase tracking-tight">The Plant Hire Trap: When to Deduct CIS on Equipment</h4>
+                            <p class="text-slate-500 text-sm mt-3 leading-relaxed font-medium">Technical breakdown of plant with operator vs. dry hire compliance requirements.</p>
                         </div>
-                        <div class="md:col-span-3 md:text-right">
-                            <span class="px-4 py-2 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest group-hover:bg-white group-hover:text-slate-900 transition-all">Read Briefing</span>
+                        <div class="md:col-span-3 text-right">
+                            <span class="px-5 py-2 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all">Download Briefing</span>
                         </div>
                     </div>
-                </div>
+                </a>
+
+                <!-- Entry 3 -->
+                <a href="#" class="group block py-10 border-b border-white/5 hover:bg-white/[0.02] transition-all px-4 -mx-4 rounded-xl">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-2 text-slate-500 font-bold text-xs uppercase tracking-widest">September 2025</div>
+                        <div class="md:col-span-7">
+                            <h4 class="text-2xl font-bold group-hover:text-emerald-400 transition-colors uppercase tracking-tight">The 120-Day Problem: Unlocking £50K in Trapped Retentions</h4>
+                            <p class="text-slate-500 text-sm mt-3 leading-relaxed font-medium">A protocol for converting unrecovered contractual debt into liquid capital.</p>
+                        </div>
+                        <div class="md:col-span-3 text-right">
+                            <span class="px-5 py-2 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all">Download Briefing</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ADD MORE ENTRIES HERE USING THE SAME STRUCTURE -->
+
+            </div>
+
+            <!-- PAGINATION / MORE BUTTON -->
+            <div class="mt-20 text-center">
+                <button class="px-12 py-5 bg-white text-slate-900 rounded-full font-black text-[10px] uppercase tracking-[0.3em] hover:bg-emerald-500 hover:text-white transition-all shadow-2xl">
+                    Load Full Operational Archive
+                </button>
             </div>
         </div>
     </section>
@@ -315,68 +364,52 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div id="compliance-check" class="bg-emerald-600 rounded-[4rem] p-20 md:p-28 mb-32 relative overflow-hidden group reveal">
                 <div class="relative z-10">
-                    <h2 class="serif-heading text-5xl md:text-7xl mb-8 leading-tight uppercase tracking-tight text-white">Institutional Precision. <br> Absolute Protection.</h2>
+                    <h2 class="serif-heading text-5xl md:text-7xl mb-8 leading-tight uppercase tracking-tight text-white">Pass Every Audit. <br> Pass Every Inspection.</h2>
                     <p class="text-emerald-100 text-xl mb-14 max-w-2xl mx-auto font-light leading-relaxed">Request your strategy audit today and identify the hidden liabilities on your ledger.</p>
                     <a href="https://calendly.com/compliancelabs0/30min" target="_blank" class="inline-block px-16 py-7 bg-slate-900 text-white font-black rounded-full uppercase tracking-[0.35em] text-xs hover:bg-white hover:text-slate-900 transition-all shadow-2xl">Start Your Audit</a>
                 </div>
-                <div class="absolute inset-0 bg-slate-900/10 pointer-events-none group-hover:bg-slate-900/0 transition-all"></div>
             </div>
 
             <div class="grid md:grid-cols-4 gap-20 pb-24 border-b border-white/5 text-left">
                 <div class="col-span-2">
                     <div class="flex items-center space-x-6 mb-10">
-                        <svg viewBox="0 0 100 120" class="h-14 w-auto brightness-0 invert">
-                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/>
-                            <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#000000" stroke-width="4"/>
-                        </svg>
+                        <div class="w-12 h-14 bg-white/5 border border-white/10 flex items-center justify-center p-2 rounded-lg">
+                            <svg viewBox="0 0 100 120" class="h-full w-auto brightness-0 invert">
+                                <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/>
+                            </svg>
+                        </div>
                         <div>
                             <span class="font-black text-sm uppercase tracking-[0.3em]">Compliance Labs & Capital Ltd.</span>
                             <p class="text-slate-500 text-[10px] mt-1 uppercase font-bold tracking-widest">Architects of Construction Growth</p>
                         </div>
                     </div>
-                    <p class="text-slate-500 text-[11px] leading-relaxed max-w-sm font-bold uppercase tracking-widest">
-                        Specialist business consultancy for the UK construction sector. Registered in England & Wales. Professional Indemnity insurance held to a value of £2,000,000.
-                    </p>
                 </div>
                 <div>
                     <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-10 text-center md:text-left">The Firm</h4>
                     <ul class="text-[11px] text-slate-500 space-y-6 uppercase tracking-[0.2em] font-black text-center md:text-left">
                         <li><a href="index.html" class="hover:text-white transition-colors">Overview</a></li>
                         <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">Strategic Pillars</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-10 text-center md:text-left">Resources</h4>
+                    <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-10 text-center md:text-left">Intelligence Hub</h4>
                     <ul class="text-[11px] text-slate-500 space-y-6 uppercase tracking-[0.2em] font-black text-center md:text-left">
-                        <li><a href="resources.html" class="hover:text-emerald-500 text-emerald-600 transition-colors">Intelligence Hub</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Audit Research</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="intelligence.html" class="hover:text-white transition-colors text-emerald-500">Briefings</a></li>
+                        <li><a href="resources.html" class="hover:text-emerald-500 text-emerald-600 transition-colors">The Terminal</a></li>
                     </ul>
-                </div>
-            </div>
-            
-            <div class="pt-16 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-600 font-black uppercase tracking-[0.5em]">
-                <p>&copy; 2025 Compliance Labs & Capital Ltd.</p>
-                <div class="flex space-x-12 mt-10 md:mt-0">
-                    <a href="#" class="hover:text-emerald-400 transition-colors">Privacy</a>
-                    <a href="#" class="hover:text-emerald-400 transition-colors">Terms</a>
-                    <a href="#" class="hover:text-emerald-400 transition-colors text-emerald-500">PI Proof</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Reveal on Scroll Logic
         const reveal = () => {
             const reveals = document.querySelectorAll('.reveal');
             for (let i = 0; i < reveals.length; i++) {
                 const windowHeight = window.innerHeight;
                 const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add('active');
                 }
             }
@@ -384,6 +417,5 @@
         window.addEventListener('scroll', reveal);
         reveal();
     </script>
-
 </body>
 </html>
