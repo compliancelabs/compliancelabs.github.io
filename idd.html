@@ -1,49 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8"/>
-    <title>Initial Disclosure Document (IDD) | Compliance Labs & Capital</title>
+    <title>Initial Disclosure Document | Compliance Labs & Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Regulatory Initial Disclosure Document (IDD) for Compliance Labs & Capital Ltd. Credit brokerage and compliance consultancy details."/>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
     <style>
-        body { font-family: 'Urbanist', sans-serif; }
+        :root {
+            --emerald: #059669; 
+            --charcoal: #020617;
+            --concrete: #f1f5f9;
+        }
+        body { font-family: 'Manrope', sans-serif; background-color: #ffffff; color: var(--charcoal); overflow-x: hidden; }
         .serif-heading { font-family: 'Playfair Display', serif; }
+        
+        .nav-link { position: relative; font-weight: 600; letter-spacing: 0.05em; font-size: 11px; text-transform: uppercase; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0;
+            background-color: var(--charcoal); transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
-    <div class="max-w-4xl mx-auto px-6 py-20">
-        <div class="bg-white p-12 md:p-16 rounded-[3rem] shadow-2xl border border-slate-100">
-            <h1 class="serif-heading text-4xl md:text-5xl mb-6">Initial Disclosure Document</h1>
-            <p class="text-emerald-600 font-black uppercase tracking-widest text-[10px] mb-12">Regulatory Transparency Framework</p>
+<body class="antialiased bg-slate-50">
+
+    <!-- NAVIGATION -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-slate-100 z-[1000] transition-all duration-300">
+        <div class="max-w-[1600px] mx-auto px-8 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-5 group">
+                <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform duration-500 group-hover:scale-105">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="50" cy="20" r="4" fill="#10b981"/>
+                    <circle cx="50" cy="55" r="5" fill="#10b981"/>
+                    <circle cx="50" cy="100" r="4" fill="#10b981"/>
+                </svg>
+                <div class="flex flex-col justify-center h-full pt-1">
+                    <h1 class="font-bold tracking-tight text-slate-900 text-lg uppercase leading-none">Compliance <span class="text-emerald-700">Labs</span></h1>
+                    <div class="flex items-center gap-2 mt-1.5">
+                        <div class="h-px w-3 bg-slate-300"></div>
+                        <h2 class="text-[10px] tracking-[0.3em] font-black text-slate-500 uppercase">& CAPITAL</h2>
+                    </div>
+                </div>
+            </a>
+            <nav class="hidden lg:flex items-center gap-12 text-slate-600">
+                <a href="services.html" class="nav-link hover:text-slate-900">Services</a>
+                <a href="about-us.html" class="nav-link hover:text-slate-900">About Us</a>
+                <a href="intelligence.html" class="nav-link hover:text-slate-900">Intelligence</a>
+                <a href="resources.html" class="nav-link hover:text-slate-900">Terminal</a>
+            </nav>
+            <div class="hidden lg:block">
+                <a href="index.html#compliance-check" class="bg-slate-900 text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-emerald-700 transition-colors">Request Audit</a>
+            </div>
             
-            <div class="space-y-12 text-slate-600 leading-relaxed text-sm">
-                <section class="p-8 bg-slate-50 rounded-2xl border border-slate-100">
-                    <h2 class="text-slate-900 font-bold mb-4 uppercase tracking-widest text-xs">01. Whose products do we offer?</h2>
-                    <p>Compliance Labs & Capital Ltd offers a specialized range of commercial finance products including Asset Finance, Invoice Finance, and Revolving Credit Facilities. We act as an intermediary and work with a restricted panel of institutional lenders who specialize in the construction sector. We do not offer products from the entire market.</p>
-                </section>
+             <!-- MOBILE BURGER -->
+            <button id="open-menu" class="lg:hidden text-slate-900"><i class="fas fa-bars text-xl"></i></button>
+        </div>
+    </header>
 
-                <section>
-                    <h2 class="text-slate-900 font-bold mb-4 uppercase tracking-widest text-xs">02. Which service will we provide you with?</h2>
-                    <p>We will advise and make a recommendation for you after we have assessed your needs through our **Operational Intelligence** protocols. We act as a credit broker, not a lender. Our role is to pre-vet your financial data to ensure application success and introduce you to suitable lenders.</p>
-                </section>
-
-                <section>
-                    <h2 class="text-slate-900 font-bold mb-4 uppercase tracking-widest text-xs">03. What will you have to pay us for our services?</h2>
-                    <p>For our **Compliance Labs** services, we charge a fixed monthly recurring fee as outlined in your engagement letter. For **Capital Placement** (Brokerage), we do not typically charge you a direct fee; however, we will receive a commission or payment from the lender should you decide to enter into an agreement with them. The amount of commission varies by lender and product.</p>
-                </section>
-
-                <section class="p-8 bg-slate-900 text-white rounded-2xl">
-                    <h2 class="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-xs">04. Confidentiality & Complaints</h2>
-                    <p class="text-slate-300">Your privacy is paramount. All data shared for the purpose of a finance application is held in an encrypted institutional data room. If you have a complaint regarding our brokerage service, please contact the Managing Director directly at office@compliancelabs.capital.</p>
-                </section>
-            </div>
-
-            <div class="mt-16 pt-10 border-t border-slate-100 text-[9px] text-slate-400 uppercase font-bold tracking-widest flex justify-between items-center">
-                <span>Compliance Labs & Capital Ltd</span>
-                <span class="text-slate-900">London | Manchester | Bristol</span>
-            </div>
+     <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 z-[1100] bg-slate-900 translate-x-full transition-transform duration-500 lg:hidden p-10 flex flex-col">
+        <div class="flex justify-between items-center mb-16">
+            <span class="text-white font-bold uppercase text-xs tracking-widest">Menu</span>
+            <button id="close-menu" class="text-white text-2xl"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-3xl font-light text-white">
+            <a href="services.html" class="hover:text-emerald-400 transition-colors">Services</a>
+            <a href="about-us.html" class="hover:text-emerald-400 transition-colors">About Us</a>
+            <a href="intelligence.html" class="hover:text-emerald-400 transition-colors">Intelligence</a>
+            <a href="resources.html" class="hover:text-emerald-400 transition-colors">Terminal</a>
+        </nav>
+        <div class="mt-auto border-t border-white/10 pt-8">
+            <a href="index.html#compliance-check" class="block w-full py-4 bg-emerald-700 text-white text-center font-bold uppercase tracking-widest text-xs">Book Audit</a>
         </div>
     </div>
+
+    <!-- MAIN CONTENT -->
+    <section class="pt-40 pb-32">
+        <div class="max-w-[1000px] mx-auto px-8">
+            
+            <div class="mb-16">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-700 mb-4 block">Regulatory Framework</span>
+                <h1 class="serif-heading text-4xl md:text-5xl text-slate-900">Initial Disclosure Document</h1>
+            </div>
+
+            <div class="bg-white border border-slate-200 p-12 md:p-16 shadow-xl">
+                <div class="space-y-12">
+                    <div class="grid md:grid-cols-12 gap-8">
+                        <div class="md:col-span-3">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Section 01</span>
+                        </div>
+                        <div class="md:col-span-9">
+                            <h3 class="text-lg font-bold text-slate-900 mb-4 uppercase tracking-wide">The Firm</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed font-medium">Compliance Labs & Capital Ltd is a specialist business consultancy and credit broker based in the United Kingdom. We are not a lender.</p>
+                        </div>
+                    </div>
+                    <div class="h-px bg-slate-100 w-full"></div>
+
+                    <div class="grid md:grid-cols-12 gap-8">
+                        <div class="md:col-span-3">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Section 02</span>
+                        </div>
+                        <div class="md:col-span-9">
+                            <h3 class="text-lg font-bold text-slate-900 mb-4 uppercase tracking-wide">Services Provided</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed font-medium mb-4">We provide two distinct categories of service:</p>
+                            <ul class="list-disc pl-5 space-y-2 text-sm text-slate-500 font-medium">
+                                <li><strong>Compliance Infrastructure:</strong> Administrative processing of CIS, VAT, and Payroll data via our proprietary 'Payment Firewall' and 'Compliance Labs' protocols.</li>
+                                <li><strong>Capital Placement:</strong> Acting as an intermediary to introduce commercial clients to a panel of institutional lenders for Asset Finance, Invoice Finance, and Business Loans.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="h-px bg-slate-100 w-full"></div>
+
+                    <div class="grid md:grid-cols-12 gap-8">
+                        <div class="md:col-span-3">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Section 03</span>
+                        </div>
+                        <div class="md:col-span-9">
+                            <h3 class="text-lg font-bold text-slate-900 mb-4 uppercase tracking-wide">Whose Products Do We Offer?</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed font-medium">For Capital Placement, we offer products from a restricted panel of lenders (including but not limited to Close Brothers, Aldermore, and Bibby Financial Services) who specialize in the construction sector. We do not offer a whole-of-market search.</p>
+                        </div>
+                    </div>
+                    <div class="h-px bg-slate-100 w-full"></div>
+
+                    <div class="grid md:grid-cols-12 gap-8">
+                        <div class="md:col-span-3">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Section 04</span>
+                        </div>
+                        <div class="md:col-span-9">
+                            <h3 class="text-lg font-bold text-slate-900 mb-4 uppercase tracking-wide">Fees & Commissions</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed font-medium mb-4">
+                                <strong>Compliance Services:</strong> Charged via fixed monthly retainer or annual fee as per your Engagement Letter.
+                            </p>
+                            <p class="text-sm text-slate-500 leading-relaxed font-medium">
+                                <strong>Brokerage Services:</strong> We do not charge you a fee for introducing you to a lender. We will receive a commission from the lender upon successful funding. The amount of commission varies by product and volume. Disclosure of exact commission amounts is available upon request.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-16 p-8 bg-slate-900 text-white flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-2">Operational HQ</p>
+                        <p class="text-sm font-medium text-slate-300">London | Manchester | Bristol</p>
+                    </div>
+                    <a href="mailto:compliance@compliancelabs.capital" class="text-[10px] font-bold uppercase tracking-widest text-white hover:text-emerald-400 transition-colors">Contact Compliance Officer -></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 pt-24 pb-12">
+        <div class="max-w-[1600px] mx-auto px-8">
+            <div class="grid lg:grid-cols-4 gap-12 mb-20">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-4 mb-8">
+                        <svg viewBox="0 0 100 120" class="h-10 w-auto">
+                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                            <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5"/>
+                            <circle cx="50" cy="20" r="4.5" fill="#10b981"/>
+                            <circle cx="50" cy="55" r="6" fill="#10b981"/>
+                            <circle cx="50" cy="100" r="4.5" fill="#10b981"/>
+                        </svg>
+                        <div>
+                            <span class="font-bold text-sm uppercase tracking-tight block text-slate-900">Compliance Labs & Capital Ltd.</span>
+                            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Architects of Construction Growth</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-widest text-slate-900 mb-6">The Firm</h4>
+                    <ul class="space-y-4 text-[11px] font-bold uppercase tracking-wide text-slate-500">
+                        <li><a href="services.html" class="hover:text-emerald-700">Services</a></li>
+                        <li><a href="about-us.html" class="hover:text-emerald-700">About Us</a></li>
+                        <li><a href="intelligence.html" class="hover:text-emerald-700">Intelligence</a></li>
+                        <li><a href="resources.html" class="hover:text-emerald-700">Terminal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-black uppercase tracking-widest text-slate-900 mb-6">Legal & IDD</h4>
+                    <ul class="space-y-4 text-[11px] font-bold uppercase tracking-wide text-slate-500">
+                        <li><a href="idd.html" class="text-emerald-700">Initial Disclosure</a></li>
+                        <li><a href="privacy.html" class="hover:text-emerald-700">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-emerald-700">Terms of Service</a></li>
+                        <li><a href="brochure.html" class="hover:text-emerald-700">Prospectus (PDF)</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                <p>&copy; 2026 Compliance Labs & Capital Ltd.</p>
+                <div class="flex gap-8 mt-4 md:mt-0">
+                    <span>London</span>
+                    <span>Manchester</span>
+                    <span>Bristol</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const openBtn = document.getElementById('open-menu');
+        const closeBtn = document.getElementById('close-menu');
+        const menu = document.getElementById('mobile-menu');
+        if(openBtn) openBtn.addEventListener('click', () => menu.classList.remove('translate-x-full'));
+        if(closeBtn) closeBtn.addEventListener('click', () => menu.classList.add('translate-x-full'));
+    </script>
 </body>
 </html>
