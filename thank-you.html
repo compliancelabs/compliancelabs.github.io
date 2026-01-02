@@ -1,69 +1,210 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Payment Successful – ComplianceLabs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body{font-family:Inter,Segoe UI,sans-serif;text-align:center;padding:2rem 1rem;background:#f8f9fc;color:#1f2937}
-    h1{color:#10b981;margin-bottom:1rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;border-radius:12px;background:#6366f1;color:#fff;font-weight:600;margin:1rem .5rem;text-decoration:none}
-    .btn:hover{background:#4f46e5}
-    .calendly-inline-widget{min-width:320px;height:630px;margin-top:1.5rem;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.08)}
-    @media(max-width:600px){.calendly-inline-widget{height:580px}}
-  </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R272PPXYLQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-R272PPXYLQ');
+    <meta charset="utf-8"/>
+    <title>Action Required | Compliance Labs & Capital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3C/svg%3E">
 
-    // Initial page-load conversion (base tracking)
-    gtag('event', 'purchase', {
-      event_category: 'thank-you-page', 
-      value: 19.00, // Assuming a £19 Health-Check value
-      currency: 'GBP'
-    });
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-    // Function to track PDF download click
-    function trackDownload() {
-        gtag('event', 'download', {
-            event_category: 'Checklist',
-            event_label: 'Checklist_Download_Click'
-        });
-        // The download attribute on the link handles the file save
-    }
-
-    // --- CALENDLY EVENT LISTENER & REDIRECT ---
-    window.addEventListener('message', function(e) {
-        // Check for the specific Calendly invitee_created event
-        if (e.origin === 'https://calendly.com' && e.data.event && e.data.event === 'calendly.event.data.invitee_created') {
-            
-            // 1. Fire a definitive conversion event for the booking
-            gtag('event', 'appointment_booked', {
-                event_category: 'Conversion',
-                event_label: 'Audit_Call_Complete'
-            });
-
-            // 2. Redirect after a small delay (1.5 seconds)
-            setTimeout(function() {
-                // Change this to your desired final URL
-                window.location.href = '/thank-you-complete.html'; 
-            }, 1500); 
+    <style>
+        :root {
+            --emerald: #10b981;
+            --charcoal: #0f172a;
+            --navy: #1e293b;
         }
-    });
-  </script>
+        body { font-family: 'Urbanist', sans-serif; background-color: #f8fafc; color: var(--charcoal); }
+        .serif-heading { font-family: 'Playfair Display', serif; }
+        
+        .calendly-inline-widget { 
+            border-radius: 2rem; 
+            overflow: hidden; 
+            box-shadow: 0 40px 80px -15px rgba(15, 23, 42, 0.1); 
+            border: 1px solid #e2e8f0; 
+        }
+
+        .protocol-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--charcoal);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        .glow-emerald {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R272PPXYLQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R272PPXYLQ');
+
+        // Tracking Purchase (Health Check)
+        gtag('event', 'purchase', {
+          event_category: 'thank-you-page', 
+          value: 19.00,
+          currency: 'GBP'
+        });
+
+        function trackDownload() {
+            gtag('event', 'download', {
+                event_category: 'Checklist',
+                event_label: 'Checklist_Download_Click'
+            });
+        }
+
+        // Calendly Redirect Logic
+        window.addEventListener('message', function(e) {
+            if (e.origin === 'https://calendly.com' && e.data.event && e.data.event === 'calendly.event.data.invitee_created') {
+                gtag('event', 'appointment_booked', {
+                    event_category: 'Conversion',
+                    event_label: 'Audit_Call_Complete'
+                });
+                setTimeout(function() {
+                    window.location.href = 'thank-you-complete.html'; 
+                }, 1500); 
+            }
+        });
+    </script>
 </head>
-<body>
-  <h1>✅ Payment received – your checklist is ready!</h1>
-  <p>Download the PDF below, then book your free 15-min audit call – we’ll fix any red boxes live.</p>
+<body class="antialiased">
 
-    <a class="btn" href="assets/checklist/27-point-compliance-checklist.pdf" onclick="trackDownload()" download>Download Checklist PDF</a>
+    <!-- INSTITUTIONAL HEADER -->
+    <header class="bg-white border-b border-slate-100 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-5 group">
+                <div class="logo-container">
+                    <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform group-hover:scale-105">
+                        <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                        <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="20" r="4.5" fill="#10b981"/>
+                        <circle cx="50" cy="55" r="6" fill="#10b981"/>
+                        <circle cx="50" cy="100" r="4.5" fill="#10b981"/>
+                    </svg>
+                </div>
+                <div class="leading-none">
+                    <h1 class="font-black tracking-tighter text-slate-900 text-lg uppercase">Compliance <span class="text-emerald-600 font-extrabold">Labs</span></h1>
+                    <h2 class="text-[11px] tracking-[0.35em] font-black text-slate-500 uppercase mt-1.5 border-t border-slate-100 pt-1.5">& CAPITAL</h2>
+                </div>
+            </a>
+            <div class="hidden sm:flex items-center space-x-3 text-[10px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-5 py-2.5 rounded-full border border-emerald-100 glow-emerald">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                <span>Secure Session Active</span>
+            </div>
+        </div>
+    </header>
 
-    <div class="calendly-inline-widget" data-url="https://calendly.com/compliancelabs0/15min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=6366f1&text_color=1f2937" style="min-width:320px;height:630px;"></div>
-  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <main class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- INTRO SECTION -->
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <div class="w-20 h-20 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-emerald-900/10 rotate-3">
+                <i class="fas fa-check-double text-white text-3xl"></i>
+            </div>
+            <h1 class="serif-heading text-5xl md:text-7xl mb-6 italic leading-tight">Protocol Initialized.</h1>
+            <p class="text-slate-500 text-xl font-light leading-relaxed">
+                Your transaction is complete. We have generated your high-grade technical briefing. Please follow the two steps below to finalize your infrastructure review.
+            </p>
+        </div>
 
-  <p><small>Book below – no redirect until booking is confirmed.</small></p>
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- LEFT: STEP 1 (The Asset) -->
+            <div class="lg:col-span-5">
+                <div class="protocol-card p-10 border-t-8 border-emerald-500 h-full">
+                    <div class="flex items-center space-x-4 mb-10">
+                        <span class="step-number">01</span>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-400">Immediate Retrieval</h3>
+                    </div>
+                    
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6 uppercase tracking-tight">Your Briefing Document</h2>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-10">
+                        The <strong>27-Point Compliance Framework</strong> is ready. This document details the specific technical segregation required to pass an HMRC materials audit.
+                    </p>
+                    
+                    <a href="assets/checklist/27-point-compliance-checklist.pdf" 
+                       onclick="trackDownload()" 
+                       download 
+                       class="flex items-center justify-between w-full p-6 bg-slate-900 text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-emerald-600 transition-all shadow-2xl">
+                        <span>Download Checklist PDF</span>
+                        <i class="fas fa-file-pdf text-xl"></i>
+                    </a>
+
+                    <div class="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-100 italic text-[11px] text-slate-400 leading-relaxed">
+                        Note: For data security, this link will expire in 24 hours. Ensure you save this to your local institutional drive.
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: STEP 2 (The Strategy) -->
+            <div class="lg:col-span-7">
+                <div class="protocol-card p-10 border-t-8 border-slate-900">
+                    <div class="flex items-center space-x-4 mb-10">
+                        <span class="step-number">02</span>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-400">Strategic Alignment</h3>
+                    </div>
+                    
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 uppercase tracking-tight">Finalize Technical Audit</h2>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-10">
+                        Select a window for your 15-minute briefing. We will review your checklist results live and identify the specific "Red Box" liabilities on your current ledger.
+                    </p>
+
+                    <!-- CALENDLY WIDGET -->
+                    <div class="calendly-inline-widget" 
+                         data-url="https://calendly.com/compliancelabs0/15min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=10b981&text_color=0f172a" 
+                         style="min-width:320px;height:650px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    
+                    <div class="text-center mt-6">
+                        <p class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+                            <i class="fas fa-lock mr-2"></i> Authorized Appointment Registry
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TRUST INDICATOR -->
+        <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-400 font-black uppercase tracking-[0.4em]">
+            <span>Compliance Labs & Capital Ltd.</span>
+            <div class="flex space-x-10 mt-6 md:mt-0">
+                <span>London</span>
+                <span>Manchester</span>
+                <span>Bristol</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 bg-white text-center border-t border-slate-50">
+        <p class="text-[10px] text-slate-400 uppercase font-black tracking-widest">
+            &copy; 2026 Institutional Advisory Hub | Data-Room Access Only
+        </p>
+    </footer>
+
 </body>
 </html>
