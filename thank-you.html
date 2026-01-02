@@ -2,57 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Action Required | Compliance Labs & Capital</title>
+    <title>Secure Session | Compliance Labs & Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
     <style>
         :root {
-            --emerald: #10b981;
-            --charcoal: #0f172a;
-            --navy: #1e293b;
+            --emerald: #059669; 
+            --charcoal: #020617;
         }
-        body { font-family: 'Urbanist', sans-serif; background-color: #f8fafc; color: var(--charcoal); }
+        body { font-family: 'Manrope', sans-serif; background-color: #f8fafc; color: var(--charcoal); }
         .serif-heading { font-family: 'Playfair Display', serif; }
         
         .calendly-inline-widget { 
-            border-radius: 2rem; 
+            border-radius: 0; 
             overflow: hidden; 
-            box-shadow: 0 40px 80px -15px rgba(15, 23, 42, 0.1); 
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.1); 
             border: 1px solid #e2e8f0; 
         }
 
-        .protocol-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 2.5rem;
-            transition: all 0.4s ease;
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
         }
 
-        .step-number {
-            width: 32px;
-            height: 32px;
+        .step-tag {
+            font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: var(--emerald);
+            margin-bottom: 1rem; display: block;
+        }
+
+        .btn-institutional {
             background: var(--charcoal);
             color: white;
+            padding: 20px 40px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 800;
+            border-radius: 0; 
+            transition: all 0.3s;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 800;
-            font-size: 12px;
+            justify-content: space-between;
+            width: 100%;
         }
-
-        .glow-emerald {
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
-        }
+        .btn-institutional:hover { background: var(--emerald); }
     </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -63,147 +64,119 @@
         gtag('js', new Date());
         gtag('config', 'G-R272PPXYLQ');
 
-        // Tracking Purchase (Health Check)
-        gtag('event', 'purchase', {
-          event_category: 'thank-you-page', 
-          value: 19.00,
-          currency: 'GBP'
-        });
+        // Conversion Tracking
+        gtag('event', 'purchase', { event_category: 'fulfillment', value: 19.00, currency: 'GBP' });
 
         function trackDownload() {
-            gtag('event', 'download', {
-                event_category: 'Checklist',
-                event_label: 'Checklist_Download_Click'
-            });
+            gtag('event', 'download', { event_category: 'Checklist', event_label: 'Audit_Checklist_PDF' });
         }
 
         // Calendly Redirect Logic
         window.addEventListener('message', function(e) {
             if (e.origin === 'https://calendly.com' && e.data.event && e.data.event === 'calendly.event.data.invitee_created') {
-                gtag('event', 'appointment_booked', {
-                    event_category: 'Conversion',
-                    event_label: 'Audit_Call_Complete'
-                });
-                setTimeout(function() {
-                    window.location.href = 'thank-you-complete.html'; 
-                }, 1500); 
+                gtag('event', 'appointment_booked', { event_category: 'Conversion', event_label: 'Audit_Call_Confirmed' });
+                setTimeout(function() { window.location.href = 'thank-you-complete.html'; }, 1500); 
             }
         });
     </script>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-slate-50">
 
-    <!-- INSTITUTIONAL HEADER -->
-    <header class="bg-white border-b border-slate-100 py-6">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-5 group">
-                <div class="logo-container">
-                    <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform group-hover:scale-105">
-                        <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
-                        <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
-                        <circle cx="50" cy="20" r="4.5" fill="#10b981"/>
-                        <circle cx="50" cy="55" r="6" fill="#10b981"/>
-                        <circle cx="50" cy="100" r="4.5" fill="#10b981"/>
-                    </svg>
-                </div>
-                <div class="leading-none">
-                    <h1 class="font-black tracking-tighter text-slate-900 text-lg uppercase">Compliance <span class="text-emerald-600 font-extrabold">Labs</span></h1>
-                    <h2 class="text-[11px] tracking-[0.35em] font-black text-slate-500 uppercase mt-1.5 border-t border-slate-100 pt-1.5">& CAPITAL</h2>
+    <!-- NAVIGATION -->
+    <header class="bg-white border-b border-slate-100 h-24 flex items-center">
+        <div class="max-w-[1600px] mx-auto px-8 w-full flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-5 group">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="50" cy="20" r="4.5" fill="#10b981"/>
+                </svg>
+                <div class="flex flex-col pt-1">
+                    <h1 class="font-bold tracking-tight text-slate-900 text-lg uppercase leading-none">Compliance <span class="text-emerald-700">Labs</span></h1>
+                    <h2 class="text-[10px] tracking-[0.3em] font-black text-slate-500 uppercase mt-1.5">& CAPITAL</h2>
                 </div>
             </a>
-            <div class="hidden sm:flex items-center space-x-3 text-[10px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-5 py-2.5 rounded-full border border-emerald-100 glow-emerald">
-                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                <span>Secure Session Active</span>
+            <div class="flex items-center gap-3 bg-emerald-900/5 border border-emerald-500/20 px-5 py-2.5">
+                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-700">Secure Session Active</span>
             </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+    <main class="max-w-[1200px] mx-auto px-8 py-20 lg:py-32">
         
-        <!-- INTRO SECTION -->
-        <div class="text-center max-w-3xl mx-auto mb-20">
-            <div class="w-20 h-20 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl shadow-emerald-900/10 rotate-3">
-                <i class="fas fa-check-double text-white text-3xl"></i>
-            </div>
-            <h1 class="serif-heading text-5xl md:text-7xl mb-6 italic leading-tight">Protocol Initialized.</h1>
+        <!-- HEADER -->
+        <div class="max-w-3xl mb-24">
+            <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-emerald-700 mb-6 block">Transaction Complete</span>
+            <h1 class="serif-heading text-5xl md:text-7xl text-slate-900 mb-10 leading-[1.1] italic">Protocol Initialized.</h1>
             <p class="text-slate-500 text-xl font-light leading-relaxed">
-                Your transaction is complete. We have generated your high-grade technical briefing. Please follow the two steps below to finalize your infrastructure review.
+                Your high-grade technical briefing has been generated. Please follow the terminal steps below to finalize your infrastructure review.
             </p>
         </div>
 
-        <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="grid lg:grid-cols-12 gap-px bg-slate-200 border border-slate-200">
             
-            <!-- LEFT: STEP 1 (The Asset) -->
-            <div class="lg:col-span-5">
-                <div class="protocol-card p-10 border-t-8 border-emerald-500 h-full">
-                    <div class="flex items-center space-x-4 mb-10">
-                        <span class="step-number">01</span>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-400">Immediate Retrieval</h3>
-                    </div>
-                    
-                    <h2 class="text-3xl font-bold text-slate-900 mb-6 uppercase tracking-tight">Your Briefing Document</h2>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-10">
-                        The <strong>27-Point Compliance Framework</strong> is ready. This document details the specific technical segregation required to pass an HMRC materials audit.
+            <!-- STEP 1: RETRIEVAL -->
+            <div class="lg:col-span-5 bg-white p-12 lg:p-16 flex flex-col justify-between">
+                <div>
+                    <span class="step-tag">Step 01 / Retrieval</span>
+                    <h2 class="serif-heading text-3xl text-slate-900 mb-6">Technical Asset</h2>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium mb-12">
+                        The <strong>27-Point Compliance Framework</strong> is ready for download. This document details the exact technical segregation required to pass an institutional HMRC materials audit.
                     </p>
-                    
-                    <a href="assets/checklist/27-point-compliance-checklist.pdf" 
-                       onclick="trackDownload()" 
-                       download 
-                       class="flex items-center justify-between w-full p-6 bg-slate-900 text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-emerald-600 transition-all shadow-2xl">
-                        <span>Download Checklist PDF</span>
-                        <i class="fas fa-file-pdf text-xl"></i>
-                    </a>
-
-                    <div class="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-100 italic text-[11px] text-slate-400 leading-relaxed">
-                        Note: For data security, this link will expire in 24 hours. Ensure you save this to your local institutional drive.
-                    </div>
                 </div>
+                
+                <a href="assets/checklist/27-point-compliance-checklist.pdf" 
+                   onclick="trackDownload()" 
+                   download 
+                   class="btn-institutional">
+                    <span>Download Briefing PDF</span>
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+
+                <p class="mt-10 text-[9px] font-bold text-slate-400 uppercase tracking-widest italic">
+                    File Signature: CLC-2026-F640. Expiring in 24 hours.
+                </p>
             </div>
 
-            <!-- RIGHT: STEP 2 (The Strategy) -->
-            <div class="lg:col-span-7">
-                <div class="protocol-card p-10 border-t-8 border-slate-900">
-                    <div class="flex items-center space-x-4 mb-10">
-                        <span class="step-number">02</span>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-400">Strategic Alignment</h3>
-                    </div>
-                    
-                    <h2 class="text-3xl font-bold text-slate-900 mb-4 uppercase tracking-tight">Finalize Technical Audit</h2>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-10">
-                        Select a window for your 15-minute briefing. We will review your checklist results live and identify the specific "Red Box" liabilities on your current ledger.
+            <!-- STEP 2: ALIGNMENT -->
+            <div class="lg:col-span-7 bg-white p-12 lg:p-16 relative bg-grain">
+                <div>
+                    <span class="step-tag">Step 02 / Alignment</span>
+                    <h2 class="serif-heading text-3xl text-slate-900 mb-6">Finalize Technical Audit</h2>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium mb-12">
+                        Select a window for your 15-minute briefing. We will review your current ledger logic and identify specific "Red Box" liabilities.
                     </p>
+                </div>
 
-                    <!-- CALENDLY WIDGET -->
-                    <div class="calendly-inline-widget" 
-                         data-url="https://calendly.com/compliancelabs0/15min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=10b981&text_color=0f172a" 
-                         style="min-width:320px;height:650px;"></div>
-                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                    
-                    <div class="text-center mt-6">
-                        <p class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
-                            <i class="fas fa-lock mr-2"></i> Authorized Appointment Registry
-                        </p>
-                    </div>
+                <!-- CALENDLY -->
+                <div class="calendly-inline-widget" 
+                     data-url="https://calendly.com/compliancelabs0/15min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=059669&text_color=020617" 
+                     style="min-width:320px;height:650px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                
+                <div class="mt-8 flex items-center justify-center gap-4">
+                    <i class="fas fa-lock text-slate-300 text-xs"></i>
+                    <p class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Authorized Appointment Registry</p>
                 </div>
             </div>
 
         </div>
 
-        <!-- TRUST INDICATOR -->
-        <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-400 font-black uppercase tracking-[0.4em]">
-            <span>Compliance Labs & Capital Ltd.</span>
-            <div class="flex space-x-10 mt-6 md:mt-0">
-                <span>London</span>
-                <span>Manchester</span>
-                <span>Bristol</span>
-            </div>
-        </div>
     </main>
 
-    <footer class="py-12 bg-white text-center border-t border-slate-50">
-        <p class="text-[10px] text-slate-400 uppercase font-black tracking-widest">
-            &copy; 2026 Institutional Advisory Hub | Data-Room Access Only
-        </p>
+    <!-- INSTITUTIONAL FOOTER -->
+    <footer class="bg-slate-900 text-white pt-24 pb-12 bg-grain">
+        <div class="max-w-[1600px] mx-auto px-8">
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <p>&copy; 2026 Compliance Labs & Capital Ltd. | Data-Room Access Only</p>
+                <div class="flex gap-8 mt-4 md:mt-0">
+                    <span>London</span>
+                    <span>Manchester</span>
+                    <span>Bristol</span>
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>
