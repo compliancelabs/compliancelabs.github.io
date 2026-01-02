@@ -10,8 +10,6 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
@@ -42,26 +40,13 @@
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
     </style>
 </head>
 <body class="antialiased">
-
-    <!-- MOBILE MENU OVERLAY -->
-    <div id="mobile-menu" class="fixed inset-0 z-[1100] bg-slate-900 translate-x-full transition-transform duration-500 lg:hidden p-10 flex flex-col">
-        <div class="flex justify-between items-center mb-16">
-            <span class="text-white font-bold uppercase text-xs tracking-widest">Menu</span>
-            <button id="close-menu" class="text-white text-2xl"><i class="fas fa-times"></i></button>
-        </div>
-        <nav class="flex flex-col space-y-6 text-3xl font-light text-white">
-            <a href="services.html" class="hover:text-emerald-400 transition-colors">Services</a>
-            <a href="about-us.html" class="text-emerald-500 font-bold">About Us</a>
-            <a href="intelligence.html" class="hover:text-emerald-400 transition-colors">Intelligence</a>
-            <a href="resources.html" class="hover:text-emerald-400 transition-colors">Terminal</a>
-        </nav>
-        <div class="mt-auto border-t border-white/10 pt-8">
-            <a href="index.html#compliance-check" class="block w-full py-4 bg-emerald-700 text-white text-center font-bold uppercase tracking-widest text-xs">Book Audit</a>
-        </div>
-    </div>
 
     <!-- NAVIGATION -->
     <header class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-slate-100 z-[1000] transition-all duration-300">
@@ -84,7 +69,7 @@
             </a>
             <nav class="hidden lg:flex items-center gap-12 text-slate-600">
                 <a href="services.html" class="nav-link hover:text-slate-900">Services</a>
-                <a href="about-us.html" class="nav-link text-emerald-700">About Us</a>
+                <a href="#" class="nav-link text-emerald-700">About Us</a>
                 <a href="intelligence.html" class="nav-link hover:text-slate-900">Intelligence</a>
                 <a href="resources.html" class="nav-link hover:text-slate-900">Terminal</a>
             </nav>
@@ -96,6 +81,23 @@
             <button id="open-menu" class="lg:hidden text-slate-900"><i class="fas fa-bars text-xl"></i></button>
         </div>
     </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 z-[1100] bg-slate-900 translate-x-full transition-transform duration-500 lg:hidden p-10 flex flex-col">
+        <div class="flex justify-between items-center mb-16">
+            <span class="text-white font-bold uppercase text-xs tracking-widest">Menu</span>
+            <button id="close-menu" class="text-white text-2xl"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-3xl font-light text-white">
+            <a href="services.html" class="hover:text-emerald-400 transition-colors">Services</a>
+            <a href="#" class="text-emerald-500 font-bold">About Us</a>
+            <a href="intelligence.html" class="hover:text-emerald-400 transition-colors">Intelligence</a>
+            <a href="resources.html" class="hover:text-emerald-400 transition-colors">Terminal</a>
+        </nav>
+        <div class="mt-auto border-t border-white/10 pt-8">
+            <a href="index.html#compliance-check" class="block w-full py-4 bg-emerald-700 text-white text-center font-bold uppercase tracking-widest text-xs">Book Audit</a>
+        </div>
+    </div>
 
     <!-- HERO -->
     <section class="relative pt-40 pb-32 lg:pt-52 lg:pb-40 overflow-hidden">
@@ -116,25 +118,33 @@
         </div>
     </section>
 
-    <!-- THE STRATEGIC GAP -->
+    <!-- THE ORIGIN STORY -->
     <section class="py-32 bg-white border-y border-slate-100">
         <div class="max-w-[1200px] mx-auto px-8 grid lg:grid-cols-2 gap-20">
             <div class="reveal">
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 block">The Origin</span>
                 <h2 class="serif-heading text-4xl text-slate-900 mb-8">The Institutional Gap.</h2>
                 <p class="text-slate-500 leading-relaxed font-light text-lg">
-                    High-street accountants lack the legislative expertise to manage the Construction Act 1996 or the nuances of "Notice of Sum Due" protocols. We don't just record data; we enforce legal rights.
+                    Construction is the UK's most volatile sector. For Financial Directors, growth is inhibited by two forces: **HMRC Regulatory Friction** and **Stagnant Capital Flow**.
+                </p>
+                <p class="text-slate-500 leading-relaxed font-light text-lg mt-6">
+                    We founded Compliance Labs & Capital because generalist accountants lack the technical depth to manage these specific risks. They offer reports; we offer **Infrastructure**.
                 </p>
             </div>
             <div class="space-y-12 reveal">
                 <div class="flex gap-6">
-                    <span class="text-xs font-black text-emerald-700 uppercase tracking-widest mt-1">01</span>
+                    <div class="w-12 h-12 bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0">
+                        <span class="text-xs font-black text-emerald-700">01</span>
+                    </div>
                     <div>
                         <h4 class="font-bold text-slate-900 uppercase text-sm mb-2">Technical Isolation</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">Standard firms are reactive. We proactively install real-time logic gates to block non-compliant transactions before they occur.</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">High-street firms are reactive. We proactively install real-time logic gates to block non-compliant transactions before they occur.</p>
                     </div>
                 </div>
                 <div class="flex gap-6">
-                    <span class="text-xs font-black text-emerald-700 uppercase tracking-widest mt-1">02</span>
+                    <div class="w-12 h-12 bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0">
+                        <span class="text-xs font-black text-emerald-700">02</span>
+                    </div>
                     <div>
                         <h4 class="font-bold text-slate-900 uppercase text-sm mb-2">Capital Disconnect</h4>
                         <p class="text-sm text-slate-500 leading-relaxed">Lenders penalize construction for "dirty data." We align your compliance trail with institutional lending criteria.</p>
@@ -144,27 +154,72 @@
         </div>
     </section>
 
-    <!-- THE PROTOCOL -->
+    <!-- CORE PRINCIPLES GRID -->
     <section class="py-32 bg-slate-50">
         <div class="max-w-[1600px] mx-auto px-8">
             <div class="text-center mb-24 reveal">
-                <h2 class="serif-heading text-4xl text-slate-900">The Architect's Protocol</h2>
+                <h2 class="serif-heading text-4xl text-slate-900">Core Principles</h2>
+                <p class="text-slate-500 mt-4 text-sm font-medium">The operating system of our firm.</p>
             </div>
             <div class="grid lg:grid-cols-3 border border-slate-200 bg-white">
-                <div class="p-12 border-r border-slate-200 reveal">
-                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6 block">Phase 01</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Diagnosis</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Comprehensive 27-point risk scan of your CIS verifications, VAT DRC logic, and historical contracts.</p>
+                <div class="p-12 border-r border-slate-200 reveal group hover:bg-slate-900 transition-colors duration-500">
+                    <i class="fas fa-crosshairs text-3xl text-emerald-700 mb-8 group-hover:text-emerald-400"></i>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 group-hover:text-white">Precision</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed group-hover:text-slate-400">
+                        Construction finance does not allow for "estimates." We deal in statutory facts, hard-coded API verifications, and Regulation 4 evidence.
+                    </p>
                 </div>
-                <div class="p-12 border-r border-slate-200 reveal" style="transition-delay: 0.1s">
-                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6 block">Phase 02</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Installation</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Implementation of the Payment Firewall™ and the 7-Step Recovery™ sequence to lock down infrastructure.</p>
+                <div class="p-12 border-r border-slate-200 reveal group hover:bg-slate-900 transition-colors duration-500" style="transition-delay: 0.1s">
+                    <i class="fas fa-bolt text-3xl text-emerald-700 mb-8 group-hover:text-emerald-400"></i>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 group-hover:text-white">Velocity</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed group-hover:text-slate-400">
+                        Capital has a half-life. We use the Construction Act to force 30-day payment terms and secure funding exits in under 72 hours.
+                    </p>
                 </div>
-                <div class="p-12 reveal" style="transition-delay: 0.2s">
-                    <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-6 block">Phase 03</span>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Placement</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Leveraging 'Institutional-Grade' data to secure multi-million pound credit facilities.</p>
+                <div class="p-12 reveal group hover:bg-slate-900 transition-colors duration-500" style="transition-delay: 0.2s">
+                    <i class="fas fa-layer-group text-3xl text-emerald-700 mb-8 group-hover:text-emerald-400"></i>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 group-hover:text-white">Leverage</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed group-hover:text-slate-400">
+                        We use data as a weapon. Your compliance history is not just a record; it is the collateral we use to negotiate institutional rates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTOR SPECIALISMS -->
+    <section class="py-32 bg-white">
+        <div class="max-w-[1200px] mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-700 block mb-4">Sector Focus</span>
+                    <h2 class="serif-heading text-4xl text-slate-900">Targeted Nuance.</h2>
+                </div>
+                <p class="text-slate-500 max-w-sm text-sm font-medium leading-relaxed mt-6 md:mt-0 text-right">
+                    We do not serve everyone. We build infrastructure for high-volume, high-risk verticals.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="p-8 bg-slate-50 border border-slate-200 reveal">
+                    <span class="text-xs font-black text-slate-300">01</span>
+                    <h4 class="font-bold text-slate-900 mt-4 mb-2">Groundworks</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">High asset-finance requirements and complex material/labour splits.</p>
+                </div>
+                <div class="p-8 bg-slate-50 border border-slate-200 reveal" style="transition-delay: 0.1s">
+                    <span class="text-xs font-black text-slate-300">02</span>
+                    <h4 class="font-bold text-slate-900 mt-4 mb-2">M&E / HVAC</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Managing VAT DRC across multi-tiered supply chains.</p>
+                </div>
+                <div class="p-8 bg-slate-50 border border-slate-200 reveal" style="transition-delay: 0.2s">
+                    <span class="text-xs font-black text-slate-300">03</span>
+                    <h4 class="font-bold text-slate-900 mt-4 mb-2">Civil Eng.</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Long-tail retention recovery and JCT contract enforcement.</p>
+                </div>
+                <div class="p-8 bg-slate-50 border border-slate-200 reveal" style="transition-delay: 0.3s">
+                    <span class="text-xs font-black text-slate-300">04</span>
+                    <h4 class="font-bold text-slate-900 mt-4 mb-2">Fit-Out</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Rapid sub-contractor onboarding via the Payment Firewall™.</p>
                 </div>
             </div>
         </div>
@@ -191,7 +246,7 @@
                 </div>
                 <div>
                     <h4 class="text-xs font-black uppercase tracking-widest text-slate-900 mb-6">The Firm</h4>
-                    <ul class="space-y-4 text-[11px] font-bold uppercase tracking-wide text-slate-400">
+                    <ul class="space-y-4 text-[11px] font-bold uppercase tracking-wide text-slate-500">
                         <li><a href="services.html" class="hover:text-emerald-700">Services</a></li>
                         <li><a href="about-us.html" class="hover:text-emerald-700">About Us</a></li>
                         <li><a href="intelligence.html" class="hover:text-emerald-700">Intelligence</a></li>
@@ -200,7 +255,7 @@
                 </div>
                 <div>
                     <h4 class="text-xs font-black uppercase tracking-widest text-slate-900 mb-6">Legal & IDD</h4>
-                    <ul class="space-y-4 text-[11px] font-bold uppercase tracking-wide text-slate-400">
+                    <ul class="space-y-4 text-[11px] font-bold uppercase tracking-wide text-slate-500">
                         <li><a href="idd.html" class="hover:text-emerald-700">Initial Disclosure</a></li>
                         <li><a href="privacy.html" class="hover:text-emerald-700">Privacy Policy</a></li>
                         <li><a href="terms.html" class="hover:text-emerald-700">Terms of Service</a></li>
@@ -222,14 +277,8 @@
         const openBtn = document.getElementById('open-menu');
         const closeBtn = document.getElementById('close-menu');
         const menu = document.getElementById('mobile-menu');
-        
-        // Null checks added for safety
-        if(openBtn) {
-            openBtn.addEventListener('click', () => menu.classList.remove('translate-x-full'));
-        }
-        if(closeBtn) {
-            closeBtn.addEventListener('click', () => menu.classList.add('translate-x-full'));
-        }
+        if(openBtn) openBtn.addEventListener('click', () => menu.classList.remove('translate-x-full'));
+        if(closeBtn) closeBtn.addEventListener('click', () => menu.classList.add('translate-x-full'));
         
         const reveal = () => {
             const reveals = document.querySelectorAll('.reveal');
