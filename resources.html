@@ -75,7 +75,7 @@
             background: rgba(15, 23, 42, 0.4); 
             backdrop-filter: blur(12px); 
             border: 1px solid rgba(255, 255, 255, 0.08); 
-            border-radius: 0; /* FORTUNE 50 SQUARE EDGES */
+            border-radius: 0; 
             padding: 2.5rem; 
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
             display: flex; 
@@ -87,7 +87,6 @@
             border-color: rgba(5, 150, 105, 0.4); 
             background: rgba(15, 23, 42, 0.8); 
             transform: translateY(-2px);
-            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
         }
         
         .category-tag {
@@ -99,7 +98,7 @@
         /* INPUTS - The Sovereign Field */
         label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #64748b; margin-bottom: 0.75rem; display: block; }
         input, select { 
-            width: 100%; padding: 1.2rem 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); border-radius: 0; 
+            width: 100%; padding: 1rem 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); border-radius: 0; 
             font-size: 1.1rem; color: #fff; font-weight: 400; transition: all 0.3s;
             font-family: 'Manrope', sans-serif;
         }
@@ -116,12 +115,7 @@
             margin-top: 2rem; padding: 2rem; background: #020617; border-left: 2px solid var(--emerald); display: none; animation: slideIn 0.4s ease;
         }
         @keyframes slideIn { from { transform: translateX(-10px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        .res-big { font-size: 2.5rem; font-weight: 800; color: #fff; display: block; letter-spacing: -0.05em; margin-top: 0.5rem; font-family: 'Manrope', sans-serif; }
-
-        @media (max-width: 1200px) {
-            .sidebar { display: none; }
-            .main-stage { margin-left: 0; padding: 2rem; }
-        }
+        .res-big { font-size: 2.2rem; font-weight: 800; color: #fff; display: block; letter-spacing: -0.05em; margin-top: 0.5rem; }
 
         /* SCANNING LINE */
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
@@ -129,6 +123,11 @@
             position: absolute; left: 0; width: 100%; height: 2px;
             background: linear-gradient(90deg, transparent, var(--emerald), transparent);
             opacity: 0.15; animation: scan 4s linear infinite; pointer-events: none;
+        }
+
+        @media (max-width: 1200px) {
+            .sidebar { display: none; }
+            .main-stage { margin-left: 0; padding: 2rem; }
         }
     </style>
 </head>
@@ -158,7 +157,6 @@
         </nav>
 
         <div class="mt-auto p-10 bg-emerald-950/20 border border-emerald-500/10 text-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-grain opacity-10"></div>
             <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full mx-auto mb-6 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
             <p class="text-[9px] uppercase font-black text-slate-500 tracking-[0.3em] mb-6 leading-relaxed">Encrypted Session Active</p>
             <a href="index.html#compliance-check" class="block w-full py-4 bg-white text-charcoal font-black text-[10px] uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all">Secure Audit Call</a>
@@ -179,12 +177,35 @@
 
         <div class="max-w-6xl mx-auto relative z-10">
             
-            <span class="category-tag">Diagnostic Cluster 01: Capital Optimization</span>
+            <!-- CLUSTER 01: CAPITAL -->
+            <span class="category-tag">Cluster 01: Capital Optimization</span>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 
-                <!-- Late Interest -->
+                <!-- Invoice Finance -->
                 <div class="terminal-card">
                     <div class="scan-line"></div>
+                    <div class="mb-10 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Liquidity Proj.</h3>
+                            <p class="text-[9px] text-sky-400 font-black uppercase tracking-widest mt-2">Factoring Exit</p>
+                        </div>
+                        <i class="fas fa-bolt text-slate-700 text-xl"></i>
+                    </div>
+                    <div class="space-y-8">
+                        <div><label>Invoice Value (£)</label><input type="number" id="fac-val" placeholder="0.00"></div>
+                        <div><label>Projected Days to Pay</label><input type="number" id="fac-days" placeholder="60"></div>
+                    </div>
+                    <button class="execute-btn" onclick="calcFactoring()">Project Liquidity</button>
+                    <div class="output-box" id="res-fac">
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Available Today</span>
+                        <span class="res-big text-sky-400" id="val-fac-now">£0.00</span>
+                        <p class="text-[10px] text-slate-500 mt-4 italic text-right" id="val-fac-cost">Fee: £0.00</p>
+                    </div>
+                </div>
+
+                <!-- Recovery Claim -->
+                <div class="terminal-card">
+                    <div class="scan-line" style="animation-delay: 1s;"></div>
                     <div class="mb-10 flex justify-between items-start">
                         <div>
                             <h3 class="text-xl font-bold text-white uppercase tracking-tight">Recovery claim</h3>
@@ -198,25 +219,111 @@
                     </div>
                     <button class="execute-btn" onclick="calcInterest()">Run Recovery Calc</button>
                     <div class="output-box" id="res-int">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Total Statutory Claim</span>
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Statutory Claim</span>
                         <span class="res-big text-emerald-400" id="val-int">£0.00</span>
-                        <p class="text-[10px] text-slate-500 mt-4 italic">Includes Base + 8% daily interest + compensation.</p>
                     </div>
                 </div>
 
-                <!-- Credit Limit -->
+                <!-- Director Optimization -->
                 <div class="terminal-card">
-                    <div class="scan-line" style="animation-delay: 1s;"></div>
+                    <div class="scan-line" style="animation-delay: 2s;"></div>
+                    <div class="mb-10 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Director Yield</h3>
+                            <p class="text-[9px] text-amber-500 font-black uppercase tracking-widest mt-2">Salary vs. Dividends</p>
+                        </div>
+                        <i class="fas fa-user-tie text-slate-700 text-xl"></i>
+                    </div>
+                    <div class="space-y-8">
+                        <div><label>Target Net Extraction (£)</label><input type="number" id="div-target" placeholder="0.00"></div>
+                        <div><label>Corp Tax Rate</label><select id="corp-tax"><option value="0.25">Main Rate (25%)</option><option value="0.19">Small Profit (19%)</option></select></div>
+                    </div>
+                    <button class="execute-btn" onclick="calcDirector()">Optimize Yield</button>
+                    <div class="output-box" id="res-div">
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Tax Liability Projection</span>
+                        <span class="res-big text-amber-400" id="val-div-tax">£0.00</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CLUSTER 02: OPERATIONAL DAILY -->
+            <span class="category-tag">Cluster 02: Operational Daily</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Pro Invoice -->
+                <div class="terminal-card">
+                    <div class="mb-10 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Pro Invoice</h3>
+                            <p class="text-[9px] text-emerald-500 font-black uppercase tracking-widest mt-2">Compliance Ready</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div><label>Labour (£)</label><input type="number" id="gen-lab"></div>
+                            <div><label>Materials (£)</label><input type="number" id="gen-mat"></div>
+                        </div>
+                        <div><label>VAT Mode</label><select id="gen-vat"><option value="drc">REVERSE CHARGE</option><option value="std">STANDARD (20%)</option></select></div>
+                    </div>
+                    <button class="execute-btn" onclick="generateProInvoice()">Export Secure PDF</button>
+                </div>
+
+                <!-- RAMS Builder -->
+                <div class="terminal-card">
+                    <div class="mb-10 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">RAMS Builder</h3>
+                            <p class="text-[9px] text-amber-500 font-black uppercase tracking-widest mt-2">Method Statement</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div><label>Primary Activity</label><input type="text" id="rams-act" placeholder="e.g. Scaffolding"></div>
+                        <div class="flex gap-4">
+                            <label class="flex items-center text-[10px] uppercase font-black text-slate-500"><input type="checkbox" id="haz-height" class="mr-2 accent-emerald-500"> Height</label>
+                            <label class="flex items-center text-[10px] uppercase font-black text-slate-500"><input type="checkbox" id="haz-dust" class="mr-2 accent-emerald-500"> Dust</label>
+                        </div>
+                    </div>
+                    <button class="execute-btn" onclick="generateRAMS()">Export Safety Doc</button>
+                </div>
+
+                <!-- DRC Validator -->
+                <div class="terminal-card">
+                    <div class="mb-10 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">DRC Validator</h3>
+                            <p class="text-[9px] text-sky-400 font-black uppercase tracking-widest mt-2">VAT Logic Gate</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div><label>Are you a sub-contractor?</label><select id="drc-sub"><option value="yes">YES</option><option value="no">NO</option></select></div>
+                        <div><label>Customer is End User?</label><select id="drc-end"><option value="no">NO (CONTRACTOR)</option><option value="yes">YES (CLIENT)</option></select></div>
+                    </div>
+                    <button class="execute-btn" onclick="checkDRC()">Test VAT Status</button>
+                    <div class="output-box" id="res-drc">
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Verdict</span>
+                        <span class="res-big text-sky-400" id="val-drc-text">---</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CLUSTER 03: RISK INTELLIGENCE -->
+            <span class="category-tag">Cluster 03: Risk Intelligence</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-44">
+                
+                <!-- Credit Stress -->
+                <div class="terminal-card">
+                    <div class="scan-line"></div>
                     <div class="mb-10 flex justify-between items-start">
                         <div>
                             <h3 class="text-xl font-bold text-white uppercase tracking-tight">Credit Stress</h3>
-                            <p class="text-[9px] text-rose-500 font-black uppercase tracking-widest mt-2">Institutional Exposure Map</p>
+                            <p class="text-[9px] text-rose-500 font-black uppercase tracking-widest mt-2">Exposure Map</p>
                         </div>
-                        <i class="fas fa-scale-balanced text-slate-700 text-xl"></i>
                     </div>
                     <div class="space-y-8">
                         <div><label>Annual Turnover (£)</label><input type="number" id="risk-turnover" placeholder="0.00"></div>
-                        <div><label>Target Contract Value (£)</label><input type="number" id="risk-contract" placeholder="0.00"></div>
+                        <div><label>Contract Value (£)</label><input type="number" id="risk-contract" placeholder="0.00"></div>
                     </div>
                     <button class="execute-btn" onclick="calcCreditLimit()">Analyze Exposure</button>
                     <div class="output-box" id="res-risk">
@@ -225,29 +332,49 @@
                     </div>
                 </div>
 
-                <!-- DRC Validator -->
+                <!-- CIS Status -->
+                <div class="terminal-card">
+                    <div class="scan-line" style="animation-delay: 1s;"></div>
+                    <div class="mb-10 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Status Probe</h3>
+                            <p class="text-[9px] text-indigo-400 font-black uppercase tracking-widest mt-2">IR35 Liability</p>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div><label>Right of Substitution?</label><select id="cis-sub-check"><option value="yes">YES (SAFE)</option><option value="no">NO (RISK)</option></select></div>
+                        <div><label>Control/Supervision?</label><select id="cis-moo"><option value="no">LIMITED (SAFE)</option><option value="yes">DIRECT (RISK)</option></select></div>
+                    </div>
+                    <button class="execute-btn" onclick="checkCIS()">Probe Status</button>
+                    <div class="output-box" id="res-cis-status">
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Risk Profile</span>
+                        <span class="res-big text-indigo-400" id="val-cis-score">---</span>
+                    </div>
+                </div>
+
+                <!-- Dispute Burn -->
                 <div class="terminal-card">
                     <div class="scan-line" style="animation-delay: 2s;"></div>
                     <div class="mb-10 flex justify-between items-start">
                         <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">DRC Validator</h3>
-                            <p class="text-[9px] text-sky-400 font-black uppercase tracking-widest mt-2">Section 55A Logic Gate</p>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Dispute Burn</h3>
+                            <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mt-2">Unrecoverable Fees</p>
                         </div>
-                        <i class="fas fa-file-contract text-slate-700 text-xl"></i>
                     </div>
                     <div class="space-y-8">
-                        <div><label>Are you a sub-contractor?</label><select id="drc-sub"><option value="yes">YES</option><option value="no">NO</option></select></div>
-                        <div><label>Customer is 'End User'?</label><select id="drc-end"><option value="no">NO (Contractor)</option><option value="yes">YES (End Client)</option></select></div>
+                        <div><label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="0.00"></div>
+                        <div><label>Adjudication Multiplier</label><input type="text" value="1.2x Statutory" disabled></div>
                     </div>
-                    <button class="execute-btn" onclick="checkDRC()">Test VAT Status</button>
-                    <div class="output-box" id="res-drc">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Invoicing Verdict</span>
-                        <span class="res-big text-sky-400" id="val-drc-text">---</span>
+                    <button class="execute-btn" onclick="calcRisk()">Project Sunk Costs</button>
+                    <div class="output-box" id="res-adj">
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Est. Sunk Fees</span>
+                        <span class="res-big text-slate-300" id="val-sunk">£0.00</span>
                     </div>
                 </div>
+
             </div>
 
-            <!-- FOOTER LEGAL -->
+            <!-- FOOTER LEGAL (Solid Style) -->
             <footer class="mt-32 border-t border-white/5 pt-12 pb-20 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
                 <p>&copy; 2026 Compliance Labs & Capital Ltd. // Proprietary Environment</p>
                 <div class="flex gap-12 mt-8 md:mt-0">
@@ -259,6 +386,15 @@
     </div>
 
     <script>
+        function calcFactoring() {
+            const val = parseFloat(document.getElementById('fac-val').value) || 0;
+            const days = parseFloat(document.getElementById('fac-days').value) || 60;
+            const cost = (val * 0.02) + (val * 0.9 * 0.1 * days / 365);
+            document.getElementById('val-fac-now').innerText = "£" + (val * 0.88).toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('val-fac-cost').innerText = "Service Fee: £" + cost.toLocaleString('en-GB', {maximumFractionDigits: 2});
+            document.getElementById('res-fac').style.display = 'block';
+        }
+
         function calcInterest() {
             const amt = parseFloat(document.getElementById('int-amount').value) || 0;
             const dStr = document.getElementById('int-date').value;
@@ -269,6 +405,46 @@
             const comp = (amt < 1000 ? 40 : (amt < 10000 ? 70 : 100));
             document.getElementById('val-int').innerText = "£" + (interest + comp).toLocaleString('en-GB', {minimumFractionDigits: 2});
             document.getElementById('res-int').style.display = 'block';
+        }
+
+        function calcDirector() {
+            const target = parseFloat(document.getElementById('div-target').value) || 0;
+            const tax = (Math.max(0, target - 12570)) * 0.0875;
+            document.getElementById('val-div-tax').innerText = "£" + tax.toLocaleString('en-GB', {maximumFractionDigits: 2});
+            document.getElementById('res-div').style.display = 'block';
+        }
+
+        function generateProInvoice() {
+            const lab = parseFloat(document.getElementById('gen-lab').value) || 0;
+            const mat = parseFloat(document.getElementById('gen-mat').value) || 0;
+            const cis = lab * 0.20;
+            const total = lab + mat - cis;
+            const win = window.open('','_blank');
+            win.document.write(`<html><body style="font-family:sans-serif; padding:50px; background:#f8fafc;">
+                <div style="max-width:800px; margin:auto; background:white; padding:40px; border:1px solid #e2e8f0;">
+                <h1 style="text-transform:uppercase; letter-spacing:2px;">Compliance Ready Invoice</h1><hr>
+                <p>Date: ${new Date().toLocaleDateString()}</p>
+                <table width="100%" style="margin:40px 0; border-collapse:collapse;">
+                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:15px;">Labour (Subject to CIS)</td><td align="right">£${lab.toFixed(2)}</td></tr>
+                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:15px;">Materials (At Cost)</td><td align="right">£${mat.toFixed(2)}</td></tr>
+                    <tr style="color:#dc2626;"><td style="padding:15px;">CIS Deduction (20%)</td><td align="right">-£${cis.toFixed(2)}</td></tr>
+                </table>
+                <h2 style="text-align:right;">Total Due: £${total.toFixed(2)}</h2>
+                <div style="margin-top:50px; font-size:10px; color:#94a3b8; text-transform:uppercase;">Verified by Compliance Labs Architecture</div>
+                </div><script>window.print();<\/script></body></html>`);
+            win.document.close();
+        }
+
+        function generateRAMS() {
+            const act = document.getElementById('rams-act').value || "Operational Activity";
+            const win = window.open('','_blank');
+            win.document.write(`<html><body style="font-family:sans-serif; padding:50px; background:#0f172a; color:white;">
+                <h1 style="border-bottom:2px solid #059669; padding-bottom:20px;">RAMS: ${act}</h1>
+                <div style="margin:40px 0; background:rgba(255,255,255,0.05); padding:30px; border:1px solid rgba(255,255,255,0.1);">
+                <h3>Standard Operating Protocol:</h3>
+                <ul><li>Full PPE mandated for all site personnel.</li><li>Tool exclusion zone established.</li><li>Visual inspection of work area complete.</li></ul>
+                </div><script>window.print();<\/script></body></html>`);
+            win.document.close();
         }
 
         function checkDRC() {
@@ -292,6 +468,22 @@
             else if(pct < 85) { label.innerText = "Caution ⚠️"; label.style.color="#f59e0b"; bar.style.backgroundColor="#f59e0b"; }
             else { label.innerText = "High Risk 🛑"; label.style.color="#ef4444"; bar.style.backgroundColor="#ef4444"; }
             document.getElementById('res-risk').style.display = 'block';
+        }
+
+        function checkCIS() {
+            const sub = document.getElementById('cis-sub-check').value;
+            const moo = document.getElementById('cis-moo').value;
+            const out = document.getElementById('val-cis-score');
+            if(sub === 'yes' && moo === 'no') { out.innerText = "Low Exposure"; out.style.color = "#10b981"; }
+            else { out.innerText = "High Liability"; out.style.color = "#ef4444"; }
+            document.getElementById('res-cis-status').style.display = 'block';
+        }
+
+        function calcRisk() {
+            const claim = parseFloat(document.getElementById('adj-claim').value) || 0;
+            const sunk = 4500 + (claim * 0.12);
+            document.getElementById('val-sunk').innerText = "£" + sunk.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-adj').style.display = 'block';
         }
     </script>
 </body>
