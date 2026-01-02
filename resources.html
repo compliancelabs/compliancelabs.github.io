@@ -4,143 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intelligence Terminal | Compliance Labs & Capital</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
     <style>
         :root {
-            --emerald: #10b981;
-            --charcoal: #0f172a;
-            --navy: #1e293b;
-            --canvas: #0b0f1a;
+            --emerald: #059669; 
+            --charcoal: #020617;
+            --navy: #0f172a;
         }
-        body { font-family: 'Urbanist', sans-serif; background-color: var(--canvas); color: #cbd5e1; overflow-x: hidden; }
+        body { font-family: 'Manrope', sans-serif; background-color: var(--charcoal); color: #cbd5e1; overflow-x: hidden; }
         .serif-heading { font-family: 'Playfair Display', serif; }
 
-        /* --- TERMINAL SIDEBAR --- */
+        /* SIDEBAR */
         .sidebar {
-            width: 300px; 
+            width: 280px; 
             background-color: #0f172a; 
             display: flex; 
             flex-direction: column; 
-            padding: 2rem; 
+            padding: 2.5rem 2rem; 
             position: fixed; 
             height: 100vh; 
             left: 0; 
             top: 0; 
-            border-right: 1px solid rgba(16, 185, 129, 0.1); 
+            border-right: 1px solid rgba(255,255,255,0.05); 
             z-index: 100;
         }
-
         .nav-item { 
-            padding: 1rem 1.2rem; 
-            margin-bottom: 0.5rem; 
-            border-radius: 16px; 
+            padding: 1rem 0; 
+            margin-bottom: 0.25rem; 
             cursor: pointer; 
             color: #64748b; 
             text-decoration: none; 
             display: flex; 
             align-items: center; 
-            gap: 14px; 
+            gap: 16px; 
             transition: 0.3s; 
             font-weight: 700; 
-            font-size: 0.75rem; 
-            text-transform: uppercase;
+            font-size: 10px; 
+            text-transform: uppercase; 
             letter-spacing: 0.15em;
+            border-right: 2px solid transparent;
         }
-        .nav-item:hover, .nav-item.active { background: rgba(16, 185, 129, 0.1); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.2); }
+        .nav-item:hover, .nav-item.active { color: white; border-right-color: var(--emerald); }
+        .nav-item i { width: 20px; text-align: center; font-size: 14px; }
         
-        /* --- MAIN TERMINAL STAGE --- */
-        .main-stage { margin-left: 300px; flex: 1; padding: 4rem; position: relative; background: radial-gradient(circle at top right, #111827, #0b0f1a); }
+        /* MAIN STAGE */
+        .main-stage { margin-left: 280px; flex: 1; padding: 5rem; position: relative; background-color: var(--charcoal); min-height: 100vh; }
+        
+        /* Grain Texture */
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+        }
 
-        /* --- DATA CARDS --- */
+        /* CARDS */
         .terminal-card {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 28px;
-            padding: 2rem;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            background: rgba(15, 23, 42, 0.4); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 4px; /* Sharper Corners */
+            padding: 2.5rem; 
+            transition: all 0.3s; 
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+            overflow: hidden; 
             height: 100%;
         }
-        .terminal-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, transparent, var(--emerald), transparent);
-            opacity: 0.3;
+        .terminal-card:hover { 
+            border-color: rgba(5, 150, 105, 0.5); 
+            background: rgba(15, 23, 42, 0.8); 
+            transform: translateY(-5px);
         }
-        .terminal-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(30, 41, 59, 0.8);
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
-        }
-
+        
         .category-tag {
-            font-size: 9px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.4em;
-            color: var(--emerald);
-            margin: 3rem 0 2rem 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
+            font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3em; color: var(--emerald); 
+            margin: 4rem 0 2rem 0; display: flex; align-items: center; gap: 15px; width: 100%; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;
         }
-        .category-tag::after { content: ''; flex: 1; height: 1px; background: rgba(16, 185, 129, 0.2); }
 
-        /* --- INPUTS --- */
-        label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #94a3b8; margin-bottom: 0.6rem; display: block; }
+        /* INPUTS */
+        label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 0.5rem; display: block; }
         input, select { 
-            width: 100%; 
-            padding: 0.8rem 1rem; 
-            background: #0f172a; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 12px; 
-            font-size: 0.9rem; 
-            color: #fff;
-            font-weight: 600;
-            transition: all 0.3s;
+            width: 100%; padding: 1rem 1.2rem; background: #0b101d; border: 1px solid rgba(255,255,255,0.1); border-radius: 0; 
+            font-size: 0.9rem; color: #fff; font-weight: 500; transition: all 0.3s;
+            font-family: 'Manrope', sans-serif;
         }
-        input:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
+        input:focus, select:focus { outline: none; border-color: var(--emerald); background: #111827; }
 
         .execute-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #fff;
-            color: #0f172a;
-            border-radius: 12px;
-            font-weight: 900;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            transition: all 0.4s;
-            margin-top: 1.5rem;
+            width: 100%; padding: 1.2rem; background: #fff; color: #020617; border-radius: 0; font-weight: 800; font-size: 10px; 
+            text-transform: uppercase; letter-spacing: 0.2em; transition: all 0.3s; margin-top: 2rem; border: 1px solid white;
         }
-        .execute-btn:hover { background: var(--emerald); color: #fff; transform: translateY(-2px); }
+        .execute-btn:hover { background: var(--emerald); border-color: var(--emerald); color: #fff; }
 
-        /* --- RESULTS --- */
+        /* RESULTS */
         .output-box {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: #0b0f1a;
-            border-radius: 16px;
-            display: none;
-            border: 1px dashed rgba(16, 185, 129, 0.3);
-            animation: pulseIn 0.5s ease;
+            margin-top: 1.5rem; padding: 1.5rem; background: #020617; border: 1px dashed rgba(255, 255, 255, 0.15); display: none; animation: pulseIn 0.5s ease;
         }
-        @keyframes pulseIn { from { opacity: 0; scale: 0.98; } to { opacity: 1; scale: 1; } }
-
-        .res-big { font-size: 2rem; font-weight: 900; color: #fff; display: block; letter-spacing: -0.04em; }
+        @keyframes pulseIn { from { opacity: 0; } to { opacity: 1; } }
+        .res-big { font-size: 2rem; font-weight: 800; color: #fff; display: block; letter-spacing: -0.04em; margin-top: 0.5rem; }
 
         @media (max-width: 1200px) {
             .sidebar { display: none; }
@@ -150,57 +119,55 @@
 </head>
 <body class="flex">
 
-    <!-- TERMINAL SIDEBAR -->
+    <!-- SIDEBAR -->
     <div class="sidebar">
-        <a href="index.html" class="flex items-center space-x-3 mb-16 group">
-            <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform group-hover:rotate-12">
-                <!-- Our Official Shield Logo -->
-                <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#10b981"/>
+        <a href="index.html" class="flex flex-col gap-4 mb-16 group">
+            <svg viewBox="0 0 100 120" class="h-10 w-auto self-start transition-transform group-hover:scale-105">
+                <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#059669"/>
                 <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#0f172a" stroke-width="4"/>
             </svg>
             <div class="leading-none">
-                <span class="text-white font-black text-lg uppercase tracking-tighter block text-gradient">CL & Capital</span>
-                <span class="text-slate-500 font-bold text-[9px] uppercase tracking-[0.4em]">Intelligence</span>
+                <span class="text-white font-bold text-sm uppercase tracking-tight block">Compliance Labs</span>
+                <span class="text-slate-500 font-black text-[10px] uppercase tracking-[0.35em] mt-1">& CAPITAL</span>
             </div>
         </a>
-
-        <nav class="space-y-3">
+        <nav class="space-y-2">
             <a href="#" class="nav-item active"><i class="fas fa-microchip"></i> System Tools</a>
-            <a href="index.html" class="nav-item"><i class="fas fa-arrow-left"></i> Exit Hub</a>
-            <a href="about-us.html" class="nav-item"><i class="fas fa-user-shield"></i> The Firm</a>
+            <a href="intelligence.html" class="nav-item"><i class="fas fa-layer-group"></i> Intelligence</a>
+            <a href="index.html" class="nav-item"><i class="fas fa-arrow-left"></i> Exit Terminal</a>
         </nav>
-
-        <div class="mt-auto p-8 bg-emerald-500/5 border border-emerald-500/20 rounded-[2.5rem] text-center relative overflow-hidden">
-            <div class="absolute -top-10 -right-10 w-24 h-24 bg-emerald-500/10 blur-3xl rounded-full"></div>
-            <i class="fas fa-server text-emerald-500 text-3xl mb-6"></i>
-            <p class="text-[10px] uppercase font-black text-slate-400 tracking-widest mb-6 leading-relaxed">Encrypted Institutional Data Link</p>
-            <a href="index.html#compliance-check" class="block w-full py-4 bg-emerald-500 text-slate-900 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all shadow-lg shadow-emerald-500/20">Open Deal Room</a>
+        <div class="mt-auto p-8 border border-emerald-900/50 bg-emerald-900/10 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+            <i class="fas fa-server text-emerald-600 text-2xl mb-6 relative z-10"></i>
+            <p class="text-[9px] uppercase font-bold text-slate-400 tracking-widest mb-6 leading-relaxed relative z-10">Encrypted Institutional Data Link</p>
+            <a href="index.html#compliance-check" class="block w-full py-4 bg-emerald-700 text-white font-black text-[9px] uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all relative z-10">Open Deal Room</a>
         </div>
     </div>
 
-    <!-- MAIN TERMINAL STAGE -->
+    <!-- MAIN STAGE -->
     <div class="main-stage">
+        <div class="bg-grain"></div>
         
-        <header class="max-w-6xl mx-auto mb-20">
-            <div class="inline-flex items-center space-x-3 mb-6 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                <span class="text-[10px] uppercase tracking-[0.3em] font-black text-emerald-400">System Ready: Global Construction Data-Set v2.9</span>
+        <header class="max-w-6xl mx-auto mb-20 relative z-10">
+            <div class="inline-flex items-center space-x-3 mb-6 px-4 py-2 border border-emerald-500/20 bg-emerald-900/10">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-emerald-400">System Ready: Global Construction Data-Set v3.2</span>
             </div>
-            <h1 class="serif-heading text-6xl md:text-8xl text-white leading-none">Operational <br><span class="italic text-emerald-500 font-bold">Intelligence.</span></h1>
+            <h1 class="serif-heading text-6xl md:text-8xl text-white leading-none">Operational <br><span class="italic text-emerald-600 font-bold">Intelligence.</span></h1>
             <p class="text-slate-400 text-xl font-light mt-8 max-w-2xl leading-relaxed">Advanced diagnostic engines for UK construction enterprises. Calculate risk, project liability, and unlock institutional capital exits.</p>
         </header>
 
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-6xl mx-auto relative z-10">
             
-            <!-- CLUSTER 01: CAPITAL OPTIMIZATION -->
+            <!-- CLUSTER 01 -->
             <span class="category-tag">Diagnostic Cluster 01: Capital Optimization</span>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Invoice Finance -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
-                            <i class="fas fa-bolt text-sky-400"></i> Liquidity Proj.
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-bolt text-sky-500"></i> Liquidity Proj.
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Invoice Factoring Exit</p>
                     </div>
@@ -210,17 +177,17 @@
                     </div>
                     <button class="execute-btn" onclick="calcFactoring()">Run Projection</button>
                     <div class="output-box" id="res-fac">
-                        <span class="text-[10px] font-black uppercase text-slate-500">Cost of Immediate Capital</span>
+                        <span class="text-[9px] font-bold uppercase text-slate-500 tracking-widest">Cost of Immediate Capital</span>
                         <span class="res-big text-sky-400" id="val-fac-cost">£0.00</span>
-                        <div class="mt-4 text-[10px] font-bold text-white uppercase">Cash Today: <span id="val-fac-now">£0.00</span></div>
+                        <div class="mt-4 text-[10px] font-bold text-white uppercase border-t border-white/10 pt-4">Cash Today: <span id="val-fac-now" class="text-sky-400">£0.00</span></div>
                     </div>
                 </div>
 
-                <!-- Late Interest Claim -->
+                <!-- Late Interest -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
-                            <i class="fas fa-percent text-emerald-400"></i> Recovery Claim
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-percent text-emerald-500"></i> Recovery Claim
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Statutory Interest (8%)</p>
                     </div>
@@ -230,16 +197,16 @@
                     </div>
                     <button class="execute-btn" onclick="calcInterest()">Run Recovery Calc</button>
                     <div class="output-box" id="res-int">
-                        <span class="text-[10px] font-black uppercase text-slate-500">Total Claimable</span>
-                        <span class="res-big text-emerald-400" id="val-int">£0.00</span>
+                        <span class="text-[9px] font-bold uppercase text-slate-500 tracking-widest">Total Claimable</span>
+                        <span class="res-big text-emerald-500" id="val-int">£0.00</span>
                     </div>
                 </div>
 
                 <!-- Director Yield -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
-                            <i class="fas fa-user-tie text-amber-400"></i> Director Yield
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-user-tie text-amber-500"></i> Director Yield
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Dividend vs Salary</p>
                     </div>
@@ -249,22 +216,22 @@
                     </div>
                     <button class="execute-btn" onclick="calcDirector()">Run Optimization</button>
                     <div class="output-box" id="res-div">
-                        <span class="text-[10px] font-black uppercase text-slate-500">Tax Liability</span>
+                        <span class="text-[9px] font-bold uppercase text-slate-500 tracking-widest">Tax Liability</span>
                         <span class="res-big text-amber-400" id="val-div-tax">£0.00</span>
                     </div>
                 </div>
 
             </div>
 
-            <!-- CLUSTER 02: OPERATIONAL INFRASTRUCTURE -->
+            <!-- CLUSTER 02 -->
             <span class="category-tag">Diagnostic Cluster 02: Operational Daily</span>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Pro CIS Invoice -->
+                <!-- Pro Invoice -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
-                            <i class="fas fa-file-invoice-dollar text-emerald-400"></i> Pro Invoice
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-file-invoice-dollar text-emerald-500"></i> Pro Invoice
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">CIS & DRC Compliant</p>
                     </div>
@@ -278,10 +245,10 @@
                     <button class="execute-btn" onclick="generateProInvoice()">Export PDF</button>
                 </div>
 
-                <!-- RAMS Creator -->
+                <!-- RAMS -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
                             <i class="fas fa-hard-hat text-amber-500"></i> RAMS Builder
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Method Statement</p>
@@ -289,8 +256,8 @@
                     <div class="space-y-4">
                         <div><label>Activity</label><input type="text" id="rams-act" placeholder="Bricklaying" onchange="saveData()"></div>
                         <div class="grid grid-cols-2 gap-2">
-                             <label class="flex items-center text-[8px]"><input type="checkbox" id="haz-height" class="mr-2"> Height</label>
-                             <label class="flex items-center text-[8px]"><input type="checkbox" id="haz-dust" class="mr-2"> Dust</label>
+                             <label class="flex items-center text-[10px] uppercase font-bold text-slate-400"><input type="checkbox" id="haz-height" class="mr-2 accent-emerald-500"> Height</label>
+                             <label class="flex items-center text-[10px] uppercase font-bold text-slate-400"><input type="checkbox" id="haz-dust" class="mr-2 accent-emerald-500"> Dust</label>
                         </div>
                     </div>
                     <button class="execute-btn" onclick="generateRAMS()">Export Safety Doc</button>
@@ -299,8 +266,8 @@
                 <!-- DRC Validator -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
-                            <i class="fas fa-file-contract text-sky-400"></i> DRC Validator
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-file-contract text-sky-500"></i> DRC Validator
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Reverse Charge Logic</p>
                     </div>
@@ -310,21 +277,21 @@
                     </div>
                     <button class="execute-btn" onclick="checkDRC()">Run Logic Test</button>
                     <div class="output-box" id="res-drc">
-                        <span class="text-[10px] font-black uppercase text-slate-500">Verdict</span>
+                        <span class="text-[9px] font-bold uppercase text-slate-500 tracking-widest">Verdict</span>
                         <span class="res-big text-sky-400" id="val-drc-text">---</span>
                     </div>
                 </div>
 
             </div>
 
-            <!-- CLUSTER 03: RISK INTELLIGENCE -->
+            <!-- CLUSTER 03 -->
             <span class="category-tag">Diagnostic Cluster 03: Risk Intelligence</span>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-44">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-44">
 
-                <!-- Safe Credit Limit -->
+                <!-- Credit Limit -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
                             <i class="fas fa-scale-balanced text-rose-400"></i> Credit Stress
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Exposure vs Turnover</p>
@@ -335,16 +302,16 @@
                     </div>
                     <button class="execute-btn" onclick="calcCreditLimit()">Analyze Exposure</button>
                     <div class="output-box" id="res-risk">
-                        <div class="w-full h-1.5 bg-white/10 rounded-full mb-4 overflow-hidden"><div id="risk-bar" class="h-full bg-emerald-500 transition-all duration-1000" style="width:0%"></div></div>
-                        <span class="res-big text-sm uppercase tracking-widest" id="val-risk-text">---</span>
+                        <div class="w-full h-1 bg-white/10 mb-4 overflow-hidden"><div id="risk-bar" class="h-full bg-emerald-500 transition-all duration-1000" style="width:0%"></div></div>
+                        <span class="res-big text-sm uppercase tracking-widest font-black" id="val-risk-text">---</span>
                     </div>
                 </div>
 
-                <!-- CIS Status Probe -->
+                <!-- CIS Status -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
-                            <i class="fas fa-user-secret text-indigo-400"></i> Status Probe
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                            <i class="fas fa-user-secret text-indigo-500"></i> Status Probe
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">IR35 Liability Test</p>
                     </div>
@@ -354,15 +321,15 @@
                     </div>
                     <button class="execute-btn" onclick="checkCIS()">Probe Status</button>
                     <div class="output-box" id="res-cis-status">
-                        <span class="text-[10px] font-black uppercase text-slate-500">Risk Profile</span>
+                        <span class="text-[9px] font-bold uppercase text-slate-500 tracking-widest">Risk Profile</span>
                         <span class="res-big text-indigo-400" id="val-cis-score">---</span>
                     </div>
                 </div>
 
-                <!-- Adjudication Burn -->
+                <!-- Dispute Burn -->
                 <div class="terminal-card">
                     <div class="mb-8">
-                        <h3 class="text-xl font-bold text-white uppercase tracking-tight flex items-center gap-4">
+                        <h3 class="text-lg font-bold text-white uppercase tracking-tight flex items-center gap-4">
                             <i class="fas fa-gavel text-slate-400"></i> Dispute Burn
                         </h3>
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-2">Unrecoverable Fee Map</p>
@@ -372,7 +339,7 @@
                     </div>
                     <button class="execute-btn" onclick="calcRisk()">Project Sunk Costs</button>
                     <div class="output-box" id="res-adj">
-                        <span class="text-[10px] font-black uppercase text-slate-500">Est. Sunk Fees</span>
+                        <span class="text-[9px] font-bold uppercase text-slate-500 tracking-widest">Est. Sunk Fees</span>
                         <span class="res-big text-slate-300" id="val-sunk">£0.00</span>
                     </div>
                 </div>
@@ -382,16 +349,15 @@
     </div>
 
     <script>
-        // --- DATA PERSISTENCE ENGINE ---
         function saveData() {
             const inputs = document.querySelectorAll('input, select');
             const data = {};
             inputs.forEach(i => { if(i.id) data[i.id] = i.value; });
-            localStorage.setItem('cl_terminal_master_v3', JSON.stringify(data));
+            localStorage.setItem('cl_terminal_master_v4', JSON.stringify(data));
         }
 
         function loadData() {
-            const data = JSON.parse(localStorage.getItem('cl_terminal_master_v3'));
+            const data = JSON.parse(localStorage.getItem('cl_terminal_master_v4'));
             if(data) {
                 for (const [key, value] of Object.entries(data)) {
                     const el = document.getElementById(key);
@@ -402,7 +368,6 @@
         window.onload = loadData;
 
         // --- CALCULATOR LOGIC ---
-
         function calcFactoring() {
             const val = parseFloat(document.getElementById('fac-val').value) || 0;
             const days = parseFloat(document.getElementById('fac-days').value) || 0;
@@ -417,6 +382,7 @@
             const dStr = document.getElementById('int-date').value;
             if(!dStr) return;
             const days = Math.floor((new Date() - new Date(dStr)) / (86400000));
+            if(days < 1) return;
             const interest = (amt * 0.1275 * days / 365);
             const comp = (amt < 1000 ? 40 : (amt < 10000 ? 70 : 100));
             document.getElementById('val-int').innerText = "£" + (interest + comp).toLocaleString('en-GB', {minimumFractionDigits: 2});
@@ -431,26 +397,12 @@
             document.getElementById('res-div').style.display = 'block';
         }
 
-        function calcRetention() {
-            const amt = parseFloat(document.getElementById('ret-amt').value) || 0;
-            const months = parseFloat(document.getElementById('ret-year').value) || 0;
-            const real = amt / Math.pow(1.004, months);
-            document.getElementById('val-real').innerText = "£" + real.toLocaleString('en-GB', {maximumFractionDigits: 0});
-            document.getElementById('val-loss').innerText = "£" + (amt - real).toLocaleString('en-GB', {maximumFractionDigits: 0});
-            document.getElementById('res-ret').style.display = 'block';
-        }
-
         function generateProInvoice() {
             const lab = parseFloat(document.getElementById('gen-lab').value) || 0;
             const mat = parseFloat(document.getElementById('gen-mat').value) || 0;
             const cis = lab * 0.20;
             const win = window.open('','_blank');
-            win.document.write(`<html><body style="font-family:sans-serif; padding:50px;">
-                <h1>CIS INVOICE</h1><hr><table width="100%">
-                <tr><td>Labour</td><td align="right">£${lab.toFixed(2)}</td></tr>
-                <tr><td>Materials</td><td align="right">£${mat.toFixed(2)}</td></tr>
-                <tr style="color:red;"><td>CIS Deduction</td><td align="right">-£${cis.toFixed(2)}</td></tr>
-                </table><h2>Total Due: £${(lab + mat - cis).toFixed(2)}</h2><script>window.print();<\/script></body></html>`);
+            win.document.write(`<html><body style="font-family:sans-serif; padding:50px;"><h1>CIS INVOICE</h1><hr><table width="100%"><tr><td>Labour</td><td align="right">£${lab.toFixed(2)}</td></tr><tr><td>Materials</td><td align="right">£${mat.toFixed(2)}</td></tr><tr style="color:red;"><td>CIS Deduction</td><td align="right">-£${cis.toFixed(2)}</td></tr></table><h2>Total Due: £${(lab + mat - cis).toFixed(2)}</h2><script>window.print();<\/script></body></html>`);
             win.document.close();
         }
 
