@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compliance Labs & Capital | Institutional Prospectus</title>
+    <title>Institutional Prospectus | Compliance Labs & Capital</title>
+    
+    <!-- Favicon (Institutional Shield Logo) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
             --emerald: #10b981;
@@ -27,186 +31,148 @@
             -webkit-text-fill-color: transparent;
         }
         
-        /* Layout & UI Elements */
         .shield-icon {
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-        .shadow-institutional {
-            box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.1);
         }
 
         @media print {
             .no-print { display: none; }
-            body { background: white; }
-            .page-container { margin: 0; box-shadow: none; border: none; }
+            body { background: white; padding: 0; }
+            .page-container { margin: 0; box-shadow: none; border: none; border-radius: 0; width: 100%; max-width: 100%; }
             .print-black { color: black !important; }
         }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-900 antialiased selection:bg-emerald-100 selection:text-emerald-900">
 
-    <div class="page-container max-w-5xl mx-auto my-0 md:my-12 bg-white shadow-institutional rounded-none md:rounded-2xl overflow-hidden border border-slate-200">
+    <div class="page-container max-w-5xl mx-auto my-0 md:my-12 bg-white shadow-2xl rounded-none md:rounded-3xl overflow-hidden border border-slate-200">
         
         <!-- HEADER / LOGO BAR -->
-        <nav class="bg-white border-b border-slate-100 px-8 py-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div class="flex items-center space-x-3">
-                <!-- Styled Shield Logo Placeholder -->
+        <nav class="bg-white border-b border-slate-100 px-10 py-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div class="flex items-center space-x-4">
                 <div class="w-10 h-12 bg-slate-900 shield-icon flex items-center justify-center">
-                    <div class="w-6 h-8 border border-emerald-400/50 shield-icon flex items-center justify-center">
-                        <span class="text-emerald-400 font-bold text-[10px] leading-none">CL</span>
-                    </div>
+                    <span class="text-emerald-400 font-bold text-[10px]">CL</span>
                 </div>
-                <div>
-                    <h2 class="font-bold tracking-tighter text-slate-900 text-lg uppercase leading-none">Compliance <span class="text-emerald-600">Labs</span></h2>
-                    <p class="text-[10px] tracking-[0.3em] font-semibold text-slate-400 uppercase leading-none mt-1">& Capital</p>
+                <div class="leading-none">
+                    <h2 class="font-black tracking-tighter text-slate-900 text-lg uppercase">Compliance <span class="text-emerald-600 font-extrabold">Labs</span></h2>
+                    <p class="text-[10px] tracking-[0.35em] font-black text-slate-400 uppercase mt-1">& CAPITAL</p>
                 </div>
             </div>
-            <div class="text-center sm:text-right no-print">
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Confidential Prospectus</p>
-                <p class="text-xs font-semibold text-emerald-600">FY 2025/26 Compliance Framework</p>
+            <div class="text-center sm:text-right">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Confidential Archive</p>
+                <p class="text-xs font-extrabold text-emerald-600 uppercase tracking-tight">Institutional Prospectus FY26</p>
             </div>
         </nav>
 
         <!-- HERO SECTION -->
-        <header class="bg-institutional text-white p-8 md:p-20 relative overflow-hidden">
-            <!-- Background Decorative Grid -->
-            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <header class="bg-institutional text-white p-10 md:p-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 40px 40px;"></div>
             
             <div class="relative z-10">
-                <div class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-8">
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Institutional Strategy</p>
+                <div class="inline-block px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-emerald-400">Structural Intelligence</p>
                 </div>
-                <h1 class="serif-heading text-4xl md:text-6xl mb-8 leading-[1.1] max-w-3xl">
-                    Eliminating Compliance Risk. <br>
-                    <span class="text-gradient italic">Optimizing Capital Flow.</span>
+                <h1 class="serif-heading text-5xl md:text-7xl mb-10 leading-[1.1] max-w-3xl italic">
+                    Building the Moat <br>
+                    <span class="text-gradient not-italic font-bold">Around Your Capital.</span>
                 </h1>
-                <p class="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl border-l-2 border-emerald-500/30 pl-6">
-                    For high-growth construction firms (£1M–£10M), the primary barrier to scale is administrative friction. We install the professional back-office infrastructure required to make you audit-proof and credit-ready.
+                <p class="text-slate-400 text-xl font-light leading-relaxed max-w-2xl border-l-4 border-emerald-500/30 pl-8">
+                    For elite construction enterprises, the primary barrier to scale is administrative friction. We move firms from generalist accounting debt to proprietary technical protocols.
                 </p>
             </div>
         </header>
 
-        <!-- THE ARCHITECT'S APPROACH (Three Pillar Row) -->
+        <!-- THE ARCHITECT'S MANDATE -->
         <section class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100 bg-slate-50 border-b border-slate-100">
-            <div class="p-10">
-                <h3 class="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-4">01. Protect</h3>
-                <h4 class="font-bold text-xl mb-3">HMRC Firewall</h4>
-                <p class="text-sm text-slate-500 leading-relaxed">Automatic prevention of CIS filing penalties and retrospective PAYE/NICs status liability.</p>
+            <div class="p-12">
+                <span class="text-emerald-600 font-black text-[10px] uppercase tracking-widest mb-4 block">01. Defensive</span>
+                <h4 class="font-bold text-xl mb-4 uppercase tracking-tight text-slate-900">Risk Firewall</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">Automated protection against CIS reclassification and the £2,500 'Silent Penalty' loop.</p>
             </div>
-            <div class="p-10">
-                <h3 class="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-4">02. Recover</h3>
-                <h4 class="font-bold text-xl mb-3">Cash Liberation</h4>
-                <p class="text-sm text-slate-500 leading-relaxed">Deployment of the 7-Step Recovery sequence to unlock trapped retentions and overdue invoices.</p>
+            <div class="p-12">
+                <span class="text-emerald-600 font-black text-[10px] uppercase tracking-widest mb-4 block">02. Operational</span>
+                <h4 class="font-bold text-xl mb-4 uppercase tracking-tight text-slate-900">Cash Flow Lock</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">Direct enforcement of the Construction Act 1996 to recover aging retentions within 30 days.</p>
             </div>
-            <div class="p-10">
-                <h3 class="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-4">03. Scale</h3>
-                <h4 class="font-bold text-xl mb-3">Capital Access</h4>
-                <p class="text-sm text-slate-500 leading-relaxed">Direct bridge to specialist Asset and Invoice finance via our pre-vetted institutional data.</p>
+            <div class="p-12">
+                <span class="text-emerald-600 font-black text-[10px] uppercase tracking-widest mb-4 block">03. Strategic</span>
+                <h4 class="font-bold text-xl mb-4 uppercase tracking-tight text-slate-900">Capital Access</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">Connecting pre-vetted institutional data to our direct high-ticket placement pipelines.</p>
             </div>
         </section>
 
-        <!-- PROPRIETARY MECHANISMS (Detailed Feature Break) -->
-        <section class="p-8 md:p-20">
-            <div class="grid md:grid-cols-2 gap-16">
-                <!-- Column 1: Compliance -->
+        <!-- TECHNICAL INFRASTRUCTURE DETAILS -->
+        <section class="p-10 md:p-24 bg-white">
+            <div class="grid md:grid-cols-2 gap-20">
                 <div>
-                    <div class="flex items-center space-x-4 mb-8">
-                        <div class="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                        </div>
-                        <h2 class="text-2xl font-bold tracking-tight">The Payment Firewall™</h2>
-                    </div>
-                    <ul class="space-y-8">
-                        <li class="relative pl-8">
-                            <span class="absolute left-0 top-1 w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <h4 class="font-bold text-sm uppercase mb-1">CIS Verification API</h4>
-                            <p class="text-xs text-slate-500">Real-time matching of sub-contractor UTR/Status against HMRC's live database prior to every payment.</p>
+                    <h2 class="serif-heading text-4xl mb-12 text-slate-900">The Intelligence Engine.</h2>
+                    <ul class="space-y-12">
+                        <li class="flex gap-6">
+                            <div class="w-12 h-12 bg-slate-900 rounded-xl flex-shrink-0 flex items-center justify-center text-emerald-400">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-slate-900 uppercase tracking-tight mb-2">The Payment Firewall™</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed font-medium">Real-time sub-contractor verification API linked to monthly payment cycles. We make human-error fines mathematically impossible.</p>
+                            </div>
                         </li>
-                        <li class="relative pl-8">
-                            <span class="absolute left-0 top-1 w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <h4 class="font-bold text-sm uppercase mb-1">Status Defense Protocol</h4>
-                            <p class="text-xs text-slate-500">Contractual shields and on-site behavioral logs that prove self-employment status to audit standard.</p>
-                        </li>
-                        <li class="relative pl-8">
-                            <span class="absolute left-0 top-1 w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <h4 class="font-bold text-sm uppercase mb-1">Digital Audit Kit</h4>
-                            <p class="text-xs text-slate-500">Instant generation of itemized material evidence and filing history for immediate inspection readiness.</p>
+                        <li class="flex gap-6">
+                            <div class="w-12 h-12 bg-slate-900 rounded-xl flex-shrink-0 flex items-center justify-center text-emerald-400">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-slate-900 uppercase tracking-tight mb-2">7-Step Recovery™ Protocol</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed font-medium">Statutory enforcement of 'Notices of Sum Due' and 'Statutory Interest' to move your invoices to the top of the payment pile.</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
-
-                <!-- Column 2: Capital -->
-                <div>
-                    <div class="flex items-center space-x-4 mb-8">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                <div class="bg-slate-50 p-12 rounded-[3rem] border border-slate-100 flex flex-col justify-center">
+                    <h4 class="text-emerald-600 font-black text-[10px] uppercase tracking-widest mb-6">Performance Metrics</h4>
+                    <div class="space-y-8">
+                        <div>
+                            <span class="text-5xl font-black text-slate-900 tracking-tighter">£4.2M</span>
+                            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mt-2">Capital Placed & Recovered</p>
                         </div>
-                        <h2 class="text-2xl font-bold tracking-tight">7-Step Recovery™</h2>
+                        <div class="h-px bg-slate-200"></div>
+                        <div>
+                            <span class="text-5xl font-black text-slate-900 tracking-tighter">0</span>
+                            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mt-2">HMRC Fines for Clients</p>
+                        </div>
                     </div>
-                    <ul class="space-y-8">
-                        <li class="relative pl-8">
-                            <span class="absolute left-0 top-1 w-2 h-2 rounded-full bg-slate-900"></span>
-                            <h4 class="font-bold text-sm uppercase mb-1">Retention Recovery Hack</h4>
-                            <p class="text-xs text-slate-500">Using Construction Act legal triggers (Notice of Sum Due) to bypass main contractor delay tactics.</p>
-                        </li>
-                        <li class="relative pl-8">
-                            <span class="absolute left-0 top-1 w-2 h-2 rounded-full bg-slate-900"></span>
-                            <h4 class="font-bold text-sm uppercase mb-1">Statutory Interest Demands</h4>
-                            <p class="text-xs text-slate-500">Automated calculation and demand of late payment interest and compensation to prioritize your invoices.</p>
-                        </li>
-                        <li class="relative pl-8">
-                            <span class="absolute left-0 top-1 w-2 h-2 rounded-full bg-slate-900"></span>
-                            <h4 class="font-bold text-sm uppercase mb-1">Brokerage Integration</h4>
-                            <p class="text-xs text-slate-500">Frictionless transition to high-ticket Asset & Invoice finance based on your pre-cleared "Labs" data.</p>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- THE BRIDGE (Institutional Footer CTA) -->
-        <section class="bg-slate-900 text-white p-12 md:p-20 text-center relative overflow-hidden">
-            <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(16, 185, 129, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.2) 1px, transparent 1px); background-size: 50px 50px;"></div>
-            
+        <!-- CTA / CONTACT -->
+        <footer class="bg-institutional text-white p-12 md:p-24 text-center relative overflow-hidden">
             <div class="relative z-10 max-w-2xl mx-auto">
-                <h3 class="serif-heading text-3xl mb-6">Clean Data. Zero Friction. Maximum Growth.</h3>
-                <p class="text-slate-400 mb-10 font-light">
-                    Join the firms moving away from generalist chaos toward institutional precision. Our 90-Minute Audit identifies every hidden liability and trapped pound on your ledger.
+                <h3 class="serif-heading text-4xl mb-8 italic">Clean Data is Growth Capital.</h3>
+                <p class="text-slate-400 text-lg mb-12 font-light leading-relaxed">
+                    Transition from generalist accounting to institutional precision. Schedule your technical performance audit today.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#" class="px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-emerald-500 transition-all shadow-xl shadow-emerald-900/40">Request Strategy Audit</a>
-                    <a href="#" class="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-all">Download Risk Check</a>
+                <div class="no-print">
+                    <a href="https://calendly.com/compliancelabs0/30min" target="_blank" class="px-14 py-6 bg-emerald-600 text-white rounded-full font-black text-[11px] uppercase tracking-[0.4em] hover:bg-emerald-500 transition-all shadow-2xl">Book Audit</a>
                 </div>
             </div>
-        </section>
+        </footer >
 
-        <!-- FOOTER & LEGAL -->
-        <footer class="p-12 border-t border-slate-100 bg-white">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end">
-                <div class="mb-8 md:mb-0">
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-6 h-8 bg-slate-900 shield-icon flex items-center justify-center">
-                            <span class="text-emerald-400 font-bold text-[8px]">CL</span>
-                        </div>
-                        <span class="font-bold text-xs uppercase tracking-tighter">Compliance Labs & Capital Ltd.</span>
-                    </div>
-                    <p class="text-[10px] text-slate-400 leading-relaxed max-w-sm">
-                        Registered in England & Wales. Specialist business consultancy for the construction sector. Information Commissioner’s Office (ICO) Registered. Professional Indemnity insurance held to a value of £2,000,000.
-                    </p>
-                </div>
-                <div class="text-[10px] text-slate-400 uppercase tracking-widest text-right">
-                    <p class="mb-2">Institutional Advisory & Capital Placement</p>
-                    <p class="font-bold text-slate-900">London | Manchester | Bristol</p>
-                </div>
+        <!-- LEGAL FOOTER -->
+        <div class="p-12 bg-white border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[9px] font-black uppercase tracking-widest text-slate-400">
+            <p>&copy; 2026 Compliance Labs & Capital Ltd. | ICO Registered</p>
+            <div class="flex space-x-8 mt-6 md:mt-0">
+                <span>London</span>
+                <span>Manchester</span>
+                <span>Bristol</span>
             </div>
-        </section>
+        </div>
 
     </div>
 
-    <!-- PERSISTENT DISCLAIMER -->
-    <div class="max-w-5xl mx-auto px-8 mb-12">
-        <p class="text-[9px] text-slate-400 text-center leading-relaxed italic">
-            Notice: Compliance Labs & Capital provides business consultancy, data verification, and credit brokerage services. We are not solicitors or a firm of Chartered Accountants and do not provide legal or tax advice. All financial services are subject to lender status and criteria. Liability for compliance remains with the client.
+    <!-- PRINT ONLY DISCLAIMER -->
+    <div class="max-w-5xl mx-auto px-10 mb-20">
+        <p class="text-[8px] text-slate-400 text-center leading-relaxed italic uppercase tracking-widest">
+            Disclaimer: Compliance Labs & Capital provides technical infrastructure, administrative data processing, and credit brokerage. We are not solicitors or chartered accountants. Liability for final tax reporting remains with the client directors.
         </p>
     </div>
 
