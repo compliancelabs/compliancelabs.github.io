@@ -70,7 +70,7 @@
                               linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
         }
 
-        /* TERMINAL CARDS - Sharp/Sovereign Style */
+        /* TERMINAL CARDS */
         .terminal-card {
             background: rgba(15, 23, 42, 0.4); 
             backdrop-filter: blur(12px); 
@@ -86,21 +86,29 @@
         .terminal-card:hover { 
             border-color: rgba(5, 150, 105, 0.4); 
             background: rgba(15, 23, 42, 0.8); 
-            transform: translateY(-2px);
         }
-        
+
+        /* MASTER SCAN HERO */
+        .master-diagnostic {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(2, 6, 23, 1) 100%);
+            border: 1px solid rgba(5, 150, 105, 0.3);
+            padding: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
         .category-tag {
             font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.4em; color: var(--emerald); 
             margin: 6rem 0 2.5rem 0; display: flex; align-items: center; gap: 20px; width: 100%; 
             border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.5rem;
         }
 
-        /* INPUTS - The Sovereign Field */
+        /* INPUTS */
         label { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #64748b; margin-bottom: 0.75rem; display: block; }
         input, select { 
             width: 100%; padding: 1rem 0; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); border-radius: 0; 
             font-size: 1.1rem; color: #fff; font-weight: 400; transition: all 0.3s;
-            font-family: 'Manrope', sans-serif;
         }
         input:focus, select:focus { outline: none; border-color: var(--emerald); }
 
@@ -110,12 +118,8 @@
         }
         .execute-btn:hover { background: #fff; color: var(--charcoal); border-color: #fff; }
 
-        /* OUTPUT MODES */
-        .output-box {
-            margin-top: 2rem; padding: 2rem; background: #020617; border-left: 2px solid var(--emerald); display: none; animation: slideIn 0.4s ease;
-        }
-        @keyframes slideIn { from { transform: translateX(-10px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        .res-big { font-size: 2.2rem; font-weight: 800; color: #fff; display: block; letter-spacing: -0.05em; margin-top: 0.5rem; }
+        .output-box { margin-top: 2rem; padding: 2rem; background: #020617; border-left: 2px solid var(--emerald); display: none; }
+        .res-big { font-size: 2.2rem; font-weight: 800; color: #fff; display: block; letter-spacing: -0.05em; }
 
         /* SCANNING LINE */
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
@@ -125,10 +129,11 @@
             opacity: 0.15; animation: scan 4s linear infinite; pointer-events: none;
         }
 
-        @media (max-width: 1200px) {
-            .sidebar { display: none; }
-            .main-stage { margin-left: 0; padding: 2rem; }
-        }
+        .audit-step { display: none; }
+        .audit-step.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media (max-width: 1200px) { .sidebar { display: none; } .main-stage { margin-left: 0; padding: 2rem; } }
     </style>
 </head>
 <body class="flex stage-grid">
@@ -148,17 +153,15 @@
                 </div>
             </div>
         </a>
-
         <nav class="space-y-4">
-            <a href="#" class="nav-item active"><i class="fas fa-microchip"></i> System Tools</a>
-            <a href="intelligence.html" class="nav-item"><i class="fas fa-layer-group"></i> Intelligence</a>
+            <a href="#" class="nav-item active"><i class="fas fa-microchip"></i> Terminal Home</a>
+            <a href="intelligence.html" class="nav-item"><i class="fas fa-layer-group"></i> Intelligence Hub</a>
             <a href="services.html" class="nav-item"><i class="fas fa-shield-halved"></i> Specifications</a>
             <a href="index.html" class="nav-item"><i class="fas fa-power-off"></i> Exit System</a>
         </nav>
-
         <div class="mt-auto p-10 bg-emerald-950/20 border border-emerald-500/10 text-center relative overflow-hidden">
             <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full mx-auto mb-6 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.8)]"></div>
-            <p class="text-[9px] uppercase font-black text-slate-500 tracking-[0.3em] mb-6 leading-relaxed">Encrypted Session Active</p>
+            <p class="text-[9px] uppercase font-black text-slate-500 tracking-[0.3em] mb-6 leading-relaxed">System Live // Encrypted</p>
             <a href="index.html#compliance-check" class="block w-full py-4 bg-white text-charcoal font-black text-[10px] uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all">Secure Audit Call</a>
         </div>
     </div>
@@ -167,45 +170,68 @@
     <div class="main-stage">
         <div class="bg-grain"></div>
         
-        <header class="max-w-6xl mx-auto mb-24 relative z-10">
-            <div class="inline-flex items-center space-x-3 mb-10 border-b border-emerald-500/20 pb-2">
-                <span class="text-[10px] uppercase tracking-[0.5em] font-black text-emerald-500">Terminal v3.4 // Institutional Diagnostic</span>
+        <header class="max-w-6xl mx-auto mb-16 relative z-10">
+            <div class="inline-flex items-center space-x-3 mb-8 border-b border-emerald-500/20 pb-2">
+                <span class="text-[10px] uppercase tracking-[0.5em] font-black text-emerald-500">Terminal v3.6 // Master Diagnostic Environment</span>
             </div>
-            <h1 class="serif-heading text-6xl md:text-8xl text-white leading-none mb-10">Intelligence <br><span class="italic text-slate-500">Environment.</span></h1>
+            <h1 class="serif-heading text-5xl md:text-7xl text-white leading-none mb-6">Operational <br><span class="italic text-slate-500">Intelligence.</span></h1>
             <p class="text-slate-400 text-xl font-light max-w-2xl leading-relaxed">Proprietary diagnostic engines for the UK construction enterprise. Run logic tests on your supply chain, calculate statutory claims, and verify capital stress limits.</p>
         </header>
 
+        <!-- MASTER DIAGNOSTIC (Hero Audit Tool) -->
         <div class="max-w-6xl mx-auto relative z-10">
-            
-            <!-- CLUSTER 01: CAPITAL -->
+            <div class="master-diagnostic">
+                <div class="scan-line"></div>
+                <div class="grid md:grid-cols-12 gap-16 items-center">
+                    <div class="md:col-span-5">
+                        <span class="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] mb-6 block">Primary System Scan</span>
+                        <h2 class="serif-heading text-4xl text-white mb-6">90-Second <br>Infrastructure Audit.</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed font-light">Identifying red-box liabilities and trapped working capital across your entire ledger.</p>
+                    </div>
+                    
+                    <div id="audit-container" class="md:col-span-7 bg-white/5 p-12 border border-white/10 relative">
+                        <!-- Step 1 -->
+                        <div class="audit-step active" id="audit-s1">
+                            <label>01. Subcontractor Verification Frequency</label>
+                            <div class="grid gap-4 mt-6">
+                                <button onclick="auditNext(1, 10)" class="text-left p-4 border border-white/10 hover:border-emerald-500 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Real-time API (Every Payment)</button>
+                                <button onclick="auditNext(1, 5)" class="text-left p-4 border border-white/10 hover:border-emerald-500 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Monthly / Manual Check</button>
+                                <button onclick="auditNext(1, 0)" class="text-left p-4 border border-white/10 hover:border-emerald-500 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Onboarding Only</button>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="audit-step" id="audit-s2">
+                            <label>02. Average Retention Recovery Timeline</label>
+                            <div class="grid gap-4 mt-6">
+                                <button onclick="auditNext(2, 10)" class="text-left p-4 border border-white/10 hover:border-emerald-500 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Within 30 Days of DLP</button>
+                                <button onclick="auditNext(2, 0)" class="text-left p-4 border border-white/10 hover:border-emerald-500 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">90+ Days / Stagnant</button>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="audit-step" id="audit-s3">
+                            <label>03. Last Asset/Fleet Credit Audit</label>
+                            <div class="grid gap-4 mt-6">
+                                <button onclick="auditNext(3, 10)" class="text-left p-4 border border-white/10 hover:border-emerald-500 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Within last 6 Months</button>
+                                <button onclick="auditNext(3, 0)" class="text-left p-4 border border-white/10 hover:border-emerald-500 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Never / Over 12 Months</button>
+                            </div>
+                        </div>
+                        <!-- Results -->
+                        <div class="audit-step text-center py-10" id="audit-res">
+                            <span class="text-[10px] font-black uppercase text-slate-500 tracking-widest block mb-4">Infrastructure Score</span>
+                            <div class="text-7xl font-black text-emerald-500 mb-6" id="audit-score">0</div>
+                            <p class="text-xs font-bold uppercase tracking-widest text-white mb-8" id="audit-verdict">Calculating...</p>
+                            <a href="index.html#compliance-check" class="inline-block px-10 py-5 bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500 transition-all">Request Full Briefing</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLUSTER 01: CAPITAL OPTIMIZATION -->
             <span class="category-tag">Cluster 01: Capital Optimization</span>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 
-                <!-- Invoice Finance -->
+                <!-- Late Interest -->
                 <div class="terminal-card">
-                    <div class="scan-line"></div>
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Liquidity Proj.</h3>
-                            <p class="text-[9px] text-sky-400 font-black uppercase tracking-widest mt-2">Factoring Exit</p>
-                        </div>
-                        <i class="fas fa-bolt text-slate-700 text-xl"></i>
-                    </div>
-                    <div class="space-y-8">
-                        <div><label>Invoice Value (£)</label><input type="number" id="fac-val" placeholder="0.00"></div>
-                        <div><label>Projected Days to Pay</label><input type="number" id="fac-days" placeholder="60"></div>
-                    </div>
-                    <button class="execute-btn" onclick="calcFactoring()">Project Liquidity</button>
-                    <div class="output-box" id="res-fac">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Available Today</span>
-                        <span class="res-big text-sky-400" id="val-fac-now">£0.00</span>
-                        <p class="text-[10px] text-slate-500 mt-4 italic text-right" id="val-fac-cost">Fee: £0.00</p>
-                    </div>
-                </div>
-
-                <!-- Recovery Claim -->
-                <div class="terminal-card">
-                    <div class="scan-line" style="animation-delay: 1s;"></div>
                     <div class="mb-10 flex justify-between items-start">
                         <div>
                             <h3 class="text-xl font-bold text-white uppercase tracking-tight">Recovery claim</h3>
@@ -219,66 +245,87 @@
                     </div>
                     <button class="execute-btn" onclick="calcInterest()">Run Recovery Calc</button>
                     <div class="output-box" id="res-int">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Statutory Claim</span>
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Total Claimable</span>
                         <span class="res-big text-emerald-400" id="val-int">£0.00</span>
                     </div>
                 </div>
 
-                <!-- Director Optimization -->
+                <!-- Factoring Exit -->
                 <div class="terminal-card">
-                    <div class="scan-line" style="animation-delay: 2s;"></div>
+                    <div class="mb-10 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Factoring exit</h3>
+                            <p class="text-[9px] text-sky-400 font-black uppercase tracking-widest mt-2">Liquidity Projection</p>
+                        </div>
+                        <i class="fas fa-bolt text-slate-700 text-xl"></i>
+                    </div>
+                    <div class="space-y-8">
+                        <div><label>Invoice Value (£)</label><input type="number" id="fac-val" placeholder="0.00"></div>
+                        <div><label>Projected Days to Pay</label><input type="number" id="fac-days" placeholder="60"></div>
+                    </div>
+                    <button class="execute-btn" onclick="calcFactoring()">Project Liquidity</button>
+                    <div class="output-box" id="res-fac">
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Available Today</span>
+                        <span class="res-big text-sky-400" id="val-fac-now">£0.00</span>
+                    </div>
+                </div>
+
+                <!-- Director Yield -->
+                <div class="terminal-card">
                     <div class="mb-10 flex justify-between items-start">
                         <div>
                             <h3 class="text-xl font-bold text-white uppercase tracking-tight">Director Yield</h3>
-                            <p class="text-[9px] text-amber-500 font-black uppercase tracking-widest mt-2">Salary vs. Dividends</p>
+                            <p class="text-[9px] text-amber-500 font-black uppercase tracking-widest mt-2">Tax Optimization</p>
                         </div>
                         <i class="fas fa-user-tie text-slate-700 text-xl"></i>
                     </div>
                     <div class="space-y-8">
                         <div><label>Target Net Extraction (£)</label><input type="number" id="div-target" placeholder="0.00"></div>
-                        <div><label>Corp Tax Rate</label><select id="corp-tax"><option value="0.25">Main Rate (25%)</option><option value="0.19">Small Profit (19%)</option></select></div>
+                        <div><label>Corp Tax Rate</label><select id="corp-tax"><option value="0.25">25% (Main)</option><option value="0.19">19% (Small)</option></select></div>
                     </div>
                     <button class="execute-btn" onclick="calcDirector()">Optimize Yield</button>
                     <div class="output-box" id="res-div">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Tax Liability Projection</span>
+                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Liability Est.</span>
                         <span class="res-big text-amber-400" id="val-div-tax">£0.00</span>
                     </div>
                 </div>
-
             </div>
 
             <!-- CLUSTER 02: OPERATIONAL DAILY -->
             <span class="category-tag">Cluster 02: Operational Daily</span>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 
+                <!-- DRC Validator -->
+                <div class="terminal-card">
+                    <h3 class="text-xl font-bold text-white uppercase tracking-tight mb-8">DRC Validator</h3>
+                    <div class="space-y-6">
+                        <div><label>Sub-Contractor?</label><select id="drc-sub"><option value="yes">YES</option><option value="no">NO</option></select></div>
+                        <div><label>End User?</label><select id="drc-end"><option value="no">NO (CONTRACTOR)</option><option value="yes">YES (CLIENT)</option></select></div>
+                    </div>
+                    <button class="execute-btn" onclick="checkDRC()">Test VAT Status</button>
+                    <div class="output-box" id="res-drc">
+                        <span class="res-big text-sky-400" id="val-drc-text">---</span>
+                    </div>
+                </div>
+
                 <!-- Pro Invoice -->
                 <div class="terminal-card">
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Pro Invoice</h3>
-                            <p class="text-[9px] text-emerald-500 font-black uppercase tracking-widest mt-2">Compliance Ready</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-white uppercase tracking-tight mb-8">Pro Invoice</h3>
                     <div class="space-y-6">
                         <div class="grid grid-cols-2 gap-4">
                             <div><label>Labour (£)</label><input type="number" id="gen-lab"></div>
                             <div><label>Materials (£)</label><input type="number" id="gen-mat"></div>
                         </div>
-                        <div><label>VAT Mode</label><select id="gen-vat"><option value="drc">REVERSE CHARGE</option><option value="std">STANDARD (20%)</option></select></div>
+                        <div><label>VAT Mode</label><select id="gen-vat"><option value="drc">DRC (0%)</option><option value="std">STD (20%)</option></select></div>
                     </div>
-                    <button class="execute-btn" onclick="generateProInvoice()">Export Secure PDF</button>
+                    <button class="execute-btn" onclick="generateProInvoice()">Export PDF</button>
                 </div>
 
                 <!-- RAMS Builder -->
                 <div class="terminal-card">
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">RAMS Builder</h3>
-                            <p class="text-[9px] text-amber-500 font-black uppercase tracking-widest mt-2">Method Statement</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-white uppercase tracking-tight mb-8">RAMS Builder</h3>
                     <div class="space-y-6">
-                        <div><label>Primary Activity</label><input type="text" id="rams-act" placeholder="e.g. Scaffolding"></div>
+                        <div><label>Activity</label><input type="text" id="rams-act" placeholder="e.g. Scaffolding"></div>
                         <div class="flex gap-4">
                             <label class="flex items-center text-[10px] uppercase font-black text-slate-500"><input type="checkbox" id="haz-height" class="mr-2 accent-emerald-500"> Height</label>
                             <label class="flex items-center text-[10px] uppercase font-black text-slate-500"><input type="checkbox" id="haz-dust" class="mr-2 accent-emerald-500"> Dust</label>
@@ -286,26 +333,6 @@
                     </div>
                     <button class="execute-btn" onclick="generateRAMS()">Export Safety Doc</button>
                 </div>
-
-                <!-- DRC Validator -->
-                <div class="terminal-card">
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">DRC Validator</h3>
-                            <p class="text-[9px] text-sky-400 font-black uppercase tracking-widest mt-2">VAT Logic Gate</p>
-                        </div>
-                    </div>
-                    <div class="space-y-6">
-                        <div><label>Are you a sub-contractor?</label><select id="drc-sub"><option value="yes">YES</option><option value="no">NO</option></select></div>
-                        <div><label>Customer is End User?</label><select id="drc-end"><option value="no">NO (CONTRACTOR)</option><option value="yes">YES (CLIENT)</option></select></div>
-                    </div>
-                    <button class="execute-btn" onclick="checkDRC()">Test VAT Status</button>
-                    <div class="output-box" id="res-drc">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Verdict</span>
-                        <span class="res-big text-sky-400" id="val-drc-text">---</span>
-                    </div>
-                </div>
-
             </div>
 
             <!-- CLUSTER 03: RISK INTELLIGENCE -->
@@ -314,97 +341,89 @@
                 
                 <!-- Credit Stress -->
                 <div class="terminal-card">
-                    <div class="scan-line"></div>
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Credit Stress</h3>
-                            <p class="text-[9px] text-rose-500 font-black uppercase tracking-widest mt-2">Exposure Map</p>
-                        </div>
-                    </div>
-                    <div class="space-y-8">
-                        <div><label>Annual Turnover (£)</label><input type="number" id="risk-turnover" placeholder="0.00"></div>
-                        <div><label>Contract Value (£)</label><input type="number" id="risk-contract" placeholder="0.00"></div>
+                    <h3 class="text-xl font-bold text-white uppercase tracking-tight mb-8">Credit Stress</h3>
+                    <div class="space-y-6">
+                        <div><label>Annual Turnover (£)</label><input type="number" id="risk-turnover"></div>
+                        <div><label>Contract Value (£)</label><input type="number" id="risk-contract"></div>
                     </div>
                     <button class="execute-btn" onclick="calcCreditLimit()">Analyze Exposure</button>
                     <div class="output-box" id="res-risk">
-                        <div class="w-full h-1 bg-white/5 mb-6 overflow-hidden"><div id="risk-bar" class="h-full bg-emerald-500 transition-all duration-1000" style="width:0%"></div></div>
-                        <span class="res-big text-sm uppercase tracking-[0.3em] font-black" id="val-risk-text">Calculating...</span>
+                        <div class="w-full h-1 bg-white/5 mb-6"><div id="risk-bar" class="h-full bg-emerald-500 transition-all duration-1000" style="width:0%"></div></div>
+                        <span class="text-xs font-black uppercase text-white" id="val-risk-text">Calculating...</span>
                     </div>
                 </div>
 
-                <!-- CIS Status -->
+                <!-- Status Probe -->
                 <div class="terminal-card">
-                    <div class="scan-line" style="animation-delay: 1s;"></div>
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Status Probe</h3>
-                            <p class="text-[9px] text-indigo-400 font-black uppercase tracking-widest mt-2">IR35 Liability</p>
-                        </div>
+                    <h3 class="text-xl font-bold text-white uppercase tracking-tight mb-8">Status Probe</h3>
+                    <div class="space-y-6">
+                        <div><label>Substitution Clause?</label><select id="cis-sub-check"><option value="yes">YES</option><option value="no">NO</option></select></div>
+                        <div><label>Supervision Required?</label><select id="cis-moo"><option value="no">NO</option><option value="yes">YES</option></select></div>
                     </div>
-                    <div class="space-y-8">
-                        <div><label>Right of Substitution?</label><select id="cis-sub-check"><option value="yes">YES (SAFE)</option><option value="no">NO (RISK)</option></select></div>
-                        <div><label>Control/Supervision?</label><select id="cis-moo"><option value="no">LIMITED (SAFE)</option><option value="yes">DIRECT (RISK)</option></select></div>
-                    </div>
-                    <button class="execute-btn" onclick="checkCIS()">Probe Status</button>
+                    <button class="execute-btn" onclick="checkCIS()">Probe IR35/CIS</button>
                     <div class="output-box" id="res-cis-status">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Risk Profile</span>
                         <span class="res-big text-indigo-400" id="val-cis-score">---</span>
                     </div>
                 </div>
 
                 <!-- Dispute Burn -->
                 <div class="terminal-card">
-                    <div class="scan-line" style="animation-delay: 2s;"></div>
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-bold text-white uppercase tracking-tight">Dispute Burn</h3>
-                            <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mt-2">Unrecoverable Fees</p>
-                        </div>
+                    <h3 class="text-xl font-bold text-white uppercase tracking-tight mb-8">Dispute Burn</h3>
+                    <div class="space-y-6">
+                        <div><label>Claim Value (£)</label><input type="number" id="adj-claim"></div>
                     </div>
-                    <div class="space-y-8">
-                        <div><label>Claim Value (£)</label><input type="number" id="adj-claim" placeholder="0.00"></div>
-                        <div><label>Adjudication Multiplier</label><input type="text" value="1.2x Statutory" disabled></div>
-                    </div>
-                    <button class="execute-btn" onclick="calcRisk()">Project Sunk Costs</button>
+                    <button class="execute-btn" onclick="calcRisk()">Project Sunk Fees</button>
                     <div class="output-box" id="res-adj">
-                        <span class="text-[9px] font-black uppercase text-slate-500 tracking-widest">Est. Sunk Fees</span>
-                        <span class="res-big text-slate-300" id="val-sunk">£0.00</span>
+                        <span class="res-big text-slate-400" id="val-sunk">£0.00</span>
                     </div>
                 </div>
-
             </div>
 
-            <!-- FOOTER LEGAL (Solid Style) -->
+            <!-- TERMINAL FOOTER -->
             <footer class="mt-32 border-t border-white/5 pt-12 pb-20 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
-                <p>&copy; 2026 Compliance Labs & Capital Ltd. // Proprietary Environment</p>
+                <p>&copy; 2026 Compliance Labs & Capital Ltd. // Proprietary Architecture</p>
                 <div class="flex gap-12 mt-8 md:mt-0">
-                    <span class="text-slate-800">API: Connected</span>
-                    <span class="text-slate-800">Auth: Cleared</span>
+                    <span>London</span>
+                    <span>Manchester</span>
+                    <span>Bristol</span>
                 </div>
             </footer>
         </div>
     </div>
 
     <script>
-        function calcFactoring() {
-            const val = parseFloat(document.getElementById('fac-val').value) || 0;
-            const days = parseFloat(document.getElementById('fac-days').value) || 60;
-            const cost = (val * 0.02) + (val * 0.9 * 0.1 * days / 365);
-            document.getElementById('val-fac-now').innerText = "£" + (val * 0.88).toLocaleString('en-GB', {maximumFractionDigits: 0});
-            document.getElementById('val-fac-cost').innerText = "Service Fee: £" + cost.toLocaleString('en-GB', {maximumFractionDigits: 2});
-            document.getElementById('res-fac').style.display = 'block';
+        // Audit Engine
+        let auditScore = 0;
+        function auditNext(step, score) {
+            auditScore += score;
+            document.getElementById('audit-s'+step).classList.remove('active');
+            if(step < 3) {
+                document.getElementById('audit-s'+(step+1)).classList.add('active');
+            } else {
+                document.getElementById('audit-res').classList.add('active');
+                document.getElementById('audit-score').innerText = auditScore;
+                const v = document.getElementById('audit-verdict');
+                if(auditScore >= 25) { v.innerText = "GRADE: INSTITUTIONAL READY"; v.style.color="#10b981"; }
+                else if(auditScore >= 15) { v.innerText = "GRADE: MODERATE LIABILITY"; v.style.color="#f59e0b"; }
+                else { v.innerText = "GRADE: CRITICAL EXPOSURE"; v.style.color="#ef4444"; }
+            }
         }
 
+        // Logic Engines
         function calcInterest() {
             const amt = parseFloat(document.getElementById('int-amount').value) || 0;
             const dStr = document.getElementById('int-date').value;
             if(!dStr) return;
-            const days = Math.floor((new Date() - new Date(dStr)) / (86400000));
-            if(days < 1) return;
-            const interest = (amt * 0.1275 * days / 365);
-            const comp = (amt < 1000 ? 40 : (amt < 10000 ? 70 : 100));
-            document.getElementById('val-int').innerText = "£" + (interest + comp).toLocaleString('en-GB', {minimumFractionDigits: 2});
+            const days = Math.floor((new Date() - new Date(dStr)) / 86400000);
+            const interest = (amt * 0.1275 * days / 365) + (amt < 1000 ? 40 : (amt < 10000 ? 70 : 100));
+            document.getElementById('val-int').innerText = "£" + interest.toLocaleString('en-GB', {minimumFractionDigits: 2});
             document.getElementById('res-int').style.display = 'block';
+        }
+
+        function calcFactoring() {
+            const val = parseFloat(document.getElementById('fac-val').value) || 0;
+            document.getElementById('val-fac-now').innerText = "£" + (val * 0.88).toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-fac').style.display = 'block';
         }
 
         function calcDirector() {
@@ -412,39 +431,6 @@
             const tax = (Math.max(0, target - 12570)) * 0.0875;
             document.getElementById('val-div-tax').innerText = "£" + tax.toLocaleString('en-GB', {maximumFractionDigits: 2});
             document.getElementById('res-div').style.display = 'block';
-        }
-
-        function generateProInvoice() {
-            const lab = parseFloat(document.getElementById('gen-lab').value) || 0;
-            const mat = parseFloat(document.getElementById('gen-mat').value) || 0;
-            const cis = lab * 0.20;
-            const total = lab + mat - cis;
-            const win = window.open('','_blank');
-            win.document.write(`<html><body style="font-family:sans-serif; padding:50px; background:#f8fafc;">
-                <div style="max-width:800px; margin:auto; background:white; padding:40px; border:1px solid #e2e8f0;">
-                <h1 style="text-transform:uppercase; letter-spacing:2px;">Compliance Ready Invoice</h1><hr>
-                <p>Date: ${new Date().toLocaleDateString()}</p>
-                <table width="100%" style="margin:40px 0; border-collapse:collapse;">
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:15px;">Labour (Subject to CIS)</td><td align="right">£${lab.toFixed(2)}</td></tr>
-                    <tr style="border-bottom:1px solid #f1f5f9;"><td style="padding:15px;">Materials (At Cost)</td><td align="right">£${mat.toFixed(2)}</td></tr>
-                    <tr style="color:#dc2626;"><td style="padding:15px;">CIS Deduction (20%)</td><td align="right">-£${cis.toFixed(2)}</td></tr>
-                </table>
-                <h2 style="text-align:right;">Total Due: £${total.toFixed(2)}</h2>
-                <div style="margin-top:50px; font-size:10px; color:#94a3b8; text-transform:uppercase;">Verified by Compliance Labs Architecture</div>
-                </div><script>window.print();<\/script></body></html>`);
-            win.document.close();
-        }
-
-        function generateRAMS() {
-            const act = document.getElementById('rams-act').value || "Operational Activity";
-            const win = window.open('','_blank');
-            win.document.write(`<html><body style="font-family:sans-serif; padding:50px; background:#0f172a; color:white;">
-                <h1 style="border-bottom:2px solid #059669; padding-bottom:20px;">RAMS: ${act}</h1>
-                <div style="margin:40px 0; background:rgba(255,255,255,0.05); padding:30px; border:1px solid rgba(255,255,255,0.1);">
-                <h3>Standard Operating Protocol:</h3>
-                <ul><li>Full PPE mandated for all site personnel.</li><li>Tool exclusion zone established.</li><li>Visual inspection of work area complete.</li></ul>
-                </div><script>window.print();<\/script></body></html>`);
-            win.document.close();
         }
 
         function checkDRC() {
@@ -456,6 +442,13 @@
             document.getElementById('res-drc').style.display = 'block';
         }
 
+        function calcRisk() {
+            const claim = parseFloat(document.getElementById('adj-claim').value) || 0;
+            const sunk = 4500 + (claim * 0.12);
+            document.getElementById('val-sunk').innerText = "£" + sunk.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-adj').style.display = 'block';
+        }
+
         function calcCreditLimit() {
             const t = parseFloat(document.getElementById('risk-turnover').value) || 0;
             const c = parseFloat(document.getElementById('risk-contract').value) || 0;
@@ -464,9 +457,8 @@
             const bar = document.getElementById('risk-bar');
             const label = document.getElementById('val-risk-text');
             bar.style.width = pct + "%";
-            if(pct < 50) { label.innerText = "Investment Grade ✅"; label.style.color="#10b981"; bar.style.backgroundColor="#10b981"; }
-            else if(pct < 85) { label.innerText = "Caution ⚠️"; label.style.color="#f59e0b"; bar.style.backgroundColor="#f59e0b"; }
-            else { label.innerText = "High Risk 🛑"; label.style.color="#ef4444"; bar.style.backgroundColor="#ef4444"; }
+            if(pct < 50) { label.innerText = "Investment Grade"; label.style.color="#10b981"; }
+            else { label.innerText = "High Exposure Risk"; label.style.color="#ef4444"; }
             document.getElementById('res-risk').style.display = 'block';
         }
 
@@ -474,17 +466,13 @@
             const sub = document.getElementById('cis-sub-check').value;
             const moo = document.getElementById('cis-moo').value;
             const out = document.getElementById('val-cis-score');
-            if(sub === 'yes' && moo === 'no') { out.innerText = "Low Exposure"; out.style.color = "#10b981"; }
-            else { out.innerText = "High Liability"; out.style.color = "#ef4444"; }
+            if(sub === 'yes' && moo === 'no') { out.innerText = "LOW RISK"; out.style.color = "#10b981"; }
+            else { out.innerText = "HIGH LIABILITY"; out.style.color = "#ef4444"; }
             document.getElementById('res-cis-status').style.display = 'block';
         }
 
-        function calcRisk() {
-            const claim = parseFloat(document.getElementById('adj-claim').value) || 0;
-            const sunk = 4500 + (claim * 0.12);
-            document.getElementById('val-sunk').innerText = "£" + sunk.toLocaleString('en-GB', {maximumFractionDigits: 0});
-            document.getElementById('res-adj').style.display = 'block';
-        }
+        function generateProInvoice() { window.print(); }
+        function generateRAMS() { window.print(); }
     </script>
 </body>
 </html>
