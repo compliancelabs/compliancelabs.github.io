@@ -24,12 +24,10 @@
             color: #cbd5e1; 
             min-height: 100vh; 
             display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            /* Changed to flex-start to prevent cutting off top/bottom on small screens */
-            justify-content: flex-start;
+            flex-direction: column;
+            /* Safe centering: allows scrolling if content is taller than screen */
             overflow-x: hidden;
-            padding: 4rem 1rem; 
+            padding: 2rem 1rem;
         }
         
         .serif-heading { font-family: 'Playfair Display', serif; }
@@ -47,25 +45,20 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
         }
 
-        /* Audit Container - Compacted for Visibility */
+        /* Audit Container */
         .audit-card {
             width: 100%;
             max-width: 800px;
             background: #0f172a; 
             border: 1px solid rgba(16, 185, 129, 0.4); 
             border-radius: 0; 
-            /* Significantly increased bottom padding to ensure visibility of last button */
-            padding: 3rem 2rem 8rem 2rem;
+            /* Optimized padding for visibility */
+            padding: 3rem; 
             position: relative;
             overflow: hidden;
             box-shadow: 0 40px 100px -10px rgba(0,0,0,0.9);
             z-index: 10;
-            margin: auto;
-        }
-
-        /* Responsive Padding */
-        @media (min-width: 768px) {
-            .audit-card { padding: 5rem 5rem 10rem 5rem; }
+            margin: auto; /* Critical for safe centering */
         }
 
         /* Step Logic */
@@ -89,7 +82,7 @@
 
         /* Improved Choice Buttons */
         button.choice {
-            width: 100%; text-align: left; padding: 1.25rem 1.5rem; /* Compact padding */
+            width: 100%; text-align: left; padding: 1.25rem 1.5rem;
             background: rgba(30, 41, 59, 0.4);
             border: 1px solid rgba(255,255,255,0.15); 
             font-size: 11px; font-weight: 800;
@@ -101,7 +94,7 @@
             border-color: var(--emerald); 
             color: white; 
             background: rgba(16, 185, 129, 0.15); 
-            padding-left: 2rem; /* Slide text effect */
+            padding-left: 2rem;
         }
         button.choice i { opacity: 0; transition: all 0.2s; transform: translateX(-10px); }
         button.choice:hover i { opacity: 1; transform: translateX(0); }
@@ -126,7 +119,7 @@
     <div class="bg-grain"></div>
 
     <!-- LOGO ANCHOR -->
-    <a href="index.html" class="mb-8 flex flex-col items-center gap-3 group no-print relative z-10">
+    <a href="index.html" class="mb-10 flex flex-col items-center gap-3 group no-print relative z-10 shrink-0">
         <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform group-hover:scale-105">
             <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#059669"/>
             <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#010409" stroke-width="4"/>
@@ -148,7 +141,7 @@
                 <span class="text-[10px] font-black uppercase tracking-[0.5em] text-slate-500 mb-6 block">Initialization</span>
                 <h1 class="serif-heading text-3xl md:text-5xl text-white mb-6 leading-tight">Institutional <br><span class="italic text-emerald-500">Infrastructure Audit.</span></h1>
                 <p class="text-slate-400 text-base font-light leading-relaxed mb-10 border-l-2 border-emerald-500/20 pl-6">
-                    A technical 90-second diagnostic for UK construction enterprises. Evaluate your subcontractor firewall and recovery efficiency.
+                    A technical 90-second diagnostic for UK construction enterprises. Evaluate your subcontractor firewall and capital recovery efficiency against the Institutional Standard.
                 </p>
                 <button onclick="auditNext(0, 0)" class="choice text-center border-emerald-500 text-white bg-emerald-900/20 hover:bg-emerald-800 justify-center">
                     Initialize Diagnostic Scan <i class="fas fa-arrow-right ml-3 opacity-100 transform translate-x-0"></i>
@@ -205,14 +198,14 @@
                 <p class="text-slate-400 text-sm font-medium max-w-md mx-auto mb-10 leading-relaxed" id="audit-desc">Identifying systemic risks in your current architecture.</p>
                 
                 <a href="thank-you.html" class="inline-block px-12 py-5 bg-white text-charcoal text-[10px] font-black uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-white transition-all shadow-2xl">
-                    Request Full Briefing
+                    Request Full Institutional Briefing
                 </a>
             </div>
         </div>
     </div>
 
     <!-- FOOTER LEGAL -->
-    <footer class="mt-12 flex flex-col items-center gap-6 text-[9px] font-bold uppercase tracking-[0.4em] text-slate-600 text-center relative z-10 pb-8">
+    <footer class="mt-12 flex flex-col items-center gap-6 text-[9px] font-bold uppercase tracking-[0.4em] text-slate-600 text-center relative z-10 shrink-0">
         <p>Compliance Labs & Capital Ltd // Diagnostic v3.5</p>
         <div class="flex gap-12">
             <span>Auth: Institutional</span>
