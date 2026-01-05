@@ -28,6 +28,7 @@
             align-items: center; 
             justify-content: center;
             overflow-x: hidden;
+            padding: 2rem;
         }
         .serif-heading { font-family: 'Playfair Display', serif; }
 
@@ -35,8 +36,8 @@
         .stage-grid {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
         }
 
         .bg-grain {
@@ -44,18 +45,18 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
         }
 
-        /* Audit Container */
+        /* Audit Container - High Visibility Fix */
         .audit-card {
             width: 100%;
             max-width: 800px;
-            background: rgba(15, 23, 42, 0.6); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
+            background: #0f172a; /* Solid Background for Visibility */
+            border: 1px solid rgba(16, 185, 129, 0.3); /* Emerald Border */
             border-radius: 0; 
-            padding: 4rem; 
+            padding: 3rem md:padding: 4rem; 
             position: relative;
             overflow: hidden;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7);
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
+            z-index: 10;
         }
 
         /* Step Logic */
@@ -72,19 +73,19 @@
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
         .progress-indicator {
-            position: absolute; bottom: 0; left: 0; height: 2px;
+            position: absolute; bottom: 0; left: 0; height: 4px;
             background: var(--emerald); transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
             width: 0%;
         }
 
         button.choice {
-            width: 100%; text-align: left; padding: 1.5rem; background: rgba(30, 41, 59, 0.3);
+            width: 100%; text-align: left; padding: 1.5rem; background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 0.2em; color: #94a3b8;
+            text-transform: uppercase; letter-spacing: 0.2em; color: #cbd5e1;
             transition: all 0.2s; margin-top: 1rem; position: relative; overflow: hidden;
         }
         button.choice:hover {
-            border-color: var(--emerald); color: white; background: rgba(5, 150, 105, 0.1); transform: translateX(5px);
+            border-color: var(--emerald); color: white; background: rgba(16, 185, 129, 0.1); transform: translateX(5px);
         }
         button.choice i { float: right; opacity: 0; transition: opacity 0.2s; }
         button.choice:hover i { opacity: 1; }
@@ -104,11 +105,11 @@
         }
     </style>
 </head>
-<body class="stage-grid p-6">
+<body class="stage-grid">
     <div class="bg-grain"></div>
 
     <!-- LOGO ANCHOR -->
-    <a href="index.html" class="mb-12 flex flex-col items-center gap-4 group no-print">
+    <a href="index.html" class="mb-12 flex flex-col items-center gap-4 group no-print relative z-10">
         <svg viewBox="0 0 100 120" class="h-14 w-auto transition-transform group-hover:scale-105">
             <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#059669"/>
             <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#010409" stroke-width="4"/>
@@ -132,15 +133,15 @@
                 <p class="text-slate-400 text-lg font-light leading-relaxed mb-12 border-l-2 border-emerald-500/20 pl-6">
                     A technical 90-second diagnostic for UK construction enterprises. We evaluate your current subcontractor firewall and capital recovery efficiency against the Institutional Standard.
                 </p>
-                <button onclick="auditNext(0, 0)" class="choice text-center border-emerald-500 text-white bg-emerald-950/20 hover:bg-emerald-600">
-                    Initialize Diagnostic Scan <i class="fas fa-arrow-right"></i>
+                <button onclick="auditNext(0, 0)" class="choice text-center border-emerald-500 text-white bg-emerald-900/20 hover:bg-emerald-900/40">
+                    Initialize Diagnostic Scan <i class="fas fa-arrow-right opacity-100"></i>
                 </button>
             </div>
 
             <!-- Step 1: CIS -->
             <div class="audit-step" id="audit-s1">
                 <label>Pillar 01: Supply Chain Verification</label>
-                <h2 class="serif-heading text-3xl text-white mb-8">How often is your subcontractor status verified against HMRC's live API?</h2>
+                <h2 class="serif-heading text-2xl md:text-3xl text-white mb-8">How often is your subcontractor status verified against HMRC's live API?</h2>
                 <div class="space-y-4">
                     <button onclick="auditNext(1, 10)" class="choice">Real-time API (Automated) <i class="fas fa-check"></i></button>
                     <button onclick="auditNext(1, 5)" class="choice">Monthly / Manual Check <i class="fas fa-check"></i></button>
@@ -151,7 +152,7 @@
             <!-- Step 2: Retention -->
             <div class="audit-step" id="audit-s2">
                 <label>Pillar 02: Capital Velocity</label>
-                <h2 class="serif-heading text-3xl text-white mb-8">What is your average timeline for recovering retentions after DLP expiry?</h2>
+                <h2 class="serif-heading text-2xl md:text-3xl text-white mb-8">What is your average timeline for recovering retentions after DLP expiry?</h2>
                 <div class="space-y-4">
                     <button onclick="auditNext(2, 10)" class="choice">Within 30 Days (Statutory) <i class="fas fa-check"></i></button>
                     <button onclick="auditNext(2, 5)" class="choice">60 - 90 Days (Passive) <i class="fas fa-check"></i></button>
@@ -162,7 +163,7 @@
             <!-- Step 3: Assets -->
             <div class="audit-step" id="audit-s3">
                 <label>Pillar 03: Credit Readiness</label>
-                <h2 class="serif-heading text-3xl text-white mb-8">When was your plant and fleet last audited for high-interest credit drag?</h2>
+                <h2 class="serif-heading text-2xl md:text-3xl text-white mb-8">When was your plant and fleet last audited for high-interest credit drag?</h2>
                 <div class="space-y-4">
                     <button onclick="auditNext(3, 10)" class="choice">Within the last 6 months <i class="fas fa-check"></i></button>
                     <button onclick="auditNext(3, 5)" class="choice">12+ Months ago <i class="fas fa-check"></i></button>
@@ -180,7 +181,7 @@
             <!-- Results -->
             <div class="audit-step text-center py-10" id="audit-res">
                 <span class="text-[10px] font-black uppercase text-slate-500 tracking-widest block mb-6">Infrastructure Status</span>
-                <div class="text-7xl font-black text-emerald-500 mb-6 tracking-tighter" id="audit-score">0</div>
+                <div class="text-6xl md:text-7xl font-black text-emerald-500 mb-6 tracking-tighter" id="audit-score">0</div>
                 <div class="inline-block px-4 py-1 border border-white/20 rounded bg-white/5 mb-8">
                     <p class="text-xs font-bold uppercase tracking-widest text-white" id="audit-verdict">Calculating...</p>
                 </div>
@@ -194,7 +195,7 @@
     </div>
 
     <!-- FOOTER LEGAL -->
-    <footer class="mt-20 flex flex-col items-center gap-6 text-[9px] font-bold uppercase tracking-[0.4em] text-slate-600 text-center">
+    <footer class="mt-20 flex flex-col items-center gap-6 text-[9px] font-bold uppercase tracking-[0.4em] text-slate-600 text-center relative z-10">
         <p>Compliance Labs & Capital Ltd // Restricted Access Diagnostic v3.5</p>
         <div class="flex gap-12">
             <span>Auth: Institutional</span>
