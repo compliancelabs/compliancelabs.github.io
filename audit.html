@@ -26,20 +26,12 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            justify-content: center;
+            /* Changed to flex-start to prevent cutting off top/bottom on small screens */
+            justify-content: flex-start;
             overflow-x: hidden;
-            padding: 1rem; /* Compact padding for fit */
+            padding: 4rem 1rem; 
         }
         
-        /* Ensure scrolling on smaller/shorter screens */
-        @media (max-height: 900px) {
-            body {
-                justify-content: flex-start;
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-            }
-        }
-
         .serif-heading { font-family: 'Playfair Display', serif; }
 
         /* Institutional Backdrop */
@@ -62,7 +54,8 @@
             background: #0f172a; 
             border: 1px solid rgba(16, 185, 129, 0.4); 
             border-radius: 0; 
-            padding: 2.5rem; /* Reduced base padding */
+            /* Significantly increased bottom padding to ensure visibility of last button */
+            padding: 3rem 2rem 8rem 2rem;
             position: relative;
             overflow: hidden;
             box-shadow: 0 40px 100px -10px rgba(0,0,0,0.9);
@@ -72,7 +65,7 @@
 
         /* Responsive Padding */
         @media (min-width: 768px) {
-            .audit-card { padding: 4rem; }
+            .audit-card { padding: 5rem 5rem 10rem 5rem; }
         }
 
         /* Step Logic */
