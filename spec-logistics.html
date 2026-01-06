@@ -4,51 +4,138 @@
     <meta charset="utf-8"/>
     <title>Logistics Specification | Compliance Labs & Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        :root { --emerald: #059669; --charcoal: #020617; }
+        :root { --emerald: #059669; --charcoal: #020617; --slate: #64748b; }
         body { font-family: 'Manrope', sans-serif; background-color: #f8fafc; color: var(--charcoal); }
         .serif-heading { font-family: 'Playfair Display', serif; }
-        .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; }
-        .doc-canvas { max-width: 900px; margin: 6rem auto; background: white; border: 1px solid #e2e8f0; padding: 4rem; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.05); }
-        .spec-line { border-left: 2px solid var(--emerald); padding-left: 1.5rem; margin-bottom: 2rem; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        .doc-canvas { 
+            max-width: 1000px; margin: 4rem auto; background: white; 
+            border: 1px solid rgba(2, 6, 23, 0.1); padding: 5rem; 
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.05); 
+            position: relative; overflow: hidden;
+        }
+
+        .watermark {
+            position: absolute; top: 3rem; right: -2rem; opacity: 0.04;
+            font-size: 10px; font-weight: 900; letter-spacing: 0.5em;
+            transform: rotate(90deg); transform-origin: top right;
+            pointer-events: none; white-space: nowrap;
+        }
+
+        .spec-section { border-left: 2px solid var(--emerald); padding-left: 2rem; margin-bottom: 4rem; }
+        .technical-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
+        .tech-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--slate); font-weight: 700; uppercase; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; margin-bottom: 1rem; display: block; }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .doc-canvas { border: none; box-shadow: none; margin: 0; padding: 2rem; width: 100%; max-width: 100%; }
+            .no-print { display: none; }
+        }
     </style>
 </head>
-<body class="py-20">
+<body class="antialiased">
+
     <div class="doc-canvas">
-        <a href="services.html" class="mono text-slate-400 mb-16 block hover:text-emerald-700">← Return to Specifications</a>
-        
-        <span class="mono text-emerald-600 block mb-6">MANDATE_REF: LOG-FLEET-01</span>
-        <h1 class="serif-heading text-5xl mb-12 italic">Logistics Infrastructure.</h1>
+        <div class="watermark uppercase">Compliance Labs & Capital // Restricted Protocol // CLC-LOG-SPEC-V7.0</div>
 
-        <div class="space-y-16">
-            <section>
-                <div class="spec-line">
-                    <h2 class="mono font-bold text-lg mb-2">01 // Fleet Modernization ROI</h2>
-                    <p class="text-sm text-slate-500 uppercase font-bold tracking-widest">Asset Liquidity</p>
-                </div>
-                <p class="text-slate-600 leading-relaxed mb-8">Structuring asset finance to neutralize Clean Air Zone (CAZ) and ULEZ penalties. We identify equity in existing non-compliant assets to fund the transition to Euro-6 standards without exhausting operational cash flow.</p>
-                <ul class="space-y-4 text-sm font-bold uppercase text-slate-500">
-                    <li>[+] Sale & Leaseback on Compliant Trailers</li>
-                    <li>[+] ULEZ Sunk-Cost Neutralization Analytics</li>
-                    <li>[+] Refinance Bridge for New HGV Deposits</li>
-                </ul>
-            </section>
-
-            <section>
-                <div class="spec-line">
-                    <h2 class="mono font-bold text-lg mb-2">02 // Status Probe & Fuel Logic</h2>
-                    <p class="text-sm text-slate-500 uppercase font-bold tracking-widest">Regulatory Protection</p>
-                </div>
-                <p class="text-slate-600 leading-relaxed mb-8">Forensic auditing of agency driver contracts and self-employed driver status to mitigate IR35 backdated tax liability. We also install Fuel Duty reconciliation logic to maximize VAT recovery on heavy haulage operations.</p>
-                <ul class="space-y-4 text-sm font-bold uppercase text-slate-500">
-                    <li>[+] Driver IR35 'Substitution' Audit</li>
-                    <li>[+] Fuel Duty VAT Reconciliation Engine</li>
-                    <li>[+] Operator Licence Compliance Reviews</li>
-                </ul>
-            </section>
+        <!-- HEADER -->
+        <div class="flex justify-between items-start mb-20 no-print">
+            <a href="services.html" class="mono text-slate-400 hover:text-emerald-700 transition-colors flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Specifications Hub
+            </a>
+            <button onclick="window.print()" class="mono text-slate-400 hover:text-charcoal flex items-center gap-2">
+                <i class="fas fa-file-pdf"></i> Export Protocol
+            </button>
         </div>
+
+        <header class="mb-24">
+            <span class="mono text-emerald-600 block mb-6 font-bold tracking-widest">MANDATE_REF: LOG-FLEET-01-INFRA</span>
+            <h1 class="serif-heading text-5xl md:text-7xl mb-8 italic text-slate-900">Logistics <br>Infrastructure.</h1>
+            <p class="text-slate-500 text-xl font-light leading-relaxed max-w-2xl">
+                Asset arbitrage and regulatory shielding for heavy haulage operations. Neutralizing Clean Air Zone impact and mitigating IR35 driver liability.
+            </p>
+        </header>
+
+        <!-- SECTION 01: THE FLEET ARBITRAGE -->
+        <section class="spec-section">
+            <h2 class="mono font-bold text-xl mb-2 text-slate-900">01 // Fleet Modernization ROI</h2>
+            <p class="text-xs text-slate-400 uppercase font-black tracking-widest mb-8">Asset Liquidity & Emission Compliance</p>
+            
+            <p class="text-slate-600 leading-relaxed mb-10">
+                Haulage firms running pre-Euro-6 assets face unhedged daily liabilities in CAZ/ULEZ hubs. We structure asset refinance protocols to identify equity in paid-off trailers or older units, funding the 10% deposits for new compliant fleets without depleting operational EBITDA.
+            </p>
+
+            <div class="technical-grid">
+                <div>
+                    <span class="tech-label">Financial Mechanism</span>
+                    <ul class="space-y-3 text-sm font-bold uppercase text-slate-700">
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Sale & Leaseback Cycles</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> CAZ Sunk-Cost Neutralizer</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Deposit Bridge Loans</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="tech-label">Yield Metric</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Converts fixed fine costs (£100/day/unit) into tax-deductible finance repayments. Net cash flow impact: +£1,200/mo per unit.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02: THE DRIVER PROBE -->
+        <section class="spec-section">
+            <h2 class="mono font-bold text-xl mb-2 text-slate-900">02 // Driver Status Probe (IR35)</h2>
+            <p class="text-xs text-slate-400 uppercase font-black tracking-widest mb-8">Legislative Defense (Finance Act 2021)</p>
+            
+            <p class="text-slate-600 leading-relaxed mb-10">
+                Forensic auditing of agency driver contracts and self-employed status. We deploy the "Substitution Logic Gate" to verify that drivers operate outside IR35, mitigating the risk of retrospective National Insurance and PAYE demands covering 3-year periods.
+            </p>
+
+            <div class="technical-grid">
+                <div>
+                    <span class="tech-label">Regulatory Triggers</span>
+                    <ul class="space-y-3 text-sm font-bold uppercase text-slate-700">
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> MOO (Mutuality of Obligation) Audit</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Right of Substitution Check</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Control & Supervision Logs</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="tech-label">Risk Mitigation</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Insulates the firm against backdated liabilities (Avg. £15k/driver/year). Guarantees O-Licence compliance integrity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-40 pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex items-center gap-5">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto opacity-80">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                </svg>
+                <div class="leading-none">
+                    <span class="block font-bold text-sm uppercase tracking-tight text-slate-900">Compliance <span class="text-emerald-700">Labs</span></span>
+                    <span class="block mono text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">& CAPITAL LTD.</span>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="mono text-[9px] text-slate-400 tracking-widest">PROPRIETARY LOGISTICS FRAMEWORK // CONFIDENTIAL</p>
+                <p class="text-[10px] font-bold text-slate-900 uppercase mt-2">London // Manchester // Bristol</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
