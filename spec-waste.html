@@ -4,51 +4,138 @@
     <meta charset="utf-8"/>
     <title>Waste Mgmt Specification | Compliance Labs & Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        :root { --emerald: #059669; --charcoal: #020617; }
+        :root { --emerald: #059669; --charcoal: #020617; --slate: #64748b; }
         body { font-family: 'Manrope', sans-serif; background-color: #f8fafc; color: var(--charcoal); }
         .serif-heading { font-family: 'Playfair Display', serif; }
-        .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; }
-        .doc-canvas { max-width: 900px; margin: 6rem auto; background: white; border: 1px solid #e2e8f0; padding: 4rem; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.05); }
-        .spec-line { border-left: 2px solid var(--emerald); padding-left: 1.5rem; margin-bottom: 2rem; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        .doc-canvas { 
+            max-width: 1000px; margin: 4rem auto; background: white; 
+            border: 1px solid rgba(2, 6, 23, 0.1); padding: 5rem; 
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.05); 
+            position: relative; overflow: hidden;
+        }
+
+        .watermark {
+            position: absolute; top: 3rem; right: -2rem; opacity: 0.04;
+            font-size: 10px; font-weight: 900; letter-spacing: 0.5em;
+            transform: rotate(90deg); transform-origin: top right;
+            pointer-events: none; white-space: nowrap;
+        }
+
+        .spec-section { border-left: 2px solid var(--emerald); padding-left: 2rem; margin-bottom: 4rem; }
+        .technical-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
+        .tech-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--slate); font-weight: 700; uppercase; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; margin-bottom: 1rem; display: block; }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .doc-canvas { border: none; box-shadow: none; margin: 0; padding: 2rem; width: 100%; max-width: 100%; }
+            .no-print { display: none; }
+        }
     </style>
 </head>
-<body class="py-20">
+<body class="antialiased">
+
     <div class="doc-canvas">
-        <a href="services.html" class="mono text-slate-400 mb-16 block hover:text-emerald-700">← Return to Specifications</a>
-        
-        <span class="mono text-emerald-600 block mb-6">MANDATE_REF: WST-TAX-01</span>
-        <h1 class="serif-heading text-5xl mb-12 italic">Waste Infrastructure.</h1>
+        <div class="watermark uppercase">Compliance Labs & Capital // Restricted Protocol // CLC-WST-SPEC-V7.0</div>
 
-        <div class="space-y-16">
-            <section>
-                <div class="spec-line">
-                    <h2 class="mono font-bold text-lg mb-2">01 // Landfill Tax Firewall</h2>
-                    <p class="text-sm text-slate-500 uppercase font-bold tracking-widest">Statutory Mitigation</p>
-                </div>
-                <p class="text-slate-600 leading-relaxed mb-8">We integrate weighbridge software data with HMRC tax returns to ensure correct categorization of 'Fines' vs 'Active Waste'. Our protocol mitigates the risk of retrospective standard-rate reclassifications (£103.70/t).</p>
-                <ul class="space-y-4 text-sm font-bold uppercase text-slate-500">
-                    <li>[+] Automated Tonnage Reconciliation</li>
-                    <li>[+] Environmental Permit Compliance Audits</li>
-                    <li>[+] Retrospective Tax Credit Recovery</li>
-                </ul>
-            </section>
-
-            <section>
-                <div class="spec-line">
-                    <h2 class="mono font-bold text-lg mb-2">02 // Heavy Plant Yield Logic</h2>
-                    <p class="text-sm text-slate-500 uppercase font-bold tracking-widest">Asset Liquidity</p>
-                </div>
-                <p class="text-slate-600 leading-relaxed mb-8">Waste machinery depreciates aggressively. We structure asset refinance protocols that unlock equity from existing crushers and screens to fund operational expansion.</p>
-                <ul class="space-y-4 text-sm font-bold uppercase text-slate-500">
-                    <li>[+] Sale & Leaseback on High-Wear Assets</li>
-                    <li>[+] Repair-vs-Replace ROI Analytics</li>
-                    <li>[+] Skip Loader Fleet Modernization</li>
-                </ul>
-            </section>
+        <!-- HEADER -->
+        <div class="flex justify-between items-start mb-20 no-print">
+            <a href="services.html" class="mono text-slate-400 hover:text-emerald-700 transition-colors flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Specifications Hub
+            </a>
+            <button onclick="window.print()" class="mono text-slate-400 hover:text-charcoal flex items-center gap-2">
+                <i class="fas fa-file-pdf"></i> Export Protocol
+            </button>
         </div>
+
+        <header class="mb-24">
+            <span class="mono text-emerald-600 block mb-6 font-bold tracking-widest">MANDATE_REF: WST-TAX-01-INFRA</span>
+            <h1 class="serif-heading text-5xl md:text-7xl mb-8 italic text-slate-900">Waste <br>Infrastructure.</h1>
+            <p class="text-slate-500 text-xl font-light leading-relaxed max-w-2xl">
+                Technical auditing of landfill tax reconciliation and high-wear asset optimization for recycling and transfer station operations.
+            </p>
+        </header>
+
+        <!-- SECTION 01: LANDFILL TAX FIREWALL -->
+        <section class="spec-section">
+            <h2 class="mono font-bold text-xl mb-2 text-slate-900">01 // Landfill Tax Firewall™</h2>
+            <p class="text-xs text-slate-400 uppercase font-black tracking-widest mb-8">HMRC Finance Act Compliance</p>
+            
+            <p class="text-slate-600 leading-relaxed mb-10">
+                HMRC increasingly targets the reconciliation between Weighbridge data and Landfill Tax returns. We install a "Tonnage Reconciliation Gate" that verifies the categorization of 'Fines' vs 'Active Waste', preventing standard-rate (£103.70/t) reclassification of lower-rate (£3.30/t) material.
+            </p>
+
+            <div class="technical-grid">
+                <div>
+                    <span class="tech-label">Technical Function</span>
+                    <ul class="space-y-3 text-sm font-bold uppercase text-slate-700">
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Weighbridge Software Scrape</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Loss-on-Ignition (LOI) Logs</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Retrospective Credit Claims</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="tech-label">Financial Outcome</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Total mitigation of standard-rate reclassification liability. Direct recovery of overpaid environmental taxes via LTCS protocols.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02: PLANT REFINANCE -->
+        <section class="spec-section">
+            <h2 class="mono font-bold text-xl mb-2 text-slate-900">02 // Heavy Plant Yield Logic</h2>
+            <p class="text-xs text-slate-400 uppercase font-black tracking-widest mb-8">Asset Liquidity & Lifecycle Analytics</p>
+            
+            <p class="text-slate-600 leading-relaxed mb-10">
+                Crushers, screens, and skip loaders are high-depreciation assets. We structure **Sale & Leaseback** protocols that unlock equity from existing machinery to fund site expansions or environmental bond requirements, bypassing the restrictive terms of high-street banks.
+            </p>
+
+            <div class="technical-grid">
+                <div>
+                    <span class="tech-label">Capital Protocols</span>
+                    <ul class="space-y-3 text-sm font-bold uppercase text-slate-700">
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Repair-vs-Replace ROI</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Hard-Asset Refinance</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Skip Loader Fleet Bridge</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="tech-label">Liquidity Target</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Unlocks up to 80% of asset market value in 72 hours. Removes Capex bottlenecks for waste transfer station upgrades.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-40 pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex items-center gap-5">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto opacity-80">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                </svg>
+                <div class="leading-none">
+                    <span class="block font-bold text-sm uppercase tracking-tight text-slate-900">Compliance <span class="text-emerald-700">Labs</span></span>
+                    <span class="block mono text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">& CAPITAL LTD.</span>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="mono text-[9px] text-slate-400 tracking-widest">WASTE SECTOR DATA ROOM // NO-REPRODUCTION</p>
+                <p class="text-[10px] font-bold text-slate-900 uppercase mt-2">London // Manchester // Bristol</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
