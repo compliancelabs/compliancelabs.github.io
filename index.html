@@ -3,8 +3,12 @@
 <head>
     <meta charset="utf-8"/>
     <title>Compliance Labs & Capital | Global Infrastructure</title>
-    <!-- Headers and Styles same as above -->
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Fortune 20-grade financial infrastructure for Construction, Logistics, and Heavy Industry. Proprietary risk mitigation and capital mobilization."/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -13,25 +17,34 @@
         body { font-family: 'Manrope', sans-serif; background-color: #ffffff; color: var(--charcoal); overflow-x: hidden; }
         .serif-heading { font-family: 'Playfair Display', serif; }
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+        
         .btn-institutional { background: var(--charcoal); color: white; padding: 18px 40px; font-weight: 800; border-radius: 0; transition: 0.3s; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; border: 1px solid var(--charcoal); }
         .btn-institutional:hover { background: var(--emerald); border-color: var(--emerald); }
+        
         .diagonal-bg { position: absolute; top: 0; right: 0; width: 45%; height: 100vh; background: #f1f5f9; clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%); z-index: -1; }
+        
         .sector-card { border: 1px solid rgba(2, 6, 23, 0.1); padding: 3rem; transition: 0.4s; height: 100%; cursor: pointer; display: flex; flex-direction: column; }
         .sector-card:hover { background: #f8fafc; border-color: var(--charcoal); transform: translateY(-5px); }
+        
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .stat-box { border-left: 1px solid rgba(2, 6, 23, 0.1); padding-left: 2rem; }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- HEADER (Same as Services) -->
+    <!-- HEADER -->
     <header class="fixed w-full bg-white/95 backdrop-blur-md border-b border-slate-100 z-[1000]">
          <div class="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-4">
-                <svg viewBox="0 0 100 120" class="h-10 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
+            <a href="index.html" class="flex items-center gap-4 group">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto transition-transform group-hover:scale-105">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                </svg>
                 <div class="leading-tight">
                     <span class="block font-bold text-sm uppercase tracking-tight">Compliance <span class="text-emerald-700">Labs</span></span>
-                    <span class="block mono text-[9px] text-slate-500">& CAPITAL</span>
+                    <span class="block mono text-[9px] text-slate-500 font-bold">& CAPITAL</span>
                 </div>
             </a>
             <nav class="hidden lg:flex items-center gap-12">
@@ -40,7 +53,7 @@
                 <a href="intelligence.html" class="mono text-slate-500 hover:text-emerald-700">Intelligence</a>
                 <a href="resources.html" class="mono text-emerald-600 font-bold underline decoration-2 underline-offset-8">Terminal</a>
             </nav>
-            <a href="index.html#compliance-check" class="hidden lg:block btn-institutional">Secure Audit</a>
+            <a href="audit.html" class="hidden lg:block btn-institutional">Initialize Audit</a>
         </div>
     </header>
 
@@ -49,22 +62,22 @@
         <div class="diagonal-bg"></div>
         <div class="max-w-[1600px] mx-auto px-8 grid lg:grid-cols-12 gap-20 items-start">
             <div class="lg:col-span-8 reveal active">
-                <span class="mono text-emerald-600 mb-8 block font-bold">Global Infrastructure v5.0</span>
+                <span class="mono text-emerald-600 mb-8 block font-bold">Global Infrastructure v5.2 // Sovereign Risk</span>
                 <h1 class="serif-heading text-7xl lg:text-9xl leading-[1.0] text-slate-900 mb-12">De-Risking <br><span class="italic text-slate-400">Heavy Asset</span> <br>Enterprise.</h1>
                 <p class="text-slate-500 text-xl font-light leading-relaxed max-w-3xl mb-16">
-                    We install the proprietary technical protocols required to eliminate administrative volatility. For enterprises in <strong>Construction, Logistics, Waste, and Energy</strong>, we bridge the gap between regulatory precision and high-ticket capital.
+                    Compliance Labs & Capital installs the technical protocols required to eliminate administrative volatility for enterprises in <strong>Construction, Logistics, Waste, and Energy</strong>. We bridge the gap between regulatory precision and institutional liquidity.
                 </p>
                 <div class="flex gap-6">
-                    <a href="resources.html" class="btn-institutional">Launch Terminal</a>
-                    <a href="services.html" class="btn-institutional bg-transparent border border-slate-200 text-charcoal hover:bg-slate-50">View Specs</a>
+                    <a href="resources.html" class="btn-institutional">Access Terminal</a>
+                    <a href="services.html" class="btn-institutional bg-transparent border border-slate-200 text-charcoal hover:bg-slate-50">View Services</a>
                 </div>
             </div>
             <div class="lg:col-span-4 bg-white border border-slate-200 p-10 shadow-2xl reveal active">
-                <div class="flex justify-between mb-10 border-b pb-4"><span class="mono text-slate-400">CORE NODE</span><span class="mono text-emerald-600">UK-LND-01</span></div>
+                <div class="flex justify-between mb-10 border-b pb-4"><span class="mono text-slate-400 uppercase font-bold">Node Status</span><span class="mono text-emerald-600">UK-LND-01 ACTIVE</span></div>
                 <div class="space-y-10">
-                    <div><span class="block text-5xl font-bold tracking-tighter">£4.2M</span><span class="mono text-slate-400 mt-2 block">Capital Deployed</span></div>
-                    <div><span class="block text-5xl font-bold tracking-tighter">1,847</span><span class="mono text-slate-400 mt-2 block">Entities Audited</span></div>
-                    <div><span class="block text-5xl font-bold tracking-tighter">0.0%</span><span class="mono text-slate-400 mt-2 block">Failure Rate</span></div>
+                    <div><span class="block text-5xl font-bold tracking-tighter text-slate-900">£4.2M</span><span class="mono text-slate-400 mt-2 block">Capital Mobilized YTD</span></div>
+                    <div><span class="block text-5xl font-bold tracking-tighter text-slate-900">1,847</span><span class="mono text-slate-400 mt-2 block">Risk Audits Finalized</span></div>
+                    <div><span class="block text-5xl font-bold tracking-tighter text-emerald-600">0.0%</span><span class="mono text-slate-400 mt-2 block">HMRC Default Rate</span></div>
                 </div>
             </div>
         </div>
@@ -73,45 +86,54 @@
     <!-- SECTOR MATRIX -->
     <section class="border-t border-slate-100">
         <div class="grid lg:grid-cols-4">
-            <div class="sector-card reveal" onclick="window.location='services.html'"><span class="mono text-slate-300 block mb-6">Sector 01</span><h3 class="text-2xl font-bold mb-4">Construction</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">CIS defense, statutory retention recovery, and yellow plant capital placement.</p><span class="mono text-emerald-600 text-[10px]">Explore Mandate -></span></div>
-            <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.1s"><span class="mono text-slate-300 block mb-6">Sector 02</span><h3 class="text-2xl font-bold mb-4">Logistics</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Fleet Euro-6 ROI analysis and Driver IR35 status audit protocols.</p><span class="mono text-emerald-600 text-[10px]">Explore Mandate -></span></div>
-            <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.2s"><span class="mono text-slate-300 block mb-6">Sector 03</span><h3 class="text-2xl font-bold mb-4">Waste Mgmt</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Landfill Tax auditing and heavy machinery capex liquidity.</p><span class="mono text-emerald-600 text-[10px]">Explore Mandate -></span></div>
-            <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.3s"><span class="mono text-slate-300 block mb-6">Sector 04</span><h3 class="text-2xl font-bold mb-4">Renewables</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Green infra capital placement and Energy Saving Material VAT compliance.</p><span class="mono text-emerald-600 text-[10px]">Explore Mandate -></span></div>
+            <div class="sector-card reveal" onclick="window.location='services.html'"><span class="mono text-slate-300 block mb-6">Sector 01</span><h3 class="text-2xl font-bold mb-4">Construction</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Technical CIS defense, statutory retention enforcement, and heavy plant capital placement for Groundworks and Civil Engineering.</p><span class="mono text-emerald-600 text-[10px] font-bold">Access Mandate -></span></div>
+            <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.1s"><span class="mono text-slate-300 block mb-6">Sector 02</span><h3 class="text-2xl font-bold mb-4">Logistics</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Fleet Euro-6 ROI modeling and technical IR35 Driver Status audits to mitigate Clean Air Zone financial drag.</p><span class="mono text-emerald-600 text-[10px] font-bold">Access Mandate -></span></div>
+            <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.2s"><span class="mono text-slate-300 block mb-6">Sector 03</span><h3 class="text-2xl font-bold mb-4">Waste Mgmt</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Institutional Landfill Tax auditing and high-depreciation asset finance for Crushers, Screens, and Recycling infrastructure.</p><span class="mono text-emerald-600 text-[10px] font-bold">Access Mandate -></span></div>
+            <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.3s"><span class="mono text-slate-300 block mb-6">Sector 04</span><h3 class="text-2xl font-bold mb-4">Renewables</h3><p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Bridging the grid-connection liquidity gap and managing Energy Saving Material (ESM) VAT compliance logic.</p><span class="mono text-emerald-600 text-[10px] font-bold">Access Mandate -></span></div>
         </div>
     </section>
 
-    <!-- METHODOLOGY DEEP DIVE -->
-    <section class="py-40 bg-white">
+    <!-- STRATEGIC ARBITRAGE SECTION -->
+    <section class="py-40 bg-slate-50 border-b border-slate-100">
         <div class="max-w-[1600px] mx-auto px-8">
-            <div class="grid lg:grid-cols-2 gap-24 items-center">
+            <div class="grid lg:grid-cols-2 gap-32 items-center">
                 <div class="reveal">
-                    <span class="mono text-emerald-600 block mb-8">The Methodology</span>
-                    <h2 class="serif-heading text-5xl md:text-6xl text-slate-900 mb-10 leading-tight">The Architect's <br>Protocol.</h2>
-                    <p class="text-slate-500 text-lg leading-relaxed mb-12">
-                        We do not offer generic advice. We install a three-stage technical infrastructure designed to make your business invisible to HMRC auditors and irresistible to Tier-1 lenders.
+                    <span class="mono text-emerald-600 font-bold block mb-8">Capital Arbitrage</span>
+                    <h2 class="serif-heading text-6xl text-slate-900 leading-tight mb-10">Turning Compliance <br>into <span class="italic text-slate-400">Liquidity.</span></h2>
+                    <p class="text-slate-500 text-lg leading-relaxed mb-12 font-light">
+                        The market penalizes "Dirty Data." When your compliance record is reactive, lenders hedge their risk with high interest rates and low advance percentages. 
                     </p>
-                    <a href="about-us.html" class="mono text-charcoal border-b border-charcoal pb-1 hover:text-emerald-600 hover:border-emerald-600 transition-colors">Read Full Mandate -></a>
+                    <p class="text-slate-900 text-lg font-bold leading-relaxed mb-12">
+                        We flip the equation. By installing the Payment Firewall™, we convert your administrative burden into a high-grade investment prospectus. We make you the safest risk in the room.
+                    </p>
+                    <div class="grid grid-cols-2 gap-12 border-t border-slate-200 pt-12">
+                        <div class="stat-box">
+                            <span class="block text-4xl font-bold text-slate-900">£1.2B</span>
+                            <span class="mono text-slate-400 mt-2 block">Lender Panel Reach</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="block text-4xl font-bold text-slate-900">72hr</span>
+                            <span class="mono text-slate-400 mt-2 block">Funding Latency</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-8 reveal">
-                    <div class="flex gap-8 p-8 border border-slate-100 hover:border-emerald-500 transition-colors bg-slate-50">
-                        <span class="mono text-slate-300 text-xl">01</span>
-                        <div>
-                            <h4 class="font-bold text-slate-900 uppercase text-xs tracking-widest mb-3">Diagnosis</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed">27-point forensic scan of your current ledger logic, identifying silent liabilities in CIS and VAT.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-8 p-8 border border-slate-100 hover:border-emerald-500 transition-colors bg-slate-50">
-                        <span class="mono text-slate-300 text-xl">02</span>
-                        <div>
-                            <h4 class="font-bold text-slate-900 uppercase text-xs tracking-widest mb-3">Installation</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed">Hard-coding the Payment Firewall™ and 7-Step Recovery™ sequence into your daily operations.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-8 p-8 border border-slate-100 hover:border-emerald-500 transition-colors bg-slate-50">
-                        <span class="mono text-slate-300 text-xl">03</span>
-                        <div>
-                            <h4 class="font-bold text-slate-900 uppercase text-xs tracking-widest mb-3">Capital Placement</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed">Converting your clean data into an investment-grade prospectus for direct institutional funding.</p>
+                <div class="reveal">
+                    <div class="bg-white border border-slate-200 p-16 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full -mr-16 -mt-16"></div>
+                        <h3 class="text-2xl font-bold mb-8">The CL&C Ecosystem</h3>
+                        <div class="space-y-8">
+                            <div class="flex gap-6 items-start">
+                                <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center shrink-0"><i class="fas fa-microchip"></i></div>
+                                <div><h4 class="font-bold text-sm uppercase mb-2">Technical Labs</h4><p class="text-sm text-slate-500">Automated scrub of sub-contractor materials, UTR verification, and IR35 behavioral logs.</p></div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center shrink-0"><i class="fas fa-vault"></i></div>
+                                <div><h4 class="font-bold text-sm uppercase mb-2">Capital Placement</h4><p class="text-sm text-slate-500">Direct deal-room integration with Tier-1 and specialist asset lenders.</p></div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="w-10 h-10 bg-emerald-600 text-white flex items-center justify-center shrink-0"><i class="fas fa-shield-check"></i></div>
+                                <div><h4 class="font-bold text-sm uppercase mb-2">Sovereign Audit</h4><p class="text-sm text-slate-500">Legal enforcement of the Construction Act and Statutory Interest claims.</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,23 +141,53 @@
         </div>
     </section>
 
-    <!-- FOOTER (SOLID CHARCOAL) -->
-    <footer id="compliance-check" class="bg-[#020617] text-white pt-32 pb-20">
+    <!-- FOOTER -->
+    <footer id="compliance-check" class="bg-[#020617] text-white pt-40 pb-20">
         <div class="max-w-[1600px] mx-auto px-8">
-            <div class="grid lg:grid-cols-4 gap-20 mb-32">
+            <div class="grid lg:grid-cols-4 gap-24 mb-40">
                 <div class="lg:col-span-2">
-                    <div class="flex items-center gap-4 mb-10">
-                        <svg viewBox="0 0 100 120" class="h-10 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
-                        <span class="font-bold text-lg uppercase tracking-widest">Compliance Labs & Capital</span>
+                    <div class="flex items-center gap-6 mb-12">
+                        <svg viewBox="0 0 100 120" class="h-16 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
+                        <div class="leading-none">
+                            <span class="font-bold text-2xl uppercase tracking-widest block">Compliance Labs</span>
+                            <span class="mono text-slate-500 mt-2 block font-bold text-xs tracking-[0.4em]">& CAPITAL LTD.</span>
+                        </div>
                     </div>
-                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm uppercase font-bold tracking-widest">Specialist infrastructure and credit brokerage for Heavy Industry. Professional Indemnity coverage: £2,000,000.</p>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm font-medium uppercase tracking-widest mb-10">
+                        Architects of Construction and Logistics Growth. Institutional consultancy and credit brokerage for Heavy Industry.
+                    </p>
+                    <div class="flex gap-10">
+                        <div><p class="mono text-white mb-2">Liability Coverage</p><p class="mono text-emerald-500">£2,000,000 PI</p></div>
+                        <div><p class="mono text-white mb-2">Auth Node</p><p class="mono text-emerald-500">ICO Registered</p></div>
+                    </div>
                 </div>
-                <div><h4 class="mono text-white mb-10">The Firm</h4><ul class="space-y-6 mono text-slate-500"><li><a href="services.html">Services</a></li><li><a href="about-us.html">Mandate</a></li><li><a href="intelligence.html">Intelligence</a></li><li><a href="resources.html">Terminal</a></li></ul></div>
-                <div><h4 class="mono text-white mb-10">Legal</h4><ul class="space-y-6 mono text-slate-500"><li><a href="idd.html">Initial Disclosure</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="brochure.html">Prospectus</a></li></ul></div>
+                <div>
+                    <h4 class="mono text-white mb-12 pb-4 border-b border-white/10">The Firm</h4>
+                    <ul class="space-y-6 mono text-slate-500 text-xs">
+                        <li><a href="services.html" class="hover:text-emerald-400 transition-colors">Technical Services</a></li>
+                        <li><a href="about-us.html" class="hover:text-emerald-400 transition-colors">Institutional Mandate</a></li>
+                        <li><a href="intelligence.html" class="hover:text-emerald-400 transition-colors">Strategic Intelligence</a></li>
+                        <li><a href="resources.html" class="hover:text-emerald-400 transition-colors">Intelligence Terminal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="mono text-white mb-12 pb-4 border-b border-white/10">Governance</h4>
+                    <ul class="space-y-6 mono text-slate-500 text-xs">
+                        <li><a href="idd.html" class="hover:text-emerald-400 transition-colors">Initial Disclosure</a></li>
+                        <li><a href="privacy.html" class="hover:text-emerald-400 transition-colors">Privacy Charter</a></li>
+                        <li><a href="terms.html" class="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="brochure.html" class="hover:text-emerald-400 transition-colors">Prospectus (PDF)</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="border-t border-white/10 pt-10 flex justify-between items-center mono text-slate-700">
-                <p>&copy; 2026 CL&C Ltd. // PROPRIETARY ENVIRONMENT</p>
-                <div class="flex gap-10"><span>LONDON</span><span>MANCHESTER</span><span>BRISTOL</span></div>
+            
+            <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center mono text-[10px] text-slate-700">
+                <p>&copy; 2026 Compliance Labs & Capital Ltd. // CLC-ENTERPRISE-STACK-V5.2</p>
+                <div class="flex gap-10 mt-6 md:mt-0">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-emerald-500 rounded-full animate-pulse"></div> LONDON</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-emerald-500 rounded-full animate-pulse"></div> MANCHESTER</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-emerald-500 rounded-full animate-pulse"></div> BRISTOL</span>
+                </div>
             </div>
         </div>
     </footer>
