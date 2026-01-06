@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
     <title>90-Second Infrastructure Audit | Compliance Labs & Capital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
@@ -16,266 +16,186 @@
         :root {
             --emerald: #059669; 
             --charcoal: #020617;
-            --slate-dim: #1e293b;
+            --concrete: #f1f5f9;
         }
-        body { 
-            font-family: 'Manrope', sans-serif; 
-            background-color: var(--charcoal); 
-            color: #cbd5e1; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column;
-            /* Safe centering: allows scrolling if content is taller than screen */
-            overflow-x: hidden;
-            padding: 2rem 1rem;
-        }
-        
+        body { font-family: 'Manrope', sans-serif; background-color: var(--charcoal); color: #cbd5e1; overflow-x: hidden; }
         .serif-heading { font-family: 'Playfair Display', serif; }
-
-        /* Institutional Backdrop */
-        .stage-grid {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-        }
-
+        .mono { font-family: 'monospace'; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        /* Institutional Grids */
         .bg-grain {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+        }
+        
+        .diagonal-hero {
+            position: absolute; top: 0; right: 0; width: 60%; height: 100vh;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.05) 0%, rgba(2, 6, 23, 0) 100%);
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 0;
         }
 
-        /* Audit Container */
+        /* Audit Card */
         .audit-card {
-            width: 100%;
-            max-width: 800px;
-            background: #0f172a; 
-            border: 1px solid rgba(16, 185, 129, 0.4); 
-            border-radius: 0; 
-            /* Optimized padding for visibility */
-            padding: 3rem; 
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 40px 100px -10px rgba(0,0,0,0.9);
-            z-index: 10;
-            margin: auto; /* Critical for safe centering */
+            background: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative; z-index: 10;
+            padding: 4rem;
+            max-width: 800px; margin: 6rem auto;
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8);
         }
 
-        /* Step Logic */
-        .audit-step { display: none; }
-        .audit-step.active { display: block; animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Steps */
+        .audit-step { display: none; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .audit-step.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* UI Elements */
-        .scan-line {
-            position: absolute; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--emerald), transparent);
-            opacity: 0.4; animation: scan 3s infinite linear; pointer-events: none;
-        }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
-
-        .progress-indicator {
-            position: absolute; bottom: 0; left: 0; height: 6px;
-            background: var(--emerald); transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-            width: 0%;
-        }
-
-        /* Improved Choice Buttons */
-        button.choice {
-            width: 100%; text-align: left; padding: 1.25rem 1.5rem;
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px solid rgba(255,255,255,0.15); 
-            font-size: 11px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 0.1em; color: #e2e8f0;
-            transition: all 0.2s ease-out; margin-top: 1rem; position: relative; overflow: hidden;
+        /* Buttons */
+        .btn-choice {
+            width: 100%; text-align: left; padding: 24px; 
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1);
+            font-family: 'Manrope'; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+            color: #94a3b8; transition: all 0.2s; margin-bottom: 12px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        button.choice:hover {
-            border-color: var(--emerald); 
-            color: white; 
-            background: rgba(16, 185, 129, 0.15); 
-            padding-left: 2rem;
-        }
-        button.choice i { opacity: 0; transition: all 0.2s; transform: translateX(-10px); }
-        button.choice:hover i { opacity: 1; transform: translateX(0); }
+        .btn-choice:hover { border-color: var(--emerald); color: white; background: rgba(5, 150, 105, 0.05); padding-left: 32px; }
+        .btn-choice i { opacity: 0; transition: 0.2s; }
+        .btn-choice:hover i { opacity: 1; }
 
-        label {
-            font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.3em;
-            color: var(--emerald); margin-bottom: 1.5rem; display: block;
-        }
-
-        /* Processing State */
-        .processing-text {
-            font-family: 'Manrope', monospace;
-            font-size: 12px;
-            color: var(--emerald);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-top: 1rem;
+        /* Progress Line */
+        .scan-line {
+            position: absolute; top: 0; left: 0; height: 2px; background: var(--emerald); width: 0%; transition: width 0.5s ease;
         }
     </style>
 </head>
-<body class="stage-grid">
+<body class="antialiased">
     <div class="bg-grain"></div>
+    <div class="diagonal-hero"></div>
 
-    <!-- LOGO ANCHOR -->
-    <a href="index.html" class="mb-10 flex flex-col items-center gap-3 group no-print relative z-10 shrink-0">
-        <svg viewBox="0 0 100 120" class="h-12 w-auto transition-transform group-hover:scale-105">
-            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#059669"/>
-            <path d="M50 25 V95 M30 45 L70 45 M30 75 L70 75" stroke="#010409" stroke-width="4"/>
-        </svg>
-        <div class="text-center leading-none">
-            <span class="text-white font-bold text-base uppercase tracking-tight block">Compliance <span class="text-emerald-500">Labs</span></span>
-            <span class="text-slate-500 font-black text-[9px] uppercase tracking-[0.4em] mt-1.5 block">& CAPITAL</span>
+    <!-- LOGO NAV -->
+    <nav class="absolute top-0 left-0 w-full p-10 flex justify-between items-center z-50">
+        <a href="index.html" class="flex items-center gap-4 group">
+            <svg viewBox="0 0 100 120" class="h-10 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
+            <div class="leading-none">
+                <span class="text-white font-bold text-sm uppercase tracking-tight block">Compliance <span class="text-emerald-500">Labs</span></span>
+                <span class="mono text-slate-500 block mt-1">& CAPITAL</span>
+            </div>
+        </a>
+        <div class="flex items-center gap-3 border border-emerald-500/20 bg-emerald-900/10 px-4 py-2">
+            <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <span class="mono text-emerald-500 font-bold">SECURE_SESSION_ACTIVE</span>
         </div>
-    </a>
+    </nav>
 
+    <!-- MAIN AUDIT UI -->
     <div class="audit-card">
-        <div class="scan-line"></div>
-        <div class="progress-indicator" id="progress"></div>
-
-        <div id="audit-container">
+        <div class="scan-line" id="progress-bar"></div>
+        
+        <div id="audit-content">
             
-            <!-- Intro / Step 0 -->
-            <div class="audit-step active" id="audit-s0">
-                <span class="text-[10px] font-black uppercase tracking-[0.5em] text-slate-500 mb-6 block">Initialization</span>
-                <h1 class="serif-heading text-3xl md:text-5xl text-white mb-6 leading-tight">Institutional <br><span class="italic text-emerald-500">Infrastructure Audit.</span></h1>
-                <p class="text-slate-400 text-base font-light leading-relaxed mb-10 border-l-2 border-emerald-500/20 pl-6">
-                    A technical 90-second diagnostic for UK construction enterprises. Evaluate your subcontractor firewall and capital recovery efficiency against the Institutional Standard.
+            <!-- STEP 0: INTRO -->
+            <div class="audit-step active" id="step-0">
+                <span class="mono text-emerald-600 mb-6 block">INITIALIZATION PROTOCOL</span>
+                <h1 class="serif-heading text-5xl text-white mb-8">Infrastructure Diagnostic.</h1>
+                <p class="text-slate-400 text-lg font-light leading-relaxed mb-12">
+                    A technical scan for UK enterprises (£1M+ Turnover). Evaluate your supply chain liability and capital recovery efficiency against the Institutional Standard.
                 </p>
-                <button onclick="auditNext(0, 0)" class="choice text-center border-emerald-500 text-white bg-emerald-900/20 hover:bg-emerald-800 justify-center">
-                    Initialize Diagnostic Scan <i class="fas fa-arrow-right ml-3 opacity-100 transform translate-x-0"></i>
+                <button onclick="nextStep(1, 0)" class="btn-choice border-emerald-500 text-white bg-emerald-500/10 hover:bg-emerald-500/20 justify-center text-center">
+                    Initialize Scan <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
 
-            <!-- Step 1: CIS -->
-            <div class="audit-step" id="audit-s1">
-                <label>Pillar 01: Supply Chain Verification</label>
-                <h2 class="serif-heading text-xl md:text-3xl text-white mb-8">How often is your subcontractor status verified against HMRC's live API?</h2>
-                <div class="space-y-3">
-                    <button onclick="auditNext(1, 10)" class="choice">Real-time API (Automated) <i class="fas fa-check"></i></button>
-                    <button onclick="auditNext(1, 5)" class="choice">Monthly / Manual Check <i class="fas fa-check"></i></button>
-                    <button onclick="auditNext(1, 0)" class="choice">Onboarding Only <i class="fas fa-check"></i></button>
-                </div>
+            <!-- STEP 1: VERIFICATION -->
+            <div class="audit-step" id="step-1">
+                <span class="mono text-slate-500 mb-6 block">01 // REGULATORY FIREWALL</span>
+                <h2 class="serif-heading text-3xl text-white mb-10">Verification Frequency?</h2>
+                <button onclick="nextStep(2, 10)" class="btn-choice">Real-Time API (Automated) <i class="fas fa-check"></i></button>
+                <button onclick="nextStep(2, 5)" class="btn-choice">Monthly / Manual Check <i class="fas fa-check"></i></button>
+                <button onclick="nextStep(2, 0)" class="btn-choice">Onboarding Only <i class="fas fa-check"></i></button>
             </div>
 
-            <!-- Step 2: Retention -->
-            <div class="audit-step" id="audit-s2">
-                <label>Pillar 02: Capital Velocity</label>
-                <h2 class="serif-heading text-xl md:text-3xl text-white mb-8">What is your average timeline for recovering retentions after DLP expiry?</h2>
-                <div class="space-y-3">
-                    <button onclick="auditNext(2, 10)" class="choice">Within 30 Days (Statutory) <i class="fas fa-check"></i></button>
-                    <button onclick="auditNext(2, 5)" class="choice">60 - 90 Days (Passive) <i class="fas fa-check"></i></button>
-                    <button onclick="auditNext(2, 0)" class="choice">90+ Days / Stagnant <i class="fas fa-check"></i></button>
-                </div>
+            <!-- STEP 2: RETENTION -->
+            <div class="audit-step" id="step-2">
+                <span class="mono text-slate-500 mb-6 block">02 // CAPITAL VELOCITY</span>
+                <h2 class="serif-heading text-3xl text-white mb-10">Retention Recovery Timeline?</h2>
+                <button onclick="nextStep(3, 10)" class="btn-choice">Within 30 Days (Statutory) <i class="fas fa-check"></i></button>
+                <button onclick="nextStep(3, 5)" class="btn-choice">60 - 90 Days (Passive) <i class="fas fa-check"></i></button>
+                <button onclick="nextStep(3, 0)" class="btn-choice">90+ Days / Stagnant <i class="fas fa-check"></i></button>
             </div>
 
-            <!-- Step 3: Assets -->
-            <div class="audit-step" id="audit-s3">
-                <label>Pillar 03: Credit Readiness</label>
-                <h2 class="serif-heading text-xl md:text-3xl text-white mb-8">When was your plant and fleet last audited for high-interest credit drag?</h2>
-                <div class="space-y-3">
-                    <button onclick="auditNext(3, 10)" class="choice">Within the last 6 months <i class="fas fa-check"></i></button>
-                    <button onclick="auditNext(3, 5)" class="choice">12+ Months ago <i class="fas fa-check"></i></button>
-                    <button onclick="auditNext(3, 0)" class="choice">Never / Not under management <i class="fas fa-check"></i></button>
-                </div>
+            <!-- STEP 3: ASSETS -->
+            <div class="audit-step" id="step-3">
+                <span class="mono text-slate-500 mb-6 block">03 // CREDIT EFFICIENCY</span>
+                <h2 class="serif-heading text-3xl text-white mb-10">Last Asset Finance Audit?</h2>
+                <button onclick="nextStep(4, 10)" class="btn-choice">Last 6 Months <i class="fas fa-check"></i></button>
+                <button onclick="nextStep(4, 5)" class="btn-choice">12+ Months Ago <i class="fas fa-check"></i></button>
+                <button onclick="nextStep(4, 0)" class="btn-choice">Never / Cash Purchase <i class="fas fa-check"></i></button>
             </div>
 
-            <!-- Processing State -->
-            <div class="audit-step text-center py-16" id="audit-processing">
-                <div class="w-16 h-16 border-4 border-slate-800 border-t-emerald-500 rounded-full animate-spin mx-auto mb-10"></div>
-                <h3 class="text-xl font-bold text-white uppercase tracking-widest mb-4">Processing Protocol</h3>
-                <p class="processing-text" id="proc-text">Analyzing Ledger Logic...</p>
+            <!-- STEP 4: PROCESSING -->
+            <div class="audit-step text-center py-12" id="step-4">
+                <div class="w-16 h-16 border-2 border-slate-800 border-t-emerald-500 rounded-full animate-spin mx-auto mb-10"></div>
+                <span class="mono text-emerald-500 block mb-4 animate-pulse">PROCESSING DATA...</span>
+                <h2 class="text-2xl text-white font-bold" id="process-text">Mapping Risk Vectors</h2>
             </div>
 
-            <!-- Results -->
-            <div class="audit-step text-center py-6" id="audit-res">
-                <span class="text-[10px] font-black uppercase text-slate-500 tracking-widest block mb-6">Infrastructure Status</span>
-                <div class="text-6xl md:text-7xl font-black text-emerald-500 mb-6 tracking-tighter" id="audit-score">0</div>
-                <div class="inline-block px-6 py-2 border border-white/20 bg-white/5 mb-8">
-                    <p class="text-xs font-bold uppercase tracking-widest text-white" id="audit-verdict">Calculating...</p>
+            <!-- STEP 5: RESULTS -->
+            <div class="audit-step text-center" id="step-5">
+                <span class="mono text-slate-500 mb-6 block">DIAGNOSTIC COMPLETE</span>
+                <div class="text-8xl font-serif text-emerald-500 mb-4" id="score-val">0</div>
+                <div class="inline-block px-4 py-2 border border-white/20 bg-white/5 mb-8">
+                    <p class="mono text-white" id="score-text">CALCULATING...</p>
                 </div>
-                <p class="text-slate-400 text-sm font-medium max-w-md mx-auto mb-10 leading-relaxed" id="audit-desc">Identifying systemic risks in your current architecture.</p>
-                
-                <a href="thank-you.html" class="inline-block px-12 py-5 bg-white text-charcoal text-[10px] font-black uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-white transition-all shadow-2xl">
-                    Request Full Institutional Briefing
+                <p class="text-slate-400 text-sm leading-relaxed mb-12 max-w-md mx-auto">
+                    We have identified latent risks in your infrastructure. Your full 27-point technical breakdown is ready for retrieval.
+                </p>
+                <a href="thank-you.html" class="btn-choice bg-white text-charcoal border-white hover:bg-emerald-500 hover:text-white hover:border-emerald-500 justify-center text-center">
+                    Retrieve Full Protocol
                 </a>
             </div>
+
         </div>
     </div>
 
-    <!-- FOOTER LEGAL -->
-    <footer class="mt-12 flex flex-col items-center gap-6 text-[9px] font-bold uppercase tracking-[0.4em] text-slate-600 text-center relative z-10 shrink-0">
-        <p>Compliance Labs & Capital Ltd // Diagnostic v3.5</p>
-        <div class="flex gap-12">
-            <span>Auth: Institutional</span>
-            <span>API: Connected</span>
-        </div>
-    </footer>
-
     <script>
-        let auditScore = 0;
-        const totalSteps = 3;
-
-        function auditNext(step, score) {
-            auditScore += score;
-            document.getElementById('audit-s' + step).classList.remove('active');
+        let score = 0;
+        
+        function nextStep(step, val) {
+            score += val;
             
-            const nextStep = step + 1;
-            const progress = (nextStep / (totalSteps + 1)) * 100;
-            document.getElementById('progress').style.width = progress + '%';
+            // Hide all
+            document.querySelectorAll('.audit-step').forEach(el => el.classList.remove('active'));
+            
+            // Update Bar
+            document.getElementById('progress-bar').style.width = (step * 25) + "%";
 
-            if (nextStep <= totalSteps) {
-                document.getElementById('audit-s' + nextStep).classList.add('active');
+            // Logic
+            if(step === 4) {
+                document.getElementById('step-4').classList.add('active');
+                runProcess();
             } else {
-                runSimulation();
+                document.getElementById('step-' + step).classList.add('active');
             }
         }
 
-        function runSimulation() {
-            document.getElementById('audit-processing').classList.add('active');
-            const texts = [
-                "Verifying API Gates...",
-                "Checking Regulation 4...",
-                "Mapping Capital Exposure...",
-                "Finalizing Report..."
-            ];
-            let i = 0;
-            const interval = setInterval(() => {
-                document.getElementById('proc-text').innerText = texts[i];
-                i++;
-                if (i >= texts.length) {
-                    clearInterval(interval);
-                    setTimeout(showResults, 800);
-                }
-            }, 800);
+        function runProcess() {
+            const txt = document.getElementById('process-text');
+            setTimeout(() => { txt.innerText = "Verifying Regulation 4 Compliance..." }, 800);
+            setTimeout(() => { txt.innerText = "Analyzing Capital Drag..." }, 1600);
+            setTimeout(() => { 
+                document.getElementById('step-4').classList.remove('active');
+                document.getElementById('step-5').classList.add('active');
+                renderScore();
+            }, 2400);
         }
 
-        function showResults() {
-            document.getElementById('audit-processing').classList.remove('active');
-            document.getElementById('audit-res').classList.add('active');
-            document.getElementById('audit-score').innerText = auditScore;
-            
-            const verdict = document.getElementById('audit-verdict');
-            const desc = document.getElementById('audit-desc');
-            const scoreColor = document.getElementById('audit-score');
-
-            if (auditScore >= 25) {
-                verdict.innerText = "STATUS: INSTITUTIONAL READY";
-                verdict.style.color = "#10b981";
-                scoreColor.style.color = "#10b981";
-                desc.innerText = "Your infrastructure is performing at peak efficiency. Minimal intervention required to reach Tier-1 credit standards.";
-            } else if (auditScore >= 15) {
-                verdict.innerText = "STATUS: MODERATE LIABILITY";
-                verdict.style.color = "#f59e0b";
-                scoreColor.style.color = "#f59e0b";
-                desc.innerText = "Foundational gaps detected in recovery cycles. Manual CIS processes are creating a silent capital drag.";
-            } else {
-                verdict.innerText = "STATUS: SYSTEM CRITICAL";
-                verdict.style.color = "#ef4444";
-                scoreColor.style.color = "#ef4444";
-                desc.innerText = "WARNING: Systemic risk identified. Immediate infrastructure upgrade required to protect GPS status and prevent capital lockup.";
-            }
+        function renderScore() {
+            document.getElementById('score-val').innerText = score;
+            const t = document.getElementById('score-text');
+            if(score > 20) { t.innerText = "STATUS: INVESTMENT GRADE"; t.classList.add('text-emerald-500'); }
+            else if(score > 10) { t.innerText = "STATUS: MODERATE LIABILITY"; t.classList.add('text-amber-500'); }
+            else { t.innerText = "STATUS: CRITICAL EXPOSURE"; t.classList.add('text-rose-500'); }
         }
     </script>
 </body>
