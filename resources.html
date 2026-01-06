@@ -143,7 +143,7 @@
             <!-- TOOLS GRID -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid">
                 
-                <!-- AI COUNSEL (NEW) -->
+                <!-- AI COUNSEL -->
                 <div class="module t-all border-l-4 border-l-indigo-500 col-span-1 md:col-span-2 lg:col-span-3">
                     <div class="module-header flex justify-between items-center">
                         <span>AI Regulatory Counsel</span>
@@ -264,6 +264,96 @@
                     </div>
                 </div>
 
+                <!-- UNIVERSAL: Director Yield -->
+                <div class="module t-all">
+                    <div class="module-header">Director Yield Optimizer</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Target Net Extraction (£)</label>
+                        <input type="number" id="div-target" class="std-input" placeholder="0.00">
+                        <div class="data-readout" id="res-div">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Tax Liability</span>
+                            <div class="res-big text-white" id="val-div-tax">£0.00</div>
+                        </div>
+                        <button class="btn-exec" onclick="calcDirector()">Run Scenario</button>
+                    </div>
+                </div>
+
+                <!-- CONSTRUCTION: DRC Validator -->
+                <div class="module t-cons">
+                    <div class="module-header">VAT DRC Logic Gate (Cons)</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Subcontractor status?</label>
+                        <select id="drc-sub" class="std-input"><option value="yes">YES</option><option value="no">NO</option></select>
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-4 block">End User Declaration?</label>
+                        <select id="drc-end" class="std-input"><option value="no">NO</option><option value="yes">YES</option></select>
+                        <div class="data-readout" id="res-drc">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Required VAT Rate</span>
+                            <div class="res-big text-emerald-400" id="val-drc-text">---</div>
+                        </div>
+                        <button class="btn-exec" onclick="checkDRC()">Verify Logic</button>
+                    </div>
+                </div>
+
+                 <!-- UNIVERSAL: Pro Invoice -->
+                 <div class="module t-all">
+                    <div class="module-header">Pro Invoice Generator</div>
+                    <div class="module-body">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div><label class="mono text-[10px] text-slate-400 uppercase font-bold">Labour</label><input type="number" id="gen-lab" class="std-input"></div>
+                            <div><label class="mono text-[10px] text-slate-400 uppercase font-bold">Mat.</label><input type="number" id="gen-mat" class="std-input"></div>
+                        </div>
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-2 block">VAT Mode</label>
+                        <select id="gen-vat" class="std-input"><option value="drc">Reverse Charge</option><option value="std">Standard</option></select>
+                        <button class="btn-exec" onclick="generateProInvoice()">Export PDF</button>
+                    </div>
+                </div>
+
+                 <!-- CONSTRUCTION: RAMS Builder -->
+                 <div class="module t-cons">
+                    <div class="module-header">RAMS Builder</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Activity</label>
+                        <input type="text" id="rams-act" class="std-input" placeholder="Bricklaying">
+                        <div class="grid grid-cols-2 gap-2 mt-4">
+                             <label class="flex items-center text-[10px] font-bold text-slate-500"><input type="checkbox" id="haz-height" class="mr-2 accent-emerald-500"> Height</label>
+                             <label class="flex items-center text-[10px] font-bold text-slate-500"><input type="checkbox" id="haz-dust" class="mr-2 accent-emerald-500"> Dust</label>
+                        </div>
+                        <button class="btn-exec" onclick="generateRAMS()">Export Safety Doc</button>
+                    </div>
+                </div>
+
+                <!-- UNIVERSAL: Credit Stress -->
+                <div class="module t-all">
+                    <div class="module-header">Credit Stress Test</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Annual Turnover (£)</label>
+                        <input type="number" id="risk-turnover" class="std-input" placeholder="0.00">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-4 block">Contract Value (£)</label>
+                        <input type="number" id="risk-contract" class="std-input" placeholder="0.00">
+                        <div class="data-readout" id="res-risk">
+                            <div class="w-full h-1 bg-white/10 mb-4 overflow-hidden"><div id="risk-bar" class="h-full bg-emerald-500 transition-all duration-1000" style="width:0%"></div></div>
+                            <span class="res-big text-sm uppercase tracking-[0.3em] font-black" id="val-risk-text">---</span>
+                        </div>
+                        <button class="btn-exec" onclick="calcCreditLimit()">Analyze Exposure</button>
+                    </div>
+                </div>
+
+                <!-- CONSTRUCTION: Status Probe -->
+                <div class="module t-cons">
+                    <div class="module-header">Status Probe (IR35)</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Right of Substitution?</label>
+                        <select id="cis-sub-check" class="std-input"><option value="yes">YES (SAFE)</option><option value="no">NO (RISK)</option></select>
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-4 block">Control/Supervision?</label>
+                        <select id="cis-moo" class="std-input"><option value="no">LIMITED (SAFE)</option><option value="yes">DIRECT (RISK)</option></select>
+                        <div class="data-readout" id="res-cis-status">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Risk Profile</span>
+                            <span class="res-big text-indigo-400" id="val-cis-score">---</span>
+                        </div>
+                        <button class="btn-exec" onclick="checkCIS()">Probe Status</button>
+                    </div>
+                </div>
+
             </div>
 
             <!-- SPACING FOOTER -->
@@ -335,6 +425,47 @@
             document.getElementById('res-adj').style.display = 'block';
         }
 
+        function calcDirector(){
+            const t = document.getElementById('div-target').value || 0;
+            const tax = (Math.max(0, t - 12570) * 0.0875);
+            document.getElementById('val-div-tax').innerText = '£' + tax.toLocaleString('en-GB', {maximumFractionDigits: 2});
+            document.getElementById('res-div').style.display = 'block';
+        }
+
+        function checkDRC() {
+            const sub = document.getElementById('drc-sub').value;
+            const end = document.getElementById('drc-end').value;
+            const out = document.getElementById('val-drc-text');
+            if(sub === 'yes' && end === 'no') { out.innerText = "DRC (0%)"; out.style.color = "#10b981"; }
+            else { out.innerText = "STD (20%)"; out.style.color = "#3b82f6"; }
+            document.getElementById('res-drc').style.display = 'block';
+        }
+
+        function generateProInvoice() { window.print(); }
+        function generateRAMS() { window.print(); }
+
+        function checkCIS() {
+             const sub = document.getElementById('cis-sub-check').value;
+             const moo = document.getElementById('cis-moo').value;
+             const out = document.getElementById('val-cis-score');
+             if(sub === 'yes' && moo === 'no') { out.innerText = "LOW EXPOSURE"; out.style.color = "#10b981"; }
+             else { out.innerText = "HIGH LIABILITY"; out.style.color = "#ef4444"; }
+             document.getElementById('res-cis-status').style.display = 'block';
+        }
+
+        function calcCreditLimit() {
+            const t = parseFloat(document.getElementById('risk-turnover').value) || 0;
+            const c = parseFloat(document.getElementById('risk-contract').value) || 0;
+            const pct = Math.min((c / (t * 0.25)) * 100, 100);
+            const bar = document.getElementById('risk-bar');
+            const label = document.getElementById('val-risk-text');
+            bar.style.width = pct + "%";
+            if(pct < 50) { label.innerText = "INVESTMENT GRADE"; label.style.color="#10b981"; bar.style.backgroundColor="#10b981"; }
+            else if(pct < 85) { label.innerText = "CAUTION"; label.style.color="#f59e0b"; bar.style.backgroundColor="#f59e0b"; }
+            else { label.innerText = "HIGH RISK"; label.style.color="#ef4444"; bar.style.backgroundColor="#ef4444"; }
+            document.getElementById('res-risk').style.display = 'block';
+        }
+
         // --- GEMINI AI INTEGRATION ---
         
         async function callGemini(prompt, outputId, btnElement) {
@@ -350,7 +481,6 @@
             const outputDiv = document.getElementById(outputId);
             outputDiv.style.display = 'block';
             
-            // If outputId is ai-response, target inner text content
             const contentTarget = outputId === 'ai-response' ? document.getElementById('ai-text-content') : outputDiv;
             contentTarget.innerText = "Initializing Secure Uplink...";
 
