@@ -2,12 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Institutional Specifications | Compliance Labs & Capital</title>
+    <title>Specifications | Compliance Labs & Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -27,15 +23,18 @@
         .btn-institutional:hover { background: var(--emerald); border-color: var(--emerald); }
         
         /* Tier Cards */
-        .tier-card { border: 1px solid rgba(2, 6, 23, 0.1); padding: 3.5rem; transition: 0.3s; height: 100%; display: flex; flex-direction: column; border-radius: 0; }
+        .tier-card { border: 1px solid rgba(2, 6, 23, 0.1); padding: 3.5rem; transition: 0.3s; height: 100%; display: flex; flex-direction: column; border-radius: 0; position: relative; }
         .tier-card:hover { border-color: var(--emerald); background: #f8fafc; transform: translateY(-5px); }
         .tier-card.featured { background: var(--charcoal); color: white; border-color: var(--charcoal); }
         
-        .price-toggle-btn { padding: 10px 24px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: 0.2s; }
+        .price-toggle-btn { padding: 10px 24px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: 0.2s; border: 1px solid transparent; }
         .price-toggle-btn.active { background: var(--charcoal); color: white; }
 
-        .spec-box { border: 1px solid rgba(2, 6, 23, 0.1); padding: 3rem; transition: all 0.3s; cursor: pointer; }
+        .spec-box { border: 1px solid rgba(2, 6, 23, 0.1); padding: 3rem; transition: all 0.3s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
         .spec-box:hover { border-color: var(--charcoal); background: #f8fafc; }
+        
+        .annual-sub { font-size: 10px; font-weight: 700; color: var(--emerald); display: none; margin-top: 4px; }
+        .annual-sub.visible { display: block; }
     </style>
 </head>
 <body class="antialiased">
@@ -71,7 +70,7 @@
 
         <!-- SECTOR DOCUMENTS -->
         <div class="grid lg:grid-cols-4 gap-px bg-slate-200 border border-slate-200 mb-48">
-            <div class="spec-box bg-white flex flex-col justify-between" onclick="window.location='spec-construction.html'">
+            <div class="spec-box bg-white" onclick="window.location='spec-construction.html'">
                 <div>
                     <span class="mono text-slate-400 block mb-6">MANDATE_01</span>
                     <h3 class="text-2xl font-bold mb-6">Construction</h3>
@@ -79,7 +78,7 @@
                 </div>
                 <span class="mono text-emerald-600 font-bold">Open Document →</span>
             </div>
-            <div class="spec-box bg-white flex flex-col justify-between" onclick="window.location='spec-logistics.html'">
+            <div class="spec-box bg-white" onclick="window.location='spec-logistics.html'">
                 <div>
                     <span class="mono text-slate-400 block mb-6">MANDATE_02</span>
                     <h3 class="text-2xl font-bold mb-6">Logistics</h3>
@@ -87,15 +86,15 @@
                 </div>
                 <span class="mono text-emerald-600 font-bold">Open Document →</span>
             </div>
-            <div class="spec-box bg-white flex flex-col justify-between" onclick="window.location='spec-waste.html'">
+            <div class="spec-box bg-white" onclick="window.location='spec-waste.html'">
                 <div>
                     <span class="mono text-slate-400 block mb-6">MANDATE_03</span>
                     <h3 class="text-2xl font-bold mb-6">Waste Mgmt</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-8">Landfill Tax auditing, heavy machinery capex liquidity, and weighbridge data room integration.</p>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-8">Landfill Tax auditing, heavy machinery capex liquidity, and institutional waste transfer data rooms.</p>
                 </div>
                 <span class="mono text-emerald-600 font-bold">Open Document →</span>
             </div>
-            <div class="spec-box bg-white flex flex-col justify-between" onclick="window.location='spec-renewables.html'">
+            <div class="spec-box bg-white" onclick="window.location='spec-renewables.html'">
                 <div>
                     <span class="mono text-slate-400 block mb-6">MANDATE_04</span>
                     <h3 class="text-2xl font-bold mb-6">Renewables</h3>
@@ -114,7 +113,7 @@
                 </div>
                 <div class="flex bg-slate-100 p-1 mt-10 md:mt-0">
                     <button class="price-toggle-btn active" id="btn-monthly" onclick="setPrice(false)">Monthly</button>
-                    <button class="price-toggle-btn" id="btn-annual" onclick="setPrice(true)">Annual</button>
+                    <button class="price-toggle-btn" id="btn-annual" onclick="setPrice(true)">Yearly <span class="text-[8px] bg-emerald-500 text-white px-1 ml-1">-15%</span></button>
                 </div>
             </div>
 
@@ -122,9 +121,10 @@
                 <!-- STARTER -->
                 <div class="tier-card">
                     <span class="mono text-slate-400 mb-6">01 // Starter</span>
-                    <div class="mb-10">
-                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="690" data-a="575">690</span></span>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="690" data-a="586">690</span></span>
                         <span class="text-[10px] mono text-slate-400">/mo</span>
+                        <div class="annual-sub" data-total-a="£7,032/yr">Billed annually: £7,032</div>
                     </div>
                     <ul class="space-y-5 text-xs font-bold uppercase tracking-widest text-slate-500 flex-1 border-t border-slate-100 pt-8">
                         <li><i class="fas fa-check text-emerald-600 mr-2"></i> 15 Entities Audited</li>
@@ -136,10 +136,12 @@
 
                 <!-- PROFESSIONAL -->
                 <div class="tier-card featured">
+                    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[8px] px-3 py-1 font-bold tracking-widest">MOST POPULAR</div>
                     <span class="mono text-emerald-500 mb-6 font-bold">02 // Professional</span>
-                    <div class="mb-10">
-                        <span class="text-4xl font-bold tracking-tighter text-white">£<span class="p-val" data-m="1390" data-a="1158">1,390</span></span>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold tracking-tighter text-white">£<span class="p-val" data-m="1390" data-a="1182">1,390</span></span>
                         <span class="text-[10px] mono text-slate-500">/mo</span>
+                        <div class="annual-sub" data-total-a="£14,184/yr">Billed annually: £14,184</div>
                     </div>
                     <ul class="space-y-5 text-xs font-bold uppercase tracking-widest text-slate-300 flex-1 border-t border-white/10 pt-8">
                         <li><i class="fas fa-check text-emerald-500 mr-2"></i> 40 Entities Audited</li>
@@ -147,15 +149,16 @@
                         <li><i class="fas fa-check text-emerald-500 mr-2"></i> Weekly FD Briefing</li>
                         <li><i class="fas fa-check text-emerald-500 mr-2"></i> AI LBA Engine</li>
                     </ul>
-                    <a href="audit.html" class="w-full py-5 bg-emerald-600 font-bold text-[10px] uppercase text-center mt-10 hover:bg-white hover:text-charcoal transition-all">Request Access</a>
+                    <a href="audit.html" class="w-full py-5 bg-emerald-600 text-white font-bold text-[10px] uppercase text-center mt-10 hover:bg-white hover:text-charcoal transition-all">Request Access</a>
                 </div>
 
                 <!-- GROWTH -->
                 <div class="tier-card">
                     <span class="mono text-slate-400 mb-6">03 // Growth</span>
-                    <div class="mb-10">
-                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="2990" data-a="2491">2,990</span></span>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="2990" data-a="2542">2,990</span></span>
                         <span class="text-[10px] mono text-slate-400">/mo</span>
+                        <div class="annual-sub" data-total-a="£30,504/yr">Billed annually: £30,504</div>
                     </div>
                     <ul class="space-y-5 text-xs font-bold uppercase tracking-widest text-slate-500 flex-1 border-t border-slate-100 pt-8">
                         <li><i class="fas fa-check text-emerald-600 mr-2"></i> Unlimited Audits</li>
@@ -185,10 +188,16 @@
     </footer>
 
     <script>
-        function setPrice(a){
-            document.querySelectorAll('.p-val').forEach(el => el.innerText = a ? el.dataset.a : el.dataset.m);
-            document.getElementById('btn-annual').classList.toggle('active', a);
-            document.getElementById('btn-monthly').classList.toggle('active', !a);
+        function setPrice(isAnnual){
+            document.querySelectorAll('.p-val').forEach(el => {
+                el.innerText = isAnnual ? el.dataset.a : el.dataset.m;
+            });
+            document.querySelectorAll('.annual-sub').forEach(el => {
+                if(isAnnual) el.classList.add('visible');
+                else el.classList.remove('visible');
+            });
+            document.getElementById('btn-annual').classList.toggle('active', isAnnual);
+            document.getElementById('btn-monthly').classList.toggle('active', !isAnnual);
         }
     </script>
 </body>
