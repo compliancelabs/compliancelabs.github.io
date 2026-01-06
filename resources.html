@@ -4,173 +4,393 @@
     <meta charset="utf-8"/>
     <title>CL&C Terminal | Institutional Access</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
         :root { --bg-body: #0b0d11; --bg-panel: #151922; --border-color: #272e3b; --accent: #10b981; }
-        body { font-family: 'Manrope', sans-serif; background-color: var(--bg-body); color: #e2e8f0; font-size: 13px; margin: 0; height: 100vh; display: flex; flex-direction: column; }
+        
+        /* SCROLL ENGINE FIX */
+        html, body { height: 100%; margin: 0; overflow: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: #e2e8f0; font-size: 13px; display: flex; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         
-        /* Layout Fix: Absolute positioning for sidebar, margin for content */
-        .app-container { display: flex; height: 100%; width: 100%; overflow: hidden; }
+        .sidebar { background-color: #0f1218; border-right: 1px solid var(--border-color); width: 240px; display: flex; flex-direction: column; flex-shrink: 0; }
+        .main-content { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; position: relative; }
         
-        .sidebar { 
-            width: 260px; background-color: #0f1218; border-right: 1px solid var(--border-color); 
-            display: flex; flex-direction: column; flex-shrink: 0; z-index: 50;
-        }
+        /* Liquid Scroll Area */
+        .scrollable-view { flex: 1; overflow-y: auto; padding: 40px; scroll-behavior: smooth; }
         
-        .main-content { 
-            flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative;
-        }
+        .top-bar { height: 64px; border-bottom: 1px solid var(--border-color); background: #0f1218; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; flex-shrink: 0; }
         
-        .scrollable-area { 
-            flex: 1; overflow-y: auto; padding: 40px; 
-            background-image: radial-gradient(circle at top right, #1a202c 0%, #0b0d11 40%);
-        }
-
-        .module { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 24px; transition: 0.2s; height: 100%; display: flex; flex-direction: column; }
-        .module:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .module-header { font-size: 10px; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.1em; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
-        .module-body { flex: 1; }
+        .module { background: var(--bg-panel); border: 1px solid var(--border-color); display: flex; flex-direction: column; height: 100%; border-radius: 2px; transition: 0.2s; }
+        .module:hover { border-color: var(--accent); }
+        .module-header { padding: 16px; border-bottom: 1px solid var(--border-color); background: rgba(0,0,0,0.2); font-size: 10px; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.1em; }
+        .module-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
         
         .std-input { width: 100%; background: #0b0d11; border: 1px solid var(--border-color); color: white; padding: 12px; font-family: 'JetBrains Mono'; font-size: 12px; margin-top: 8px; border-radius: 0; }
         .std-input:focus { outline: none; border-color: var(--accent); }
         
-        .btn-exec { width: 100%; background: #e2e8f0; color: #0b0d11; border: none; padding: 14px; font-weight: 800; font-size: 11px; text-transform: uppercase; margin-top: 24px; cursor: pointer; letter-spacing: 0.1em; }
+        .btn-exec { width: 100%; background: #e2e8f0; color: #0b0d11; border: none; padding: 14px; font-weight: 800; font-size: 11px; text-transform: uppercase; margin-top: 24px; cursor: pointer; transition: 0.2s; letter-spacing: 0.1em; }
         .btn-exec:hover { background: var(--accent); color: white; }
+
+        .btn-ai { background: #312e81; color: white; border: 1px solid #4f46e5; margin-top: 12px; }
+        .btn-ai:hover { background: #4f46e5; border-color: #6366f1; }
         
         .data-readout { background: #000; padding: 16px; margin-top: 20px; display: none; border: 1px solid var(--border-color); border-left: 3px solid var(--accent); }
         .res-big { font-size: 1.5rem; font-weight: 700; color: white; display: block; margin-top: 4px; font-family: 'JetBrains Mono'; }
+        
+        .tab-btn { background: transparent; border: 1px solid var(--border-color); padding: 10px 20px; color: #64748b; font-size: 10px; font-weight: 800; cursor: pointer; margin-right: 8px; transition: 0.2s; border-radius: 0; margin-bottom: 8px; }
+        .tab-btn.active { color: white; background: var(--accent); border-color: var(--accent); }
 
-        @media (max-width: 1024px) {
-            .sidebar { display: none; }
-            .scrollable-area { padding: 20px; }
+        .tag-cons { color: #10b981; }
+        .tag-log { color: #3b82f6; }
+        .tag-waste { color: #f59e0b; }
+        .tag-nrg { color: #8b5cf6; }
+
+        /* AI Output Styling */
+        .ai-output {
+            margin-top: 16px;
+            padding: 16px;
+            background: #020617;
+            border: 1px solid #4f46e5;
+            border-left: 3px solid #6366f1;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #e0e7ff;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
         }
+
+        .loader {
+            border: 2px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 2px solid #10b981;
+            width: 12px;
+            height: 12px;
+            -webkit-animation: spin 1s linear infinite; /* Safari */
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 5px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 1024px) { .sidebar { display: none; } }
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="p-8 border-b border-white/5">
-                <h1 class="font-bold text-sm uppercase text-white tracking-widest">CL&C Terminal</h1>
-                <p class="mono text-[9px] text-slate-600 mt-2">Sovereign_Access // Node_01</p>
-            </div>
-            <nav class="py-10 flex-1 px-4 space-y-2">
-                <a href="#" class="flex items-center gap-4 px-6 py-3 text-emerald-500 bg-emerald-500/5 border border-emerald-500/20"><i class="fas fa-terminal text-xs"></i><span class="mono font-bold">Systems</span></a>
-                <a href="index.html" class="flex items-center gap-4 px-6 py-3 text-slate-500 hover:text-white transition-colors"><i class="fas fa-power-off text-xs"></i><span class="mono">Exit</span></a>
-            </nav>
-            <div class="p-8 text-[9px] mono text-slate-700 leading-relaxed border-t border-white/5">
-                API_GATEWAY: CONNECTED<br>ENCRYPTION: 256_BIT<br>RUNTIME: FY26_V5.1
-            </div>
-        </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="h-16 bg-[#0f1218] border-b border-white/5 flex items-center justify-between px-8 shrink-0">
-                <div class="mono text-[10px] text-slate-500 font-bold uppercase tracking-widest">Global_Diagnostic_Environment</div>
-                <div class="flex items-center gap-6">
-                    <select id="sector-select" class="bg-black text-emerald-500 border border-white/10 text-[10px] font-bold p-2 uppercase outline-none" onchange="filter(this.value)">
-                        <option value="all">View: All Sectors</option>
-                        <option value="cons">Construction</option>
-                        <option value="log">Logistics</option>
-                        <option value="waste">Waste Mgmt</option>
-                        <option value="nrg">Energy</option>
-                    </select>
-                    <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div><span class="mono text-[10px] text-emerald-500">LIVE</span></div>
-                </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="p-8 border-b border-white/5">
+            <h1 class="font-bold text-xs uppercase text-white tracking-widest">CL&C Terminal</h1>
+            <p class="mono text-[9px] text-slate-600 mt-2">Node_UK_LND_01 // SECURE</p>
+        </div>
+        <nav class="py-10 flex-1 px-4 space-y-2">
+            <a href="#" class="flex items-center gap-4 px-6 py-3 text-emerald-500 bg-emerald-500/5 border border-emerald-500/20">
+                <i class="fas fa-terminal text-xs"></i><span class="mono font-bold">Systems</span>
+            </a>
+            <a href="intelligence.html" class="flex items-center gap-4 px-6 py-3 text-slate-500 hover:text-white transition-colors">
+                <i class="fas fa-database text-xs"></i><span class="mono">Briefings</span>
+            </a>
+            <a href="index.html" class="flex items-center gap-4 px-6 py-3 text-slate-500 hover:text-white transition-colors">
+                <i class="fas fa-power-off text-xs"></i><span class="mono">Exit HQ</span>
+            </a>
+        </nav>
+        <div class="p-8 text-[9px] mono text-slate-700 leading-relaxed border-t border-white/5 uppercase font-bold tracking-widest">
+            API_STATUS: ACTIVE<br>ENCRYPTION: 256_BIT<br>VER: FY26_V5.6
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <div class="mono text-[10px] text-slate-500 font-bold uppercase tracking-widest">Mandate: Global_Diagnostic_Interface</div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div><span class="mono text-[10px] text-emerald-500 font-bold uppercase">LIVE_TELEMETRY</span></div>
             </div>
+        </div>
+
+        <div class="scrollable-view">
             
-            <div class="scrollable-area">
-                <!-- 90-Second Audit Callout -->
-                <div class="mb-12 p-8 border border-emerald-500/30 bg-emerald-500/5 flex justify-between items-center">
-                    <div>
-                        <h2 class="text-xl text-white font-bold mb-2">Master Risk Audit</h2>
-                        <p class="text-slate-400 text-xs max-w-lg">Run the 27-point infrastructure scan to identify immediate liability.</p>
-                    </div>
-                    <a href="index.html#compliance-check" class="bg-emerald-600 text-white px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-emerald-500">Initialize Scan</a>
+            <!-- MASTER DIAGNOSTIC (FIXED) -->
+            <div class="mb-12 p-10 border border-emerald-500/30 bg-emerald-500/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div>
+                    <span class="mono text-emerald-600 text-[9px] block mb-2 font-bold uppercase tracking-widest">Initialization Protocol</span>
+                    <h2 class="text-2xl text-white font-bold mb-2 uppercase tracking-tight">90-Second Infrastructure Audit</h2>
+                    <p class="text-slate-400 text-sm max-w-xl">Execute the technical forensic scan to identify supply-chain liability and working capital stagnation across all four sectors.</p>
                 </div>
-
-                <!-- Tools Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <!-- Liquidity -->
-                    <div class="module t-all t-cons t-log">
-                        <div class="module-header">Liquidity Projection</div>
-                        <div class="module-body">
-                            <label class="mono text-[10px] text-slate-400 uppercase font-bold">Invoice Principal (£)</label>
-                            <input type="number" id="fac-val" class="std-input" placeholder="0.00">
-                            <div class="data-readout" id="res-fac"><span class="mono text-[9px] text-slate-500">Advance Available</span><div class="res-big text-sky-400" id="val-fac">£0.00</div></div>
-                            <button class="btn-exec" onclick="calcFac()">Execute</button>
-                        </div>
-                    </div>
-
-                    <!-- Statutory Interest -->
-                    <div class="module t-cons t-log">
-                        <div class="module-header">Statutory Recovery</div>
-                        <div class="module-body">
-                            <label class="mono text-[10px] text-slate-400 uppercase font-bold">Debt Principal (£)</label>
-                            <input type="number" id="rec-val" class="std-input" placeholder="0.00">
-                            <div class="data-readout" id="res-rec"><span class="mono text-[9px] text-slate-500">Total Claimable</span><div class="res-big text-emerald-400" id="val-rec">£0.00</div></div>
-                            <button class="btn-exec" onclick="calcRec()">Execute</button>
-                        </div>
-                    </div>
-
-                    <!-- Fleet ROI -->
-                    <div class="module t-log hidden-tool">
-                        <div class="module-header">Euro-6 Fleet ROI</div>
-                        <div class="module-body">
-                            <label class="mono text-[10px] text-slate-400 uppercase font-bold">Daily Fine (£)</label>
-                            <input type="number" id="flt-fine" class="std-input" value="100">
-                            <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-4 block">Fleet Size</label>
-                            <input type="number" id="flt-qty" class="std-input" value="5">
-                            <div class="data-readout" id="res-flt"><span class="mono text-[9px] text-slate-500">Monthly Sunk Cost</span><div class="res-big text-rose-400" id="val-flt">£0.00</div></div>
-                            <button class="btn-exec" onclick="calcFlt()">Execute</button>
-                        </div>
-                    </div>
-
-                    <!-- Waste Tax -->
-                    <div class="module t-waste hidden-tool">
-                        <div class="module-header">Landfill Tax Audit</div>
-                        <div class="module-body">
-                            <label class="mono text-[10px] text-slate-400 uppercase font-bold">Monthly Tonnage</label>
-                            <input type="number" id="wst-ton" class="std-input" placeholder="0">
-                            <div class="data-readout" id="res-wst"><span class="mono text-[9px] text-slate-500">Tax Liability</span><div class="res-big text-amber-500" id="val-wst">£0.00</div></div>
-                            <button class="btn-exec" onclick="calcWst()">Execute</button>
-                        </div>
-                    </div>
-
-                    <!-- Director Yield -->
-                    <div class="module t-all">
-                        <div class="module-header">Director Yield</div>
-                        <div class="module-body">
-                            <label class="mono text-[10px] text-slate-400 uppercase font-bold">Target Net (£)</label>
-                            <input type="number" id="div-target" class="std-input">
-                            <div class="data-readout" id="res-div"><span class="mono text-[9px] text-slate-500">Tax Liability</span><div class="res-big text-indigo-400" id="val-div-tax">£0.00</div></div>
-                            <button class="btn-exec" onclick="calcDirector()">Execute</button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="pb-20"></div> <!-- Padding for scroll -->
+                <a href="audit.html" class="bg-emerald-600 text-white px-10 py-4 text-[11px] font-bold uppercase tracking-widest hover:bg-emerald-500 transition-all shadow-2xl">Initialize Scan</a>
             </div>
-        </main>
-    </div>
+
+            <!-- SECTOR FILTERS -->
+            <div class="flex flex-wrap border-b border-white/5 mb-12">
+                <button class="tab-btn active" onclick="filter('all')">ALL_SECTORS</button>
+                <button class="tab-btn" onclick="filter('cons')">CONSTRUCTION</button>
+                <button class="tab-btn" onclick="filter('log')">LOGISTICS</button>
+                <button class="tab-btn" onclick="filter('waste')">WASTE_MGMT</button>
+                <button class="tab-btn" onclick="filter('nrg')">ENERGY</button>
+            </div>
+
+            <!-- TOOLS GRID -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid">
+                
+                <!-- AI COUNSEL (NEW) -->
+                <div class="module t-all border-l-4 border-l-indigo-500 col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="module-header flex justify-between items-center">
+                        <span>AI Regulatory Counsel</span>
+                        <i class="fas fa-robot text-indigo-500"></i>
+                    </div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-indigo-400 uppercase font-bold">Query Protocol</label>
+                        <input type="text" id="ai-query" class="std-input" placeholder="e.g. What is the evidence requirement for Regulation 4 material exclusions?">
+                        <div class="ai-output" id="ai-response">
+                            <span class="text-[9px] font-bold text-indigo-400 uppercase block mb-2">// INTELLIGENCE BRIEFING</span>
+                            <div id="ai-text-content"></div>
+                        </div>
+                        <button class="btn-exec btn-ai" onclick="consultAI()">Execute Query ✨</button>
+                    </div>
+                </div>
+
+                <!-- UNIVERSAL: Liquidity -->
+                <div class="module t-all">
+                    <div class="module-header">Liquidity Projection (Capex)</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Principal Amount (£)</label>
+                        <input type="number" id="fac-val" class="std-input" placeholder="0.00">
+                        <div class="data-readout" id="res-fac"><span class="mono text-[9px] text-slate-500 uppercase">Immediate Capital Advance</span><div class="res-big text-sky-400" id="val-fac">£0.00</div></div>
+                        <button class="btn-exec" onclick="calcFac()">Execute Model</button>
+                    </div>
+                </div>
+
+                <!-- CONSTRUCTION: Statutory Interest -->
+                <div class="module t-cons">
+                    <div class="module-header">Statutory Claim Logic (Cons)</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Debt Principal (£)</label>
+                        <input type="number" id="rec-val" class="std-input" placeholder="0.00">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-4 block">Days Overdue</label>
+                        <input type="number" id="rec-days" class="std-input" value="30">
+                        <div class="data-readout" id="res-rec">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Total Statutory Claim</span>
+                            <div class="res-big text-emerald-400" id="val-rec">£0.00</div>
+                        </div>
+                        <!-- AI ENHANCEMENT -->
+                        <div class="ai-output" id="lba-output"></div>
+                        <button class="btn-exec" onclick="calcRec()">Calculate Interest</button>
+                        <button class="btn-exec btn-ai" onclick="draftLBA()">Draft LBA ✨</button>
+                    </div>
+                </div>
+
+                <!-- LOGISTICS: Fleet ROI -->
+                <div class="module t-log">
+                    <div class="module-header">Euro-6 Fleet Upgrade ROI</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Daily CAZ Fines (£)</label>
+                        <input type="number" id="flt-fine" class="std-input" value="100">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-4 block">Fleet Qty</label>
+                        <input type="number" id="flt-qty" class="std-input" value="5">
+                        <div class="data-readout" id="res-flt">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Monthly Penalty Sunk Cost</span>
+                            <div class="res-big text-rose-500" id="val-flt">£0.00</div>
+                        </div>
+                        <button class="btn-exec" onclick="calcFlt()">Run Diagnostic</button>
+                    </div>
+                </div>
+
+                <!-- LOGISTICS: IR35 Risk -->
+                <div class="module t-log">
+                    <div class="module-header">Driver Status Exposure (IR35)</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Avg. Weekly Driver Pay (£)</label>
+                        <input type="number" id="log-pay" class="std-input" value="1000">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold mt-4 block">No. of Agency Drivers</label>
+                        <input type="number" id="log-qty" class="std-input" value="10">
+                        <div class="data-readout" id="res-log-ir35">
+                            <span class="mono text-[9px] text-slate-500 uppercase">3-Year Backdated Exposure</span>
+                            <div class="res-big text-amber-500" id="val-log-ir35">£0.00</div>
+                        </div>
+                        <button class="btn-exec" onclick="calcLogRisk()">Calculate Exposure</button>
+                    </div>
+                </div>
+
+                <!-- WASTE: Landfill Tax -->
+                <div class="module t-waste">
+                    <div class="module-header">Landfill Tax Audit (Waste)</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Active Monthly Tonnage</label>
+                        <input type="number" id="wst-ton" class="std-input" placeholder="0">
+                        <div class="data-readout" id="res-wst">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Est. Tax Liability</span>
+                            <div class="res-big text-amber-500" id="val-wst">£0.00</div>
+                        </div>
+                        <button class="btn-exec" onclick="calcWst()">Calculate Tonnage</button>
+                    </div>
+                </div>
+
+                <!-- ENERGY: Grid Bridge -->
+                <div class="module t-nrg">
+                    <div class="module-header">Solar Grid Bridge (Energy)</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Project Capex (£)</label>
+                        <input type="number" id="nrg-val" class="std-input" placeholder="0.00">
+                        <div class="data-readout" id="res-nrg">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Bridge Facility Max</span>
+                            <div class="res-big text-indigo-400" id="val-nrg">£0.00</div>
+                        </div>
+                        <button class="btn-exec" onclick="calcNrg()">Project Liquidity</button>
+                    </div>
+                </div>
+
+                <!-- CONSTRUCTION: Adjudication Burn -->
+                <div class="module t-cons">
+                    <div class="module-header">Adjudication Burn Rate</div>
+                    <div class="module-body">
+                        <label class="mono text-[10px] text-slate-400 uppercase font-bold">Disputed Sum (£)</label>
+                        <input type="number" id="adj-sum" class="std-input" placeholder="0.00">
+                        <div class="data-readout" id="res-adj">
+                            <span class="mono text-[9px] text-slate-500 uppercase">Unrecoverable Fees (Est.)</span>
+                            <div class="res-big text-slate-400" id="val-adj">£0.00</div>
+                        </div>
+                        <button class="btn-exec" onclick="calcAdj()">Project Sunk Costs</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SPACING FOOTER -->
+            <div class="h-64"></div>
+        </div>
+    </main>
 
     <script>
+        const apiKey = ""; // Set API Key here
+
+        // Sector Filter System
         function filter(s){
             const ms = document.querySelectorAll('.module');
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            if(event) event.target.classList.add('active');
             ms.forEach(m => {
                 if(s === 'all' || m.classList.contains('t-'+s) || m.classList.contains('t-all')) m.style.display = 'flex';
                 else m.style.display = 'none';
             });
         }
-        function calcFac(){const v=document.getElementById('fac-val').value;document.getElementById('val-fac').innerText='£'+(v*0.88).toLocaleString();document.getElementById('res-fac').style.display='block';}
-        function calcRec(){const v=document.getElementById('rec-val').value;const i=(v*0.1275*30/365)+100;document.getElementById('val-rec').innerText='£'+(Number(v)+i).toLocaleString();document.getElementById('res-rec').style.display='block';}
-        function calcFlt(){const f=document.getElementById('flt-fine').value;const q=document.getElementById('flt-qty').value;document.getElementById('val-flt').innerText='£'+(f*q*22).toLocaleString();document.getElementById('res-flt').style.display='block';}
-        function calcWst(){const t=document.getElementById('wst-ton').value;document.getElementById('val-wst').innerText='£'+(t*103.70).toLocaleString();document.getElementById('res-wst').style.display='block';}
-        function calcDirector(){const t=document.getElementById('div-target').value;document.getElementById('val-div-tax').innerText='£'+(Math.max(0,t-12570)*0.0875).toLocaleString();document.getElementById('res-div').style.display='block';}
+
+        // Logic Engines
+        function calcFac(){
+            const v = document.getElementById('fac-val').value || 0;
+            document.getElementById('val-fac').innerText = '£' + (v * 0.88).toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-fac').style.display = 'block';
+        }
+        
+        function calcRec(){
+            const v = document.getElementById('rec-val').value || 0;
+            const d = document.getElementById('rec-days').value || 30;
+            const i = (v * 0.1275 * d / 365) + 100;
+            document.getElementById('val-rec').innerText = '£' + (Number(v) + i).toLocaleString('en-GB', {maximumFractionDigits: 2});
+            document.getElementById('res-rec').style.display = 'block';
+        }
+        
+        function calcFlt(){
+            const f = document.getElementById('flt-fine').value || 0;
+            const q = document.getElementById('flt-qty').value || 0;
+            document.getElementById('val-flt').innerText = '£' + (f * q * 22).toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-flt').style.display = 'block';
+        }
+
+        function calcLogRisk(){
+            const p = document.getElementById('log-pay').value || 0;
+            const q = document.getElementById('log-qty').value || 0;
+            const liability = (p * q * 52 * 3) * 0.35; // 3 years backdated NICs/Tax at 35%
+            document.getElementById('val-log-ir35').innerText = '£' + liability.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-log-ir35').style.display = 'block';
+        }
+
+        function calcWst(){
+            const t = document.getElementById('wst-ton').value || 0;
+            document.getElementById('val-wst').innerText = '£' + (t * 103.70).toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-wst').style.display = 'block';
+        }
+
+        function calcNrg(){
+            const v = document.getElementById('nrg-val').value || 0;
+            document.getElementById('val-nrg').innerText = '£' + (v * 0.75).toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-nrg').style.display = 'block';
+        }
+
+        function calcAdj(){
+            const s = document.getElementById('adj-sum').value || 0;
+            const burn = 4500 + (s * 0.12); // Base fee + 12% of claim
+            document.getElementById('val-adj').innerText = '£' + burn.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('res-adj').style.display = 'block';
+        }
+
+        // --- GEMINI AI INTEGRATION ---
+        
+        async function callGemini(prompt, outputId, btnElement) {
+            if (!apiKey) {
+                alert("Institutional API Key Required for Generative Functions.");
+                return;
+            }
+            
+            const originalBtnText = btnElement.innerText;
+            btnElement.innerHTML = 'Processing <span class="loader"></span>';
+            btnElement.disabled = true;
+
+            const outputDiv = document.getElementById(outputId);
+            outputDiv.style.display = 'block';
+            
+            // If outputId is ai-response, target inner text content
+            const contentTarget = outputId === 'ai-response' ? document.getElementById('ai-text-content') : outputDiv;
+            contentTarget.innerText = "Initializing Secure Uplink...";
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                if (!response.ok) throw new Error("API Connection Failed");
+
+                const data = await response.json();
+                const text = data.candidates[0].content.parts[0].text;
+                contentTarget.innerText = text;
+            } catch (error) {
+                contentTarget.innerText = "Error: Uplink Failed. Please verify API credentials.";
+                console.error(error);
+            } finally {
+                btnElement.innerHTML = originalBtnText;
+                btnElement.disabled = false;
+            }
+        }
+
+        function draftLBA() {
+            const val = document.getElementById('rec-val').value || "[AMOUNT]";
+            const days = document.getElementById('rec-days').value || "[DAYS]";
+            const prompt = `Write a formal, aggressive Letter Before Action (LBA) for a UK construction debt of £${val} that is ${days} days overdue. Cite the Late Payment of Commercial Debts (Interest) Act 1998 and the Housing Grants, Construction and Regeneration Act 1996. Do not include placeholders, generate a ready-to-send template. Tone: Institutional, Strict, Legal.`;
+            callGemini(prompt, 'lba-output', event.target);
+        }
+
+        function consultAI() {
+            const query = document.getElementById('ai-query').value;
+            if (!query) return;
+            const prompt = `You are a high-level UK construction finance and compliance consultant. Answer this query strictly and professionally: "${query}". Focus on UK legislation (CIS, VAT, IR35) and financial risk. Keep it concise.`;
+            callGemini(prompt, 'ai-response', event.target);
+        }
+
     </script>
 </body>
 </html>
