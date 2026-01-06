@@ -6,42 +6,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
         :root { --emerald: #059669; --charcoal: #020617; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: var(--charcoal); }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: var(--charcoal); overflow-x: hidden; }
         .serif-heading { font-family: 'Playfair Display', serif; }
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
-        .brief-card { border: 1px solid rgba(2, 6, 23, 0.1); padding: 2.5rem; transition: 0.3s; cursor: pointer; }
-        .brief-card:hover { border-color: var(--emerald); background: #f8fafc; transform: translateY(-3px); }
-        .filter-tab { padding: 10px 24px; border: 1px solid #e2e8f0; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; }
+        
+        .brief-card { 
+            border: 1px solid rgba(2, 6, 23, 0.1); 
+            padding: 2.5rem; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            cursor: pointer; 
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .brief-card:hover { border-color: var(--emerald); background: #f8fafc; transform: translateY(-4px); }
+        
+        .filter-tab { 
+            padding: 10px 24px; 
+            border: 1px solid #e2e8f0; 
+            font-size: 10px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            cursor: pointer; 
+            transition: 0.2s;
+        }
+        .filter-tab:hover { border-color: var(--charcoal); }
         .filter-tab.active { background: var(--charcoal); color: white; border-color: var(--charcoal); }
+
+        .hidden-brief { display: none !important; }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="w-full bg-white border-b border-slate-100 h-24 flex items-center">
+    <header class="w-full bg-white border-b border-slate-100 h-24 flex items-center sticky top-0 z-[100]">
         <div class="max-w-[1800px] mx-auto px-8 w-full flex justify-between">
-            <a href="index.html" class="flex items-center gap-4"><svg viewBox="0 0 100 120" class="h-8"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg><span class="font-bold text-xs uppercase tracking-tight">Intelligence Hub</span></a>
+            <a href="index.html" class="flex items-center gap-4">
+                <svg viewBox="0 0 100 120" class="h-8">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                </svg>
+                <span class="font-bold text-xs uppercase tracking-tight">Intelligence Hub</span>
+            </a>
             <nav class="hidden lg:flex items-center gap-10">
-                <a href="services.html" class="mono">Specs</a><a href="about-us.html" class="mono">Mandate</a><a href="intelligence.html" class="mono text-emerald-600">Intelligence</a><a href="resources.html" class="mono">Terminal</a>
+                <a href="services.html" class="mono">Specs</a>
+                <a href="about-us.html" class="mono">Mandate</a>
+                <a href="intelligence.html" class="mono text-emerald-600">Intelligence</a>
+                <a href="resources.html" class="mono">Terminal</a>
             </nav>
         </div>
     </header>
 
     <section class="py-32 max-w-[1600px] mx-auto px-8">
-        <h1 class="serif-heading text-6xl mb-12">Strategic Briefings.</h1>
-        <div class="flex gap-4 mb-20 border-b pb-8"><button class="filter-tab active">All Sectors</button><button class="filter-tab">Construction</button><button class="filter-tab">Logistics</button><button class="filter-tab">Waste</button><button class="filter-tab">Energy</button></div>
+        <div class="max-w-3xl mb-16">
+            <span class="mono text-emerald-600 mb-6 block">Technical Briefing Repository</span>
+            <h1 class="serif-heading text-6xl md:text-8xl leading-none mb-8">Strategic <br><span class="italic text-slate-400">Briefings.</span></h1>
+            <p class="text-slate-500 text-xl font-light leading-relaxed">Institutional-grade intelligence on regulatory shifts and capital placement strategies for asset-intensive enterprises.</p>
+        </div>
 
-        <div class="grid lg:grid-cols-3 gap-10">
-            <div class="brief-card"><span class="mono text-emerald-600 mb-6 block">LOGISTICS // FLEET</span><h3 class="text-2xl font-bold mb-4">The Euro-6 Mandate</h3><p class="text-sm text-slate-500 leading-relaxed mb-10">Structuring asset finance to neutralize Clean Air Zone penalties without capital drain.</p><span class="mono text-slate-300">Read Protocol →</span></div>
-            <div class="brief-card"><span class="mono text-emerald-600 mb-6 block">CONSTRUCTION // CIS</span><h3 class="text-2xl font-bold mb-4">Regulation 4 Trap</h3><p class="text-sm text-slate-500 leading-relaxed mb-10">Defending the materials exclusion audit. How HMRC is reclassifying operational data.</p><span class="mono text-slate-300">Read Protocol →</span></div>
-            <div class="brief-card"><span class="mono text-emerald-600 mb-6 block">WASTE // CAPEX</span><h3 class="text-2xl font-bold mb-4">Yellow Plant Yield</h3><p class="text-sm text-slate-500 leading-relaxed mb-10">Liquidity optimization for high-depreciation assets: Crushers, Screens, and Compactors.</p><span class="mono text-slate-300">Read Protocol →</span></div>
+        <div class="flex flex-wrap gap-4 mb-20 border-b pb-8" id="filter-container">
+            <button class="filter-tab active" data-sector="all">All Sectors</button>
+            <button class="filter-tab" data-sector="construction">Construction</button>
+            <button class="filter-tab" data-sector="logistics">Logistics</button>
+            <button class="filter-tab" data-sector="waste">Waste</button>
+            <button class="filter-tab" data-sector="energy">Energy</button>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-10" id="briefing-grid">
+            
+            <!-- LOGISTICS -->
+            <div class="brief-card" data-sector="logistics">
+                <span class="mono text-emerald-600 mb-6 block">LOGISTICS // FLEET</span>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">The Euro-6 Mandate</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Structuring asset finance to neutralize Clean Air Zone penalties without depleting operational capital.</p>
+                <a href="logistics_euro6_briefing.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
+            </div>
+
+            <!-- CONSTRUCTION -->
+            <div class="brief-card" data-sector="construction">
+                <span class="mono text-emerald-600 mb-6 block">CONSTRUCTION // CIS</span>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Regulation 4 Trap</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Technical defense of the materials exclusion audit. How HMRC is reclassifying sub-contractor data room ledger items.</p>
+                <a href="blog_cis_materials.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
+            </div>
+
+            <!-- WASTE -->
+            <div class="brief-card" data-sector="waste">
+                <span class="mono text-emerald-600 mb-6 block">WASTE // CAPEX</span>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Yellow Plant Yield</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Liquidity optimization for high-depreciation assets: Crushers, Screens, and Compactors. Asset refinance bridge protocols.</p>
+                <a href="waste_landfill_tax_briefing.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
+            </div>
+
+            <!-- ENERGY -->
+            <div class="brief-card" data-sector="energy">
+                <span class="mono text-emerald-600 mb-6 block">ENERGY // RENEWABLES</span>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Grid Connection Bridging</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Financing the 'Dead Time' gap between hardware installation and DNO grid connection for commercial solar.</p>
+                <a href="energy_solar_finance_briefing.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
+            </div>
+
+            <!-- CONSTRUCTION (RECOVERY) -->
+            <div class="brief-card" data-sector="construction">
+                <span class="mono text-emerald-600 mb-6 block">CONSTRUCTION // DEBT</span>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">The Retention Hack</h3>
+                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Applying the Construction Act 1996 triggers to force payment finality within 30 days of DLP expiry.</p>
+                <a href="master_retention_trap.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
+            </div>
+
         </div>
     </section>
 
     <footer class="bg-[#020617] text-white py-20">
-        <div class="max-w-[1600px] mx-auto px-8 text-center"><p class="mono text-slate-700">&copy; 2026 CL&C Ltd. // BRIEFING DATA FEED</p></div>
+        <div class="max-w-[1600px] mx-auto px-8 text-center">
+            <p class="mono text-slate-700">&copy; 2026 CL&C Ltd. // BRIEFING DATA FEED</p>
+        </div>
     </footer>
 
+    <script>
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // UI Toggle
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Filter Logic
+                const sector = tab.getAttribute('data-sector');
+                document.querySelectorAll('.brief-card').forEach(card => {
+                    if (sector === 'all' || card.getAttribute('data-sector') === sector) {
+                        card.classList.remove('hidden-brief');
+                    } else {
+                        card.classList.add('hidden-brief');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
