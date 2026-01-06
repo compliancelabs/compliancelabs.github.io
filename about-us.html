@@ -1,91 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <title>The Mandate | Compliance Labs & Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
     <style>
         :root { --emerald: #059669; --charcoal: #020617; }
-        body { font-family: 'Manrope', sans-serif; background-color: #ffffff; color: var(--charcoal); }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: var(--charcoal); }
         .serif-heading { font-family: 'Playfair Display', serif; }
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
-        .nav-link { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; color: #64748b; }
-        .nav-link:hover { color: var(--charcoal); }
-        .diagonal-hero { position: absolute; top: 0; right: 0; width: 45%; height: 100vh; background: #f8fafc; clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%); z-index: -1; }
+        .vision-block { border-left: 2px solid var(--charcoal); padding-left: 3rem; margin-bottom: 6rem; }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- HEADER -->
-    <header class="fixed w-full bg-white/95 backdrop-blur-md border-b border-slate-100 z-[1000]">
-        <div class="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
+    <header class="w-full bg-white border-b border-slate-100 h-24 flex items-center">
+        <div class="max-w-[1800px] mx-auto px-8 w-full flex justify-between">
             <a href="index.html" class="flex items-center gap-4">
-                <svg viewBox="0 0 100 120" class="h-10 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
-                <div class="leading-tight">
-                    <span class="block font-bold text-sm uppercase tracking-tight">Compliance <span class="text-emerald-700">Labs</span></span>
-                    <span class="block mono text-[9px] text-slate-500">& CAPITAL</span>
-                </div>
+                <svg viewBox="0 0 100 120" class="h-8"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
+                <span class="font-bold text-sm uppercase tracking-tight">Compliance Labs & Capital</span>
             </a>
             <nav class="hidden lg:flex items-center gap-12">
-                <a href="services.html" class="mono hover:text-charcoal">Specs</a>
-                <a href="#" class="mono text-emerald-700 border-b border-emerald-700">Mandate</a>
-                <a href="intelligence.html" class="mono hover:text-charcoal">Intelligence</a>
-                <a href="resources.html" class="mono hover:text-charcoal">Terminal</a>
+                <a href="services.html" class="mono">Specs</a>
+                <a href="about-us.html" class="mono text-emerald-600">Mandate</a>
+                <a href="intelligence.html" class="mono">Intelligence</a>
+                <a href="resources.html" class="mono">Terminal</a>
             </nav>
-            <a href="index.html#compliance-check" class="hidden lg:block bg-charcoal text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest bg-[#020617]">Request Audit</a>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="relative pt-60 pb-48 overflow-hidden">
-        <div class="diagonal-hero"></div>
-        <div class="max-w-[1400px] mx-auto px-8 relative z-10">
-            <span class="mono text-emerald-600 mb-8 block">THE ARCHITECT'S MANDATE</span>
-            <h1 class="serif-heading text-7xl lg:text-9xl mb-16 leading-none text-slate-900">Not a Firm. <br><span class="italic text-slate-400">A Strategic Counsel.</span></h1>
-            <div class="grid lg:grid-cols-2 gap-32 border-t pt-20 border-slate-200">
-                <p class="text-2xl font-light leading-relaxed text-slate-600">We bridge the technical gap between operational data and institutional capital. In sectors where assets are heavy and regulations are complex, we are the architects of scalability.</p>
-                <div class="space-y-12">
-                    <div><h4 class="mono text-charcoal mb-4">ORIGIN</h4><p class="text-sm text-slate-500 leading-relaxed">Founded to solve the "Generalist Failure" in construction accounting.</p></div>
-                    <div><h4 class="mono text-charcoal mb-4">MISSION</h4><p class="text-sm text-slate-500 leading-relaxed">To replace administrative chaos with proprietary technical protocols.</p></div>
+    <!-- CONTENT -->
+    <section class="py-40 max-w-[1400px] mx-auto px-8">
+        <span class="mono text-emerald-600 mb-10 block">Institutional Mandate v5.0</span>
+        <h1 class="serif-heading text-7xl lg:text-9xl mb-24 leading-none text-slate-900">Sovereign <br><span class="italic text-slate-400">Risk Management.</span></h1>
+        
+        <div class="grid lg:grid-cols-2 gap-32 border-t pt-20 border-slate-100">
+            <div>
+                <div class="vision-block">
+                    <h2 class="text-4xl font-bold mb-8">Technological Moat.</h2>
+                    <p class="text-2xl font-light leading-relaxed text-slate-600">We do not provide generic "advice." We install technical infrastructure that de-risks every pound of turnover across Construction, Logistics, and Heavy Industry.</p>
                 </div>
+                <p class="text-lg text-slate-500 leading-relaxed mb-12">Our mandate is the systemic elimination of friction. We bridge the technical gap between operational data and institutional capital, acting as the architects of enterprise scalability.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- VISION 2030 -->
-    <section class="py-40 bg-[#020617] text-white">
-        <div class="max-w-[1400px] mx-auto px-8">
-            <div class="grid lg:grid-cols-2 gap-24 items-center">
-                <div>
-                    <span class="mono text-emerald-500 mb-6 block">VISION 2030</span>
-                    <h2 class="serif-heading text-5xl mb-8">The Sovereign Ledger.</h2>
-                    <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                        Our long-term objective is to build the standard for "Self-Verifying Infrastructure." By 2030, we aim to have 500 UK enterprises operating on the Payment Firewall™, creating a closed-loop ecosystem where capital flows instantly between verified entities.
-                    </p>
+            <div class="space-y-20">
+                <div class="stat-box border-b border-slate-100 pb-12">
+                    <h4 class="mono text-emerald-600 mb-6 font-bold">The Core Thesis</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed font-bold uppercase tracking-widest mb-4">Precision over Estimation.</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Most accounting firms are historians; they record data after the fact. In high-stakes heavy industry, historical reporting is a liability. We deal in real-time statutory facts and hard-coded API verifications.</p>
                 </div>
-                <div class="border border-white/10 p-12 bg-white/5">
-                    <h3 class="mono text-white mb-8 border-b border-white/10 pb-4">CORPORATE GOVERNANCE</h3>
-                    <ul class="space-y-6 mono text-xs text-slate-400">
-                        <li class="flex justify-between"><span>Professional Indemnity</span><span class="text-emerald-500">£2,000,000</span></li>
-                        <li class="flex justify-between"><span>Data Controller</span><span class="text-white">ICO Regulated</span></li>
-                        <li class="flex justify-between"><span>Credit Brokerage</span><span class="text-white">FCA Authorized Lenders</span></li>
-                        <li class="flex justify-between"><span>Anti-Bribery</span><span class="text-white">ABC Policy Active</span></li>
+                <div class="stat-box">
+                    <h4 class="mono text-emerald-600 mb-6 font-bold">Governance & Trust</h4>
+                    <ul class="space-y-6 text-xs font-bold uppercase tracking-widest text-slate-900">
+                        <li class="flex justify-between"><span>Professional Indemnity</span><span>£2,000,000</span></li>
+                        <li class="flex justify-between"><span>Data Registry</span><span>ICO Registered</span></li>
+                        <li class="flex justify-between"><span>Capital Network</span><span>Institutional Tier-1</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- LEADERSHIP MANDATE -->
+    <section class="py-40 bg-slate-50">
+        <div class="max-w-[1200px] mx-auto px-8">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <span class="mono text-emerald-600 mb-6 block">Executive Leadership</span>
+                    <h2 class="serif-heading text-5xl mb-8">The Principal’s Mandate.</h2>
+                    <p class="text-slate-500 text-lg leading-relaxed mb-8">
+                        The firm was founded on a singular realization: the UK’s most critical infrastructure sectors are underserved by the financial industry. By merging technical compliance with institutional capital placement, we provide the "Missing Engine" for SME growth.
+                    </p>
+                </div>
+                <div class="bg-[#020617] p-12 text-white">
+                    <span class="text-6xl serif-heading italic text-emerald-500 block mb-10">"</span>
+                    <p class="text-2xl font-light leading-relaxed mb-10 italic">
+                        We don't just secure loans; we build audit-proof balance sheets that command market respect.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-px bg-emerald-500"></div>
+                        <span class="mono text-xs uppercase font-bold tracking-widest">Managing Director // CL&C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
-    <footer class="bg-white py-20 border-t border-slate-200">
-        <div class="max-w-[1600px] mx-auto px-8 text-center"><p class="mono text-slate-500 text-[10px]">&copy; 2026 CL&C Ltd. // INSTITUTIONAL STANDARD</p></div>
+    <footer class="bg-[#020617] text-white py-20">
+        <div class="max-w-[1600px] mx-auto px-8 text-center">
+            <p class="mono text-slate-700">&copy; 2026 CL&C Ltd. // THE INSTITUTIONAL STANDARD</p>
+        </div>
     </footer>
 
 </body>
