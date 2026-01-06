@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Construction Specification | Compliance Labs & Capital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Technical specification for Construction industry compliance and capital recovery. CIS Defense and Statutory Recovery protocols."/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root { --emerald: #059669; --charcoal: #020617; --slate: #64748b; }
+        body { font-family: 'Manrope', sans-serif; background-color: #f8fafc; color: var(--charcoal); }
+        .serif-heading { font-family: 'Playfair Display', serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        .doc-canvas { 
+            max-width: 1000px; margin: 4rem auto; background: white; 
+            border: 1px solid rgba(2, 6, 23, 0.1); padding: 5rem; 
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.05); 
+            position: relative; overflow: hidden;
+        }
+
+        .watermark {
+            position: absolute; top: 3rem; right: -2rem; opacity: 0.04;
+            font-size: 10px; font-weight: 900; letter-spacing: 0.5em;
+            transform: rotate(90deg); transform-origin: top right;
+            pointer-events: none; white-space: nowrap;
+        }
+
+        .spec-section { border-left: 2px solid var(--emerald); padding-left: 2rem; margin-bottom: 4rem; }
+        .technical-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
+        .tech-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--slate); font-bold uppercase; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.5rem; margin-bottom: 1rem; display: block; }
+        
+        @media (max-width: 768px) {
+            .doc-canvas { padding: 2rem; margin: 1rem; }
+            .technical-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Print logic for "Export PDF" functionality established in Terminal */
+        @media print {
+            body { background: white; padding: 0; }
+            .doc-canvas { border: none; box-shadow: none; margin: 0; padding: 2rem; width: 100%; max-width: 100%; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="doc-canvas">
+        <div class="watermark uppercase">Compliance Labs & Capital // Restricted Protocol // CLC-CIS-SPEC-V7.0</div>
+
+        <!-- HEADER -->
+        <div class="flex justify-between items-start mb-20 no-print">
+            <a href="services.html" class="mono text-slate-400 hover:text-emerald-700 transition-colors flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Specifications Hub
+            </a>
+            <button onclick="window.print()" class="mono text-slate-400 hover:text-charcoal flex items-center gap-2">
+                <i class="fas fa-file-pdf"></i> Export Protocol
+            </button>
+        </div>
+
+        <header class="mb-24">
+            <span class="mono text-emerald-600 block mb-6 font-bold tracking-widest">MANDATE_REF: CIS-STRAT-01-INFRA</span>
+            <h1 class="serif-heading text-5xl md:text-7xl mb-8 italic text-slate-900">Construction <br>Infrastructure.</h1>
+            <p class="text-slate-500 text-xl font-light leading-relaxed max-w-2xl">
+                Technical protocols for the systemic elimination of CIS liability and the acceleration of trapped working capital through statutory enforcement.
+            </p>
+        </header>
+
+        <!-- SECTION 01: THE FIREWALL -->
+        <section class="spec-section">
+            <h2 class="mono font-bold text-xl mb-2 text-slate-900">01 // The Payment Firewall™</h2>
+            <p class="text-xs text-slate-400 uppercase font-black tracking-widest mb-8">Regulatory Risk Mitigation (CIS)</p>
+            
+            <p class="text-slate-600 leading-relaxed mb-10">
+                We install an automated API logic gate at the accounts payable level. This protocol verifies subcontractor Gross Payment Status (GPS) and UTR validity in real-time, preventing the distribution of funds to unverified or lapsed entities—eliminating the risk of retrospective Standard Rate reclassification (£100k+ liability exposure).
+            </p>
+
+            <div class="technical-grid">
+                <div>
+                    <span class="tech-label">Technical Function</span>
+                    <ul class="space-y-3 text-sm font-bold uppercase text-slate-700">
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Live HMRC Gateway Sync</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Regulation 4 Material Scrub</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Automated Deduction Logic</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="tech-label">Operational Outcome</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Total mitigation of "Deemed Labour" reclassification. Guarantees 0.0% default rate during HMRC technical audits.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02: RECOVERY -->
+        <section class="spec-section">
+            <h2 class="mono font-bold text-xl mb-2 text-slate-900">02 // Statutory Recovery Sequence</h2>
+            <p class="text-xs text-slate-400 uppercase font-black tracking-widest mb-8">Capital Velocity Enforcement</p>
+            
+            <p class="text-slate-600 leading-relaxed mb-10">
+                Utilization of the <strong>Housing Grants, Construction & Regeneration Act 1996</strong> to release trapped working capital. We turn passive retention certificates into undisputed legal debts due immediately upon Practical Completion, bypassing the "Missing Certificate" stall.
+            </p>
+
+            <div class="technical-grid">
+                <div>
+                    <span class="tech-label">Statutory Triggers</span>
+                    <ul class="space-y-3 text-sm font-bold uppercase text-slate-700">
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Section 111 Notice Enforcement</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> LPCDEA 1998 Claims (8.5%)</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Pay-Less Notice Rebuttal</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="tech-label">Financial Yield</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Reduces retention aging from 18 months to 30 days. Average capital unlock: £45k per £1M turnover.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 03: ASSETS -->
+        <section class="spec-section">
+            <h2 class="mono font-bold text-xl mb-2 text-slate-900">03 // Yellow Plant Yield Logic</h2>
+            <p class="text-xs text-slate-400 uppercase font-black tracking-widest mb-8">Asset Finance & Full Expensing</p>
+            
+            <p class="text-slate-600 leading-relaxed mb-10">
+                Strategic capital placement for Excavators, Crushers, and Fleet. We leverage HMRC's "Full Expensing" capital allowance to shield corporation tax while identifying equity in paid-off assets to fund new deposits.
+            </p>
+
+            <div class="technical-grid">
+                <div>
+                    <span class="tech-label">Credit Protocol</span>
+                    <ul class="space-y-3 text-sm font-bold uppercase text-slate-700">
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Refinance / Equity Release</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Hire Purchase Structuring</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Corporation Tax Shielding</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="tech-label">Leverage Strategy</span>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Uses "Clean Data" from Section 01 to secure Tier-1 lending rates (Sub-8% APR) for high-depreciation assets.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-40 pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="flex items-center gap-5">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto opacity-80">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                </svg>
+                <div class="leading-none">
+                    <span class="block font-bold text-sm uppercase tracking-tight text-slate-900">Compliance <span class="text-emerald-700">Labs</span></span>
+                    <span class="block mono text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">& CAPITAL LTD.</span>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="mono text-[9px] text-slate-400 tracking-widest">PROPRIETARY INFRASTRUCTURE // NO-REPRODUCTION</p>
+                <p class="text-[10px] font-bold text-slate-900 uppercase mt-2">London // Manchester // Bristol</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
