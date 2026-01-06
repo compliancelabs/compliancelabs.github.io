@@ -1,149 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8"/>
-    <title>Intelligence Hub | Compliance Labs & Capital</title>
+    <title>Strategic Intelligence Hub | Compliance Labs & Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <style>
-        :root { --emerald: #059669; --charcoal: #020617; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: var(--charcoal); overflow-x: hidden; }
-        .serif-heading { font-family: 'Playfair Display', serif; }
-        .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
-        
-        .brief-card { 
-            border: 1px solid rgba(2, 6, 23, 0.1); 
-            padding: 2.5rem; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            cursor: pointer; 
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .brief-card:hover { border-color: var(--emerald); background: #f8fafc; transform: translateY(-4px); }
-        
-        .filter-tab { 
-            padding: 10px 24px; 
-            border: 1px solid #e2e8f0; 
-            font-size: 10px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            letter-spacing: 0.1em; 
-            cursor: pointer; 
-            transition: 0.2s;
-        }
-        .filter-tab:hover { border-color: var(--charcoal); }
-        .filter-tab.active { background: var(--charcoal); color: white; border-color: var(--charcoal); }
+    <meta name="description" content="Institutional regulatory briefings and technical financial intelligence for the UK construction sector. Stay audit-proof and credit-ready."/>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
-        .hidden-brief { display: none !important; }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <style>
+        :root {
+            --emerald: #059669; 
+            --charcoal: #020617;
+            --concrete: #f1f5f9;
+        }
+        body { font-family: 'Manrope', sans-serif; background-color: #ffffff; color: var(--charcoal); overflow-x: hidden; }
+        .serif-heading { font-family: 'Playfair Display', serif; }
+        
+        /* Institutional Styling */
+        .grid-line { border-right: 1px solid rgba(0,0,0,0.06); }
+        .diagonal-hero {
+            position: absolute;
+            top: 0; right: 0; width: 45%; height: 100vh;
+            background: #f8fafc;
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: -1;
+        }
+        .nav-link { position: relative; font-weight: 600; letter-spacing: 0.05em; font-size: 11px; text-transform: uppercase; }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0;
+            background-color: var(--charcoal); transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Briefing Cards */
+        .briefing-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+        .briefing-card:hover {
+            border-color: var(--charcoal);
+            background: #f8fafc;
+        }
+
+        /* Video Terminal Style */
+        .video-card {
+            background: var(--charcoal);
+            position: relative;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .video-card:hover .play-btn { transform: scale(1.1); background: var(--emerald); border-color: var(--emerald); color: white; }
+        .play-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 64px; height: 64px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; z-index: 10;
+            color: white;
+        }
+
+        /* Button Architecture */
+        .btn-institutional {
+            background: var(--charcoal); color: white; padding: 18px 40px; font-weight: 800; border-radius: 0; 
+            transition: 0.3s; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; border: 1px solid var(--charcoal);
+        }
+        .btn-institutional:hover { background: var(--emerald); border-color: var(--emerald); }
+
+        /* Filter Tabs */
+        .filter-btn {
+            font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em;
+            padding: 10px 24px; border: 1px solid #e2e8f0; color: #64748b; background: white;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--charcoal); color: white; border-color: var(--charcoal);
+        }
+        
+        .badge-cons { background: #ecfdf5; color: #059669; }
+        .badge-log { background: #eff6ff; color: #2563eb; }
+        .badge-waste { background: #fff7ed; color: #ea580c; }
+        .badge-nrg { background: #fefce8; color: #ca8a04; }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="w-full bg-white border-b border-slate-100 h-24 flex items-center sticky top-0 z-[100]">
-        <div class="max-w-[1800px] mx-auto px-8 w-full flex justify-between">
-            <a href="index.html" class="flex items-center gap-4">
-                <svg viewBox="0 0 100 120" class="h-8">
+    <!-- NAVIGATION -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-slate-100 z-[1000] transition-all duration-300">
+        <div class="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-5 group">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto transition-transform duration-500 group-hover:scale-105">
                     <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
-                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="50" cy="20" r="4" fill="#10b981"/>
+                    <circle cx="50" cy="55" r="5" fill="#10b981"/>
+                    <circle cx="50" cy="100" r="4" fill="#10b981"/>
                 </svg>
-                <span class="font-bold text-xs uppercase tracking-tight">Intelligence Hub</span>
+                <div class="flex flex-col justify-center h-full pt-1">
+                    <h1 class="font-bold tracking-tight text-slate-900 text-lg uppercase leading-none">Compliance <span class="text-emerald-700">Labs</span></h1>
+                    <div class="flex items-center gap-2 mt-1.5">
+                        <div class="h-px w-3 bg-slate-300"></div>
+                        <h2 class="text-[10px] tracking-[0.3em] font-black text-slate-500 uppercase">& CAPITAL</h2>
+                    </div>
+                </div>
             </a>
-            <nav class="hidden lg:flex items-center gap-10">
-                <a href="services.html" class="mono">Specs</a>
-                <a href="about-us.html" class="mono">Mandate</a>
-                <a href="intelligence.html" class="mono text-emerald-600">Intelligence</a>
-                <a href="resources.html" class="mono">Terminal</a>
+            <nav class="hidden lg:flex items-center gap-12 text-slate-600">
+                <a href="services.html" class="nav-link hover:text-slate-900">Services</a>
+                <a href="about-us.html" class="nav-link hover:text-slate-900">About Us</a>
+                <a href="#" class="nav-link text-emerald-700 border-b border-emerald-700 pb-1">Intelligence</a>
+                <a href="resources.html" class="nav-link hover:text-slate-900">Terminal</a>
             </nav>
+            <a href="index.html#compliance-check" class="hidden lg:block btn-institutional">Request Audit</a>
+            <button id="open-menu" class="lg:hidden text-slate-900"><i class="fas fa-bars text-xl"></i></button>
         </div>
     </header>
 
-    <section class="py-32 max-w-[1600px] mx-auto px-8">
-        <div class="max-w-3xl mb-16">
-            <span class="mono text-emerald-600 mb-6 block">Technical Briefing Repository</span>
-            <h1 class="serif-heading text-6xl md:text-8xl leading-none mb-8">Strategic <br><span class="italic text-slate-400">Briefings.</span></h1>
-            <p class="text-slate-500 text-xl font-light leading-relaxed">Institutional-grade intelligence on regulatory shifts and capital placement strategies for asset-intensive enterprises.</p>
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 z-[1100] bg-slate-900 translate-x-full transition-transform duration-500 lg:hidden p-10 flex flex-col">
+        <div class="flex justify-between items-center mb-16">
+            <span class="text-white font-bold uppercase text-xs tracking-widest">Menu</span>
+            <button id="close-menu" class="text-white text-2xl"><i class="fas fa-times"></i></button>
         </div>
-
-        <div class="flex flex-wrap gap-4 mb-20 border-b pb-8" id="filter-container">
-            <button class="filter-tab active" data-sector="all">All Sectors</button>
-            <button class="filter-tab" data-sector="construction">Construction</button>
-            <button class="filter-tab" data-sector="logistics">Logistics</button>
-            <button class="filter-tab" data-sector="waste">Waste</button>
-            <button class="filter-tab" data-sector="energy">Energy</button>
+        <nav class="flex flex-col space-y-6 text-3xl font-light text-white">
+            <a href="services.html" class="hover:text-emerald-400 transition-colors">Services</a>
+            <a href="about-us.html" class="hover:text-emerald-400 transition-colors">About Us</a>
+            <a href="#" class="text-emerald-500 font-bold">Intelligence</a>
+            <a href="resources.html" class="hover:text-emerald-400 transition-colors">Terminal</a>
+        </nav>
+        <div class="mt-auto border-t border-white/10 pt-8">
+            <a href="index.html#compliance-check" class="block w-full py-4 bg-emerald-700 text-white text-center font-bold uppercase tracking-widest text-xs">Book Audit</a>
         </div>
+    </div>
 
-        <div class="grid lg:grid-cols-3 gap-10" id="briefing-grid">
-            
-            <!-- LOGISTICS -->
-            <div class="brief-card" data-sector="logistics">
-                <span class="mono text-emerald-600 mb-6 block">LOGISTICS // FLEET</span>
-                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">The Euro-6 Mandate</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Structuring asset finance to neutralize Clean Air Zone penalties without depleting operational capital.</p>
-                <a href="logistics_euro6_briefing.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
+    <!-- HERO -->
+    <section class="relative pt-40 pb-32 lg:pt-52 lg:pb-40 overflow-hidden">
+        <div class="diagonal-hero"></div>
+        <div class="max-w-[1600px] mx-auto px-8 relative z-10">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-3 mb-10 border-b border-emerald-500/30 pb-2">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700">Multi-Sector Intelligence V3.2</span>
+                </div>
+                <h1 class="serif-heading text-6xl md:text-8xl leading-[1.05] text-slate-900 mb-10">
+                    Strategic <br>
+                    <span class="italic text-slate-500">Briefings.</span>
+                </h1>
+                <p class="text-slate-500 text-lg lg:text-xl font-light leading-relaxed max-w-2xl mb-12">
+                    Access high-level regulatory briefings, legislative updates, and technical financial strategies curated specifically for the UK construction enterprise.
+                </p>
+                <!-- SECTOR FILTERS -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn active" onclick="filterBriefings('all')">All Sectors</button>
+                    <button class="filter-btn" onclick="filterBriefings('cons')">Construction</button>
+                    <button class="filter-btn" onclick="filterBriefings('log')">Logistics</button>
+                    <button class="filter-btn" onclick="filterBriefings('waste')">Waste Mgmt</button>
+                    <button class="filter-btn" onclick="filterBriefings('nrg')">Renewables</button>
+                </div>
             </div>
-
-            <!-- CONSTRUCTION -->
-            <div class="brief-card" data-sector="construction">
-                <span class="mono text-emerald-600 mb-6 block">CONSTRUCTION // CIS</span>
-                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Regulation 4 Trap</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Technical defense of the materials exclusion audit. How HMRC is reclassifying sub-contractor data room ledger items.</p>
-                <a href="blog_cis_materials.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
-            </div>
-
-            <!-- WASTE -->
-            <div class="brief-card" data-sector="waste">
-                <span class="mono text-emerald-600 mb-6 block">WASTE // CAPEX</span>
-                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Yellow Plant Yield</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Liquidity optimization for high-depreciation assets: Crushers, Screens, and Compactors. Asset refinance bridge protocols.</p>
-                <a href="waste_landfill_tax_briefing.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
-            </div>
-
-            <!-- ENERGY -->
-            <div class="brief-card" data-sector="energy">
-                <span class="mono text-emerald-600 mb-6 block">ENERGY // RENEWABLES</span>
-                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Grid Connection Bridging</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Financing the 'Dead Time' gap between hardware installation and DNO grid connection for commercial solar.</p>
-                <a href="energy_solar_finance_briefing.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
-            </div>
-
-            <!-- CONSTRUCTION (RECOVERY) -->
-            <div class="brief-card" data-sector="construction">
-                <span class="mono text-emerald-600 mb-6 block">CONSTRUCTION // DEBT</span>
-                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">The Retention Hack</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Applying the Construction Act 1996 triggers to force payment finality within 30 days of DLP expiry.</p>
-                <a href="master_retention_trap.md" class="mono text-slate-900 font-bold border-b border-charcoal pb-1 w-fit">Read Protocol →</a>
-            </div>
-
         </div>
     </section>
 
-    <footer class="bg-[#020617] text-white py-20">
-        <div class="max-w-[1600px] mx-auto px-8 text-center">
-            <p class="mono text-slate-700">&copy; 2026 CL&C Ltd. // BRIEFING DATA FEED</p>
+    <!-- MASTER BRIEFINGS GRID -->
+    <section class="py-32 bg-slate-50">
+        <div class="max-w-[1600px] mx-auto px-8">
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="briefing-grid">
+                
+                <!-- Briefing 1 (Construction) -->
+                <div class="briefing-card reveal item-cons flex flex-col">
+                    <div class="p-10 pb-0">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-[9px] font-bold uppercase tracking-widest badge-cons px-3 py-1 rounded-full">Construction</span>
+                            <span class="text-[10px] font-bold text-slate-400">Ref: CIS-M100</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">The Deemed Payment Trap</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-8">
+                            Avoiding the £10k liability through technical line-item segregation and Regulation 4 proofing.
+                        </p>
+                    </div>
+                    <div class="mt-auto p-10 border-t border-slate-100 bg-white">
+                        <a href="blog_cis_materials.md" class="text-[10px] font-bold uppercase tracking-widest text-slate-900 hover:text-emerald-700 transition-colors flex items-center gap-2">
+                            Read Protocol <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Briefing 2 (Logistics) -->
+                <div class="briefing-card reveal item-log flex flex-col" style="transition-delay: 0.1s">
+                    <div class="p-10 pb-0">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-[9px] font-bold uppercase tracking-widest badge-log px-3 py-1 rounded-full">Logistics</span>
+                            <span class="text-[10px] font-bold text-slate-400">Ref: FLT-600</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">The Euro-6 Cash Trap</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-8">
+                            Why upgrading your fleet 'Cash-Flow Neutral' is a myth, and how to structure Asset Finance to protect operating capital.
+                        </p>
+                    </div>
+                    <div class="mt-auto p-10 border-t border-slate-100 bg-white">
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-slate-900 hover:text-emerald-700 transition-colors flex items-center gap-2">
+                            Read Briefing <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Briefing 3 (Waste) -->
+                <div class="briefing-card reveal item-waste flex flex-col" style="transition-delay: 0.2s">
+                    <div class="p-10 pb-0">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-[9px] font-bold uppercase tracking-widest badge-waste px-3 py-1 rounded-full">Waste Mgmt</span>
+                            <span class="text-[10px] font-bold text-slate-400">Ref: ENV-202</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Yellow Plant Liquidity</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-8">
+                            Refinancing crushers, screens, and compactors to unlock equity for operational expansion.
+                        </p>
+                    </div>
+                    <div class="mt-auto p-10 border-t border-slate-100 bg-white">
+                        <a href="#" class="text-[10px] font-bold uppercase tracking-widest text-slate-900 hover:text-emerald-700 flex gap-2">
+                            Read Briefing <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO INTELLIGENCE -->
+    <section class="py-32 bg-white border-t border-slate-200">
+        <div class="max-w-[1600px] mx-auto px-8">
+            <div class="mb-20 reveal">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-700 block mb-4">Video Briefings</span>
+                <h2 class="serif-heading text-4xl text-slate-900">Visual Intelligence.</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="reveal">
+                    <div class="video-card group">
+                        <div class="absolute inset-0 bg-black/60 z-10"></div>
+                        <div class="play-btn"><i class="fas fa-play text-xl"></i></div>
+                        <div class="absolute bottom-8 left-8 right-8 z-20">
+                            <span class="bg-emerald-900 text-emerald-400 text-[9px] font-bold px-3 py-1 uppercase tracking-widest mb-4 inline-block">EP 01 | Construction</span>
+                            <h4 class="text-white text-xl font-bold uppercase tracking-tight">The Hidden Tax Cost of Materials</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal" style="transition-delay: 0.1s">
+                    <div class="video-card group">
+                        <div class="absolute inset-0 bg-black/60 z-10"></div>
+                        <div class="play-btn"><i class="fas fa-play text-xl"></i></div>
+                        <div class="absolute bottom-8 left-8 right-8 z-20">
+                            <span class="bg-emerald-900 text-emerald-400 text-[9px] font-bold px-3 py-1 uppercase tracking-widest mb-4 inline-block">EP 02 | Logistics</span>
+                            <h4 class="text-white text-xl font-bold uppercase tracking-tight">Fuel Duty vs VAT: The £5k Mistake</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#020617] text-white pt-24 pb-12 border-t border-white/10">
+        <div class="max-w-[1600px] mx-auto px-8">
+            <div class="grid lg:grid-cols-4 gap-12 mb-20">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-4 mb-8">
+                        <svg viewBox="0 0 100 120" class="h-10 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
+                        <div>
+                            <span class="font-bold text-sm uppercase tracking-tight block text-white">Compliance Labs</span>
+                            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">& CAPITAL LTD.</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm uppercase font-bold tracking-widest">
+                        Specialist infrastructure for Heavy Industry. Professional Indemnity coverage: £2,000,000.
+                    </p>
+                </div>
+                <div><h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-10 border-b border-white/10 pb-4">The Firm</h4><ul class="space-y-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500"><li><a href="services.html" class="hover:text-white transition-colors">Services</a></li><li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li><li><a href="intelligence.html" class="hover:text-white transition-colors">Intelligence</a></li><li><a href="resources.html" class="hover:text-white transition-colors">Terminal</a></li></ul></div>
+                <div><h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-white mb-10 border-b border-white/10 pb-4">Legal & IDD</h4><ul class="space-y-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500"><li><a href="idd.html" class="hover:text-emerald-400 transition-colors">Initial Disclosure</a></li><li><a href="privacy.html" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li><li><a href="terms.html" class="hover:text-emerald-400 transition-colors">Terms of Service</a></li><li><a href="brochure.html" class="hover:text-emerald-400 transition-colors">Prospectus (PDF)</a></li></ul></div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <p>&copy; 2026 Compliance Labs & Capital Ltd.</p>
+                <div class="flex gap-8 mt-4 md:mt-0"><span>London</span><span>Manchester</span><span>Bristol</span></div>
+            </div>
         </div>
     </footer>
 
     <script>
-        document.querySelectorAll('.filter-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // UI Toggle
-                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+        const openBtn = document.getElementById('open-menu');
+        const closeBtn = document.getElementById('close-menu');
+        const menu = document.getElementById('mobile-menu');
+        if(openBtn) openBtn.addEventListener('click', () => menu.classList.remove('translate-x-full'));
+        if(closeBtn) closeBtn.addEventListener('click', () => menu.classList.add('translate-x-full'));
+        
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) reveals[i].classList.add('active');
+            }
+        };
+        window.addEventListener('scroll', reveal);
+        reveal();
 
-                // Filter Logic
-                const sector = tab.getAttribute('data-sector');
-                document.querySelectorAll('.brief-card').forEach(card => {
-                    if (sector === 'all' || card.getAttribute('data-sector') === sector) {
-                        card.classList.remove('hidden-brief');
-                    } else {
-                        card.classList.add('hidden-brief');
-                    }
-                });
+        function filterBriefings(sector) {
+            const cards = document.querySelectorAll('.briefing-card');
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            cards.forEach(c => {
+                if(sector === 'all' || c.classList.contains('item-' + sector)) { c.style.display = 'flex'; } 
+                else { c.style.display = 'none'; }
             });
-        });
+        }
     </script>
 </body>
 </html>
