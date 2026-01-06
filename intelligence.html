@@ -23,7 +23,8 @@
 
         .brief-card { border: 1px solid rgba(2, 6, 23, 0.1); padding: 3rem; transition: 0.3s; cursor: pointer; height: 100%; display: flex; flex-direction: column; }
         .brief-card:hover { border-color: var(--emerald); background: #f8fafc; transform: translateY(-3px); }
-        .filter-tab { padding: 10px 24px; border: 1px solid #e2e8f0; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; }
+        
+        .filter-tab { padding: 10px 24px; border: 1px solid #e2e8f0; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: 0.2s; }
         .filter-tab.active { background: var(--charcoal); color: white; border-color: var(--charcoal); }
     </style>
 </head>
@@ -39,7 +40,7 @@
                     <span class="block mono text-[9px] text-slate-500 font-bold uppercase mt-1">& CAPITAL</span>
                 </div>
             </a>
-            <nav class="hidden lg:flex items-center gap-12">
+            <nav class="hidden lg:flex items-center gap-12 text-slate-600">
                 <a href="services.html" class="nav-link">Specifications</a>
                 <a href="about-us.html" class="nav-link">Mandate</a>
                 <a href="intelligence.html" class="nav-link active">Intelligence</a>
@@ -52,19 +53,39 @@
     <!-- CONTENT -->
     <section class="pt-60 pb-32 max-w-[1600px] mx-auto px-8">
         <span class="mono text-emerald-600 mb-8 block font-bold">Sector Intelligence V3.5</span>
-        <h1 class="serif-heading text-6xl md:text-8xl leading-[1.0] text-slate-900 mb-16">Strategic <br><span class="italic text-slate-400">Briefings.</span></h1>
+        <h1 class="serif-heading text-6xl md:text-8xl leading-[1.0] text-slate-900 mb-16 italic">Strategic Briefings.</h1>
         
-        <div class="flex gap-4 mb-20 border-b pb-8"><button class="filter-tab active">All Sectors</button><button class="filter-tab">Construction</button><button class="filter-tab">Logistics</button><button class="filter-tab">Waste</button><button class="filter-tab">Energy</button></div>
+        <!-- FILTER LOGIC -->
+        <div class="flex gap-4 mb-20 border-b pb-8" id="filter-wrap">
+            <button class="filter-tab active" onclick="filterBriefs('all')">All Sectors</button>
+            <button class="filter-tab" onclick="filterBriefs('cons')">Construction</button>
+            <button class="filter-tab" onclick="filterBriefs('log')">Logistics</button>
+            <button class="filter-tab" onclick="filterBriefs('waste')">Waste</button>
+            <button class="filter-tab" onclick="filterBriefs('nrg')">Energy</button>
+        </div>
 
-        <div class="grid lg:grid-cols-3 gap-10">
-            <div class="brief-card"><span class="mono text-emerald-600 mb-6 block">LOGISTICS // FLEET</span><h3 class="text-2xl font-bold mb-4">The Euro-6 Mandate</h3><p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Structuring asset finance to neutralize Clean Air Zone penalties without capital drain.</p><span class="mono text-slate-300">Read Protocol →</span></div>
-            <div class="brief-card"><span class="mono text-emerald-600 mb-6 block">CONSTRUCTION // CIS</span><h3 class="text-2xl font-bold mb-4">Regulation 4 Trap</h3><p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Defending the materials exclusion audit. How HMRC is reclassifying operational data.</p><span class="mono text-slate-300">Read Protocol →</span></div>
-            <div class="brief-card"><span class="mono text-emerald-600 mb-6 block">WASTE // CAPEX</span><h3 class="text-2xl font-bold mb-4">Yellow Plant Yield</h3><p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Liquidity optimization for high-depreciation assets: Crushers, Screens, and Compactors.</p><span class="mono text-slate-300">Read Protocol →</span></div>
+        <div class="grid lg:grid-cols-3 gap-10" id="briefing-grid">
+            <div class="brief-card b-item b-log"><span class="mono text-emerald-600 mb-6 block">LOGISTICS // FLEET</span><h3 class="text-2xl font-bold mb-4">The Euro-6 Mandate</h3><p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Structuring asset finance to neutralize Clean Air Zone penalties without capital drain.</p><span class="mono text-slate-300">Read Protocol →</span></div>
+            <div class="brief-card b-item b-cons"><span class="mono text-emerald-600 mb-6 block">CONSTRUCTION // CIS</span><h3 class="text-2xl font-bold mb-4">Regulation 4 Trap</h3><p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Defending the materials exclusion audit. How HMRC is reclassifying operational data.</p><span class="mono text-slate-300">Read Protocol →</span></div>
+            <div class="brief-card b-item b-waste"><span class="mono text-emerald-600 mb-6 block">WASTE // CAPEX</span><h3 class="text-2xl font-bold mb-4">Yellow Plant Yield</h3><p class="text-sm text-slate-500 leading-relaxed mb-10 flex-1">Liquidity optimization for high-depreciation assets: Crushers, Screens, and Compactors.</p><span class="mono text-slate-300">Read Protocol →</span></div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="bg-[#020617] text-white py-20 text-center border-t border-white/10"><p class="mono text-slate-700 text-[10px] uppercase tracking-widest">&copy; 2026 CL&C Ltd. // BRIEFING DATA FEED</p></footer>
 
+    <script>
+        function filterBriefs(s){
+            const items = document.querySelectorAll('.b-item');
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            items.forEach(i => {
+                if(s === 'all' || i.classList.contains('b-'+s)) i.style.display = 'flex';
+                else i.style.display = 'none';
+            });
+        }
+    </script>
 </body>
 </html>
