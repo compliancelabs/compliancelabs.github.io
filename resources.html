@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>CL&C Terminal | Institutional Access</title>
+    <title>CL&C Sovereign Terminal | Institutional Access</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     
     <!-- Favicon -->
@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        :root { --bg-body: #0b0d11; --bg-panel: #151922; --border-color: #272e3b; --accent: #10b981; }
+        :root { --bg-body: #0b0d11; --bg-panel: #151922; --border-color: #272e3b; --accent: #10b981; --architect-indigo: #4f46e5; }
         
-        /* SCROLL ENGINE */
+        /* TERMINAL SCROLL ENGINE */
         html, body { height: 100%; margin: 0; overflow: hidden; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: #e2e8f0; font-size: 13px; display: flex; }
         .mono { font-family: 'JetBrains Mono', monospace; }
@@ -37,8 +37,8 @@
         .btn-exec { width: 100%; background: #e2e8f0; color: #0b0d11; border: none; padding: 14px; font-weight: 800; font-size: 11px; text-transform: uppercase; margin-top: 24px; cursor: pointer; transition: 0.2s; letter-spacing: 0.1em; }
         .btn-exec:hover { background: var(--accent); color: white; }
 
-        .btn-ai { background: #312e81; color: white; border: 1px solid #4f46e5; margin-top: 12px; }
-        .btn-ai:hover { background: #4f46e5; border-color: #6366f1; }
+        .btn-ai { background: var(--architect-indigo); color: white; border: 1px solid rgba(255,255,255,0.1); margin-top: 12px; }
+        .btn-ai:hover { background: #4338ca; }
         
         .data-readout { background: #000; padding: 16px; margin-top: 20px; display: none; border: 1px solid var(--border-color); border-left: 3px solid var(--accent); }
         .res-big { font-size: 1.5rem; font-weight: 700; color: white; display: block; margin-top: 4px; font-family: 'JetBrains Mono'; }
@@ -47,13 +47,13 @@
         .tab-btn.active { color: white; background: var(--accent); border-color: var(--accent); }
 
         .ai-output {
-            margin-top: 16px; padding: 24px; background: #020617; border: 1px solid #1e293b; border-left: 4px solid #4f46e5;
+            margin-top: 16px; padding: 24px; background: #020617; border: 1px solid #1e293b; border-left: 4px solid var(--architect-indigo);
             font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #f8fafc; line-height: 1.8;
             white-space: pre-wrap; display: none; max-height: 500px; overflow-y: auto;
         }
 
         .loader {
-            border: 2px solid #f3f3f3; border-radius: 50%; border-top: 2px solid #10b981;
+            border: 2px solid #f3f3f3; border-radius: 50%; border-top: 2px solid var(--accent);
             width: 12px; height: 12px; animation: spin 1s linear infinite; display: inline-block; margin-left: 5px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -66,7 +66,7 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <div class="p-8 border-b border-white/5">
-            <h1 class="font-bold text-xs uppercase text-white tracking-widest">CL&C Terminal</h1>
+            <h1 class="font-bold text-xs uppercase text-white tracking-widest leading-tight">CL&C Terminal</h1>
             <p class="mono text-[9px] text-slate-600 mt-2">Node_UK_LND_01 // SECURE</p>
         </div>
         <nav class="py-10 flex-1 px-4 space-y-2">
@@ -81,7 +81,7 @@
             </a>
         </nav>
         <div class="p-8 text-[9px] mono text-slate-700 leading-relaxed border-t border-white/5 uppercase font-bold tracking-widest">
-            API_STATUS: ACTIVE<br>ENCRYPTION: 256_BIT<br>VER: FY26_V10.0
+            API_STATUS: ACTIVE<br>ENCRYPTION: 256_BIT<br>VER: FY26_V11.0
         </div>
     </aside>
 
@@ -106,19 +106,21 @@
                 <a href="audit.html" class="bg-emerald-600 text-white px-10 py-4 text-[11px] font-bold uppercase tracking-widest hover:bg-emerald-500 transition-all shadow-2xl">Initialize Scan</a>
             </div>
 
-            <!-- SECTOR FILTERS -->
+            <!-- SECTOR FILTERS (SYNCHRONIZED) -->
             <div class="flex flex-wrap border-b border-white/5 mb-12">
-                <button class="tab-btn active" onclick="filter('all')">ALL_MODULES</button>
+                <button class="tab-btn active" onclick="filter('all')">ALL_SYSTEMS</button>
                 <button class="tab-btn" onclick="filter('cons')">CONSTRUCTION</button>
                 <button class="tab-btn" onclick="filter('log')">LOGISTICS</button>
-                <button class="tab-btn" onclick="filter('risk')">RISK_SHIELD</button>
-                <button class="tab-btn" onclick="filter('cap')">CAPITAL_ACCEL</button>
+                <button class="tab-btn" onclick="filter('waste')">WASTE_MGMT</button>
+                <button class="tab-btn" onclick="filter('nrg')">RENEWABLES</button>
+                <button class="tab-btn" onclick="filter('auto')">LEVERAGE_OS</button>
+                <button class="tab-btn" onclick="filter('cap')">CAPITAL_STACK</button>
             </div>
 
             <!-- TOOLS GRID -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="grid">
                 
-                <!-- AI COUNSEL -->
+                <!-- AI COUNSEL - THE SOVEREIGN ENGINE -->
                 <div class="module t-all border-l-4 border-l-indigo-500 col-span-1 md:col-span-2 lg:col-span-3">
                     <div class="module-header flex justify-between items-center">
                         <span>AI Regulatory Counsel // Technical Auditor</span>
@@ -131,8 +133,21 @@
                     </div>
                 </div>
 
+                <!-- NEW: TIME LEVERAGE AUDIT (OS UPGRADE) -->
+                <div class="module t-auto t-all">
+                    <div class="module-header">Time Leverage Audit (The 10x Filter)</div>
+                    <div class="module-body">
+                        <label class="mono text-[9px] text-slate-400">Monthly Revenue Goal (£)</label>
+                        <input type="number" id="lev-rev" class="std-input" value="20000">
+                        <label class="mono text-[9px] text-slate-400 mt-4 block">Current Personal Hours/Week</label>
+                        <input type="number" id="lev-hrs" class="std-input" value="40">
+                        <div class="data-readout" id="res-lev"><span class="mono text-[9px] text-slate-500">Value of One Hour</span><div class="res-big text-indigo-400" id="val-lev">£0.00</div></div>
+                        <button class="btn-exec" onclick="calcLeverage()">Audit Leverage</button>
+                    </div>
+                </div>
+
                 <!-- DEBT ENFORCEMENT -->
-                <div class="module t-cons t-risk">
+                <div class="module t-cons t-waste">
                     <div class="module-header">Debt Enforcement (LBA)</div>
                     <div class="module-body">
                         <label class="mono text-[9px] text-slate-400">Principal Amount (£)</label>
@@ -145,43 +160,57 @@
                     </div>
                 </div>
 
+                <!-- NEW: RENEWABLE PROJECT BRIDGE -->
+                <div class="module t-nrg">
+                    <div class="module-header">Renewable Project Bridging</div>
+                    <div class="module-body">
+                        <label class="mono text-[9px] text-slate-400">Grid-Pending Contract Value (£)</label>
+                        <input type="number" id="nrg-val" class="std-input" value="100000">
+                        <div class="data-readout" id="res-nrg">
+                            <span class="mono text-[9px] text-slate-500">Pre-DNO Advance (90%)</span>
+                            <div class="res-big text-sky-400" id="val-nrg">£0.00</div>
+                        </div>
+                        <button class="btn-exec" onclick="calcNRG()">Model Bridging</button>
+                    </div>
+                </div>
+
                 <!-- DIRECTOR YIELD -->
-                <div class="module t-risk t-cap">
-                    <div class="module-header">Director Yield (Div vs Salary)</div>
+                <div class="module t-cap">
+                    <div class="module-header">Director Yield (Efficiency Model)</div>
                     <div class="module-body">
                         <label class="mono text-[9px] text-slate-400">Gross Company Profit (£)</label>
                         <input type="number" id="div-profit" class="std-input" value="100000">
-                        <div class="data-readout" id="res-div"><span class="mono text-[9px] text-slate-500">Optimal Net Take-Home</span><div class="res-big text-emerald-400" id="val-div">£0.00</div></div>
+                        <div class="data-readout" id="res-div"><span class="mono text-[9px] text-slate-500">Optimized Net Take-Home</span><div class="res-big text-emerald-400" id="val-div">£0.00</div></div>
                         <button class="btn-exec" onclick="calcDiv()">Optimize Yield</button>
                     </div>
                 </div>
 
                 <!-- DRC VALIDATOR -->
-                <div class="module t-cons t-risk">
-                    <div class="module-header">DRC Logic Gate (VAT)</div>
+                <div class="module t-cons t-nrg">
+                    <div class="module-header">DRC Logic Gate (VAT Integrity)</div>
                     <div class="module-body">
                         <label class="mono text-[9px] text-slate-400">Net Labour Value (£)</label>
                         <input type="number" id="drc-labour" class="std-input" value="5000">
                         <label class="mono text-[9px] text-slate-400 mt-4 block">Net Material Value (£)</label>
                         <input type="number" id="drc-mats" class="std-input" value="1000">
-                        <div class="data-readout" id="res-drc"><span class="mono text-[9px] text-slate-500">Applicable VAT Status</span><div class="res-big text-amber-500 uppercase" style="font-size: 1rem;" id="val-drc">PENDING</div></div>
+                        <div class="data-readout" id="res-drc"><span class="mono text-[9px] text-slate-500">VAT Status Determination</span><div class="res-big text-amber-500 uppercase" style="font-size: 1rem;" id="val-drc">PENDING</div></div>
                         <button class="btn-exec" onclick="calcDRC()">Validate Logic</button>
                     </div>
                 </div>
 
-                <!-- ASSET AFFORDABILITY -->
-                <div class="module t-cap t-all">
-                    <div class="module-header">Asset Budget-First Model</div>
+                <!-- ASSET ARBITRAGE -->
+                <div class="module t-log t-waste t-cap">
+                    <div class="module-header">Asset Arbitrage (Equity Release)</div>
                     <div class="module-body">
-                        <label class="mono text-[9px] text-slate-400">Max Monthly Repayment (£)</label>
-                        <input type="number" id="cap-budget" class="std-input" value="1500">
-                        <div class="data-readout" id="res-cap"><span class="mono text-[9px] text-slate-500">Maximum Purchase Power</span><div class="res-big text-sky-400" id="val-cap">£0.00</div></div>
+                        <label class="mono text-[9px] text-slate-400">Market Value of Asset (£)</label>
+                        <input type="number" id="cap-budget" class="std-input" value="50000">
+                        <div class="data-readout" id="res-cap"><span class="mono text-[9px] text-slate-500">Maximum Equity Release</span><div class="res-big text-sky-400" id="val-cap">£0.00</div></div>
                         <button class="btn-exec" onclick="calcCap()">Execute Model</button>
                     </div>
                 </div>
 
                 <!-- CREDIT STRESS -->
-                <div class="module t-risk">
+                <div class="module t-cap">
                     <div class="module-header">Credit Stress (Gearing)</div>
                     <div class="module-body">
                         <label class="mono text-[9px] text-slate-400">Total Debt (£)</label>
@@ -194,7 +223,7 @@
                 </div>
 
                 <!-- LOGISTICS PROBE -->
-                <div class="module t-log t-risk">
+                <div class="module t-log">
                     <div class="module-header">Logistics Status Probe (IR35)</div>
                     <div class="module-body">
                         <label class="mono text-[9px] text-slate-400">Weekly Driver Pay (£)</label>
@@ -213,14 +242,16 @@
     </main>
 
     <script>
-        const apiKey = ""; // Integrated via Environment
+        const apiKey = ""; 
 
-        const counselSystemPrompt = `You are the CL&C Regulatory Counsel. Structure your response as a Defensive Memorandum:
+        const counselSystemPrompt = `You are the CL&C Regulatory Counsel and Sovereign Architect.
+        Structure your response as a Defensive Memorandum:
         1. REF_MANDATE: CLC-AUDIT-[RANDOM]
-        2. EXECUTIVE SUMMARY: 2 sentences.
-        3. LEGISLATIVE CITATION: Focus on UK Acts.
-        4. THE LOGIC GATE: Step-by-step risk check.
-        5. ACTIONABLE DIRECTIVE: Clear next step.`;
+        2. EXECUTIVE SUMMARY: 2 sentences focusing on risk/leverage.
+        3. LEGISLATIVE CITATION: Focus on Construction Act 1996, Finance Act 2021, or VAT Notice 708.
+        4. THE ARCHITECT'S LOGIC: Step-by-step auditing process.
+        5. DEPLOYMENT DIRECTIVE: Clinical instructions to the client FD.
+        Zero fluff. No disclaimers in body.`;
 
         // RETRY LOGIC ENGINE
         async function robustFetch(url, payload, retries = 5, delay = 1000) {
@@ -252,7 +283,7 @@
             const outputDiv = document.getElementById(outputId);
             outputDiv.style.display = 'block';
             const contentTarget = outputId === 'ai-response' ? document.getElementById('ai-text-content') : outputDiv;
-            contentTarget.innerText = "Accessing Database...";
+            contentTarget.innerText = "Querying Sovereign Database...";
 
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = {
@@ -280,8 +311,8 @@
         function draftLBA() {
             const val = document.getElementById('rec-val').value;
             const days = document.getElementById('rec-days').value;
-            const query = `Draft a clinical LBA for a construction debt of £${val} aged ${days} days. Cite statutory interest triggers.`;
-            callGemini(query, counselSystemPrompt, 'ai-response', event.target); // Redirected to main AI box for density
+            const query = `Draft a clinical LBA for a debt of £${val} aged ${days} days. Cite statutory interest under the LPCDEA 1998.`;
+            callGemini(query, counselSystemPrompt, 'ai-response', event.target);
         }
 
         // TOOL CALCULATORS
@@ -292,6 +323,20 @@
             });
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             if(event) event.target.classList.add('active');
+        }
+
+        function calcLeverage() {
+            const rev = Number(document.getElementById('lev-rev').value);
+            const hrs = Number(document.getElementById('lev-hrs').value);
+            const val = (rev / (hrs * 4.33)).toFixed(2);
+            document.getElementById('val-lev').innerText = '£' + Number(val).toLocaleString();
+            document.getElementById('res-lev').style.display = 'block';
+        }
+
+        function calcNRG() {
+            const v = Number(document.getElementById('nrg-val').value);
+            document.getElementById('val-nrg').innerText = '£' + (v * 0.9).toLocaleString(undefined, {maximumFractionDigits:0});
+            document.getElementById('res-nrg').style.display = 'block';
         }
 
         function calcRec(){
@@ -305,7 +350,7 @@
         function calcDiv(){
             const p = Number(document.getElementById('div-profit').value);
             const corpTax = p * 0.25;
-            const net = (p - corpTax) * 0.85; // Simplified effective rate for estimation
+            const net = (p - corpTax) * 0.85; 
             document.getElementById('val-div').innerText = '£' + net.toLocaleString('en-GB', {maximumFractionDigits: 0});
             document.getElementById('res-div').style.display = 'block';
         }
@@ -314,15 +359,14 @@
             const l = Number(document.getElementById('drc-labour').value);
             const m = Number(document.getElementById('drc-mats').value);
             const ratio = (m / (l+m)) * 100;
-            const res = ratio < 5 ? "STANDARD VAT (DRC N/A)" : "DOMESTIC REVERSE CHARGE";
+            const res = ratio < 5 ? "STANDARD VAT" : "DOMESTIC REVERSE CHARGE";
             document.getElementById('val-drc').innerText = res;
             document.getElementById('res-drc').style.display = 'block';
         }
 
         function calcCap(){
             const b = Number(document.getElementById('cap-budget').value);
-            const power = b * 48; // Estimated lending power based on budget
-            document.getElementById('val-cap').innerText = '£' + power.toLocaleString('en-GB', {maximumFractionDigits: 0});
+            document.getElementById('val-cap').innerText = '£' + (b * 0.8).toLocaleString('en-GB', {maximumFractionDigits: 0});
             document.getElementById('res-cap').style.display = 'block';
         }
 
