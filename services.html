@@ -43,11 +43,11 @@
     <header class="fixed w-full bg-white/95 backdrop-blur-md border-b border-slate-100 z-[1000]">
         <div class="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-5 group">
-                <svg viewBox="0 0 100 120" class="h-10 w-auto transition-transform group-hover:scale-105">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto">
                     <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
                 <div class="leading-none">
                     <span class="block font-bold text-sm uppercase tracking-tight text-slate-900">Compliance <span class="text-emerald-700">Labs</span></span>
-                    <span class="block mono text-[9px] text-slate-500 font-bold uppercase mt-1">& CAPITAL</span>
+                    <span class="block mono text-[9px] text-slate-500 font-bold mt-1">& CAPITAL</span>
                 </div>
             </a>
             <nav class="hidden lg:flex items-center gap-12 text-slate-600">
@@ -63,53 +63,17 @@
     <!-- CONTENT -->
     <section class="pt-60 pb-32 max-w-[1600px] mx-auto px-8">
         <div class="max-w-4xl mb-32">
-            <span class="mono text-emerald-600 mb-8 block font-bold">Protocol Infrastructure v5.0</span>
+            <span class="mono text-emerald-600 mb-8 block font-bold">Protocol Infrastructure v6.0 // Sovereign Pricing</span>
             <h1 class="serif-heading text-6xl md:text-8xl leading-[1.0] text-slate-900 mb-12 italic">Technical Specifications.</h1>
             <p class="text-slate-500 text-xl font-light leading-relaxed">Select a sector-specific operational framework to view technical requirements and capital placement criteria.</p>
         </div>
 
-        <!-- SECTOR DOCUMENTS -->
-        <div class="grid lg:grid-cols-4 gap-px bg-slate-200 border border-slate-200 mb-48">
-            <div class="spec-box bg-white" onclick="window.location='spec-construction.html'">
-                <div>
-                    <span class="mono text-slate-400 block mb-6">MANDATE_01</span>
-                    <h3 class="text-2xl font-bold mb-6">Construction</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-8">Full-stack CIS defense, statutory retention enforcement, and yellow plant capital placement under the Construction Act 1996.</p>
-                </div>
-                <span class="mono text-emerald-600 font-bold">Open Document →</span>
-            </div>
-            <div class="spec-box bg-white" onclick="window.location='spec-logistics.html'">
-                <div>
-                    <span class="mono text-slate-400 block mb-6">MANDATE_02</span>
-                    <h3 class="text-2xl font-bold mb-6">Logistics</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-8">Fleet modernization protocols, Driver Status IR35 liability auditing, and Fuel Duty reconciliation engines.</p>
-                </div>
-                <span class="mono text-emerald-600 font-bold">Open Document →</span>
-            </div>
-            <div class="spec-box bg-white" onclick="window.location='spec-waste.html'">
-                <div>
-                    <span class="mono text-slate-400 block mb-6">MANDATE_03</span>
-                    <h3 class="text-2xl font-bold mb-6">Waste Mgmt</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-8">Landfill Tax auditing, heavy machinery capex liquidity, and institutional waste transfer data rooms.</p>
-                </div>
-                <span class="mono text-emerald-600 font-bold">Open Document →</span>
-            </div>
-            <div class="spec-box bg-white" onclick="window.location='spec-renewables.html'">
-                <div>
-                    <span class="mono text-slate-400 block mb-6">MANDATE_04</span>
-                    <h3 class="text-2xl font-bold mb-6">Renewables</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-8">Green infrastructure capital placement and technical Energy Saving Material (ESM) VAT logic gates.</p>
-                </div>
-                <span class="mono text-emerald-600 font-bold">Open Document →</span>
-            </div>
-        </div>
-
         <!-- PRICING ENGINE -->
-        <div id="pricing" class="border-t border-slate-100 pt-24">
+        <div id="pricing" class="border-t border-slate-100 pt-24 mb-48">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24">
                 <div>
                     <h2 class="serif-heading text-5xl mb-4">Engagement Tiers.</h2>
-                    <p class="text-slate-500 font-medium">Select your institutional coverage model.</p>
+                    <p class="text-slate-500 font-medium">Sovereign infrastructure for heavy-asset enterprises.</p>
                 </div>
                 <div class="flex bg-slate-100 p-1 mt-10 md:mt-0">
                     <button class="price-toggle-btn active" id="btn-monthly" onclick="setPrice(false)">Monthly</button>
@@ -118,73 +82,96 @@
             </div>
 
             <div class="grid lg:grid-cols-4 gap-8">
-                <!-- STARTER -->
+                <!-- STARTER (NOW LABS ENTRY) -->
                 <div class="tier-card">
-                    <span class="mono text-slate-400 mb-6">01 // Starter</span>
+                    <span class="mono text-slate-400 mb-6">01 // Labs Entry</span>
                     <div class="mb-6">
-                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="690" data-a="586">690</span></span>
+                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="1450" data-a="1232">1,450</span></span>
                         <span class="text-[10px] mono text-slate-400">/mo</span>
-                        <div class="annual-sub" data-total-a="£7,032/yr">Billed annually: £7,032</div>
+                        <div class="annual-sub" data-total-a="£14,784/yr">Billed annually: £14,784</div>
                     </div>
                     <ul class="space-y-5 text-xs font-bold uppercase tracking-widest text-slate-500 flex-1 border-t border-slate-100 pt-8">
-                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> 15 Entities Audited</li>
-                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> £10k Statutory Recovery</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Regulatory Firewall</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Baseline 90-sec Audit</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> 10% Statutory Recovery Fee</li>
                         <li><i class="fas fa-check text-emerald-600 mr-2"></i> Terminal Access</li>
                     </ul>
-                    <a href="audit.html" class="w-full py-5 border border-slate-900 font-bold text-[10px] uppercase text-center mt-10 hover:bg-slate-900 hover:text-white transition-all">Request Access</a>
+                    <a href="audit.html" class="w-full py-5 border border-slate-900 font-bold text-[10px] uppercase text-center mt-10 hover:bg-slate-900 hover:text-white transition-all">Initialize Diagnostic</a>
                 </div>
 
-                <!-- PROFESSIONAL -->
-                <div class="tier-card featured">
-                    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[8px] px-3 py-1 font-bold tracking-widest">MOST POPULAR</div>
-                    <span class="mono text-emerald-500 mb-6 font-bold">02 // Professional</span>
+                <!-- SENTINEL (NOW PROFESSIONAL) -->
+                <div class="tier-card featured shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[8px] px-3 py-1 font-bold tracking-widest">SOVEREIGN CHOICE</div>
+                    <span class="mono text-emerald-500 mb-6 font-bold">02 // Sentinel</span>
                     <div class="mb-6">
-                        <span class="text-4xl font-bold tracking-tighter text-white">£<span class="p-val" data-m="1390" data-a="1182">1,390</span></span>
+                        <span class="text-4xl font-bold tracking-tighter text-white">£<span class="p-val" data-m="3500" data-a="2975">3,500</span></span>
                         <span class="text-[10px] mono text-slate-500">/mo</span>
-                        <div class="annual-sub" data-total-a="£14,184/yr">Billed annually: £14,184</div>
+                        <div class="annual-sub" data-total-a="£35,700/yr">Billed annually: £35,700</div>
                     </div>
                     <ul class="space-y-5 text-xs font-bold uppercase tracking-widest text-slate-300 flex-1 border-t border-white/10 pt-8">
-                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> 40 Entities Audited</li>
-                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> £25k Statutory Recovery</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Live Regulation 4 Scrub</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> Payment Firewall™ Sync</li>
+                        <li><i class="fas fa-check text-emerald-500 mr-2"></i> 8% Success Fee Architecture</li>
                         <li><i class="fas fa-check text-emerald-500 mr-2"></i> Weekly FD Briefing</li>
                         <li><i class="fas fa-check text-emerald-500 mr-2"></i> AI LBA Engine</li>
                     </ul>
-                    <a href="audit.html" class="w-full py-5 bg-emerald-600 text-white font-bold text-[10px] uppercase text-center mt-10 hover:bg-white hover:text-charcoal transition-all">Request Access</a>
+                    <a href="audit.html" class="w-full py-5 bg-white text-charcoal font-bold text-[10px] uppercase text-center mt-10 hover:bg-emerald-500 hover:text-white transition-all">Initialize Diagnostic</a>
                 </div>
 
-                <!-- GROWTH -->
+                <!-- SOVEREIGN (NOW GROWTH) -->
                 <div class="tier-card">
-                    <span class="mono text-slate-400 mb-6">03 // Growth</span>
+                    <span class="mono text-slate-400 mb-6">03 // Sovereign</span>
                     <div class="mb-6">
-                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="2990" data-a="2542">2,990</span></span>
+                        <span class="text-4xl font-bold tracking-tighter">£<span class="p-val" data-m="7500" data-a="6375">7,500</span></span>
                         <span class="text-[10px] mono text-slate-400">/mo</span>
-                        <div class="annual-sub" data-total-a="£30,504/yr">Billed annually: £30,504</div>
+                        <div class="annual-sub" data-total-a="£76,500/yr">Billed annually: £76,500</div>
                     </div>
                     <ul class="space-y-5 text-xs font-bold uppercase tracking-widest text-slate-500 flex-1 border-t border-slate-100 pt-8">
-                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Unlimited Audits</li>
-                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> £100k Statutory Recovery</li>
-                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Case Manager</li>
-                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Debt Sentinel 24/7</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Full Infrastructure Suite</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Statutory Recovery Sword™</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Priority Lender Desk</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> Senior Case Manager</li>
+                        <li><i class="fas fa-check text-emerald-600 mr-2"></i> 24/7 Debt Sentinel</li>
                     </ul>
-                    <a href="audit.html" class="w-full py-5 border border-slate-900 font-bold text-[10px] uppercase text-center mt-10 hover:bg-slate-900 hover:text-white transition-all">Request Access</a>
+                    <a href="audit.html" class="w-full py-5 border border-slate-900 font-bold text-[10px] uppercase text-center mt-10 hover:bg-slate-900 hover:text-white transition-all">Initialize Diagnostic</a>
                 </div>
 
                 <!-- ENTERPRISE -->
                 <div class="tier-card border-dashed bg-slate-50">
                     <span class="mono text-slate-400 mb-6">04 // Enterprise</span>
-                    <div class="mb-10"><span class="text-4xl font-bold italic">Custom</span></div>
+                    <div class="mb-10"><span class="text-4xl font-bold italic">Bespoke</span></div>
                     <p class="text-xs text-slate-500 leading-relaxed font-bold uppercase tracking-widest flex-1 border-t border-slate-100 pt-8">
-                        White-label infrastructure for £20M+ turnover conglomerates. Custom API integration.
+                        White-label infrastructure for £50M+ turnover conglomerates. Custom API integration & Board-level representation.
                     </p>
                     <a href="https://calendly.com/compliancelabs0/30min" class="w-full py-5 bg-slate-200 font-bold text-[10px] uppercase text-center mt-10 hover:bg-slate-900 hover:text-white transition-all">Contact Counsel</a>
                 </div>
+            </div>
+        </div>
+
+        <!-- SECTOR DOCUMENTS -->
+        <div class="grid lg:grid-cols-4 gap-px bg-slate-200 border border-slate-200">
+            <div class="spec-box bg-white" onclick="window.location='spec-construction.html'">
+                <div><span class="mono text-slate-400 block mb-6">MANDATE_01</span><h3 class="text-2xl font-bold mb-6">Construction</h3><p class="text-sm text-slate-500 leading-relaxed mb-8">Full-stack CIS defense and statutory retention recovery under the Construction Act 1996.</p></div>
+                <span class="mono text-emerald-600 font-bold">Open Document →</span>
+            </div>
+            <div class="spec-box bg-white" onclick="window.location='spec-logistics.html'">
+                <div><span class="mono text-slate-400 block mb-6">MANDATE_02</span><h3 class="text-2xl font-bold mb-6">Logistics</h3><p class="text-sm text-slate-500 leading-relaxed mb-8">Fleet modernization protocols, Driver IR35 liability auditing, and Fuel Duty reconciliation engines.</p></div>
+                <span class="mono text-emerald-600 font-bold">Open Document →</span>
+            </div>
+            <div class="spec-box bg-white" onclick="window.location='spec-waste.html'">
+                <div><span class="mono text-slate-400 block mb-6">MANDATE_03</span><h3 class="text-2xl font-bold mb-6">Waste Mgmt</h3><p class="text-sm text-slate-500 leading-relaxed mb-8">Landfill Tax auditing, heavy machinery capex liquidity, and institutional environmental data rooms.</p></div>
+                <span class="mono text-emerald-600 font-bold">Open Document →</span>
+            </div>
+            <div class="spec-box bg-white" onclick="window.location='spec-renewables.html'">
+                <div><span class="mono text-slate-400 block mb-6">MANDATE_04</span><h3 class="text-2xl font-bold mb-6">Renewables</h3><p class="text-sm text-slate-500 leading-relaxed mb-8">Green infrastructure capital placement and technical Energy Saving Material (ESM) VAT logic gates.</p></div>
+                <span class="mono text-emerald-600 font-bold">Open Document →</span>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="bg-[#020617] text-white py-20 text-center border-t border-white/10">
-        <p class="mono text-slate-700 text-[10px] uppercase tracking-widest">&copy; 2026 CL&C Ltd. // SYSTEM SPECIFICATIONS LOCK_V5.0</p>
+        <p class="mono text-slate-700 text-[10px] uppercase tracking-widest">&copy; 2026 CL&C Ltd. // SYSTEM SPECIFICATIONS SOVEREIGN_V6.0</p>
     </footer>
 
     <script>
