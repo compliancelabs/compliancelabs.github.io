@@ -7,7 +7,7 @@
     <meta name="description" content="Fortune 20-grade financial infrastructure for Construction, Logistics, Waste, and Energy. Proprietary risk mitigation and capital mobilization."/>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%23020617'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='25' cy='70' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='70' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
         .serif-heading { font-family: 'Playfair Display', serif; }
         .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
         
-        /* Fixed Header Standard */
+        /* Unified Navigation Styles */
         .nav-link { position: relative; font-weight: 700; letter-spacing: 0.05em; font-size: 11px; text-transform: uppercase; color: #64748b; transition: color 0.2s; }
         .nav-link:hover { color: var(--charcoal); }
         .nav-link.active { color: var(--charcoal); }
@@ -38,11 +38,12 @@
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
+        /* Restored Infrastructure Framework (The Moat) Styles */
         .framework-line { border-left: 1px solid rgba(0,0,0,0.1); padding-left: 2rem; position: relative; }
-        .framework-line::before { content: ''; position: absolute; left: -1px; top: 0; width: 1px; height: 40px; background: var(--emerald); }
+        .framework-line::before { content: ''; position: absolute; left: -1px; top: 0; width: 2px; height: 40px; background: var(--emerald); }
 
-        /* Capital Stacking Visuals */
-        .stack-layer { border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; margin-bottom: 0.5rem; background: rgba(255,255,255,0.03); transition: all 0.3s; }
+        /* Restored Capital Stack Architecture (Liquidity Section) Styles */
+        .stack-layer { border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; margin-bottom: 0.5rem; background: rgba(255,255,255,0.03); transition: all 0.3s; border-radius: 0; }
         .stack-layer:hover { background: rgba(16, 185, 129, 0.1); border-color: var(--emerald); }
         .stack-line { width: 2px; height: 20px; background: #334155; margin: 0 auto; }
 
@@ -54,13 +55,8 @@
         .tool-tab { padding: 12px 20px; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: 0.2s; border-bottom: 2px solid transparent; color: #94a3b8; white-space: nowrap; }
         .tool-tab.active { color: var(--charcoal); border-bottom-color: var(--emerald); }
 
-        /* Outcome Cards */
         .outcome-card { border: 1px solid #e2e8f0; padding: 2.5rem; transition: 0.3s; background: white; }
         .outcome-card:hover { border-color: var(--emerald); transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05); }
-
-        /* News Section Styles */
-        .briefing-preview { border-bottom: 1px solid #f1f5f9; padding: 2rem 0; transition: 0.2s; cursor: pointer; }
-        .briefing-preview:hover { border-color: var(--emerald); padding-left: 1rem; }
     </style>
 </head>
 <body class="antialiased">
@@ -70,12 +66,13 @@
         <div class="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-5 group">
                 <svg viewBox="0 0 100 120" class="h-10 w-auto transition-transform group-hover:scale-105">
-                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
-                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#020617"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="50" cy="20" r="4.5" fill="#10b981"/><circle cx="50" cy="55" r="6" fill="#10b981"/><circle cx="50" cy="100" r="4.5" fill="#10b981"/><circle cx="25" cy="40" r="3" fill="#10b981"/><circle cx="75" cy="40" r="3" fill="#10b981"/><circle cx="25" cy="70" r="3" fill="#10b981"/><circle cx="75" cy="70" r="3" fill="#10b981"/>
                 </svg>
                 <div class="leading-none">
-                    <span class="block font-bold text-sm uppercase tracking-tight text-slate-900">Compliance <span class="text-emerald-700">Labs</span></span>
-                    <span class="block mono text-[9px] text-slate-500 font-bold uppercase mt-1">& CAPITAL</span>
+                    <span class="block font-bold text-sm uppercase tracking-tight text-slate-900">Compliance <span class="text-emerald-600">Labs</span></span>
+                    <span class="block mono text-[9px] text-slate-500 font-bold uppercase mt-1 tracking-widest">& CAPITAL</span>
                 </div>
             </a>
             <nav class="hidden lg:flex items-center gap-12 text-slate-600">
@@ -93,7 +90,7 @@
         <div class="diagonal-bg"></div>
         <div class="max-w-[1600px] mx-auto px-8 grid lg:grid-cols-12 gap-20 items-start">
             <div class="lg:col-span-8 reveal active">
-                <span class="mono text-emerald-600 mb-8 block font-bold uppercase tracking-widest">Global Infrastructure v6.5 // Sovereign Risk</span>
+                <span class="mono text-emerald-600 mb-8 block font-bold uppercase tracking-widest">Global Infrastructure v7.2 // Sovereign Risk</span>
                 <h1 class="serif-heading text-6xl md:text-8xl leading-[1.0] text-slate-900 mb-12 italic">De-Risking <br><span class="text-slate-400 not-italic">Heavy Asset</span> <br>Enterprise.</h1>
                 <p class="text-slate-500 text-xl font-light leading-relaxed max-w-2xl mb-16">
                     Compliance Labs & Capital installs technical protocols to eliminate administrative volatility for enterprises in <strong>Construction, Logistics, Waste, and Energy</strong>. We bridge the gap between regulatory precision and institutional capital.
@@ -129,32 +126,32 @@
         <div class="grid lg:grid-cols-4">
             <div class="sector-card reveal" onclick="window.location='services.html'">
                 <span class="mono text-slate-300 block mb-6">Sector 01</span>
-                <h3 class="text-2xl font-bold mb-4">Construction</h3>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Construction</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Deployment of the Payment Firewall™ and statutory retention recovery under the Construction Act 1996.</p>
                 <span class="mono text-emerald-600 text-[10px] font-bold">Open Mandate -></span>
             </div>
             <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.1s">
                 <span class="mono text-slate-300 block mb-6">Sector 02</span>
-                <h3 class="text-2xl font-bold mb-4">Logistics</h3>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Logistics</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Fleet modernization ROI modeling and technical IR35 Driver Status audits to mitigate CAZ liability.</p>
                 <span class="mono text-emerald-600 text-[10px] font-bold">Open Mandate -></span>
             </div>
             <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.2s">
                 <span class="mono text-slate-300 block mb-6">Sector 03</span>
-                <h3 class="text-2xl font-bold mb-4">Waste Mgmt</h3>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Waste Mgmt</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Institutional Landfill Tax auditing and high-depreciation asset finance for Recycling infrastructure.</p>
                 <span class="mono text-emerald-600 text-[10px] font-bold">Open Mandate -></span>
             </div>
             <div class="sector-card reveal" onclick="window.location='services.html'" style="transition-delay: 0.3s">
                 <span class="mono text-slate-300 block mb-6">Sector 04</span>
-                <h3 class="text-2xl font-bold mb-4">Renewables</h3>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Renewables</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-8 flex-1">Bridging the grid-connection liquidity gap and managing Green Energy Material VAT compliance logic.</p>
                 <span class="mono text-emerald-600 text-[10px] font-bold">Open Mandate -></span>
             </div>
         </div>
     </section>
 
-    <!-- SOVEREIGN CAPITAL ENGINE (THE TRI-PILLAR CALCULATOR) -->
+    <!-- SOVEREIGN CAPITAL ENGINE (TRI-PILLAR CALCULATOR) -->
     <section class="py-40 bg-slate-50 border-y border-slate-200">
         <div class="max-w-[1200px] mx-auto px-8 grid lg:grid-cols-2 gap-24 items-center">
             <div class="reveal">
@@ -182,7 +179,6 @@
                     <button class="tool-tab" id="tab-nrg" onclick="switchTool('nrg')">Project Bridging</button>
                 </div>
 
-                <!-- TOOL A: LEDGER (Construction/Services) -->
                 <div id="tool-debt">
                     <div class="mb-12">
                         <div class="flex justify-between items-end mb-4">
@@ -203,7 +199,6 @@
                     </div>
                 </div>
 
-                <!-- TOOL B: ASSET (Logistics/Waste) -->
                 <div id="tool-asset" class="hidden">
                     <div class="mb-12">
                         <div class="flex justify-between items-end mb-4">
@@ -224,7 +219,6 @@
                     </div>
                 </div>
 
-                <!-- TOOL C: RENEWABLES (Energy) -->
                 <div id="tool-nrg" class="hidden">
                     <div class="mb-12">
                         <div class="flex justify-between items-end mb-4">
@@ -246,88 +240,6 @@
                 </div>
 
                 <button onclick="window.location='audit.html'" class="btn-institutional w-full">Activate Institutional Audit</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXECUTIVE MANDATE -->
-    <section class="py-40 bg-white">
-        <div class="max-w-[1600px] mx-auto px-8">
-            <div class="grid lg:grid-cols-12 gap-24 items-center">
-                <div class="lg:col-span-7 reveal">
-                    <span class="mono text-emerald-600 font-bold uppercase tracking-widest block mb-8">Executive Mandate</span>
-                    <h2 class="serif-heading text-5xl md:text-7xl text-slate-900 mb-12 italic">Precision over <br>Estimation.</h2>
-                    <blockquote class="text-2xl font-light text-slate-600 leading-relaxed italic mb-12">
-                        "In heavy industry, administrative chaos is a multi-million pound liability. We install the sovereign infrastructure that protects every pound of your turnover."
-                    </blockquote>
-                    <div class="flex items-center gap-6">
-                        <div class="w-12 h-12 bg-slate-900 flex items-center justify-center rounded-full text-white text-xs font-bold uppercase">MD</div>
-                        <div>
-                            <span class="block font-bold text-slate-900 uppercase text-xs tracking-widest">Principal Architect</span>
-                            <span class="block mono text-[10px] text-slate-400">Compliance Labs & Capital</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-5 reveal">
-                    <div class="bg-[#f8fafc] p-12 border border-slate-100">
-                        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-10 border-b pb-4">Institutional Core</h4>
-                        <div class="space-y-8">
-                            <div class="flex justify-between items-end"><span class="text-sm font-bold text-slate-900 uppercase">Sector Focus</span><span class="mono text-emerald-600">Heavy Asset Industry</span></div>
-                            <div class="flex justify-between items-end"><span class="text-sm font-bold text-slate-900 uppercase">Client Profile</span><span class="mono text-emerald-600">£1M–£50M ARR</span></div>
-                            <div class="flex justify-between items-end"><span class="text-sm font-bold text-slate-900 uppercase">Primary Goal</span><span class="mono text-emerald-600">Liquidity Acceleration</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- INGESTION ECOSYSTEM -->
-    <section class="py-20 bg-slate-50 border-y border-slate-100">
-        <div class="max-w-[1600px] mx-auto px-8">
-            <div class="text-center mb-12">
-                <span class="mono text-slate-400 font-bold tracking-widest text-[10px]">Institutional Data Pipe: Seamless Ingestion</span>
-            </div>
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
-                <div class="flex items-center gap-2"><i class="fas fa-database text-2xl"></i><span class="mono font-bold text-xl uppercase">Xero</span></div>
-                <div class="flex items-center gap-2"><i class="fas fa-cube text-2xl"></i><span class="mono font-bold text-xl uppercase">Sage</span></div>
-                <div class="flex items-center gap-2"><i class="fas fa-microchip text-2xl"></i><span class="mono font-bold text-xl uppercase">QuickBooks</span></div>
-                <div class="flex items-center gap-2"><i class="fas fa-project-diagram text-2xl"></i><span class="mono font-bold text-xl uppercase">Procore</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DEPLOYED OUTCOMES -->
-    <section class="py-40 bg-white">
-        <div class="max-w-[1600px] mx-auto px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
-                <div>
-                    <span class="mono text-emerald-600 font-bold uppercase tracking-widest block mb-4">Case Ledger</span>
-                    <h2 class="serif-heading text-4xl md:text-5xl text-slate-900">Deployed Outcomes.</h2>
-                </div>
-                <p class="text-slate-500 max-w-sm text-sm font-medium leading-relaxed mt-6 md:mt-0 text-right">
-                    We deliver measurable liquidity events and regulatory certainty for asset-heavy enterprises.
-                </p>
-            </div>
-            <div class="grid lg:grid-cols-3 gap-12">
-                <div class="outcome-card reveal">
-                    <span class="mono text-emerald-600 block mb-4 uppercase font-bold tracking-widest text-[10px]">Logistics // FLT-44</span>
-                    <div class="text-4xl font-bold mb-4 text-slate-900">£2.4M</div>
-                    <p class="text-sm font-bold uppercase mb-6 tracking-wide text-slate-400">Fleet Refinance</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">Removed £12,000/mo in CAZ penalties for a national haulier via asset restructuring and Euro-6 acquisition.</p>
-                </div>
-                <div class="outcome-card reveal" style="transition-delay: 0.1s">
-                    <span class="mono text-emerald-600 block mb-4 uppercase font-bold tracking-widest text-[10px]">Construction // REC-92</span>
-                    <div class="text-4xl font-bold mb-4 text-slate-900">£450k</div>
-                    <p class="text-sm font-bold uppercase mb-6 tracking-wide text-slate-400">Retention Unlock</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">Recovered 18-month aged retention debt via Section 111 enforcement within 21 business days.</p>
-                </div>
-                <div class="outcome-card reveal" style="transition-delay: 0.2s">
-                    <span class="mono text-emerald-600 block mb-4 uppercase font-bold tracking-widest text-[10px]">Waste // AUD-01</span>
-                    <div class="text-4xl font-bold mb-4 text-slate-900">100%</div>
-                    <p class="text-sm font-bold uppercase mb-6 tracking-wide text-slate-400">Audit Pass Rate</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">Zero findings on Landfill Tax audit for a regional recycling plant via forensic protocols.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -371,7 +283,7 @@
         </div>
     </section>
 
-    <!-- CAPITAL STACK ARCHITECTURE -->
+    <!-- RESTORED: CAPITAL STACK ARCHITECTURE (THE BLUE BOX LIQUIDITY SECTION) -->
     <section class="py-40 bg-[#020617] text-white">
         <div class="max-w-[1400px] mx-auto px-8 grid lg:grid-cols-2 gap-24 items-center">
             <div class="reveal">
@@ -411,29 +323,83 @@
         </div>
     </section>
 
-    <!-- GOVERNANCE GRID -->
-    <section class="py-20 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-[1400px] mx-auto px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="flex flex-col items-center text-center p-6 bg-white border border-slate-100 reveal">
-                    <i class="fas fa-shield-check text-2xl text-charcoal mb-4"></i>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-2">Professional Indemnity</h4>
-                    <p class="text-[10px] text-slate-500 mono uppercase">£2,000,000 Coverage</p>
+    <!-- EXECUTIVE MANDATE -->
+    <section class="py-40 bg-white">
+        <div class="max-w-[1600px] mx-auto px-8">
+            <div class="grid lg:grid-cols-12 gap-24 items-center">
+                <div class="lg:col-span-7 reveal">
+                    <span class="mono text-emerald-600 font-bold uppercase tracking-widest block mb-8">Executive Mandate</span>
+                    <h2 class="serif-heading text-5xl md:text-7xl text-slate-900 mb-12 italic leading-tight">Precision over <br>Estimation.</h2>
+                    <blockquote class="text-2xl font-light text-slate-600 leading-relaxed italic mb-12">
+                        "In heavy industry, administrative chaos is a multi-million pound liability. We install the sovereign infrastructure that protects every pound of your turnover."
+                    </blockquote>
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-slate-900 flex items-center justify-center rounded-full text-white text-xs font-bold uppercase">MD</div>
+                        <div>
+                            <span class="block font-bold text-slate-900 uppercase text-xs tracking-widest">Principal Architect</span>
+                            <span class="block mono text-[10px] text-slate-400">Compliance Labs & Capital</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center text-center p-6 bg-white border border-slate-100 reveal" style="transition-delay: 0.1s">
-                    <i class="fas fa-database text-2xl text-charcoal mb-4"></i>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-2">Data Controller</h4>
-                    <p class="text-[10px] text-slate-500 mono uppercase">ICO Registered</p>
+                <div class="lg:col-span-5 reveal">
+                    <div class="bg-[#f8fafc] p-12 border border-slate-100">
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-10 border-b pb-4">Institutional Core</h4>
+                        <div class="space-y-8">
+                            <div class="flex justify-between items-end"><span class="text-sm font-bold text-slate-900 uppercase">Sector Focus</span><span class="mono text-emerald-600 font-bold">Heavy Asset Industry</span></div>
+                            <div class="flex justify-between items-end"><span class="text-sm font-bold text-slate-900 uppercase">Client Profile</span><span class="mono text-emerald-600 font-bold">£1M–£50M ARR</span></div>
+                            <div class="flex justify-between items-end"><span class="text-sm font-bold text-slate-900 uppercase">Primary Goal</span><span class="mono text-emerald-600 font-bold">Liquidity Acceleration</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center text-center p-6 bg-white border border-slate-100 reveal" style="transition-delay: 0.2s">
-                    <i class="fas fa-file-contract text-2xl text-charcoal mb-4"></i>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-2">FCA Compliance</h4>
-                    <p class="text-[10px] text-slate-500 mono uppercase">Authorized Intermediary</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INGESTION ECOSYSTEM -->
+    <section class="py-20 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-[1600px] mx-auto px-8">
+            <div class="text-center mb-12">
+                <span class="mono text-slate-400 font-bold tracking-widest text-[10px]">Institutional Data Pipe: Seamless Ingestion</span>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+                <div class="flex items-center gap-2"><i class="fas fa-database text-2xl"></i><span class="mono font-bold text-xl uppercase">Xero</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-cube text-2xl"></i><span class="mono font-bold text-xl uppercase">Sage</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-microchip text-2xl"></i><span class="mono font-bold text-xl uppercase">QuickBooks</span></div>
+                <div class="flex items-center gap-2"><i class="fas fa-project-diagram text-2xl"></i><span class="mono font-bold text-xl uppercase">Procore</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPLOYED OUTCOMES -->
+    <section class="py-40 bg-white">
+        <div class="max-w-[1600px] mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 reveal">
+                <div>
+                    <span class="mono text-emerald-600 font-bold uppercase tracking-widest block mb-4">Case Ledger</span>
+                    <h2 class="serif-heading text-4xl md:text-5xl text-slate-900 uppercase">Deployed Outcomes.</h2>
                 </div>
-                <div class="flex flex-col items-center text-center p-6 bg-white border border-slate-100 reveal" style="transition-delay: 0.3s">
-                    <i class="fas fa-lock text-2xl text-charcoal mb-4"></i>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-slate-900 mb-2">Security</h4>
-                    <p class="text-[10px] text-slate-500 mono uppercase">256-Bit Encryption</p>
+                <p class="text-slate-500 max-w-sm text-sm font-medium leading-relaxed mt-6 md:mt-0 text-right">
+                    We deliver measurable liquidity events and regulatory certainty for asset-heavy enterprises.
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="outcome-card reveal">
+                    <span class="mono text-emerald-600 block mb-4 uppercase font-bold tracking-widest text-[10px]">Logistics // FLT-44</span>
+                    <div class="text-4xl font-bold mb-4 text-slate-900">£2.4M</div>
+                    <p class="text-sm font-bold uppercase mb-6 tracking-wide text-slate-400">Fleet Refinance</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Removed £12,000/mo in CAZ penalties for a national haulier via asset restructuring and Euro-6 acquisition.</p>
+                </div>
+                <div class="outcome-card reveal" style="transition-delay: 0.1s">
+                    <span class="mono text-emerald-600 block mb-4 uppercase font-bold tracking-widest text-[10px]">Construction // REC-92</span>
+                    <div class="text-4xl font-bold mb-4 text-slate-900">£450k</div>
+                    <p class="text-sm font-bold uppercase mb-6 tracking-wide text-slate-400">Retention Unlock</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Recovered 18-month aged retention debt via Section 111 enforcement within 21 business days.</p>
+                </div>
+                <div class="outcome-card reveal" style="transition-delay: 0.2s">
+                    <span class="mono text-emerald-600 block mb-4 uppercase font-bold tracking-widest text-[10px]">Waste // AUD-01</span>
+                    <div class="text-4xl font-bold mb-4 text-slate-900">100%</div>
+                    <p class="text-sm font-bold uppercase mb-6 tracking-wide text-slate-400">Audit Pass Rate</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Zero findings on Landfill Tax audit for a regional recycling plant via forensic protocols.</p>
                 </div>
             </div>
         </div>
@@ -445,29 +411,31 @@
             <div class="grid lg:grid-cols-4 gap-20 mb-32">
                 <div class="lg:col-span-2">
                     <div class="flex items-center gap-4 mb-10">
-                        <svg viewBox="0 0 100 120" class="h-10 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
-                        <span class="font-bold text-lg uppercase tracking-widest font-black uppercase">Compliance Labs & Capital</span>
+                        <svg viewBox="0 0 100 120" class="h-10 w-auto">
+                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/>
+                            <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="50" cy="20" r="4.5" fill="#10b981"/><circle cx="50" cy="55" r="6" fill="#10b981"/><circle cx="50" cy="100" r="4.5" fill="#10b981"/><circle cx="25" cy="40" r="3" fill="#10b981"/><circle cx="75" cy="40" r="3" fill="#10b981"/><circle cx="25" cy="70" r="3" fill="#10b981"/><circle cx="75" cy="70" r="3" fill="#10b981"/>
+                        </svg>
+                        <span class="font-bold text-lg uppercase tracking-widest font-black leading-none">Compliance <span class="text-emerald-500">Labs</span> & Capital</span>
                     </div>
-                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm uppercase font-bold tracking-widest opacity-80">Specialist infrastructure and credit brokerage for Heavy Industry.</p>
+                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm uppercase font-bold tracking-widest opacity-80">Specialist infrastructure and credit brokerage for Heavy Industry. Institutional Standard v7.2.</p>
                 </div>
-                <div><h4 class="mono text-white mb-10 font-bold uppercase tracking-widest">The Firm</h4><ul class="space-y-6 mono text-slate-500 text-[10px]"><li><a href="services.html" class="hover:text-white transition-colors uppercase">Specifications</a></li><li><a href="about-us.html" class="hover:text-white transition-colors uppercase">Mandate</a></li><li><a href="intelligence.html" class="hover:text-white transition-colors uppercase">Intelligence</a></li><li><a href="resources.html" class="hover:text-white transition-colors uppercase">Terminal</a></li></ul></div>
-                <div><h4 class="mono text-white mb-10 font-bold uppercase tracking-widest">Legal</h4><ul class="space-y-6 mono text-slate-500 text-[10px]"><li><a href="idd.html" class="hover:text-white transition-colors uppercase">Initial Disclosure</a></li><li><a href="privacy.html" class="hover:text-white transition-colors uppercase">Privacy</a></li><li><a href="terms.html" class="hover:text-white transition-colors uppercase">Terms</a></li><li><a href="brochure.html" class="hover:text-white transition-colors uppercase">Prospectus</a></li></ul></div>
+                <div><h4 class="mono text-white mb-10 font-bold uppercase tracking-widest">The Firm</h4><ul class="space-y-6 mono text-slate-500 text-[10px]"><li><a href="services.html" class="hover:text-white transition-colors uppercase font-bold">Specifications</a></li><li><a href="about-us.html" class="hover:text-white transition-colors uppercase font-bold">Mandate</a></li><li><a href="intelligence.html" class="hover:text-white transition-colors uppercase font-bold">Intelligence</a></li><li><a href="resources.html" class="hover:text-white transition-colors uppercase font-bold">Terminal</a></li></ul></div>
+                <div><h4 class="mono text-white mb-10 font-bold uppercase tracking-widest">Legal</h4><ul class="space-y-6 mono text-slate-500 text-[10px]"><li><a href="idd.html" class="hover:text-white transition-colors uppercase font-bold">Initial Disclosure</a></li><li><a href="privacy.html" class="hover:text-white transition-colors uppercase font-bold">Privacy</a></li><li><a href="terms.html" class="hover:text-white transition-colors uppercase font-bold">Terms</a></li><li><a href="brochure.html" class="hover:text-white transition-colors uppercase font-bold">Prospectus</a></li></ul></div>
             </div>
             <div class="border-t border-white/10 pt-10 flex justify-between items-center mono text-slate-700 text-[9px] font-black uppercase tracking-[0.2em]">
-                <p>&copy; 2026 CL&C Ltd. // PROPRIETARY INFRASTRUCTURE V6.5</p>
+                <p>&copy; 2026 CL&C Ltd. // PROPRIETARY INFRASTRUCTURE LOCKED</p>
                 <div class="flex gap-10 uppercase"><span>London</span><span>Manchester</span><span>Bristol</span></div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Reveal Engine
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Tool Switching Logic
         function switchTool(type) {
             document.getElementById('tool-debt').classList.toggle('hidden', type !== 'debt');
             document.getElementById('tool-asset').classList.toggle('hidden', type !== 'asset');
@@ -477,7 +445,6 @@
             document.getElementById('tab-nrg').classList.toggle('active', type === 'nrg');
         }
 
-        // TOOL A: LEDGER (Construction)
         function calcDebt(val) {
             val = parseInt(val);
             document.getElementById('debt-label').innerText = '£' + val.toLocaleString();
@@ -485,7 +452,6 @@
             document.getElementById('int-out').innerText = '£' + Math.floor(val * 0.085 / 12).toLocaleString();
         }
 
-        // TOOL B: ASSET (Logistics/Waste)
         function calcAsset(val) {
             val = parseInt(val);
             document.getElementById('asset-label').innerText = '£' + val.toLocaleString();
@@ -496,7 +462,6 @@
             document.getElementById('repay-out').innerText = '£' + Math.floor(repay).toLocaleString();
         }
 
-        // TOOL C: RENEWABLES (Energy)
         function calcNRG(val) {
             val = parseInt(val);
             document.getElementById('nrg-label').innerText = '£' + val.toLocaleString();
@@ -504,10 +469,7 @@
             document.getElementById('vat-out').innerText = '£' + (val * 0.20).toLocaleString(undefined, {maximumFractionDigits:0});
         }
 
-        // Initialize Defaults
-        calcDebt(100000);
-        calcAsset(250000);
-        calcNRG(500000);
+        calcDebt(100000); calcAsset(250000); calcNRG(500000);
     </script>
 </body>
 </html>
