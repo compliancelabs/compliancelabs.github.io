@@ -7,7 +7,7 @@
     <meta name="description" content="The institutional mission and technical mandate of Compliance Labs & Capital. Architects of financial infrastructure for Heavy Industry."/>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%23020617'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='25' cy='70' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='70' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
         .btn-institutional { 
             background: var(--charcoal); color: white; padding: 12px 32px; font-weight: 800; border-radius: 0; 
             transition: 0.3s; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; border: 1px solid var(--charcoal); 
+            cursor: pointer;
         }
         .btn-institutional:hover { background: var(--emerald); border-color: var(--emerald); }
         
@@ -51,12 +52,13 @@
         <div class="max-w-[1800px] mx-auto px-8 h-24 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-5 group">
                 <svg viewBox="0 0 100 120" class="h-10 w-auto transition-transform group-hover:scale-105">
-                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#0f172a"/>
-                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/>
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#020617"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="50" cy="20" r="4.5" fill="#10b981"/><circle cx="50" cy="55" r="6" fill="#10b981"/><circle cx="50" cy="100" r="4.5" fill="#10b981"/><circle cx="25" cy="40" r="3" fill="#10b981"/><circle cx="75" cy="40" r="3" fill="#10b981"/><circle cx="25" cy="70" r="3" fill="#10b981"/><circle cx="75" cy="70" r="3" fill="#10b981"/>
                 </svg>
                 <div class="leading-none">
-                    <span class="block font-bold text-sm uppercase tracking-tight text-slate-900">Compliance <span class="text-emerald-700">Labs</span></span>
-                    <span class="block mono text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-1">& CAPITAL</span>
+                    <span class="block font-bold text-sm uppercase tracking-tight text-slate-900 uppercase leading-none">Compliance <span class="text-emerald-600">Labs</span></span>
+                    <span class="block mono text-[9px] text-slate-500 font-bold uppercase mt-1 tracking-widest leading-none">& CAPITAL</span>
                 </div>
             </a>
             <nav class="hidden lg:flex items-center gap-12 text-slate-600">
@@ -90,7 +92,7 @@
     <!-- MISSION DEPTH -->
     <section class="py-32 bg-white border-y border-slate-100">
         <div class="max-w-[1200px] mx-auto px-8 grid lg:grid-cols-2 gap-24 items-start">
-            <div class="reveal active">
+            <div class="reveal">
                 <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 block">The Objective</span>
                 <h2 class="serif-heading text-4xl text-slate-900 mb-10 leading-tight">Infrastructure over Advice.</h2>
                 <p class="text-lg text-slate-500 font-light leading-relaxed mb-8">
@@ -100,7 +102,7 @@
                     Generalist firms treat compliance as a reporting task. We treat it as an **Operational Firewall.** We do not provide generic advice; we install technical infrastructure that de-risks every pound of turnover.
                 </p>
             </div>
-            <div class="space-y-12 reveal active">
+            <div class="space-y-12 reveal">
                 <div class="p-10 bg-slate-50 border border-slate-100">
                     <h4 class="mono text-emerald-600 mb-4 font-bold">The Core Thesis</h4>
                     <p class="text-sm text-slate-900 font-bold uppercase tracking-widest mb-4">Precision over Estimation.</p>
@@ -123,7 +125,7 @@
         <div class="bg-grain absolute inset-0 opacity-40"></div>
         <div class="max-w-[1200px] mx-auto px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-24 items-center">
-                <div class="lg:col-span-7 reveal active">
+                <div class="lg:col-span-7 reveal">
                     <span class="mono text-emerald-600 mb-8 block">Executive Leadership</span>
                     <h2 class="serif-heading text-5xl text-slate-900 mb-10 leading-tight">The Principal’s Mandate.</h2>
                     <p class="text-xl font-light text-slate-600 leading-relaxed mb-10 italic">
@@ -131,10 +133,10 @@
                     </p>
                     <div class="flex items-center gap-6">
                         <div class="h-px w-12 bg-emerald-500"></div>
-                        <span class="mono text-slate-900 font-bold">Managing Director // Compliance Labs & Capital</span>
+                        <span class="mono text-slate-900 font-bold uppercase text-[10px] tracking-widest">Managing Director // Compliance Labs & Capital</span>
                     </div>
                 </div>
-                <div class="lg:col-span-5 reveal active">
+                <div class="lg:col-span-5 reveal">
                     <div class="bg-white p-12 border border-slate-200 shadow-xl">
                         <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-8 border-b border-slate-100 pb-4">Corporate Governance</h4>
                         <ul class="space-y-6">
@@ -154,17 +156,21 @@
             <div class="grid lg:grid-cols-4 gap-20 mb-32">
                 <div class="lg:col-span-2">
                     <div class="flex items-center gap-4 mb-10">
-                        <svg viewBox="0 0 100 120" class="h-10 w-auto"><path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/><path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="3"/></svg>
-                        <span class="font-bold text-lg uppercase tracking-widest">Compliance Labs & Capital</span>
+                        <svg viewBox="0 0 100 120" class="h-10 w-auto">
+                            <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/>
+                            <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="50" cy="20" r="4.5" fill="#10b981"/><circle cx="50" cy="55" r="6" fill="#10b981"/><circle cx="50" cy="100" r="4.5" fill="#10b981"/><circle cx="25" cy="40" r="3" fill="#10b981"/><circle cx="75" cy="40" r="3" fill="#10b981"/><circle cx="25" cy="70" r="3" fill="#10b981"/><circle cx="75" cy="70" r="3" fill="#10b981"/>
+                        </svg>
+                        <span class="font-bold text-lg uppercase tracking-widest font-black leading-none">Compliance <span class="text-emerald-500">Labs</span> & Capital</span>
                     </div>
-                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm uppercase font-bold tracking-widest">Specialist infrastructure and credit brokerage for Heavy Industry. Professional Indemnity coverage: £2,000,000.</p>
+                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm uppercase font-bold tracking-widest opacity-80">Specialist infrastructure and credit brokerage for Heavy Industry. Professional Indemnity coverage: £2,000,000.</p>
                 </div>
-                <div><h4 class="mono text-white mb-10">The Firm</h4><ul class="space-y-6 mono text-slate-500"><li><a href="services.html" class="hover:text-white">Specifications</a></li><li><a href="about-us.html" class="hover:text-white">Mandate</a></li><li><a href="intelligence.html" class="hover:text-white">Intelligence</a></li><li><a href="resources.html" class="hover:text-white">Terminal</a></li></ul></div>
-                <div><h4 class="mono text-white mb-10">Legal</h4><ul class="space-y-6 mono text-slate-500"><li><a href="idd.html" class="hover:text-white transition-colors">Initial Disclosure</a></li><li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li><li><a href="terms.html" class="hover:text-white transition-colors">Terms of Service</a></li><li><a href="brochure.html" class="hover:text-white transition-colors">Prospectus</a></li></ul></div>
+                <div><h4 class="mono text-white mb-10 font-bold uppercase tracking-widest">The Firm</h4><ul class="space-y-6 mono text-slate-500 text-[10px]"><li><a href="services.html" class="hover:text-white transition-colors uppercase font-bold">Specifications</a></li><li><a href="about-us.html" class="hover:text-white transition-colors uppercase font-bold">Mandate</a></li><li><a href="intelligence.html" class="hover:text-white transition-colors uppercase font-bold">Intelligence</a></li><li><a href="resources.html" class="hover:text-white transition-colors uppercase font-bold">Terminal</a></li></ul></div>
+                <div><h4 class="mono text-white mb-10 font-bold uppercase tracking-widest">Legal</h4><ul class="space-y-6 mono text-slate-500 text-[10px]"><li><a href="idd.html" class="hover:text-white transition-colors uppercase font-bold">Initial Disclosure</a></li><li><a href="privacy.html" class="hover:text-white transition-colors uppercase font-bold">Privacy</a></li><li><a href="terms.html" class="hover:text-white transition-colors uppercase font-bold">Terms</a></li><li><a href="brochure.html" class="hover:text-white transition-colors uppercase font-bold">Prospectus</a></li></ul></div>
             </div>
-            <div class="border-t border-white/10 pt-10 flex justify-between items-center mono text-slate-700 text-[10px]">
+            <div class="border-t border-white/10 pt-10 flex justify-between items-center mono text-slate-700 text-[9px] font-black uppercase tracking-[0.2em]">
                 <p>&copy; 2026 CL&C Ltd. // PROPRIETARY ENVIRONMENT</p>
-                <div class="flex gap-10"><span>LONDON</span><span>MANCHESTER</span><span>BRISTOL</span></div>
+                <div class="flex gap-10 uppercase"><span>London</span><span>Manchester</span><span>Bristol</span></div>
             </div>
         </div>
     </footer>
