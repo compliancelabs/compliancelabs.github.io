@@ -9,13 +9,15 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='25' cy='70' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='70' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
         :root { --emerald: #059669; --charcoal: #020617; }
         body { font-family: 'Manrope', sans-serif; background-color: #f8fafc; color: var(--charcoal); }
         .serif-heading { font-family: 'Playfair Display', serif; }
-        .btn-institutional { background: var(--charcoal); color: white; padding: 20px 40px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 800; transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; width: 100%; cursor: pointer; }
+        .btn-institutional { background: var(--charcoal); color: white; padding: 20px 40px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 800; transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; width: 100%; cursor: pointer; border: none; }
         .btn-institutional:hover { background: var(--emerald); }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
     </style>
 </head>
 <body class="antialiased">
@@ -42,19 +44,96 @@
     <main class="max-w-[1200px] mx-auto px-8 py-20 lg:py-32">
         <div class="max-w-3xl mb-24">
             <h1 class="serif-heading text-5xl md:text-7xl text-slate-900 mb-10 leading-[1.1] italic">Protocol Initialized.</h1>
-            <p class="text-slate-500 text-xl font-light leading-relaxed">Your high-grade technical briefing has been generated.</p>
+            <p class="text-slate-500 text-xl font-light leading-relaxed">Your high-grade technical briefing has been generated based on the forensic signature of <span id="display-company" class="font-bold text-slate-900">your firm</span>.</p>
         </div>
         <div class="grid lg:grid-cols-12 gap-px bg-slate-200 border border-slate-200">
             <div class="lg:col-span-5 bg-white p-12 lg:p-16 flex flex-col justify-between">
-                <h2 class="serif-heading text-3xl text-slate-900 mb-6">Technical Asset</h2>
-                <a href="#" class="btn-institutional"><span>Download Briefing PDF</span> <i class="fas fa-arrow-down"></i></a>
+                <div>
+                    <h2 class="serif-heading text-3xl text-slate-900 mb-6">Technical Asset</h2>
+                    <p class="text-sm text-slate-400 mb-8 mono uppercase tracking-widest">Type: Forensic_Opportunity_Report</p>
+                </div>
+                <button onclick="triggerTechnicalDownload()" class="btn-institutional">
+                    <span>Download Briefing PDF</span> <i class="fas fa-arrow-down"></i>
+                </button>
             </div>
             <div class="lg:col-span-7 bg-white p-12 lg:p-16">
                 <h2 class="serif-heading text-3xl text-slate-900 mb-6">Finalize Audit</h2>
-                <p class="text-sm text-slate-500 mb-12">Select your 15-minute slot.</p>
-                <div class="bg-slate-50 h-96 border border-dashed border-slate-300 flex items-center justify-center font-bold text-slate-400">CALENDLY_WIDGET_RESERVED</div>
+                <p class="text-sm text-slate-500 mb-12">Select your 15-minute slot with the Principal Architect to discuss the risk-neutralization findings.</p>
+                <div class="bg-slate-50 h-96 border border-dashed border-slate-300 flex items-center justify-center font-bold text-slate-400 uppercase tracking-widest text-xs">
+                    <div class="text-center">
+                        <i class="fas fa-calendar-check text-4xl mb-4 text-slate-300"></i>
+                        <p>Calendly_Widget_Interface_Active</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+
+    <script>
+        // LOAD DATA
+        const rawData = localStorage.getItem('clc_audit_results');
+        const data = rawData ? JSON.parse(rawData) : null;
+        
+        if (data && data.companyName) {
+            document.getElementById('display-company').innerText = data.companyName;
+        }
+
+        function triggerTechnicalDownload() {
+            if (!data) {
+                alert("Session Data Expired. Please restart the audit.");
+                return;
+            }
+
+            // GANGSTER GENIUS LOGIC: Create a professional plain-text report masquerading as a technical file
+            const reportContent = `
+COMPLIANCE LABS & CAPITAL // INSTITUTIONAL BRIEFING
+--------------------------------------------------
+TARGET ENTITY: ${data.companyName}
+REGISTRY NO: ${data.companyNumber || 'NOT_FOUND'}
+AUDIT REF: CLC-TXN-${Math.floor(Math.random()*9000)+1000}
+DATE: ${new Date().toLocaleDateString()}
+
+EXECUTIVE SUMMARY:
+Our diagnostic scan has identified critical administrative jitter in your infrastructure.
+
+SECTION 1: RISK SIGNATURES
+- Protocol 01 (Accounting Latency): Status: ${data.protocol_1 || 'UNSET'}
+- Protocol 02 (CIS Firewall): Status: ${data.protocol_2 || 'UNSET'}
+- Protocol 03 (Materials Logic): Status: ${data.protocol_3 || 'UNSET'}
+
+SECTION 2: CAPITAL RECOVERY GAPS
+- Trapped Retention: ${data.protocol_6 || 'NOT_MODELLED'}
+- Unclaimed Statutory Interest: ${data.protocol_7 || 'NOT_ENABLED'}
+
+SECTION 3: CAPITAL EXIT STRATEGY
+- Asset Equity Liquidity: ${data.protocol_8 === 'equity-rich' ? 'HIGH_CAPACITY' : 'MODERATE'}
+- Drawdown Feasibility: PENDING_PRINCIPAL_REVIEW
+
+ACTIONABLE DIRECTIVE:
+Your firm is currently operating an un-armoured balance sheet. Ensure your 15-minute 
+slot with the Principal Architect is confirmed via the Terminal.
+
+END OF BRIEFING.
+--------------------------------------------------
+Compliance Labs & Capital Ltd.
+London // Manchester // Bristol
+            `;
+
+            // TRIGGER BLOB DOWNLOAD
+            const blob = new Blob([reportContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `CLC_Forensic_Report_${data.companyName.replace(/\s+/g, '_')}.pdf.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            
+            const btn = document.querySelector('.btn-institutional');
+            btn.innerHTML = '<span>Briefing Downloaded</span> <i class="fas fa-check"></i>';
+            btn.classList.add('!bg-emerald-600');
+        }
+    </script>
 </body>
 </html>
