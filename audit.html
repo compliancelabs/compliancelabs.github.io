@@ -39,6 +39,11 @@
         .explanation-box p { font-size: 13px; line-height: 1.6; color: #94a3b8; }
         .explanation-box.active { display: block; }
 
+        .search-results { position: absolute; width: 100%; max-height: 200px; overflow-y: auto; background: #0f172a; border: 1px solid var(--border-color); z-index: 50; display: none; margin-top: 4px; border: 1px solid rgba(255,255,255,0.1); }
+        .result-item { padding: 12px 20px; cursor: pointer; transition: 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .result-item:hover { background: var(--emerald); color: white; }
+        .result-item span { display: block; font-size: 10px; opacity: 0.6; margin-top: 2px; }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .scanning-animation { height: 2px; background: var(--emerald); position: absolute; width: 100%; top: 0; left: 0; animation: scanMove 2s infinite ease-in-out; opacity: 0; pointer-events: none; }
@@ -47,6 +52,9 @@
         .diagonal-bg { position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: rgba(16, 185, 129, 0.03); clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%); z-index: 0; }
         
         .metric-badge { font-size: 9px; padding: 2px 8px; border: 1px solid var(--emerald); color: var(--emerald); font-weight: 800; border-radius: 2px; }
+        
+        .std-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 20px; font-family: 'JetBrains Mono'; font-size: 14px; border-radius: 0; outline: none; }
+        .std-input:focus { border-color: var(--emerald); }
     </style>
 </head>
 <body class="antialiased">
@@ -68,7 +76,7 @@
             </a>
             <div class="flex items-center gap-3 bg-emerald-500/5 border border-emerald-500/20 px-5 py-2">
                 <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                <span class="mono text-[9px] text-emerald-500 uppercase tracking-widest">Status: Cross_Sector_Audit</span>
+                <span class="mono text-[9px] text-emerald-500 uppercase tracking-widest">Session: API_REGISTRY_LINK</span>
             </div>
         </nav>
 
@@ -76,12 +84,19 @@
             <div class="progress-track"><div class="progress-bar" id="p-bar"></div></div>
             <div class="scanning-animation" id="scan-line"></div>
 
-            <!-- STEP 0: INITIALIZATION -->
+            <!-- STEP 0: INITIALIZATION & ENTITY LOOKUP -->
             <div class="audit-step active" id="step-0">
-                <span class="mono text-emerald-500 mb-8 block font-bold">Forensic Probe v6.0 // Multi-Sector Mandate</span>
+                <span class="mono text-emerald-500 mb-8 block font-bold">Forensic Probe v6.1 // Institutional Hub</span>
                 <h1 class="serif-heading text-5xl md:text-7xl text-white mb-10 leading-tight">Systemic <br><span class="italic text-slate-400">Diagnostic.</span></h1>
-                <p class="text-slate-400 text-xl font-light max-w-2xl mb-12 italic">Execute a high-fidelity technical audit of your industrial risk signatures and working capital rotation.</p>
-                <button onclick="nextStep(1)" class="choice-btn !bg-emerald-600 !text-white !border-emerald-600 !justify-center font-bold tracking-widest text-xs uppercase">Initialize Diagnostic Scan</button>
+                
+                <div class="relative mb-12">
+                    <label class="mono text-slate-500 mb-4 block">Search Institutional Entity (Companies House)</label>
+                    <input type="text" id="company-search" class="std-input" placeholder="Enter Company Name or Number..." oninput="handleSearch(this.value)">
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <p class="text-slate-400 text-sm italic mb-12">Lookup your firm to synchronize diagnostic with UK Statutory Registries.</p>
+                <button onclick="nextStep(1)" id="start-btn" disabled class="choice-btn !bg-emerald-600/50 !text-white/50 !border-emerald-600/20 !justify-center font-bold tracking-widest text-xs uppercase cursor-not-allowed">Select Entity to Begin</button>
             </div>
 
             <!-- STEP 1: ACCOUNTING LATENCY (LEVERAGE OS) -->
@@ -241,10 +256,10 @@
                 
                 <form onsubmit="finishAudit(event)" class="space-y-4">
                     <div class="grid md:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Principal Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
+                        <input type="text" id="form-name" placeholder="Principal Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
                         <input type="email" placeholder="Professional Email" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
                     </div>
-                    <input type="text" placeholder="Company Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
+                    <input type="text" id="form-company" placeholder="Company Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
                     <button type="submit" class="w-full bg-emerald-600 text-white p-7 font-bold uppercase tracking-[0.3em] text-xs hover:bg-emerald-500 transition-all shadow-2xl">Execute Briefing Release</button>
                 </form>
                 <p class="mt-10 text-[9px] mono text-slate-600 uppercase font-bold tracking-[0.2em]">Restricted diagnostic // Access recorded under CL&C Charter V14.1</p>
@@ -254,8 +269,56 @@
     </div>
 
     <script>
-        let auditData = {};
+        let auditData = {
+            companyName: "",
+            companyNumber: ""
+        };
         const steps = 11;
+
+        // COMPANIES HOUSE API INTEGRATION (SIMULATED FOR CLIENT-SIDE SECURITY)
+        async function handleSearch(query) {
+            const resultsBox = document.getElementById('search-results');
+            if (query.length < 3) {
+                resultsBox.style.display = 'none';
+                return;
+            }
+
+            // In production, this hits your backend which proxies to Companies House API
+            // to avoid CORS and hide your API key.
+            // Documentation: https://developer.company-information.service.gov.uk/
+            
+            // Simulation of live lookup for UI walkthrough:
+            const mockCompanies = [
+                { name: query.toUpperCase() + " LTD", number: "0845" + Math.floor(Math.random()*1000), location: "London, UK" },
+                { name: query.toUpperCase() + " CONSTRUCTION", number: "0912" + Math.floor(Math.random()*1000), location: "Manchester, UK" },
+                { name: "PREMIER " + query.toUpperCase(), number: "1055" + Math.floor(Math.random()*1000), location: "Bristol, UK" }
+            ];
+
+            resultsBox.innerHTML = mockCompanies.map(c => `
+                <div class="result-item" onclick="selectCompany('${c.name}', '${c.number}')">
+                    ${c.name}
+                    <span>Co. Number: ${c.number} // ${c.location}</span>
+                </div>
+            `).join('');
+            resultsBox.style.display = 'block';
+        }
+
+        function selectCompany(name, number) {
+            auditData.companyName = name;
+            auditData.companyNumber = number;
+            
+            document.getElementById('company-search').value = name;
+            document.getElementById('search-results').style.display = 'none';
+            
+            const btn = document.getElementById('start-btn');
+            btn.disabled = false;
+            btn.classList.remove('!bg-emerald-600/50', '!text-white/50', '!border-emerald-600/20', 'cursor-not-allowed');
+            btn.classList.add('!bg-emerald-600', '!text-white', '!border-emerald-600');
+            btn.innerText = "Registry Synced: Begin Forensic Scan";
+
+            // Pre-fill the final form company name
+            document.getElementById('form-company').value = name;
+        }
 
         function nextStep(stepNum) {
             document.querySelectorAll('.audit-step').forEach(s => s.classList.remove('active'));
@@ -268,7 +331,7 @@
         }
 
         function record(val, next) {
-            auditData['step' + (next-1)] = val;
+            auditData['protocol_' + (next-1)] = val;
             nextStep(next);
         }
 
@@ -283,6 +346,7 @@
             line.style.opacity = '1';
 
             const logs = [
+                `Connecting to Registry for ${auditData.companyNumber}...`,
                 "Synchronizing with Section 111 registries...",
                 "Scrubbing Regulation 4 material mark-ups...",
                 "Reconciling Weighbridge Tonnage Streams...",
@@ -305,6 +369,7 @@
 
         function finishAudit(e) {
             e.preventDefault();
+            // Data would be sent to CRM/Email here
             window.location = 'thank-you.html';
         }
     </script>
