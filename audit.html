@@ -2,69 +2,310 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Risk Audit | Compliance Labs & Capital</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Forensic Diagnostic | Compliance Labs & Capital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z' fill='%230f172a'/%3E%3Cpath d='M50 20 V100 M25 40 L75 40 M25 70 L75 70' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='20' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='50' cy='55' r='6' fill='%2310b981'/%3E%3Ccircle cx='50' cy='100' r='4.5' fill='%2310b981'/%3E%3Ccircle cx='25' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='40' r='3' fill='%2310b981'/%3E%3Ccircle cx='25' cy='70' r='3' fill='%2310b981'/%3E%3Ccircle cx='75' cy='70' r='3' fill='%2310b981'/%3E%3C/svg%3E">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        :root { --emerald: #059669; --charcoal: #020617; }
+        :root { --emerald: #10b981; --charcoal: #020617; }
         body { font-family: 'Manrope', sans-serif; background-color: var(--charcoal); color: #cbd5e1; overflow-x: hidden; }
         .serif-heading { font-family: 'Playfair Display', serif; }
-        .mono { font-family: 'monospace'; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
-        .audit-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 4rem; max-width: 800px; margin: 6rem auto; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8); position: relative; z-index: 10; }
-        .audit-step { display: none; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .audit-step.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .btn-choice { width: 100%; text-align: left; padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; transition: all 0.2s; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .btn-choice:hover { border-color: var(--emerald); color: white; background: rgba(5, 150, 105, 0.05); }
-        .scan-line { position: absolute; top: 0; left: 0; height: 2px; background: var(--emerald); width: 0%; transition: width 0.5s ease; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        .audit-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .audit-card { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.05); padding: 4rem; width: 100%; max-width: 900px; position: relative; z-index: 10; }
+        
+        .progress-track { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(255,255,255,0.05); }
+        .progress-bar { height: 100%; background: var(--emerald); width: 0%; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 0 20px var(--emerald); }
+        
+        .audit-step { display: none; }
+        .audit-step.active { display: block; animation: stepReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes stepReveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .choice-btn { width: 100%; text-align: left; padding: 20px 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .choice-btn:hover { border-color: var(--emerald); background: rgba(16, 185, 129, 0.05); transform: translateX(5px); }
+        .choice-btn i { color: rgba(255,255,255,0.1); transition: 0.3s; }
+        .choice-btn:hover i { color: var(--emerald); transform: scale(1.1); }
+
+        .info-toggle { cursor: pointer; color: var(--emerald); font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 2rem; border-bottom: 1px solid rgba(16, 185, 129, 0.2); padding-bottom: 4px; transition: 0.3s; }
+        .info-toggle:hover { border-color: var(--emerald); opacity: 0.8; }
+        
+        .explanation-box { background: rgba(16, 185, 129, 0.05); border-left: 3px solid var(--emerald); padding: 1.5rem; margin-bottom: 2rem; display: none; animation: fadeIn 0.4s ease; }
+        .explanation-box p { font-size: 13px; line-height: 1.6; color: #94a3b8; }
+        .explanation-box.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .scanning-animation { height: 2px; background: var(--emerald); position: absolute; width: 100%; top: 0; left: 0; animation: scanMove 2s infinite ease-in-out; opacity: 0; pointer-events: none; }
+        @keyframes scanMove { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
+
+        .diagonal-bg { position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: rgba(16, 185, 129, 0.03); clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%); z-index: 0; }
+        
+        .metric-badge { font-size: 9px; padding: 2px 8px; border: 1px solid var(--emerald); color: var(--emerald); font-weight: 800; border-radius: 2px; }
     </style>
 </head>
 <body class="antialiased">
-    <nav class="absolute top-0 left-0 w-full p-10 flex justify-between items-center z-50">
-        <a href="index.html" class="flex items-center gap-4 group">
-            <svg viewBox="0 0 100 120" class="h-10 w-auto">
-                <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/>
-                <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
-                <circle cx="50" cy="20" r="4.5" fill="#10b981"/><circle cx="50" cy="55" r="6" fill="#10b981"/><circle cx="50" cy="100" r="4.5" fill="#10b981"/><circle cx="25" cy="40" r="3" fill="#10b981"/><circle cx="75" cy="40" r="3" fill="#10b981"/><circle cx="25" cy="70" r="3" fill="#10b981"/><circle cx="75" cy="70" r="3" fill="#10b981"/>
-            </svg>
-            <div class="leading-none">
-                <span class="text-white font-bold text-sm uppercase tracking-tight block">Compliance <span class="text-emerald-500">Labs</span></span>
-                <span class="mono text-slate-500 block mt-1 tracking-widest">& CAPITAL</span>
-            </div>
-        </a>
-    </nav>
 
-    <div class="audit-card">
-        <div class="scan-line" id="progress-bar"></div>
-        <div class="audit-step active" id="step-0">
-            <span class="mono text-emerald-600 mb-6 block">Initialization Protocol</span>
-            <h1 class="serif-heading text-5xl text-white mb-8">Infrastructure Diagnostic.</h1>
-            <p class="text-slate-400 text-lg font-light leading-relaxed mb-12">Technical forensic scan for UK enterprises (£1M+ Turnover).</p>
-            <button onclick="nextStep(1, 0)" class="btn-choice border-emerald-500 text-white bg-emerald-500/10 justify-center">Initialize Scan</button>
-        </div>
-        <!-- Steps 1-5 follow index.html logic but styled for the card -->
-        <div class="audit-step" id="step-1">
-            <h2 class="serif-heading text-3xl text-white mb-10">Verification Frequency?</h2>
-            <button onclick="nextStep(2, 10)" class="btn-choice">Real-Time API (Automated) <i class="fas fa-check"></i></button>
-            <button onclick="nextStep(2, 5)" class="btn-choice">Monthly / Manual <i class="fas fa-check"></i></button>
-            <button onclick="nextStep(2, 0)" class="btn-choice">Onboarding Only <i class="fas fa-check"></i></button>
+    <div class="audit-container">
+        <div class="diagonal-bg"></div>
+
+        <!-- HEADER -->
+        <nav class="absolute top-0 left-0 w-full p-10 flex justify-between items-center z-50">
+            <a href="index.html" class="flex items-center gap-5 group">
+                <svg viewBox="0 0 100 120" class="h-10 w-auto">
+                    <path d="M50 5 L90 25 V75 L50 115 L10 75 V25 L50 5Z" fill="#ffffff"/>
+                    <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+                <div class="leading-none">
+                    <span class="text-white font-bold text-sm uppercase tracking-tight block">Compliance <span class="text-emerald-500">Labs</span></span>
+                    <span class="mono text-slate-500 block mt-1 uppercase tracking-widest leading-none">& CAPITAL</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-3 bg-emerald-500/5 border border-emerald-500/20 px-5 py-2">
+                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span class="mono text-[9px] text-emerald-500 uppercase tracking-widest">Status: Cross_Sector_Audit</span>
+            </div>
+        </nav>
+
+        <div class="audit-card">
+            <div class="progress-track"><div class="progress-bar" id="p-bar"></div></div>
+            <div class="scanning-animation" id="scan-line"></div>
+
+            <!-- STEP 0: INITIALIZATION -->
+            <div class="audit-step active" id="step-0">
+                <span class="mono text-emerald-500 mb-8 block font-bold">Forensic Probe v6.0 // Multi-Sector Mandate</span>
+                <h1 class="serif-heading text-5xl md:text-7xl text-white mb-10 leading-tight">Systemic <br><span class="italic text-slate-400">Diagnostic.</span></h1>
+                <p class="text-slate-400 text-xl font-light max-w-2xl mb-12 italic">Execute a high-fidelity technical audit of your industrial risk signatures and working capital rotation.</p>
+                <button onclick="nextStep(1)" class="choice-btn !bg-emerald-600 !text-white !border-emerald-600 !justify-center font-bold tracking-widest text-xs uppercase">Initialize Diagnostic Scan</button>
+            </div>
+
+            <!-- STEP 1: ACCOUNTING LATENCY (LEVERAGE OS) -->
+            <div class="audit-step" id="step-1">
+                <span class="mono text-slate-500 mb-4 block">Protocol 01 // Data Velocity</span>
+                <div class="info-toggle" onclick="toggleInfo(1)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-1">
+                    <p>Old data is a liability. If your accounts are 30 days behind, you can't stop tax fines or cash flow gaps before they hit your bank account.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Average Ledger Reconciliation Latency?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('live', 2)" class="choice-btn"><span>Live / Under 24 Hours</span> <span class="metric-badge">Secure</span></button>
+                    <button onclick="record('weekly', 2)" class="choice-btn"><span>7-14 Day "Historian" Lag</span> <i class="fas fa-clock"></i></button>
+                    <button onclick="record('monthly', 2)" class="choice-btn"><span>30+ Day Historical Reporting</span> <i class="fas fa-history text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 2: CIS/IR35 STATUS (FIREWALL) -->
+            <div class="audit-step" id="step-2">
+                <span class="mono text-slate-500 mb-4 block">Protocol 02 // Supply Chain Status</span>
+                <div class="info-toggle" onclick="toggleInfo(2)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-2">
+                    <p>HMRC automatically fines you for paying subcontractors or drivers whose status changed without you knowing. Manual checks aren't enough to stop the automatic penalty loop.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Subcontractor / Driver Verification Frequency?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('automated', 3)" class="choice-btn"><span>Real-Time API / Payment Firewall</span> <i class="fas fa-microchip"></i></button>
+                    <button onclick="record('manual', 3)" class="choice-btn"><span>Manual Monthly Portal Checks</span> <i class="fas fa-file-signature"></i></button>
+                    <button onclick="record('none', 3)" class="choice-btn"><span>Onboarding Only / Intermittent</span> <i class="fas fa-triangle-exclamation text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 3: REGULATION 4 (MATERIALS) -->
+            <div class="audit-step" id="step-3">
+                <span class="mono text-slate-500 mb-4 block">Protocol 03 // Materials Verification</span>
+                <div class="info-toggle" onclick="toggleInfo(3)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-3">
+                    <p>HMRC treats all "Materials" as labour (taxable) unless you have the original store receipts from your subcontractors. Without them, you could owe 20% on your entire materials spend, backdated 6 years.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Material Receipt Retention Policy?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('mandatory', 4)" class="choice-btn"><span>Physical Receipts Required for Payment</span> <i class="fas fa-shield-halved"></i></button>
+                    <button onclick="record('itemized', 4)" class="choice-btn"><span>Itemized Invoices (No Receipt Required)</span> <i class="fas fa-exclamation-circle text-amber-500"></i></button>
+                    <button onclick="record('estimates', 4)" class="choice-btn"><span>Unverified Estimates / Lump Sums</span> <i class="fas fa-bomb text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 4: WASTE MGMT (LANDFILL TAX) -->
+            <div class="audit-step" id="step-4">
+                <span class="mono text-slate-500 mb-4 block">Protocol 04 // Environmental Tonnage</span>
+                <div class="info-toggle" onclick="toggleInfo(4)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-4">
+                    <p>HMRC reclassifying your "Inert Waste" (£3.30/t) as "Active Waste" (£103.70/t) is the biggest threat to your profit. We audit your weighbridge-to-return reconciliation.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Landfill Tax Reconciliation Methodology?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('weighbridge', 5)" class="choice-btn"><span>Direct Weighbridge Software Export</span> <i class="fas fa-truck-loading"></i></button>
+                    <button onclick="record('manual-ton', 5)" class="choice-btn"><span>Manual Tonnage Aggregation</span> <i class="fas fa-calculator"></i></button>
+                    <button onclick="record('estimated', 5)" class="choice-btn"><span>Estimated Categories / High Risk</span> <i class="fas fa-biohazard text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 5: RENEWABLES (GRID LATENCY) -->
+            <div class="audit-step" id="step-5">
+                <span class="mono text-slate-500 mb-4 block">Protocol 05 // Infrastructure Bridging</span>
+                <div class="info-toggle" onclick="toggleInfo(5)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-5">
+                    <p>Grid connection (DNO) delays keep your final 30% project payments trapped for months. We bridge this gap so you get paid the day the hardware is installed.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Current Average DNO Connection Wait?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('low-wait', 6)" class="choice-btn"><span>Under 3 Months</span> <i class="fas fa-check"></i></button>
+                    <button onclick="record('mid-wait', 6)" class="choice-btn"><span>3-9 Months (Capital Drain)</span> <i class="fas fa-hourglass-half text-amber-500"></i></button>
+                    <button onclick="record('high-wait', 6)" class="choice-btn"><span>9+ Months (Severe Stagnation)</span> <i class="fas fa-lock text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 6: RETENTIONS (THE SWORD) -->
+            <div class="audit-step" id="step-6">
+                <span class="mono text-slate-500 mb-4 block">Protocol 06 // Capital Stagnation</span>
+                <div class="info-toggle" onclick="toggleInfo(6)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-6">
+                    <p>Retentions are your profit. Every day they sit in someone else's bank, inflation destroys their value. We use the law to force their release within 30 days.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Total Aged Retention Value (>12mo)?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('low-ret', 7)" class="choice-btn"><span>Under £50,000</span> <i class="fas fa-check"></i></button>
+                    <button onclick="record('mid-ret', 7)" class="choice-btn"><span>£50k - £250k</span> <i class="fas fa-chart-line"></i></button>
+                    <button onclick="record('high-ret', 7)" class="choice-btn"><span>£250k+ (Trapped EBITDA)</span> <i class="fas fa-lock text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 7: STATUTORY INTEREST (THE SWORD) -->
+            <div class="audit-step" id="step-7">
+                <span class="mono text-slate-500 mb-4 block">Protocol 07 // Revenue Recovery</span>
+                <div class="info-toggle" onclick="toggleInfo(7)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-7">
+                    <p>The law says late payers owe you 8.5% interest. If you aren't claiming this, you are giving away thousands in free money. We harvest this interest for you.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Utilization of 8.5% Statutory Interest?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('applied', 8)" class="choice-btn"><span>Regularly Applied (Enforcement)</span> <i class="fas fa-gavel"></i></button>
+                    <button onclick="record('sporadic', 8)" class="choice-btn"><span>Rarely / Large Debts Only</span> <i class="fas fa-hand-holding-dollar"></i></button>
+                    <button onclick="record('none-applied', 8)" class="choice-btn"><span>Never (Unrecovered Statutory Capital)</span> <i class="fas fa-ban text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 8: ASSET EQUITY (CAPITAL STACK) -->
+            <div class="audit-step" id="step-8">
+                <span class="mono text-slate-500 mb-4 block">Protocol 08 // Asset Lifecycle</span>
+                <div class="info-toggle" onclick="toggleInfo(8)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-8">
+                    <p>Your machinery contains "trapped cash." If you own them, we can pull that cash back into your bank account to fund growth without taking high-interest loans.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Status of Owned Fleet / Yellow Plant?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('equity-rich', 9)" class="choice-btn"><span>High Equity / Paid-Off Assets</span> <span class="metric-badge">Refinance Ready</span></button>
+                    <button onclick="record('leased-assets', 9)" class="choice-btn"><span>Active Lease / Finance Agreements</span> <i class="fas fa-link"></i></button>
+                    <button onclick="record('aging-fleet', 9)" class="choice-btn"><span>Aging Fleet (High Maint. Outlay)</span> <i class="fas fa-wrench text-amber-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 9: REVENUE VELOCITY (RA PROTOCOL) -->
+            <div class="audit-step" id="step-9">
+                <span class="mono text-slate-500 mb-4 block">Protocol 09 // Performance Floor</span>
+                <div class="info-toggle" onclick="toggleInfo(9)"><i class="fas fa-info-circle"></i> Plain English</div>
+                <div class="explanation-box" id="info-9">
+                    <p>If you don't know your minimum hourly yield, you are bidding on contracts that might actually lose you money. We install a "Margin Floor" in your systems.</p>
+                </div>
+                <h2 class="serif-heading text-4xl text-white mb-10">Establishment of Minimum Hourly Yield?</h2>
+                <div class="space-y-4">
+                    <button onclick="record('floor-set', 10)" class="choice-btn"><span>Formal Strategic Floor Established</span> <i class="fas fa-bullseye"></i></button>
+                    <button onclick="record('turnover-focus', 10)" class="choice-btn"><span>Informal / Turnover-Led Strategy</span> <i class="fas fa-arrows-spin"></i></button>
+                    <button onclick="record('no-floor', 10)" class="choice-btn"><span>Not Tracked (Profit Blindness)</span> <i class="fas fa-eye-slash text-rose-500"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 10: SCANNING STATE -->
+            <div class="audit-step" id="step-10">
+                <div class="text-center py-20">
+                    <div class="inline-block w-16 h-16 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mb-10"></div>
+                    <h2 class="serif-heading text-4xl text-white mb-4 italic">Compiling Forensic Analysis...</h2>
+                    <p class="mono text-emerald-500 animate-pulse" id="scan-status">Accessing UK Statutory Registries</p>
+                    <div class="mt-10 max-w-md mx-auto text-left space-y-2 opacity-50">
+                        <p class="mono text-[8px]" id="log-1">> MAPPING_REGULATION_4_DELTA...</p>
+                        <p class="mono text-[8px]" id="log-2">> RECONCILING_WEIGHBRIDGE_DATA...</p>
+                        <p class="mono text-[8px]" id="log-3">> CALCULATING_STATUTORY_INTEREST_ACCURAL...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 11: CAPTURE -->
+            <div class="audit-step" id="step-11">
+                <span class="mono text-rose-500 mb-8 block font-bold tracking-widest">Alert: Institutional Risk Signature Identified</span>
+                <h2 class="serif-heading text-4xl text-white mb-8 leading-tight">Initialize Forensic Opportunity Report.</h2>
+                <p class="text-slate-400 text-lg mb-12 font-light">Our scan has identified critical capital latency and HMRC exposure points in your infrastructure. Provide authorized credentials to release the technical briefing.</p>
+                
+                <form onsubmit="finishAudit(event)" class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Principal Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
+                        <input type="email" placeholder="Professional Email" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
+                    </div>
+                    <input type="text" placeholder="Company Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
+                    <button type="submit" class="w-full bg-emerald-600 text-white p-7 font-bold uppercase tracking-[0.3em] text-xs hover:bg-emerald-500 transition-all shadow-2xl">Execute Briefing Release</button>
+                </form>
+                <p class="mt-10 text-[9px] mono text-slate-600 uppercase font-bold tracking-[0.2em]">Restricted diagnostic // Access recorded under CL&C Charter V14.1</p>
+            </div>
+
         </div>
     </div>
 
     <script>
-        let score = 0;
-        function nextStep(step, val) {
-            score += val;
-            document.querySelectorAll('.audit-step').forEach(el => el.classList.remove('active'));
-            document.getElementById('progress-bar').style.width = (step * 25) + "%";
-            if(step === 2) window.location = 'thank-you.html'; // Simplified for demo
-            else document.getElementById('step-' + step).classList.add('active');
+        let auditData = {};
+        const steps = 11;
+
+        function nextStep(stepNum) {
+            document.querySelectorAll('.audit-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step-' + stepNum).classList.add('active');
+            document.getElementById('p-bar').style.width = ((stepNum / steps) * 100) + '%';
+
+            if(stepNum === 10) {
+                runScanSequence();
+            }
+        }
+
+        function record(val, next) {
+            auditData['step' + (next-1)] = val;
+            nextStep(next);
+        }
+
+        function toggleInfo(id) {
+            const box = document.getElementById('info-' + id);
+            box.classList.toggle('active');
+        }
+
+        function runScanSequence() {
+            const status = document.getElementById('scan-status');
+            const line = document.getElementById('scan-line');
+            line.style.opacity = '1';
+
+            const logs = [
+                "Synchronizing with Section 111 registries...",
+                "Scrubbing Regulation 4 material mark-ups...",
+                "Reconciling Weighbridge Tonnage Streams...",
+                "Measuring Project Grid Energization Gaps...",
+                "Calculating Historian Data Latency delta...",
+                "MANDATE_SIGNAL: Forensic signature complete."
+            ];
+
+            let i = 0;
+            const interval = setInterval(() => {
+                status.innerText = logs[i];
+                i++;
+                if(i >= logs.length) {
+                    clearInterval(interval);
+                    line.style.opacity = '0';
+                    nextStep(11);
+                }
+            }, 1000);
+        }
+
+        function finishAudit(e) {
+            e.preventDefault();
+            window.location = 'thank-you.html';
         }
     </script>
 </body>
