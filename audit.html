@@ -70,7 +70,7 @@
                     <path d="M50 20 V100 M25 40 L75 40 M25 70 L75 70" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
                 </svg>
                 <div class="leading-none">
-                    <span class="text-white font-bold text-sm uppercase tracking-tight block">Compliance <span class="text-emerald-500">Labs</span></span>
+                    <span class="text-white font-bold text-sm uppercase tracking-tight block text-slate-900">Compliance <span class="text-emerald-500">Labs</span></span>
                     <span class="mono text-slate-500 block mt-1 uppercase tracking-widest leading-none">& CAPITAL</span>
                 </div>
             </a>
@@ -257,7 +257,7 @@
                 <form onsubmit="finishAudit(event)" class="space-y-4">
                     <div class="grid md:grid-cols-2 gap-4">
                         <input type="text" id="form-name" placeholder="Principal Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
-                        <input type="email" placeholder="Professional Email" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
+                        <input type="email" id="form-email" placeholder="Professional Email" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
                     </div>
                     <input type="text" id="form-company" placeholder="Company Name" required class="w-full bg-white/5 border border-white/10 p-6 mono text-white focus:border-emerald-500 outline-none uppercase tracking-widest text-[10px]">
                     <button type="submit" class="w-full bg-emerald-600 text-white p-7 font-bold uppercase tracking-[0.3em] text-xs hover:bg-emerald-500 transition-all shadow-2xl">Execute Briefing Release</button>
@@ -282,12 +282,7 @@
                 resultsBox.style.display = 'none';
                 return;
             }
-
-            // In production, this hits your backend which proxies to Companies House API
-            // to avoid CORS and hide your API key.
-            // Documentation: https://developer.company-information.service.gov.uk/
             
-            // Simulation of live lookup for UI walkthrough:
             const mockCompanies = [
                 { name: query.toUpperCase() + " LTD", number: "0845" + Math.floor(Math.random()*1000), location: "London, UK" },
                 { name: query.toUpperCase() + " CONSTRUCTION", number: "0912" + Math.floor(Math.random()*1000), location: "Manchester, UK" },
@@ -306,17 +301,13 @@
         function selectCompany(name, number) {
             auditData.companyName = name;
             auditData.companyNumber = number;
-            
             document.getElementById('company-search').value = name;
             document.getElementById('search-results').style.display = 'none';
-            
             const btn = document.getElementById('start-btn');
             btn.disabled = false;
             btn.classList.remove('!bg-emerald-600/50', '!text-white/50', '!border-emerald-600/20', 'cursor-not-allowed');
             btn.classList.add('!bg-emerald-600', '!text-white', '!border-emerald-600');
             btn.innerText = "Registry Synced: Begin Forensic Scan";
-
-            // Pre-fill the final form company name
             document.getElementById('form-company').value = name;
         }
 
@@ -324,10 +315,7 @@
             document.querySelectorAll('.audit-step').forEach(s => s.classList.remove('active'));
             document.getElementById('step-' + stepNum).classList.add('active');
             document.getElementById('p-bar').style.width = ((stepNum / steps) * 100) + '%';
-
-            if(stepNum === 10) {
-                runScanSequence();
-            }
+            if(stepNum === 10) { runScanSequence(); }
         }
 
         function record(val, next) {
@@ -344,7 +332,6 @@
             const status = document.getElementById('scan-status');
             const line = document.getElementById('scan-line');
             line.style.opacity = '1';
-
             const logs = [
                 `Connecting to Registry for ${auditData.companyNumber}...`,
                 "Synchronizing with Section 111 registries...",
@@ -354,7 +341,6 @@
                 "Calculating Historian Data Latency delta...",
                 "MANDATE_SIGNAL: Forensic signature complete."
             ];
-
             let i = 0;
             const interval = setInterval(() => {
                 status.innerText = logs[i];
@@ -369,7 +355,12 @@
 
         function finishAudit(e) {
             e.preventDefault();
-            // Data would be sent to CRM/Email here
+            // PERMANENCE LOCK: Save data to localStorage so thank-you.html can use it
+            auditData.userName = document.getElementById('form-name').value;
+            auditData.userEmail = document.getElementById('form-email').value;
+            auditData.companyName = document.getElementById('form-company').value;
+            localStorage.setItem('clc_audit_results', JSON.stringify(auditData));
+            
             window.location = 'thank-you.html';
         }
     </script>
